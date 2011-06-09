@@ -1,0 +1,191 @@
+backend_homepage:
+    pattern:  /
+    defaults: { _controller: KailabBackendBundle:Default:index }
+
+# slide
+
+backend_slide_list:
+    pattern:  /slide
+    defaults: { _controller: KailabBackendBundle:Slide:index }
+
+backend_slide_new:
+    pattern:  /slide/new
+    defaults: { _controller: KailabBackendBundle:Slide:new }
+
+backend_slide_edit:
+    pattern:  /slide/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:edit }
+
+backend_slide_save:
+    pattern:  /slide/save
+    defaults: { _controller: KailabBackendBundle:Slide:save }
+
+backend_slide_delete:
+    pattern:  /slide/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:delete }
+
+backend_slide_up:
+    pattern:  /slide/up/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:up }
+
+backend_slide_down:
+    pattern:  /slide/down/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:down }
+
+backend_slide_image:
+    pattern:  /slide/image/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:image }
+
+# app
+
+backend_app_list:
+    pattern:  /app
+    defaults: { _controller: KailabBackendBundle:App:index }
+
+backend_app_new:
+    pattern:  /app/new
+    defaults: { _controller: KailabBackendBundle:App:new }
+
+backend_app_edit:
+    pattern:  /app/edit/{id}
+    defaults: { _controller: KailabBackendBundle:App:edit }
+
+backend_app_save:
+    pattern:  /app/save
+    defaults: { _controller: KailabBackendBundle:App:save }
+
+backend_app_delete:
+    pattern:  /app/delete/{id}
+    defaults: { _controller: KailabBackendBundle:App:delete }
+
+backend_app_up:
+    pattern:  /app/up/{id}
+    defaults: { _controller: KailabBackendBundle:App:up }
+
+backend_app_down:
+    pattern:  /app/down/{id}
+    defaults: { _controller: KailabBackendBundle:App:down }
+
+backend_app_image:
+    pattern:  /app/image/{id}
+    defaults: { _controller: KailabBackendBundle:App:image }
+
+# game
+
+backend_game_list:
+    pattern:  /game
+    defaults: { _controller: KailabBackendBundle:Game:index }
+
+backend_game_new:
+    pattern:  /game/new
+    defaults: { _controller: KailabBackendBundle:Game:new }
+
+backend_game_edit:
+    pattern:  /game/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Game:edit }
+
+backend_game_save:
+    pattern:  /game/save
+    defaults: { _controller: KailabBackendBundle:Game:save }
+
+backend_game_delete:
+    pattern:  /game/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Game:delete }
+
+backend_game_up:
+    pattern:  /game/up/{id}
+    defaults: { _controller: KailabBackendBundle:Game:up }
+
+backend_game_down:
+    pattern:  /game/down/{id}
+    defaults: { _controller: KailabBackendBundle:Game:down }
+
+backend_game_image:
+    pattern:  /game/image/{id}
+    defaults: { _controller: KailabBackendBundle:Game:image }
+
+# tec
+
+backend_tec_list:
+    pattern:  /tec
+    defaults: { _controller: KailabBackendBundle:Tec:index }
+
+backend_tec_new:
+    pattern:  /tec/new
+    defaults: { _controller: KailabBackendBundle:Tec:new }
+
+backend_tec_edit:
+    pattern:  /tec/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Tec:edit }
+
+backend_tec_save:
+    pattern:  /tec/save
+    defaults: { _controller: KailabBackendBundle:Tec:save }
+
+backend_tec_delete:
+    pattern:  /tec/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Tec:delete }
+
+backend_tec_up:
+    pattern:  /tec/up/{id}
+    defaults: { _controller: KailabBackendBundle:Tec:up }
+
+backend_tec_down:
+    pattern:  /tec/down/{id}
+    defaults: { _controller: KailabBackendBundle:Tec:down }
+
+backend_tec_image:
+    pattern:  /tec/image/{id}
+    defaults: { _controller: KailabBackendBundle:Tec:image }
+
+# blog post
+
+backend_blog_post_list:
+    pattern:  /blog/post
+    defaults: { _controller: KailabBackendBundle:BlogPost:index }
+
+backend_blog_post_new:
+    pattern:  /blog/post/new
+    defaults: { _controller: KailabBackendBundle:BlogPost:new }
+
+backend_blog_post_edit:
+    pattern:  /blog/post/edit/{id}
+    defaults: { _controller: KailabBackendBundle:BlogPost:edit }
+
+backend_blog_post_save:
+    pattern:  /blog/post/save
+    defaults: { _controller: KailabBackendBundle:BlogPost:save }
+
+backend_blog_post_delete:
+    pattern:  /blog/post/delete/{id}
+    defaults: { _controller: KailabBackendBundle:BlogPost:delete }
+
+# blog category
+
+backend_blog_category_list:
+    pattern:  /blog/category
+    defaults: { _controller: KailabBackendBundle:BlogCategory:index }
+
+backend_blog_category_new:
+    pattern:  /blog/category/new
+    defaults: { _controller: KailabBackendBundle:BlogCategory:new }
+
+backend_blog_category_edit:
+    pattern:  /blog/category/edit/{id}
+    defaults: { _controller: KailabBackendBundle:BlogCategory:edit }
+
+backend_blog_category_save:
+    pattern:  /blog/category/save
+    defaults: { _controller: KailabBackendBundle:BlogCategory:save }
+
+backend_blog_category_delete:
+    pattern:  /blog/category/delete/{id}
+    defaults: { _controller: KailabBackendBundle:BlogCategory:delete }
+
+backend_blog_category_up:
+    pattern:  /blog/category/up/{id}
+    defaults: { _controller: KailabBackendBundle:BlogCategory:up }
+
+backend_blog_category_down:
+    pattern:  /blog/category/down/{id}
+    defaults: { _controller: KailabBackendBundle:BlogCategory:down }

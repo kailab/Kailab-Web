@@ -1,0 +1,56 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Homepage Slides' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for slide in entities %}
+<tr>
+    <td>
+        {{ slide.name }}
+    </td>
+    <td>
+        {{ slide.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ slide.position }}
+    </td>
+
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_slide_edit',{'id':slide.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_slide_delete',{'id':slide.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_slide_up',{'id':slide.id}) }}">{{ 'Up' | trans }}</a></li>
+            <li><a href="{{ path('backend_slide_down',{'id':slide.id}) }}">{{ 'Down' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No slides found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_slide_new') }}">{{ 'Add new slide' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

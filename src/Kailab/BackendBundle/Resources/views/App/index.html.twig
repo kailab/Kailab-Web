@@ -1,0 +1,56 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Applications' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for app in entities %}
+<tr>
+    <td>
+        {{ app.name }}
+    </td>
+    <td>
+        {{ app.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ app.position }}
+    </td>
+
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_app_edit',{'id':app.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_app_delete',{'id':app.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_app_up',{'id':app.id}) }}">{{ 'Up' | trans }}</a></li>
+            <li><a href="{{ path('backend_app_down',{'id':app.id}) }}">{{ 'Down' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No apps found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_app_new') }}">{{ 'Add new App' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

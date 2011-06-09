@@ -1,0 +1,54 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Blog Posts' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for post in entities %}
+<tr>
+    <td>
+        {{ post.name }}
+    </td>
+    <td>
+        {{ post.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ post.position }}
+    </td>
+
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_blog_post_edit',{'id':post.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_blog_post_delete',{'id':post.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No posts found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_blog_post_new') }}">{{ 'Add new Post' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

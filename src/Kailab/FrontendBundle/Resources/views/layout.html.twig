@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Kailab{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
+        {% block javascripts %}
+        {% javascripts 'bundles/kailabfrontend/js/jquery.js' %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+        {% endblock %}
+        {% block stylesheets %}
+        {% stylesheets filter='cssrewrite'
+            'bundles/kailabfrontend/css/layout.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="body_wrapper">
+            <div id="header_wrapper">
+                <div id="header">
+                    <div id="logo">
+                         <a href="{{ path('frontend_homepage') }}">
+                            <img src="{{ asset('bundles/kailabfrontend/images/logo.png') }}" alt="Kailab" title="Kailab"/>
+                        </a>
+                    </div>
+
+                    <ul id="topmenu">
+                        <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
+                        <li><a href="{{ path('frontend_blog') }}">{{ "Blog" | trans }}</a></li>
+                        <li><a href="{{ path('frontend_contact') }}">{{ "Contact" | trans }}</a></li>
+                    </ul>
+                    <ul id="languages">
+                        {% for code,name in locale_helper.locales %}
+                        {% if code == locale_helper.code %}
+                        <li class="current">
+                        {% else %}
+                        <li>
+                        {% endif %}
+                        <a href="{{ locale_helper.path(code) }}">{{ name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    <ul id="mainmenu">
+                        <li><a href="{{ path('frontend_homepage') }}" >{{ 'Home' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_tecnology') }}" >{{ 'Tecnology' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_applications') }}" >{{ 'Applications' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_videogames') }}" >{{ 'Videogames' | trans }}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="main_wrapper">
+                <div id="main_gradient">
+                    <div id="main">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+                <div id="sitemap_wrapper">
+                    <ul id="sitemap">
+                        <li class="section">
+                            <h3>{{ 'Tecnology' | trans }}</h3>
+                            <ul>
+                                <li>arcadix</li>
+                                <li>cwe</li>
+                            </ul>
+                        </li>
+                        <li class="section">
+                            <h3>{{ 'Applications' | trans }}</h3>
+                            <ul>
+                                <li>me911</li>
+                                <li>lasexta</li>
+                            </ul>
+                        </li>
+                        <li class="section">
+                            <h3>{{ 'Videogames' | trans }}</h3>
+                            <ul>
+                                <li>triopsy</li>
+                                <li>space golf</li>
+                            </ul>
+                        </li>
+                        <li class="section">
+                            <h3>{{ 'Company' | trans }}</h3>
+                            <ul>
+                                <li><a href="{{ path('frontend_contact') }}">{{ "Contact us" | trans }}</a></li>
+                                <li><a href="{{ path('frontend_blog') }}">{{ "Blog" | trans }}</a></li>
+                                <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
+                                <li><a href="{{ path('frontend_legal') }}">{{ "Legal" | trans }}</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="footer_wrapper">
+            <div id="footer">
+                <div id="footer_social">
+                    <span class="prefix">Follow us on...</span>
+                    <img src="{{asset('bundles/kailabfrontend/images/footer_facebook.png')}}" alt="Facebook"/>
+                    <img src="{{asset('bundles/kailabfrontend/images/footer_twitter.png')}}" alt="Twitter"/>
+                </div>
+                <ul id="bottommenu">
+                    <li><a href="{{ path('frontend_about') }}">{{ 'About us' | trans }}</a></li>
+                    <li><a href="{{ path('frontend_contact') }}">{{ 'Contact' | trans }}</a></li>
+                    <li><a href="{{ path('frontend_legal') }}">{{ 'Legal' | trans }}</a></li>
+                    <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
+
+

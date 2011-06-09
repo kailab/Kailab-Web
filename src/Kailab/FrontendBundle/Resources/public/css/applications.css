@@ -1,0 +1,41 @@
+#apps {
+    margin: 0;
+    padding: 0;
+}
+
+#apps li {
+    list-style: none;
+    float: left;
+    background-repeat: no-repeat;
+}
+
+#apps li.iphone {
+    background-image: url(../images/bg_iphone_small.png);
+    padding: 25px 8px 40px 8px;
+    margin: 24px;
+}
+
+#app {
+    clear: both;
+}
+
+#app_screenshot {
+    background-repeat: no-repeat;
+    float: left;
+    width: 250px;
+}
+
+#app_screenshot.iphone {
+    background-image: url(../images/bg_iphone_big.png);
+    padding: 75px 21px 75px 21px;
+}
+
+#app_main {
+    margin-left: 250px;
+}
+
+#app_main h2 {
+    background-image: url(../images/bg_title.png);
+    color: #000000;
+    padding: 3px 60px 0 60px;
+}

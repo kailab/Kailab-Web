@@ -1,0 +1,43 @@
+frontend_homepage:
+    pattern:  /
+    defaults: { _controller: KailabFrontendBundle:Default:index }
+
+frontend_slide:
+    pattern:  /slide/{id}
+    defaults: { _controller: KailabFrontendBundle:Default:slide }
+
+frontend_locale_homepage:
+    pattern:  /{_locale}
+    defaults: { _controller: KailabFrontendBundle:Default:index }
+
+frontend_about:
+    pattern:  /{_locale}/about
+    defaults: { _controller: KailabFrontendBundle:Default:about }
+
+frontend_legal:
+    pattern:  /{_locale}/legal
+    defaults: { _controller: KailabFrontendBundle:Default:legal }
+
+frontend_faq:
+    pattern:  /{_locale}/faq
+    defaults: { _controller: KailabFrontendBundle:Default:faq }
+
+frontend_contact:
+    pattern:  /{_locale}/contact
+    defaults: { _controller: KailabFrontendBundle:Default:contact }
+
+frontend_blog:
+    pattern:  /{_locale}/blog
+    defaults: { _controller: KailabFrontendBundle:Blog:index }
+
+frontend_tecnology:
+    pattern:  /{_locale}/tec
+    defaults: { _controller: KailabFrontendBundle:Tecnology:index }
+
+frontend_applications:
+    pattern:  /{_locale}/apps
+    defaults: { _controller: KailabFrontendBundle:Applications:index }
+
+frontend_videogames:
+    pattern:  /{_locale}/games
+    defaults: { _controller: KailabFrontendBundle:Videogames:index }

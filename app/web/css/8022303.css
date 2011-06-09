@@ -1,0 +1,247 @@
+body {
+    font-family: 'Arimo', Arial, sans-serif;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    color: #9b9b9b;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #bdca0e;
+}
+
+img {
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 16px 0;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+#header_wrapper {
+    border-bottom: 1px solid #bfbfbf;
+}
+
+#header {
+    width: 960px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#logo {
+    margin-top: 10px;
+    width: 240px;
+    float: left;
+}
+
+#languages {
+    list-style: none;
+    margin: 0;
+    height: 15px;
+    padding: 0;
+}
+
+#languages li {
+    display: inline;
+    padding: 0 5px;
+    border-left: 1px solid #aaaaaa;
+}
+
+#languages li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+#topmenu {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+#topmenu li {
+    display: inline;
+    padding: 0 7px;
+    border-left: 1px solid #bdca0e;
+}
+
+#topmenu li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+#mainmenu {
+    margin: 30px 0 0 0;
+    padding: 0;
+}
+
+#mainmenu li {
+    display: inline;
+    padding: 0 25px;
+    text-transform: uppercase;
+    border-left: 2px solid #aaaaaa;
+}
+
+#mainmenu li:first-child {
+    border-left: 0;
+    padding-left: 0;
+}
+
+#mainmenu li a {
+    color: #000000;
+    font-weight: bold;
+}
+
+#main_gradient {
+    background-image: url(../../Resources/public/images/gradient_down.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    padding-top: 10px;
+}
+
+#main_wrapper {
+    background-image: url(../../Resources/public/images/bg.png);
+    background-color: #f5f7e1;
+}
+
+#main {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#main h1,
+#main h2,
+#main h3,
+#main h4,
+#main h5,
+#main h6 {
+    padding: 0 0 5px 0;
+    border-bottom: 1px dotted #cccccc;
+    color: #bdca0e;
+}
+
+#sitemap_wrapper {
+    clear: both;
+    background-image: url(../../Resources/public/images/bg_logo.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 960px;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+}
+
+#sitemap{
+    background-image: url(../../Resources/public/images/sep_big.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin: 0;
+    padding: 25px 0;
+    overflow: hidden;
+}
+
+#sitemap li.section {
+    list-style: none;
+    float: left;
+    width: 175px;
+}
+
+
+    padding: 0 0 5px 0;
+    border-bottom: 1px dotted #cccccc;
+    color: #bdca0e;
+
+
+#sitemap_wrapper {
+    clear: both;
+    background-image: url(../../Resources/public/images/bg_logo.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 960px;
+    margin: 0 auto;
+    padding: 10px 0 0 0;
+}
+
+#sitemap{
+    background-image: url(../../Resources/public/images/sep_big.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin: 0;
+    padding: 25px 0;
+    overflow: hidden;
+}
+
+#sitemap li.section {
+    list-style: none;
+    float: left;
+    width: 175px;
+}
+
+#sitemap .section h3 {
+    font-size: 14px;
+    font-weight: bold;
+    list-style: none;
+    margin: 0 0 10px 0;
+}
+
+#sitemap .section ul {
+    margin: 0;
+    padding: 0;
+}
+
+#sitemap .section li {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: disc inside none;
+}
+
+#footer_wrapper {
+    background-color: #beca10;
+    color: #FFFFFF;
+}
+
+#footer {
+    background-image: url(../../Resources/public/images/footer_logo.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 860px;
+    height: 25px;
+    line-height: 25px;
+    margin: 0 auto;
+    padding: 4px 0 4px 100px;
+}
+
+#footer_social {
+    float: right;
+    height: 25px;
+    line-height: 23px;
+}
+
+#footer_social img {
+    vertical-align: middle;
+}
+
+#footer_social .prefix {
+    margin-right: 15px;
+}
+
+#bottommenu {
+    margin: 0;
+    padding: 0;
+}
+
+#bottommenu li {
+    list-style: none;
+    display: inline;
+    border-left: 1px solid #FFFFFF;
+    padding: 0 20px;
+}
+
+#bottommenu li:first-child {
+    border-left: 0;
+    padding-left: 0;
+}

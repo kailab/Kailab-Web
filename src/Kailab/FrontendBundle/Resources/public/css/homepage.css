@@ -1,0 +1,45 @@
+#slider {
+    width: 450px;
+    height: 450px;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+
+.nivoSlider {
+    background-color: #000000 !important;
+}
+
+#blocks {
+    width: 970px;
+}
+
+.block {
+    width: 208px;
+    height: 208px;
+    border: 1px solid #eeeeee;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    float: left;
+    background-image: url(../images/bg_block.png);
+}
+
+#main .block p {
+    line-height: 1.2em;
+}
+
+#main .block h3 {
+    text-align: right;
+    border-bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.block .button {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    float: right;
+    padding: 2px 4px;
+    background-image: url(../images/bg_block_button.png);
+}

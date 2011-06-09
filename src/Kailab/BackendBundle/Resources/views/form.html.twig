@@ -1,0 +1,64 @@
+{% extends "KailabBackendBundle::layout.html.twig" %}
+{% form_theme form 'KailabBackendBundle:Form:fields.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/kailabbackend/js/jquery.js'
+        'bundles/kailabbackend/js/jquery-ui.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabbackend/jqueryui_theme/jquery-ui.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+<h1>{% spaceless %}{% block form_title %}
+{% endblock %}{% endspaceless %}</h1>
+
+<form method="post" class="entity" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+
+    {% set trans_prefix = 'entity_translation_' %}
+    <div id="entity_translation_tabs">
+        <ul>
+        {% for trans in form.translations %}
+            {% set locale = trans.get('value').locale %}
+            <li><a href="#{{ trans_prefix ~ locale }}">
+                {{ locale_helper.name(locale) }}
+            </a></li>
+        {% endfor %}
+        </ul>
+        {% for trans in form.translations %}
+        {% set locale = trans.get('value').locale %}
+        <div class="translation" id="{{ trans_prefix ~ locale }}">
+            {{ form_widget(trans) }}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% block form_rest %}
+    {{ form_rest(form) }}
+    {% endblock %}
+
+    <div class="form_submit_row">
+       <input type="submit" value="{{ 'Save' | trans }}"/>
+    </div>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#entity_translation_tabs').tabs();
+});
+</script>
+
+{% endblock %}

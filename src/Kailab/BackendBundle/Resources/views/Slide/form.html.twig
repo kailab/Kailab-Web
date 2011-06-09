@@ -1,0 +1,22 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Slide' | trans }}
+{% else %}
+{{ 'New  Slide' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_rest %}
+    <div class="form_row">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image) }}
+        <div class="form_row_comment">
+            <img src="{{ path('backend_slide_image', {'id':entity.id}) }}" />
+        </div>
+        {{ form_errors(form.image) }}
+    </div>
+    {{ parent() }}
+{% endblock %}

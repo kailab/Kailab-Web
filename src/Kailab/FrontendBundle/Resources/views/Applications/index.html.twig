@@ -1,0 +1,41 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - {{ 'Applications' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/applications.css' %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+
+
+{% block content %}
+
+<ul id="apps">
+    <li class="iphone">
+        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
+    </li>
+    <li class="iphone">
+        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
+    </li>
+    <li class="iphone">
+        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
+    </li>
+</ul>
+
+<div id="app">
+<div id="app_screenshot" class="iphone">
+    <img src="{{ asset('bundles/kailabfrontend/images/test_app_big.png') }}" alt="test_app"/>
+</div>
+<div id="app_main">
+    <h2>Despicable Me</h2>
+    </div>
+</div>
+
+{% endblock %}
+
+

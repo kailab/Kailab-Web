@@ -1,0 +1,10 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing App' | trans }}
+{% else %}
+{{ 'New  App' | trans }}
+{% endif %}
+{% endblock %}
+
