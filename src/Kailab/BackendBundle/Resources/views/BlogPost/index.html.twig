@@ -10,9 +10,9 @@
 <table class="entity_list">
 <thead>
 <tr>
-    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Title' | trans }}</th>
+    <th>{{ 'Category' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
-    <th>{{ 'Position' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -20,15 +20,14 @@
 {% for post in entities %}
 <tr>
     <td>
-        {{ post.name }}
+        {{ post.title }}
+    </td>
+    <td>
+        {{ post.category.name }}
     </td>
     <td>
         {{ post.updated.format('d/m/Y H:i:s') }}
     </td>
-    <td>
-        {{ post.position }}
-    </td>
-
     <td class="actions">
         <ul>
             <li><a href="{{ path('backend_blog_post_edit',{'id':post.id}) }}">{{ 'Edit' | trans }}</a></li>

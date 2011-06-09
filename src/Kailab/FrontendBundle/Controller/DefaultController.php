@@ -18,8 +18,6 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
-        $repo = $em->getRepository('KailabFrontendBundle:Slide');
-        $slides = $repo->findActiveOrdered();
 
         $repo = $em->getRepository('KailabFrontendBundle:Slide');
         $slides = $repo->findActiveOrdered();

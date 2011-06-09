@@ -71,12 +71,13 @@ form.entity .form_submit_row {
     margin-bottom: 10px;
 }
 
-#main_wrapper {
-    border-right: 1px solid #CCCCCC;
-}
-
 #main {
     width: 760px;
+}
+
+#main_gradient {
+    border-right: 1px solid #CCCCCC;
+    margin-right: 200px;
 }
 
 #main_inner {
@@ -88,6 +89,7 @@ form.entity .form_submit_row {
     width: 200px;
     float: right;
     background-color: #FFFFFF;
+    border-left: 1px solid #CCCCCC;
 }
 
 #sidebar ul {

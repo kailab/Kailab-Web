@@ -14,7 +14,10 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
  */
 class BlogPost
 {
+    const EXCERPT_SEPARATOR = '<!-- more -->';
+
     protected $locale;
+    protected $image;
 
     /**
      * @ORM\Id
@@ -43,6 +46,12 @@ class BlogPost
 
      */
     protected $active;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BlogCategory", inversedBy="posts")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
 
     function __construct()
     {
@@ -100,12 +109,26 @@ class BlogPost
         }
     }
 
-    public function getDescription()
+    public function getContent()
     {
         $trans = $this->getTranslation();
         if($trans){
-            return $trans->getDescription();
+            return $trans->getContent();
         }
+    }
+
+    public function getExcerpt()
+    {
+        $content = $this->getContent();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return reset($content);
+    }
+
+    public function hasExcerpt()
+    {
+        $content = $this->getContent();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return count($content) > 0;
     }
 
     protected function loadAssets()
@@ -115,7 +138,7 @@ class BlogPost
         }
     }
 
-    protected function getAssets()
+    public function getAssets()
     {
         $this->loadAssets();
         return array($this->image);
@@ -131,15 +154,19 @@ class BlogPost
     {
         $this->loadAssets();
 
+        if(!$path){
+            return;
+        }
         // resize image
         $imagine = new \Imagine\Gd\Imagine();
         $image = $imagine->open($path);
-        $box = new \Imagine\Image\Box(150, null);
-        $thumbnail = $image->thumbnail($box,\Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND);
+        $box = $image->getSize()->scale(150/$image->getSize()->getWidth());
+        $thumbnail = $image->thumbnail($box,\Imagine\ImageInterface::THUMBNAIL_OUTBOUND);
         $path .= '.png';
         $thumbnail->save($path);
 
         $this->image->loadPath($path);
+        $this->updated = new \DateTime('now');
     }
 
     public function getTranslations()
@@ -170,6 +197,16 @@ class BlogPost
     public function setUpdated($time)
     {
         $this->updated = $time;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($cat)
+    {
+        $this->category = $cat;
     }
 
 }

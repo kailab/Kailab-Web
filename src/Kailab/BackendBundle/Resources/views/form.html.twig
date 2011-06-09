@@ -41,7 +41,9 @@
         {% for trans in form.translations %}
         {% set locale = trans.get('value').locale %}
         <div class="translation" id="{{ trans_prefix ~ locale }}">
+            {% block form_translation %}
             {{ form_widget(trans) }}
+            {% endblock %}
         </div>
         {% endfor %}
     </div>

@@ -1,0 +1,54 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Blog Categories' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for category in entities %}
+<tr>
+    <td>
+        {{ category.name }}
+    </td>
+    <td>
+        {{ category.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ category.position }}
+    </td>
+
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_blog_category_edit',{'id':category.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_blog_category_delete',{'id':category.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No categories found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_blog_category_new') }}">{{ 'Add new Category' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

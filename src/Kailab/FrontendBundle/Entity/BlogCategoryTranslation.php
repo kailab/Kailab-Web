@@ -23,12 +23,12 @@ class BlogCategoryTranslation
     protected $locale;
 
     /**
-     * @ORM\Column(type="string", length="255")
+     * @ORM\Column(type="string", length="255", nullable=true)
      */
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length="40000")
+     * @ORM\Column(type="string", length="40000", nullable=true)
      */
     protected $description;
 

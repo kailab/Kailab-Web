@@ -23,14 +23,14 @@ class BlogPostTranslation
     protected $locale;
 
     /**
-     * @ORM\Column(type="string", length="255")
+     * @ORM\Column(type="string", length="255", nullable=true)
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string", length="40000")
+     * @ORM\Column(type="string", length="40000", nullable=true)
      */
-    protected $description;
+    protected $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="BlogPost", inversedBy="translations")
@@ -65,17 +65,17 @@ class BlogPostTranslation
 
     public function setTitle($title)
     {
-        $this->name = $title;
+        $this->title = $title;
     }
 
-    public function getDescription()
+    public function getContent()
     {
-        return $this->description;
+        return $this->content;
     }
 
-    public function setDescription($desc)
+    public function setContent($desc)
     {
-        $this->description = $desc;
+        $this->content = $desc;
     }
 
     public function setPost($post)

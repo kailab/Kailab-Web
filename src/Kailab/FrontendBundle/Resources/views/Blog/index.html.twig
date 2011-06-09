@@ -4,6 +4,60 @@
     {{ parent() }} - {{ 'Blog' | trans }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/blog.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block content %}
-test
+<h1><img src="{{ asset('bundles/kailabfrontend/images/news_med.png') }}" alt="{{ 'News' | trans }}"/></h1>
+
+<div class="blog_posts">
+{% for post in posts %}
+<div class="blog_post">
+    {% if post.image %}
+    <div class="image">
+    <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
+    </div>
+    <div class="body_with_image">
+    {% else %}
+    <div class="body">
+    {% endif %}
+        <div class="head">
+            <h2 class="title">{{ post.title }}</h2>
+            <span class="update">{{ post.updated | date('l, d F Y') }}</span>
+            <span class="category">{{ post.category.name }}</span>
+        </div>
+
+        <div class="excerpt">
+            {{ post.excerpt | raw}}
+        </div>
+        {% if post.hasExcerpt() %}
+        <a href="{{ path('frontend_blog_post',{'id':post.id}) }}">{{ 'Read more...' | trans }}</a>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% if pager.last > 1 %}
+<div class="pagination">
+    {% if pager.current > 1 %}
+        <a href="{{ path({'page':pager.current-1}) }}">{{ 'Previous' | trans }}</a>
+    {% endif %}
+    {% if pager.current < pager.last %}
+        <a href="{{ path({'page':pager.current+1}) }}">{{ 'Next' | trans }}</a>
+    {% endif %}
+    <ul class="pages">
+    {% for page in pager.pages %}
+        <li>{{ page }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 {% endblock %}

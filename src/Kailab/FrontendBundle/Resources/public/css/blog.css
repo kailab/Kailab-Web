@@ -1,0 +1,27 @@
+.blog_post {
+    clear: both;
+    line-height: 1.4em;
+}
+
+.blog_post .image {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 150px;
+    overflow: hidden;
+}
+
+.blog_post .body_with_image {
+    margin-left: 160px;
+}
+
+.blog_post .title {
+    display: inline;
+    color: #000000 !important;
+    font-size: normal;
+}
+
+.blog_post .update {
+    font-style: italic;
+    font-size: small;
+    color: #BDCA0E;
+}

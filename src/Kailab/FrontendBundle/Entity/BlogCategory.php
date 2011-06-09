@@ -24,6 +24,11 @@ class BlogCategory
     protected $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="BlogPost", mappedBy="category", cascade={"persist", "remove"})
+     */
+    protected $posts;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $position;
@@ -51,7 +56,6 @@ class BlogCategory
 
     function __construct()
     {
-        $this->loadAssets();
         $this->translations = new ArrayCollection();
         $this->active = true;
     }
