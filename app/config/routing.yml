@@ -1,0 +1,6 @@
+frontend:
+  resource: "@KailabFrontendBundle/Resources/config/routing.yml"
+
+backend:
+  prefix:   /admin
+  resource: "@KailabBackendBundle/Resources/config/routing.yml"

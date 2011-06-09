@@ -21,3 +21,5 @@ monolog:
 
 assetic:
     use_controller: true
+    filters:
+        cssrewrite: ~
