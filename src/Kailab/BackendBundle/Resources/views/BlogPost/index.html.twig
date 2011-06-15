@@ -23,7 +23,11 @@
         {{ post.title }}
     </td>
     <td>
-        {{ post.category.name }}
+        {% if post.category %}
+            {{ post.category.name }}
+        {% else %}
+            {{ 'None' | trans }}
+        {% endif %}
     </td>
     <td>
         {{ post.updated.format('d/m/Y H:i:s') }}

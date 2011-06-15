@@ -53,6 +53,11 @@ class BlogPost
      */
     protected $category;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BlogComment", mappedBy="post", cascade={"persist", "remove"})
+     */
+    protected $comments;
+
     function __construct()
     {
         $this->loadAssets();
@@ -154,9 +159,6 @@ class BlogPost
     {
         $this->loadAssets();
 
-        if(!$path){
-            return;
-        }
         // resize image
         $imagine = new \Imagine\Gd\Imagine();
         $image = $imagine->open($path);
@@ -207,6 +209,16 @@ class BlogPost
     public function setCategory($cat)
     {
         $this->category = $cat;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 
 }

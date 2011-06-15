@@ -4,8 +4,8 @@ namespace Kailab\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Imagine\Gd\Imagine;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
 
 /**
@@ -34,9 +34,9 @@ class App
     protected $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppImage", mappedBy="app", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="AppScreenshot", mappedBy="app", cascade={"persist", "remove"})
      */
-    protected $images;
+    protected $app_screenshots;
 
     /**
      * @ORM\OneToMany(targetEntity="AppTranslation", mappedBy="app", cascade={"persist", "remove"})
@@ -62,7 +62,7 @@ class App
     function __construct()
     {
         $this->translations = new ArrayCollection();
-        $this->images = new ArrayCollection();
+        $this->app_screenshots = new ArrayCollection();
         $this->active = true;
     }
 
@@ -133,14 +133,38 @@ class App
         $this->url = $url;
     }
 
-    public function getImages()
+    public function getAppScreenshots()
     {
-        return $this->images;
+        return $this->app_screenshots;
     }
 
-    public function setImages($imgs)
+    public function setAppScreenshots($screens)
     {
-        $this->images = $imgs;
+        $this->app_screenshots = $screens;
+    }
+
+    public function getScreenshots()
+    {
+        $screens = new ArrayCollection();
+        foreach($this->app_screenshots as $app_screen){
+            if($app_screen instanceof AppScreenshot){
+                $screens[] = $app_screen->getScreenshot();
+            }
+        }
+        return $screens;
+    }
+
+    public function setScreenshots(Collection $screens)
+    {
+        $this->app_screenshots->clear();
+        $k = 0;
+        foreach($screens as $screen){
+            $app_screen = new AppScreenshot();
+            $app_screen->setScreenshot($screen);
+            $app_screen->setApp($this);
+            $app_screen->setPosition($k++);
+            $this->app_screenshots[] = $app_screen;
+        }
     }
 
     public function getTranslations()

@@ -1,0 +1,52 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Screenshots' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/kailabfrontend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<div id="screenshot_list">
+{% for screenshot in entities %}
+<div class="screenshot_small {{ screenshot.type }}_type">
+<a href="{{ path('backend_screenshot_delete',{'id':screenshot.id}) }}" class="delete">
+{{ 'delete' | trans }}
+</a>
+<a href="{{ path('backend_screenshot_edit',{'id':screenshot.id}) }}">
+<div class="screen">
+<img src="{{ path('frontend_screenshot_small', {'id':screenshot.id}) }}"/>
+</div>
+</a>
+</div>
+{% endfor %}
+</div>
+
+{% else %}
+
+<p>{{ 'No screenshots found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_screenshot_new') }}">{{ 'Add new Screenshot' | trans }}</a></li>
+</ul>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.delete').click(function(){
+        return confirm({{ 'Are your sure you want to delete this screenshot?' | trans | json_encode | raw}});
+    });
+});
+</script>
+
+{% endblock %}

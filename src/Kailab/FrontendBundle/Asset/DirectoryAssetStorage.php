@@ -15,9 +15,8 @@ class DirectoryAssetStorage implements AssetStorageInterface
 
     protected function getDirectory($ns)
     {
+        $dir = str_replace(' ','_',$ns);
         $kernel = $this->container->get('kernel');
-        $dir = $this->container->underscore($ns);
-        $dir = str_replace('\\','-',$dir);
         $dir = $kernel->getRootDir().'/upload/'.$dir;
         return $dir;
     }

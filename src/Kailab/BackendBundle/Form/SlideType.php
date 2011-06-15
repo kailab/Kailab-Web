@@ -12,7 +12,6 @@ class SlideType extends AbstractType
     {
         $builder->add('id','hidden');
         $builder->add('image','file',array(
-            'type'      => 'file',
             'required'  => false,
         ));
         $builder->add('url','url');

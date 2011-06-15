@@ -14,50 +14,58 @@
 {% endblock %}
 
 {% block content %}
-<h1><img src="{{ asset('bundles/kailabfrontend/images/news_med.png') }}" alt="{{ 'News' | trans }}"/></h1>
+<h1><a href="{{ path('frontend_blog') }}">
+    <img src="{{ asset('bundles/kailabfrontend/images/news_med.png') }}" alt="{{ 'News' | trans }}"/>
+</a></h1>
+<div class="maincontent">
+    {% block blog %}
+    <div id="blog">
+        {% set time_format = '%A, %e of %B' | trans %}
+        <div class="blog_posts">
+            {% for post in posts %}
+            <div class="blog_post">
+                {% if post.image %}
+                <div class="image">
+                <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
+                </div>
+                <div class="body_with_image">
+                {% else %}
+                <div class="body">
+                {% endif %}
+                    <div class="head">
+                        <h2 class="title">{{ post.title }}</h2>
+                        <span class="update">{{ locale_helper.format_time(time_format, post.updated) }}</span>
+                        {% if post.category %}
+                        <span class="category">{{ post.category.name }}</span>
+                        {% endif %}
+                    </div>
 
-<div class="blog_posts">
-{% for post in posts %}
-<div class="blog_post">
-    {% if post.image %}
-    <div class="image">
-    <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
+                    <div class="excerpt">
+                        {{ post.excerpt | raw}}
+                    </div>
+                    {% if post.hasExcerpt() %}
+                    <a href="{{ path('frontend_blog_post',{'id':post.id}) }}">{{ 'Read more...' | trans }}</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% include 'KailabFrontendBundle::_pagination.html.twig' with {'pager': pager} %}
     </div>
-    <div class="body_with_image">
-    {% else %}
-    <div class="body">
-    {% endif %}
-        <div class="head">
-            <h2 class="title">{{ post.title }}</h2>
-            <span class="update">{{ post.updated | date('l, d F Y') }}</span>
-            <span class="category">{{ post.category.name }}</span>
+    {% endblock %}
+    <div id="sidebar">
+        {% if categories %}
+        <div class="section">
+            <h2>{{ 'Categories' | trans }}</h2>
+            <ul>
+            {% for category in categories %}
+            <li><a href="{{ path('frontend_blog_category',{'id':category.id}) }}">{{ category.name }}</a></li>
+            {% endfor %}
+            </ul>
         </div>
-
-        <div class="excerpt">
-            {{ post.excerpt | raw}}
-        </div>
-        {% if post.hasExcerpt() %}
-        <a href="{{ path('frontend_blog_post',{'id':post.id}) }}">{{ 'Read more...' | trans }}</a>
         {% endif %}
     </div>
-</div>
-{% endfor %}
-</div>
 
-{% if pager.last > 1 %}
-<div class="pagination">
-    {% if pager.current > 1 %}
-        <a href="{{ path({'page':pager.current-1}) }}">{{ 'Previous' | trans }}</a>
-    {% endif %}
-    {% if pager.current < pager.last %}
-        <a href="{{ path({'page':pager.current+1}) }}">{{ 'Next' | trans }}</a>
-    {% endif %}
-    <ul class="pages">
-    {% for page in pager.pages %}
-        <li>{{ page }}</li>
-    {% endfor %}
-    </ul>
 </div>
-{% endif %}
 
 {% endblock %}

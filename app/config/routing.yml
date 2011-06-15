@@ -1,6 +1,19 @@
-frontend:
-  resource: "@KailabFrontendBundle/Resources/config/routing.yml"
-
 backend:
-  prefix:   /admin
+  prefix:   /admin/
   resource: "@KailabBackendBundle/Resources/config/routing.yml"
+
+homepage:
+    pattern:  /
+    defaults: { _controller: KailabFrontendBundle:Default:index }
+
+localized_homepage:
+  pattern:  /{_locale}
+  defaults: { _controller: KailabFrontendBundle:Default:index }
+  requirements:
+    _locale: es|en
+
+frontend:
+  prefix:   /{_locale}
+  resource: "@KailabFrontendBundle/Resources/config/routing.yml"
+  requirements:
+    _locale: es|en 

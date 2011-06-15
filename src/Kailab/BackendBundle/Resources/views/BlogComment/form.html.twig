@@ -1,0 +1,9 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Comment' | trans }}
+{% else %}
+{{ 'New Comment' | trans }}
+{% endif %}
+{% endblock %}

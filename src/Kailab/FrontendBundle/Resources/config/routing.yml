@@ -3,57 +3,67 @@ frontend_homepage:
     defaults: { _controller: KailabFrontendBundle:Default:index }
 
 frontend_slide:
-    pattern:  /slide/{id}
+    pattern:  /slide/{id}.png
     defaults: { _controller: KailabFrontendBundle:Default:slide }
 
-frontend_locale_homepage:
-    pattern:  /{_locale}
-    defaults: { _controller: KailabFrontendBundle:Default:index }
-
 frontend_about:
-    pattern:  /{_locale}/about
+    pattern:  /about
     defaults: { _controller: KailabFrontendBundle:Default:about }
 
 frontend_legal:
-    pattern:  /{_locale}/legal
+    pattern:  /legal
     defaults: { _controller: KailabFrontendBundle:Default:legal }
 
 frontend_faq:
-    pattern:  /{_locale}/faq
+    pattern:  /faq
     defaults: { _controller: KailabFrontendBundle:Default:faq }
 
 frontend_contact:
-    pattern:  /{_locale}/contact
+    pattern:  /contact
     defaults: { _controller: KailabFrontendBundle:Default:contact }
 
 frontend_blog:
-    pattern:  /{_locale}/blog
+    pattern:  /blog
     defaults: { _controller: KailabFrontendBundle:Blog:index }
 
 frontend_blog_page:
-    pattern:  /{_locale}/blog/{page}
+    pattern:  /blog/{page}
     defaults: { _controller: KailabFrontendBundle:Blog:index, page: 1 }
     requirements:
         page:  \d+
 
 frontend_blog_post:
-    pattern:  /{_locale}/blog/post/{id}
+    pattern:  /blog/post/{id}
     defaults: { _controller: KailabFrontendBundle:Blog:post }
     requirements:
         id:  \d+
 
 frontend_blog_post_image:
-    pattern:  /{_locale}/blog/post/{id}/image
+    pattern:  /blog/post/{id}/image
     defaults: { _controller: KailabFrontendBundle:Blog:postImage }
 
+frontend_blog_category:
+    pattern:  /blog/category/{id}
+    defaults: { _controller: KailabFrontendBundle:Blog:category }
+    requirements:
+        id:  \d+
+
 frontend_tecnology:
-    pattern:  /{_locale}/tec
+    pattern:  /tec
     defaults: { _controller: KailabFrontendBundle:Tecnology:index }
 
 frontend_applications:
-    pattern:  /{_locale}/apps
+    pattern:  /apps
     defaults: { _controller: KailabFrontendBundle:Applications:index }
 
 frontend_videogames:
-    pattern:  /{_locale}/games
+    pattern:  /games
     defaults: { _controller: KailabFrontendBundle:Videogames:index }
+
+frontend_screenshot_big:
+    pattern:  /screenshot/big/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Screenshot:big }
+
+frontend_screenshot_small:
+    pattern:  /screenshot/small/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Screenshot:small }

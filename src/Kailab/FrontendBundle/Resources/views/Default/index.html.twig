@@ -21,61 +21,63 @@
 {% endblock %}
 
 {% block content %}
-{% if slides %}
-<div id="slider">
+<div class="maincontent">
+    {% if slides %}
+    <div id="slider">
+        {% for slide in slides %}
+            {% if slide.url %}
+            <a href="{{ slide.url }}">
+            {% endif %}
+            <img src="{{ path('frontend_slide', {'id': slide.id })}}" alt="{{ slide.name }}"
+            {% if slide.description %}title="#slidedescription_{{ slide.id }}" {% endif %} style="display: none"/>
+            {% if slide.url %}
+            </a>
+            {% endif %}
+        {% endfor %}
+    </div>
     {% for slide in slides %}
-        {% if slide.url %}
-        <a href="{{ slide.url }}">
-        {% endif %}
-        <img src="{{ path('frontend_slide',{'id':slide.id}) }}" alt="{{ slide.name }}"
-        {% if slide.description %}title="#slidedescription_{{ slide.id }}" {% endif %} style="display: none"/>
-        {% if slide.url %}
-        </a>
-        {% endif %}
+    {% if slide.description %}
+    <div id="slidedescription_{{ slide.id }}" class="slide_caption" style="display: none">
+        {{ slide.description | raw }}
+    </div>
+    {% endif %}
     {% endfor %}
-</div>
-{% for slide in slides %}
-{% if slide.description %}
-<div id="slidedescription_{{ slide.id }}" class="slide_caption" style="display: none">
-    {{ slide.description | raw }}
-</div>
-{% endif %}
-{% endfor %}
-{% endif %}
+    {% endif %}
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $('#slider').nivoSlider({
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#slider').nivoSlider({
+        });
     });
-});
-</script>
-<div id="blocks">
-    <div class="block">
-        <a href="{{ path('frontend_applications') }}" title="{{ 'Apps' | trans }}">
-            <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
-        </a>
-        <h3>Título de prueba</h3>
+    </script>
+    <div id="blocks">
+        <div class="block">
+            <a href="{{ path('frontend_applications') }}" title="{{ 'Apps' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
+            </a>
+            <h3>Título de prueba</h3>
 
-        <p>Lorem ipsum asdlñasdl asdkljaslkd jlawiej aklsdjqwimda asdklñqwje lasdlkwqe
-        asdklasklñdjk maweljqw asdklñ masdñk.</p>
+            <p>Lorem ipsum asdlñasdl asdkljaslkd jlawiej aklsdjqwimda asdklñqwje lasdlkwqe
+            asdklasklñdjk maweljqw asdklñ masdñk.</p>
 
-        <a href="aaa" class="button">{{ 'Ver +' | trans }}</a>
-    </div>
-    <div class="block">
-        <a href="{{ path('frontend_videogames') }}" title="{{ 'Games' | trans }}">
-            <img src="{{ asset('bundles/kailabfrontend/images/games_small.png') }}" alt="{{ 'Games' | trans }}" />
-        </a>
-    </div>
-    <div class="block">
-        <a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
-            <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
-        </a>
-    </div>
-    <div class="block">
-        <a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
-            Tecnology
-        </a>
+            <a href="aaa" class="button">{{ 'Ver +' | trans }}</a>
+        </div>
+        <div class="block">
+            <a href="{{ path('frontend_videogames') }}" title="{{ 'Games' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/games_small.png') }}" alt="{{ 'Games' | trans }}" />
+            </a>
+        </div>
+        <div class="block">
+            <a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
+            </a>
+        </div>
+        <div class="block">
+            <a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
+                Tecnology
+            </a>
 
+        </div>
     </div>
 </div>
 {% endblock %}

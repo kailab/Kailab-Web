@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
 
 /**
- * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\SlideRepository")
+ * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\BlogCategoryRepository")
  * @ORM\Table(name="blog_category")
  */
 class BlogCategory
@@ -155,6 +155,16 @@ class BlogCategory
     public function setUpdated($time)
     {
         $this->updated = $time;
+    }
+
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    public function setPosts($posts)
+    {
+        $this->posts = $posts;
     }
 
 }

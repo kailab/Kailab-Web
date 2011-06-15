@@ -14,6 +14,16 @@
     margin: 0 0 10px 0;
 }
 
+#main_inner h1,
+#main_inner h2,
+#main_inner h3 {
+    padding-left: 0;
+}
+
+.wysiwyg {
+    width: 100%;
+}
+
 .entity_list {
     width: 100%;
     border-collapse: collapse;
@@ -54,6 +64,12 @@ form.entity .form_row label {
     margin-right: 10px;
 }
 
+form.entity .form_row_content label {
+    display: inline;
+    float: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
 
 form.entity .form_row_comment {
     margin-left: 30%;
@@ -75,9 +91,12 @@ form.entity .form_submit_row {
     width: 760px;
 }
 
+#main_with_sidebar {
+    border-right: 200px solid #FFFFFF;
+}
+
 #main_gradient {
-    border-right: 1px solid #CCCCCC;
-    margin-right: 200px;
+    border-right: 2px solid #CCCCCC;
 }
 
 #main_inner {
@@ -86,10 +105,12 @@ form.entity .form_submit_row {
 }
 
 #sidebar {
+    position: absolute;
+    right: 0;
     width: 200px;
     float: right;
     background-color: #FFFFFF;
-    border-left: 1px solid #CCCCCC;
+    border-left: 2px solid #CCCCCC;
 }
 
 #sidebar ul {

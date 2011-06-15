@@ -1,0 +1,5 @@
+{% extends "KailabFrontendBundle:Blog:index.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Category ' | trans }} {{ category.name }}
+{% endblock %}

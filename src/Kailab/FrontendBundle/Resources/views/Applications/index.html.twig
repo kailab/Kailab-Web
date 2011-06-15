@@ -3,38 +3,94 @@
     {{ parent() }} - {{ 'Applications' | trans }}
 {% endblock %}
 
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    'bundles/kailabfrontend/js/jquery-ui.js'
+    'bundles/kailabfrontend/js/jquery-smooth_div_scroll.js'
+    'bundles/kailabfrontend/js/jquery-cycle.js'
+%}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='cssrewrite'
-        'bundles/kailabfrontend/css/applications.css' %}
+        'bundles/kailabfrontend/css/screenshots.css'
+        'bundles/kailabfrontend/css/applications.css'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
     {% endstylesheets %}
 {% endblock %}
 
-
-
 {% block content %}
 
-<ul id="apps">
-    <li class="iphone">
-        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
-    </li>
-    <li class="iphone">
-        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
-    </li>
-    <li class="iphone">
-        <img src="{{ asset('bundles/kailabfrontend/images/test_app_small.png') }}" alt="test_app"/>
-    </li>
-</ul>
-
-<div id="app">
-<div id="app_screenshot" class="iphone">
-    <img src="{{ asset('bundles/kailabfrontend/images/test_app_big.png') }}" alt="test_app"/>
-</div>
-<div id="app_main">
-    <h2>Despicable Me</h2>
+<div class="maincontent">
+    <div id="apps_scroll">
+        <div class="hotspot_left"></div>
+        <div class="hotspot_right"></div>
+        <div class="wrapper">
+            <ul id="apps" class="scrollable">
+                {% for app in apps %}
+                <li class="screenshot_small {{ app.screenshots.first.type }}_type" title="{{ app.name }}" id="app_{{ app.id }}_item">
+                    {% if app.screenshots.count %}
+                    <div class="screen">
+                        <img src="{{ path('frontend_screenshot_small',{'id':app.screenshots.first.id}) }}" alt="{{ app.name }}"/>
+                    </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
+    <div id="app">
+    </div>
+
+    {% for app in apps %}
+    <div id="app_{{ app.id }}" class="app" style="display: none;">
+        <ul class="screenshots">
+            {% for screenshot in app.screenshots %}
+            <li class="screenshot_big {{ screenshot.type }}_type">
+                <div class="screen">
+                    <img src="{{ path('frontend_screenshot_big', {'id':screenshot.id}) }}" alt="{{ app.name }}"/>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="main">
+            <h2>{{ app.name }}</h2>
+            <div class="description">
+                {{ app.description | raw }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#apps_scroll').smoothDivScroll({
+        scrollingHotSpotLeft:   ".hotspot_left",
+        scrollingHotSpotRight:  ".hotspot_right",
+        scrollWrapper:          ".wrapper",
+        scrollableArea:         ".scrollable",
+        autoScroll:             "onstart" , 
+        autoScrollDirection:    "backandforth", 
+        autoScrollStep:         1, 
+        autoScrollInterval:     15, 
+        visibleHotSpots:        "always"
+    });
+    $('#apps li').click(function(){
+        var id = $(this).attr('id').replace('_item','');
+        var app = $('#app').fadeOut(function(){
+            app.html($('#'+id).clone().show()).fadeIn();
+        });
+    });
+});
+</script>
 
 {% endblock %}
 

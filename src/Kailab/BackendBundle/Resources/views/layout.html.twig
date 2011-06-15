@@ -5,7 +5,14 @@
         <title>{% block title %}Kailab Admin{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
         {% block javascripts %}
+        {% javascripts 
+            'bundles/kailabbackend/js/jquery.js'
+            'bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
         {% endblock %}
+
         {% block stylesheets %}
         {% stylesheets filter='cssrewrite'
             'bundles/kailabfrontend/css/layout.css'
@@ -29,6 +36,7 @@
                 <div id="sidebar">
                     <ul>
                         <li><a href="{{ path('backend_slide_list') }}">{{ 'Slides' | trans }}</a></li>
+                        <li><a href="{{ path('backend_screenshot_list') }}">{{ 'Screenshots' | trans }}</a></li>
                         <li><a href="{{ path('backend_app_list') }}">{{ 'Appliactions' | trans }}</a></li>
                         <li><a href="{{ path('backend_game_list') }}">{{ 'Videogames' | trans }}</a></li>
                         <li><a href="{{ path('backend_tec_list') }}">{{ 'Tecnologies' | trans }}</a></li>
@@ -36,15 +44,18 @@
                             <ul>
                                 <li><a href="{{ path('backend_blog_post_list') }}">{{ 'Posts' | trans }}</a></li>
                                 <li><a href="{{ path('backend_blog_category_list') }}">{{ 'Categories' | trans }}</a></li>
+                                <li><a href="{{ path('backend_blog_comment_list') }}">{{ 'Comments' | trans }}</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <div id="main_gradient">
-                    <div id="main">
-                        <div id="main_inner">
-                            {% block content %}
-                            {% endblock %}
+                <div id="main_with_sidebar">
+                    <div id="main_gradient">
+                        <div id="main">
+                            <div id="main_inner">
+                                {% block content %}
+                                {% endblock %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,6 +65,7 @@
                 </div>
             </div>
         </div>
+        {{ tinymce_init() }}
     </body>
 </html>
 

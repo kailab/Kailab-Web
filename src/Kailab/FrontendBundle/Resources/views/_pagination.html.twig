@@ -1,0 +1,15 @@
+{% if pager.last > 1 %}
+<div class="pagination">
+    {% if pager.current > 1 %}
+        <a href="{{ path({'page':pager.current-1}) }}">{{ 'Previous' | trans }}</a>
+    {% endif %}
+    {% if pager.current < pager.last %}
+        <a href="{{ path({'page':pager.current+1}) }}">{{ 'Next' | trans }}</a>
+    {% endif %}
+    <ul class="pages">
+    {% for page in pager.pages %}
+        <li>{{ page }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

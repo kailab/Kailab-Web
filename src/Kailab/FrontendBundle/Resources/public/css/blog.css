@@ -1,6 +1,36 @@
+#blog {
+    width: 750px;
+    float: left;
+}
+
+#blog h1 {
+    background-image: url("../images/sep_big.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border: none;
+}
+
 .blog_post {
     clear: both;
     line-height: 1.4em;
+
+}
+
+#blog .blog_post {
+    padding-top: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+
+    background-image: url("../images/sep_small.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+
+}
+
+#blog .blog_post:first-child {
+    background-image: none;
+    padding-top: 0;
+    margin-top: 0;
 }
 
 .blog_post .image {
@@ -16,6 +46,7 @@
 
 .blog_post .title {
     display: inline;
+    border: 0 !important;
     color: #000000 !important;
     font-size: normal;
 }
@@ -24,4 +55,9 @@
     font-style: italic;
     font-size: small;
     color: #BDCA0E;
+}
+
+#blog_post {
+    width: 750px;
+    float: left;
 }

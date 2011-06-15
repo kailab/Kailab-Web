@@ -1,0 +1,31 @@
+{% extends "KailabFrontendBundle:Blog:index.html.twig" %}
+
+{% block title %}
+    {{ parent() }}  - {{ post.title }}
+{% endblock %}
+
+{% block blog %}
+<div id="blog_post" class="blog_post">
+    {% set time_format = '%A, %e of %B' | trans %}
+    {% if post.image %}
+    <div class="image">
+    <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
+    </div>
+    <div class="body_with_image">
+    {% else %}
+    <div class="body">
+    {% endif %}
+        <div class="head">
+            <h1 class="title">{{ post.title }}</h1>
+            <span class="update">{{ locale_helper.format_time(time_format, post.updated) }}</span>
+            {% if post.category %}
+            <span class="category">{{ post.category.name }}</span>
+            {% endif %}
+        </div>
+
+        <div class="content">
+            {{ post.content | raw}}
+        </div>
+    </div>
+</div>
+{% endblock %}

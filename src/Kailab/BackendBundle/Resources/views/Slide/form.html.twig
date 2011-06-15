@@ -14,9 +14,15 @@
         {{ form_label(form.image) }}
         {{ form_widget(form.image) }}
         <div class="form_row_comment">
-            <img src="{{ path('backend_slide_image', {'id':entity.id}) }}" />
+            <img src="{{ path('frontend_slide', {'id':entity.id}) }}" />
         </div>
         {{ form_errors(form.image) }}
     </div>
     {{ parent() }}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name) }}
+    {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_rest(trans) }}
 {% endblock %}

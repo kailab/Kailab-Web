@@ -1,0 +1,30 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Screenshot' | trans }}
+{% else %}
+{{ 'New  Screenshot' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_rest %}
+    <div class="form_row">
+        {{ form_label(form.image) }}
+        {{ form_widget(form.image) }}
+        <div class="form_row_comment">
+            {% if entity.id %}
+            <img src="{{ path('frontend_screenshot_big', {'id':entity.id}) }}"/>
+            {% endif %}
+        </div>
+        {{ form_errors(form.image) }}
+    </div>
+    {{ parent() }}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name) }}
+    {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_rest(trans) }}
+{% endblock %}

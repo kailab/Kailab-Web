@@ -5,6 +5,7 @@ namespace Kailab\FrontendBundle\Templating\Helper;
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Locale\Locale;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class LocaleHelper extends Helper
 {
@@ -32,6 +33,15 @@ class LocaleHelper extends Helper
         return $this->container->get('session')->getLocale();
     }
 
+    public function locale()
+    {
+        $c = $this->code();
+        if(strlen($c) == 2){
+            $c = strtolower($c).'_'.strtoupper($c);
+        }
+        return $c;
+    }
+
     public function name($code)
     {
         $all = Locale::getDisplayLocales($code);
@@ -43,8 +53,20 @@ class LocaleHelper extends Helper
     {
         $router = $this->container->get('router');
         $request = $this->container->get('request');
-        $route = $request->attributes->get('_route');
-        return $router->generate($route, array('_locale' => $locale));
+        $params = $request->attributes->all();
+        if(!isset($params['_route'])){
+            return null;
+        }
+        $params['_locale'] = $locale;
+        $route = $params['_route'];
+        unset($params['_route']);
+        
+        try{
+            $locale_route = 'localized_'.$route;
+            return $router->generate($locale_route, $params);
+        }catch(RouteNotFoundException $e){
+            return $router->generate($route, $params);
+        }
     }
 
     public function locales()
@@ -61,6 +83,19 @@ class LocaleHelper extends Helper
             $list[$code] = $this->name($code);
         }
         return $list;
+    }
+
+    public function format_time($format, $time=null)
+    {
+        setlocale(LC_TIME, $this->locale());
+        if($time instanceof \DateTime){
+            $time = $time->getTimestamp();
+        }
+        if(is_string($time)){
+            $time = strtotime($time);
+        }
+        $time = intval($time);
+        return strftime($format, $time);
     }
 
 }

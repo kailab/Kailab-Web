@@ -18,6 +18,11 @@ class FileAsset implements AssetInterface
         $this->path = $path;
     }
 
+    public function getPath()
+    {
+        return $this->path;
+    }
+
     public function getName()
     {
         return $this->name;

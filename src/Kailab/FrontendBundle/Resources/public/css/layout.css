@@ -50,7 +50,12 @@ p {
     border-left: 1px solid #aaaaaa;
 }
 
+#languages li.current a{
+    color: #bdca0e;
+}
+
 #languages li a {
+    color: #CCCCCC;
     text-decoration: none;
 }
 
@@ -116,6 +121,7 @@ p {
     background-position: top;
     border-top: 1px solid #bfbfbf;
     padding-top: 10px;
+    overflow: hidden;
 }
 
 #main_wrapper {
@@ -125,21 +131,33 @@ p {
 }
 
 #main {
-    width: 960px;
+    width: 1200px;
     margin: 0 auto;
     padding: 10px 0 10px 0;
-    overflow: hidden;
 }
 
-#main h1,
-#main h2,
-#main h3,
-#main h4,
-#main h5,
-#main h6 {
+.maincontent {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#main .maincontent h1,
+#main .maincontent h2,
+#main .maincontent h3,
+#main .maincontent h4,
+#main .maincontent h5,
+#main .maincontent h6 {
     padding: 0 0 5px 0;
     border-bottom: 1px dotted #cccccc;
     color: #bdca0e;
+    background-image: none;
+}
+
+#main h1 {
+    padding: 0 120px 10px 120px;
+    background-image: url(../images/sep_big.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
 }
 
 #sitemap_wrapper {
@@ -147,16 +165,20 @@ p {
     background-image: url(../images/bg_logo.png);
     background-repeat: no-repeat;
     background-position: center top;
-    width: 960px;
     margin: 0 auto;
+    width: 1200px;
     padding: 10px 0 0 0;
 }
 
-#sitemap{
+#sitemap_separator {
     background-image: url(../images/sep_big.png);
     background-repeat: no-repeat;
     background-position: center top;
-    margin: 0;
+}
+
+#sitemap{
+    width: 960px;
+    margin: 0 auto;
     padding: 25px 0;
     overflow: hidden;
 }
@@ -193,6 +215,29 @@ p {
 
 #sitemap a:hover {
     color: #bdca0e;
+}
+
+#sidebar {
+    float: right;
+    width: 200px;
+}
+
+#sidebar .section h2 {
+    color: #000000;
+    font-size: 14px;
+    border: 0;
+    margin: 0 0 5px 0;
+}
+
+#sidebar .section ul {
+    margin: 0;
+    padding: 0;
+    list-style: square inside;
+}
+
+.with_sidebar {
+    float: left;
+    width: 750px;
 }
 
 #footer_wrapper {

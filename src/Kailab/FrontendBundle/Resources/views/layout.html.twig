@@ -43,7 +43,7 @@
                     </ul>
                     <ul id="mainmenu">
                         <li><a href="{{ path('frontend_homepage') }}" >{{ 'Home' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_tecnology') }}" >{{ 'Tecnology' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_tecnology') }}" >{{ 'Technology' | trans }}</a></li>
                         <li><a href="{{ path('frontend_applications') }}" >{{ 'Applications' | trans }}</a></li>
                         <li><a href="{{ path('frontend_videogames') }}" >{{ 'Videogames' | trans }}</a></li>
                     </ul>
@@ -57,39 +57,41 @@
                     </div>
                 </div>
                 <div id="sitemap_wrapper">
-                    <ul id="sitemap">
-                        <li class="section">
-                            <h3>{{ 'Tecnology' | trans }}</h3>
-                            <ul>
-                                <li>arcadix</li>
-                                <li>cwe</li>
-                            </ul>
-                        </li>
-                        <li class="section">
-                            <h3>{{ 'Applications' | trans }}</h3>
-                            <ul>
-                                <li>me911</li>
-                                <li>lasexta</li>
-                            </ul>
-                        </li>
-                        <li class="section">
-                            <h3>{{ 'Videogames' | trans }}</h3>
-                            <ul>
-                                <li>triopsy</li>
-                                <li>space golf</li>
-                            </ul>
-                        </li>
-                        <li class="section">
-                            <h3>{{ 'Company' | trans }}</h3>
-                            <ul>
-                                <li><a href="{{ path('frontend_contact') }}">{{ "Contact us" | trans }}</a></li>
-                                <li><a href="{{ path('frontend_blog') }}">{{ "Blog" | trans }}</a></li>
-                                <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
-                                <li><a href="{{ path('frontend_legal') }}">{{ "Legal" | trans }}</a></li>
-                            </ul>
-                        </li>
+                    <div id="sitemap_separator">
+                        <ul id="sitemap">
+                            <li class="section">
+                                <h3>{{ 'Tecnology' | trans }}</h3>
+                                <ul>
+                                    <li>arcadix</li>
+                                    <li>cwe</li>
+                                </ul>
+                            </li>
+                            <li class="section">
+                                <h3>{{ 'Applications' | trans }}</h3>
+                                <ul>
+                                    <li>me911</li>
+                                    <li>lasexta</li>
+                                </ul>
+                            </li>
+                            <li class="section">
+                                <h3>{{ 'Videogames' | trans }}</h3>
+                                <ul>
+                                    <li>triopsy</li>
+                                    <li>space golf</li>
+                                </ul>
+                            </li>
+                            <li class="section">
+                                <h3>{{ 'Company' | trans }}</h3>
+                                <ul>
+                                    <li><a href="{{ path('frontend_contact') }}">{{ "Contact us" | trans }}</a></li>
+                                    <li><a href="{{ path('frontend_blog') }}">{{ "Blog" | trans }}</a></li>
+                                    <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
+                                    <li><a href="{{ path('frontend_legal') }}">{{ "Legal" | trans }}</a></li>
+                                </ul>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

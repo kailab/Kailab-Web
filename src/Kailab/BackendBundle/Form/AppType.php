@@ -12,18 +12,15 @@ class AppType extends AbstractType
     {
         $builder->add('id','hidden');
         $builder->add('url','url');
-        $builder->add('images','collection',array(
-            'type'          => new AppImageType(),
-            'allow_add'     => true,
-            'allow_delete'  => true,
-            'prototype'     => true,
-            'options'       => array(
-                'label'     => 'Image',
-            ),
-        ));
         $builder->add('translations', 'collection', array(
            'type'       => new AppTranslationType(),
-       ));
+        ));
+        $builder->add('screenshots','entity', array(
+            'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
+            'property'  => 'type',
+            'expanded'  => false,
+            'multiple'  => true
+        ));
     }
 
     public function getDefaultOptions(array $options)

@@ -15,6 +15,7 @@ $loader->registerNamespaces(array(
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'Imagine'          => __DIR__.'/../vendor/imagine/lib',
     'Kailab'           => __DIR__.'/../src',
+    'Stfalcon'         => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',

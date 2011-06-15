@@ -2,14 +2,13 @@
 
 namespace Kailab\FrontendBundle\Repository;
 
-use Doctrine\ORM\EntityRepository;
-
 class SlideRepository extends EntityRepository
 {
-    public function findActiveOrdered()
+    protected $entity_name = 'KailabFrontendBundle:Slide';
+
+    public function findAllActiveOrdered()
     {
-        return $this->getEntityManager()
-            ->createQuery('SELECT s FROM KailabFrontendBundle:Slide s WHERE s.active = true ORDER BY s.position DESC')
+        return $this->createEntityQuery('WHERE e.active = true ORDER BY e.position DESC')
             ->getResult();
     }
 }

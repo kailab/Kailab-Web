@@ -28,8 +28,9 @@
 <form method="post" class="entity" {{ form_enctype(form) }}>
     {{ form_errors(form) }}
 
+    {% if form.translations is defined %}
     {% set trans_prefix = 'entity_translation_' %}
-    <div id="entity_translation_tabs">
+    <div id="entity_translation_tabs" style="display: none;">
         <ul>
         {% for trans in form.translations %}
             {% set locale = trans.get('value').locale %}
@@ -47,19 +48,22 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 
     {% block form_rest %}
     {{ form_rest(form) }}
     {% endblock %}
 
     <div class="form_submit_row">
-       <input type="submit" value="{{ 'Save' | trans }}"/>
+        {% block form_submit %}
+        <input type="submit" value="{{ 'Save' | trans }}"/>
+        {% endblock %}
     </div>
 </form>
 
 <script type="text/javascript">
 $(document).ready(function(){
-    $('#entity_translation_tabs').tabs();
+    $('#entity_translation_tabs').tabs().show();
 });
 </script>
 

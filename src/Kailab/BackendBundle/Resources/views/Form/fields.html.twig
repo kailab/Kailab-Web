@@ -1,11 +1,11 @@
-{% extends 'div_layout.html.twig' %}
+{% use 'div_layout.html.twig' %}
 
 {% block field_row %}
 {% spaceless %}
     <div class="form_row">
         {{ form_label(form) }}
         <div class="form_row_content">
-        {{ form_widget(form) }}
+        {{ form_widget(form, {'attr':attr}) }}
         </div>
         <div class="form_row_error">
         {{ form_errors(form) }}
@@ -13,5 +13,3 @@
     </div>
 {% endspaceless %}
 {% endblock field_row %}
-
-

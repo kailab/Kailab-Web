@@ -4,6 +4,7 @@ namespace Kailab\FrontendBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\DependencyInjection\Container;
 
 class EntityAsset extends File implements AssetInterface
 {
@@ -26,7 +27,12 @@ class EntityAsset extends File implements AssetInterface
 
     public function __toString()
     {
-        return $this->getTemporaryPath().'';
+        return (string) $this->getId();
+    }
+
+    public function getId()
+    {
+        return $this->getNamespace().'/'.$this->getName();
     }
 
     public function getResponse()
@@ -37,27 +43,38 @@ class EntityAsset extends File implements AssetInterface
         return $response;
     }
 
-    public function getTemporaryPath()
+    public function getPath()
     {
         if($this->state == self::STATE_PATH){
             return $this->path;
         }
-        if($this->state == self::STATE_ASSET){
-            if($this->path){
-                return $this->path;
-            }else if($this->asset instanceof AssetInterface){
-                $path = tempnam(sys_get_temp_dir(),$this->getName());
-                if(@file_put_contents($path,$this->asset->dump())){
-                    $this->path = $path;
-                    return $this->path;
-                }
+        if($this->asset instanceof FileAsset){
+            return $this->asset->getPath();
+        }else if($this->asset instanceof AssetInterface){
+            $tmp = tempnam(sys_get_temp_dir(),'');
+            if(@file_put_contents($path,$asset->getContent())){
+                return $tmp;
             }
+        }
+        return null;
+    }
+
+    public function getFile()
+    {
+        $path = $this->getPath();
+        if($path){
+            return new File($path);
         }
     }
 
     public function setState($state)
     {
         $this->state = $state;
+    }
+
+    public function getState()
+    {
+        return $this->state;
     }
 
     public function loadPath($path)
@@ -70,10 +87,12 @@ class EntityAsset extends File implements AssetInterface
 
     public function getAsset()
     {
-        if(!$this->asset instanceof AssetInterface){
-            throw new \RuntimeException('No asset loaded');
+        if($this->asset instanceof AssetInterface){
+            return $this->asset;
+        }else if($this->state == self::STATE_PATH){
+            return $this->getPathAsset();
         }
-        return $this->asset;
+        return null;
     }
 
     public function getPathAsset()
@@ -81,7 +100,7 @@ class EntityAsset extends File implements AssetInterface
         if(!is_readable($this->path)){
             throw new \RuntimeException('Could not read path '.$this->path);
         }
-       return new FileAsset($this->path, $this->getName());
+        return new FileAsset($this->path, $this->getName());
     }
 
     public function getContentType()
@@ -111,13 +130,21 @@ class EntityAsset extends File implements AssetInterface
         return $this->entity->getId().'_'.$this->property;
     }
 
+    public function getNamespace()
+    {
+        // take only last part of class name
+        $class =  explode('\\',get_class($this->entity));
+        return Container::underscore(end($class));
+    }
+
     public function load(AssetStorageInterface $storage)
     {
-        $class = get_class($this->entity);
-        $this->asset = $storage->readAsset($this->getName(),$class);
-        if($this->asset instanceof AssetInterface){
-            $this->state = self::STATE_ASSET;
+        $ns = $this->getNamespace();
+        $this->asset = $storage->readAsset($this->getName(),$ns);
+        if(!$this->asset instanceof AssetInterface){
+            return false;
         }
+        $this->state = self::STATE_ASSET;
         return true;
     }
 
@@ -126,9 +153,12 @@ class EntityAsset extends File implements AssetInterface
         if($this->state != self::STATE_PATH){
             return false;
         }
+        $ns = $this->getNamespace();
         $asset = $this->getPathAsset();
-        $class = get_class($this->entity);
-        return $storage->writeAsset($asset,$class);
+        if($storage->writeAsset($asset,$ns)){
+            return false;
+        }
+        return true;
     }
 
     public function delete(AssetStorageInterface $storage)
@@ -138,8 +168,11 @@ class EntityAsset extends File implements AssetInterface
         }
         $class = get_class($this->entity);
         $asset = $this->getAsset();
-        return $storage->deleteAsset($asset->getName(),$class);
-
+        $ns = $this->getNamespace();
+        if(!$storage->deleteAsset($asset->getName(),$ns)){
+            return false;
+        }
+        return true;
     }
 
 }

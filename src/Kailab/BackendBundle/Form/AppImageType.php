@@ -12,7 +12,7 @@ class AppImageType extends AbstractType
     {
         $builder->add('id','hidden');
         $builder->add('position','hidden');
-        $builder->add('file','hidden');
+        $builder->add('file','file');
     }
 
     public function getDefaultOptions(array $options)

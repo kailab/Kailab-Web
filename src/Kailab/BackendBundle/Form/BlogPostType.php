@@ -13,10 +13,12 @@ class BlogPostType extends AbstractType
         $builder->add('id','hidden');
         $builder->add('category','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\BlogCategory',
-            'property'  => 'name'
+            'property'  => 'name',
+            'expanded'  => true,
+            'required'  => false
+
         ));
         $builder->add('image','file',array(
-            'type'      => 'file',
             'required'  => false,
         ));
         $builder->add('translations', 'collection', array(

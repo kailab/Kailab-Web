@@ -142,15 +142,7 @@ class Slide
     {
         $this->loadAssets();
 
-        // resize image
-        $imagine = new \Imagine\Gd\Imagine();
-        $image = $imagine->open($path);
-        $box = new \Imagine\Image\Box(450, 450);
-        $thumbnail = $image->thumbnail($box,\Imagine\ImageInterface::THUMBNAIL_OUTBOUND);
-        $path .= '.png';
-        $thumbnail->save($path);
-
-        $this->image->loadPath($path);
+       $this->image->loadPath($path);
         $this->updated = new \DateTime('now');
     }
 
