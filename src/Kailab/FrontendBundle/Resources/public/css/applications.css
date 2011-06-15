@@ -16,30 +16,69 @@
     height: 200px;
 }
 
-#apps li.iphone {
-    background-image: url(../images/bg_iphone_small.png);
-}
-
 #app {
     clear: both;
 }
 
-.app .screenshot {
-    background-repeat: no-repeat;
+#app .side {
     float: left;
     width: 250px;
+    height: 500px;
+    position: relative;
 }
 
-.app .screenshot.iphone {
-    background-image: url(../images/bg_iphone_big.png);
-    padding: 75px 21px 75px 21px;
+#app .nav {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    z-index: 500;
+    bottom: 0;
+    line-height: 22px;
 }
 
-#app_main {
+#app .nav a {
+    padding: 11px;
+    width: 0;
+    overflow: hidden;
+    margin: 5px;
+	background:url(../images/slider_bullets.png) no-repeat;
+    background-position: 0px 0px;
+    font-size: 0px;
+    text-indent: -99999px;
+}
+
+#app .nav a.activeSlide {
+    background-position: 0px -22px;
+}
+
+#app .previous {
+	width:30px;
+	height:30px;
+    top: 220px;
+    left: 20px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 500;
+	background:url(../images/slider_arrows.png) no-repeat;
+}
+
+#app .next {
+	width:30px;
+	height:30px;
+    top: 220px;
+    right: 20px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 500;
+	background:url(../images/slider_arrows.png) no-repeat;
+    background-position: -30px 0;
+}
+
+#app .main {
     margin-left: 250px;
 }
 
-#app_main h2 {
+#app .main h2 {
     background-image: url(../images/bg_title.png);
     color: #000000;
     padding: 3px 60px 0 60px;
@@ -85,3 +124,5 @@
 	position: relative;
 	height: 100%;
 }
+
+

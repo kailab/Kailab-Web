@@ -50,6 +50,13 @@
 
     {% for app in apps %}
     <div id="app_{{ app.id }}" class="app" style="display: none;">
+        <div class="side">
+        <div class="previous">
+        </div>
+        <div class="next">
+        </div>
+        <div class="nav">
+        </div>
         <ul class="screenshots">
             {% for screenshot in app.screenshots %}
             <li class="screenshot_big {{ screenshot.type }}_type">
@@ -59,6 +66,7 @@
             </li>
             {% endfor %}
         </ul>
+        </div>
         <div class="main">
             <h2>{{ app.name }}</h2>
             <div class="description">
@@ -87,6 +95,15 @@ $(document).ready(function(){
         var id = $(this).attr('id').replace('_item','');
         var app = $('#app').fadeOut(function(){
             app.html($('#'+id).clone().show()).fadeIn();
+            var nav = app.find('.nav');
+            var prev = app.find('.previous');
+            var next = app.find('.next');
+            app.find('.screenshots').cycle({
+                fx:     'fade',
+                pager:  nav, 
+                prev:   prev, 
+                next:   next, 
+            });
         });
     });
 });
