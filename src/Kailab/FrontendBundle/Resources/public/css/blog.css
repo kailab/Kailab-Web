@@ -24,7 +24,6 @@
     background-image: url("../images/sep_small.png");
     background-position: center top;
     background-repeat: no-repeat;
-
 }
 
 #blog .blog_post:first-child {
@@ -47,11 +46,13 @@
 .blog_post .title {
     display: inline;
     border: 0 !important;
+    margin: 0;
     color: #000000 !important;
     font-size: normal;
+    background-image: none !important;
 }
 
-.blog_post .update {
+.blog_post .create {
     font-style: italic;
     font-size: small;
     color: #BDCA0E;
@@ -60,4 +61,54 @@
 #blog_post {
     width: 750px;
     float: left;
+}
+
+.blog_post .comments {
+    clear: left;
+}
+
+.comment_form .form_row {
+    margin-bottom: 10px;
+}
+
+.comment_form .form_row_content {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+.comment_form .form_submit_row {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+.comment_form label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.comment_form .form_row_errors {
+    margin: 0 0 10px 30%;
+    padding-left: 10px;
+    color: #FF0000;
+}
+
+.comment_form .form_row_errors ul {
+    padding: 0;
+}
+
+.comment_form .form_row_errors li {
+    list-style: square inside;
+}
+
+.comment {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.comment .avatar {
+    float: right;
+    width: 80px;
+    margin: 0 0 10px 10px;
 }

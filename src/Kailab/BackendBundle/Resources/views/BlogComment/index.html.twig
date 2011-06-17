@@ -10,7 +10,9 @@
 <table class="entity_list">
 <thead>
 <tr>
-    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Created' | trans }}</th>
+    <th>{{ 'Author' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Post' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
@@ -19,15 +21,24 @@
 {% for comment in entities %}
 <tr>
     <td>
-        {{ comment.updated | date('d/m/Y H:i:s') }}
+        {{ comment.created | date('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ comment.authorLink | raw }}
+    </td>
+    <td>
+        {% if comment.active %}{{ 'Yes' | trans }}{% else %}{{ 'No' | trans }}{% endif %}
     </td>
     <td>
         {{ comment.post.title }}
     </td>
     <td class="actions">
         <ul>
-            <li><a href="{{ path('backend_blog_post_edit',{'id':post.id}) }}">{{ 'Edit' | trans }}</a></li>
-            <li><a href="{{ path('backend_blog_post_delete',{'id':post.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_blog_comment_edit',{'id':comment.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_blog_comment_delete',{'id':comment.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_blog_comment_toggle',{'id':comment.id}) }}">
+                {% if comment.active %}{{ 'Deactivate' | trans }}{% else %}{{ 'Activate' | trans }}{% endif %}
+            </a></li>
         </ul>
     </td>
 </tr>
@@ -42,7 +53,7 @@
 {% endif %}
 
 <ul id="entity_list_actions">
-    <li><a href="{{ path('backend_blog_post_new') }}">{{ 'Add new Post' | trans }}</a></li>
+    <li><a href="{{ path('backend_blog_comment_new') }}">{{ 'Add new Comment' | trans }}</a></li>
 </ul>
 
 

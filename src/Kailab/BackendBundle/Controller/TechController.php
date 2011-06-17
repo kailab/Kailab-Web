@@ -4,17 +4,17 @@ namespace Kailab\BackendBundle\Controller;
 
 use Kailab\BackendBundle\Controller\EntityCrudController;
 use Kailab\FrontendBundle\Entity\Slide;
-use Kailab\BackendBundle\Form\AppType;
+use Kailab\BackendBundle\Form\TechType;
 
-class TecController extends EntityCrudController
+class TechController extends EntityCrudController
 {
-    protected $entity_name = 'KailabFrontendBundle:Tec';
-    protected $view_prefix = 'KailabBackendBundle:Tec';
-    protected $route_prefix = 'backend_tec_';
+    protected $entity_name = 'KailabFrontendBundle:Tech';
+    protected $view_prefix = 'KailabBackendBundle:Tech';
+    protected $route_prefix = 'backend_tech_';
 
     protected function getFormType()
     {
-        return new AppType();
+        return new TechType();
     }
 
     public function imageAction($id)
@@ -33,7 +33,7 @@ class TecController extends EntityCrudController
         $em->persist($entity);
         $em->flush();
         $session = $this->get('session');
-        $session->setFlash('notice','Tecnology was moved up.');
+        $session->setFlash('notice','Technology was moved up.');
         return $this->redirectCrud('list');
     }
 
@@ -46,7 +46,7 @@ class TecController extends EntityCrudController
         $em->persist($entity);
         $em->flush();
         $session = $this->get('session');
-        $session->setFlash('notice','Tecnology was moved down.');
+        $session->setFlash('notice','Technology was moved down.');
         return $this->redirectCrud('list');
     }
 

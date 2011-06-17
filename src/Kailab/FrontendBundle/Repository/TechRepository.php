@@ -2,9 +2,9 @@
 
 namespace Kailab\FrontendBundle\Repository;
 
-class AppRepository extends EntityRepository
+class TechRepository extends EntityRepository
 {
-    protected $entity_name = 'KailabFrontendBundle:App';
+    protected $entity_name = 'KailabFrontendBundle:Tech';
 
     public function findAllActiveOrdered()
     {
@@ -18,14 +18,10 @@ class AppRepository extends EntityRepository
             ->setMaxResults(5)->getResult();
     }
 
-    public function findForHomepage($type='app')
+    public function findForHomepage()
     {
-        try{
-            return $this->createEntityQuery('WHERE e.active = true AND e.type = :type ORDER BY e.position DESC')
-                ->setParameter('type',$type)->setMaxResults(1)->getSingleResult();
-        }catch(\Exception $e){
-            return null;
-        }
+        return $this->createEntityQuery('WHERE e.active = true ORDER BY e.position DESC')
+            ->setMaxResults(1)->getSingleResult();
     }
 
 }

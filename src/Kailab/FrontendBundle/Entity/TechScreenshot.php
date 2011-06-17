@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
 
 /**
- * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\GameRepository")
- * @ORM\Table(name="game_screenshots")
+ * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\TechRepository")
+ * @ORM\Table(name="tech_screenshots")
  */
-class GameScreenshot
+class TechScreenshot
 {
     /**
      * @ORM\Id
@@ -21,13 +21,13 @@ class GameScreenshot
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Game", inversedBy="screenshots")
-     * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Tech", inversedBy="tech_screenshots")
+     * @ORM\JoinColumn(name="tech_id", referencedColumnName="id")
      */
-    protected $game;
+    protected $tech;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Screenshot", inversedBy="games")
+     * @ORM\ManyToOne(targetEntity="Screenshot", inversedBy="tech_screenshots")
      * @ORM\JoinColumn(name="screenshot_id", referencedColumnName="id")
      */
     protected $screenshot;
@@ -47,14 +47,24 @@ class GameScreenshot
         $this->id = $id;
     }
 
-    public function getGame()
+    public function getPosition()
     {
-        return $this->game;
+        return $this->position;
     }
 
-    public function setGame($game)
+    public function setPosition($k)
     {
-        $this->game = $game;
+        $this->position = intval($k);
+    }
+
+    public function getTech()
+    {
+        return $this->tech;
+    }
+
+    public function setTech($tech)
+    {
+        $this->tech = $tech;
     }
 
     public function getScreenshot()
@@ -64,7 +74,7 @@ class GameScreenshot
 
     public function setScreenshot($screen)
     {
-        $this->screensot = $screen;
+        $this->screenshot = $screen;
     }
 
 }

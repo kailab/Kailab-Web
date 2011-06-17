@@ -1,0 +1,56 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Technologies' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for tech in entities %}
+<tr>
+    <td>
+        {{ tech.name }}
+    </td>
+    <td>
+        {{ tech.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ tech.position }}
+    </td>
+
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_tech_edit',{'id':tech.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_tech_delete',{'id':tech.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_tech_up',{'id':tech.id}) }}">{{ 'Up' | trans }}</a></li>
+            <li><a href="{{ path('backend_tech_down',{'id':tech.id}) }}">{{ 'Down' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No technologies found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_tech_new') }}">{{ 'Add new Technology' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

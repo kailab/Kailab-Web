@@ -5,7 +5,11 @@
         <title>{% block title %}Kailab{% endblock %}</title>
         <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
         {% block javascripts %}
-        {% javascripts 'bundles/kailabfrontend/js/jquery.js' %}
+        {% javascripts
+            'bundles/kailabfrontend/js/jquery.js'
+            'bundles/kailabfrontend/js/typeface.js'
+            'bundles/kailabfrontend/js/arimo_bold.typeface.js'
+        %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
         {% endjavascripts %}
         {% endblock %}
@@ -43,7 +47,7 @@
                     </ul>
                     <ul id="mainmenu">
                         <li><a href="{{ path('frontend_homepage') }}" >{{ 'Home' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_tecnology') }}" >{{ 'Technology' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_technology') }}" >{{ 'Technology' | trans }}</a></li>
                         <li><a href="{{ path('frontend_applications') }}" >{{ 'Applications' | trans }}</a></li>
                         <li><a href="{{ path('frontend_videogames') }}" >{{ 'Videogames' | trans }}</a></li>
                     </ul>

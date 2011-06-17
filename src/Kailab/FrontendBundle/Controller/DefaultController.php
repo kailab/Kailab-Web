@@ -19,8 +19,18 @@ class DefaultController extends Controller
         $repo = $em->getRepository('KailabFrontendBundle:Slide');
         $slides = $repo->findAllActiveOrdered();
 
+        $repo = $em->getRepository('KailabFrontendBundle:App');
+        $app = $repo->findForHomepage('app');
+        $game = $repo->findForHomepage('game');
+
+        $repo = $em->getRepository('KailabFrontendBundle:BlogPost');
+        $post = $repo->findForHomepage();
+
         return $this->render('KailabFrontendBundle:Default:index.html.twig',array(
-            'slides'    => $slides
+            'slides'    => $slides,
+            'appli'     => $app,
+            'game'      => $game,
+            'post'      => $post,
         ));
     }
 
@@ -33,7 +43,7 @@ class DefaultController extends Controller
         if(!$slide){
             throw new NotFoundHttpException('The slide does not exist.');
         }
-        $asset = $shot->getImage()->getAsset();
+        $asset = $slide->getImage()->getAsset();
         if(!$asset instanceof AssetInterface){
             throw new NotFoundHttpException('The slide does not have a valid asset.');
         }
@@ -42,11 +52,11 @@ class DefaultController extends Controller
         $imagine = new Imagine();
         $image = $imagine->load($asset->getContent());
         $box = new Box(450, 450);
-        $thumbnail = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
 
         // build response
         $response = new Response();
-        $response->setContent($img->get('png'));
+        $response->setContent($thumb->get('png'));
         $response->headers->set('Content-Type','image/png');
         return $response;
     }

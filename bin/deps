@@ -15,3 +15,4 @@
 /                           gedmo-doctrine-extensions   http://github.com/l3pp4rd/DoctrineExtensions.git
 /                           imagine                     http://github.com/avalanche123/Imagine.git
 /bundles/Stfalcon/Bundle    TinymceBundle               http://github.com/stfalcon/TinymceBundle.git
+/bundles/Symfony/Bundle     AsseticBundle               http://github.com/symfony/AsseticBundle.git

@@ -1,5 +1,5 @@
 .screenshot_small {
-    height: 200px;
+    height: 180px;
     width: 100px;
     padding: 0;
     position: relative;
@@ -17,7 +17,7 @@
 }
 
 .screenshot_small .screen {
-    margin: 48px 0 0 17px;
+    margin: 27px 0 0 17px;
     width: 65px;
     height: 100px;
     overflow:hidden;
@@ -63,7 +63,7 @@
 }
 
 .screenshot_small.bada_type .screen {
-    margin-top: 45px;
+    padding-top: -5px;
 }
 
 ul.screenshots {
@@ -93,6 +93,10 @@ li.screenshot_big {
 #screenshot_list {
     overflow: hidden;
     margin-bottom: 10px;
+}
+
+#screenshot_list .screenshot_small {
+    float: left;
 }
 
 ul.selected_screenshots {

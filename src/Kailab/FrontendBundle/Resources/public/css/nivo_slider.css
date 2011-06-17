@@ -104,6 +104,7 @@
     font-size: 0;
 	background:url(../images/slider_bullets.png) no-repeat;
 	border:0;
+    color: transparent;
 }
 .nivo-controlNav a.active {
 	background-position:0 -22px;

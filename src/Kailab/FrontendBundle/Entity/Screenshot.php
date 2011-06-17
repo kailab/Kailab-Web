@@ -43,11 +43,6 @@ class Screenshot
      */
     protected $app_screenshots;
 
-    /**
-     * @ORM\OneToMany(targetEntity="GameScreenshot", mappedBy="game", cascade={"persist", "remove"})
-     */
-    protected $game_screenshots;
-
     protected $image;
 
     public function __construct()
@@ -142,6 +137,16 @@ class Screenshot
     public function setUpdated($time)
     {
         $this->updated = $time;
+    }
+
+    public function getAppScreenshots()
+    {
+        return $this->app_screenshots;
+    }
+
+    public function setAppScreenshots($screens)
+    {
+        $this->app_screenshots = $screens;
     }
 
 }

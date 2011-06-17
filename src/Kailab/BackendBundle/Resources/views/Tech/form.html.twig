@@ -22,9 +22,9 @@
 
 {% block form_title %}
 {% if entity.id %}
-{{ 'Editing App' | trans }}
+{{ 'Editing Tech' | trans }}
 {% else %}
-{{ 'New App' | trans }}
+{{ 'New Tech' | trans }}
 {% endif %}
 {% endblock %}
 
@@ -35,14 +35,22 @@
 {% endblock %}
 
 {% block form_rest %}
-{{ form_row(form.url, {'widget':{'attr':{'size':40}}}) }}
-{{ form_row(form.type) }}
+{{ form_row(form.url) }}
+
+<div class="form_row">
+    {{ form_label(form.image) }}
+    {{ form_widget(form.image) }}
+    <div class="form_row_comment">
+        <img src="{{ path('frontend_technology_image', {'id':entity.id}) }}" />
+    </div>
+    {{ form_errors(form.image) }}
+</div>
 
 {{ form_widget(form.screenshots) }}
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#app_screenshots').screenshots({
+        $('#tech_screenshots').screenshots({
         });
     });
 </script>

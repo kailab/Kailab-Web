@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Imagine\Gd\Imagine;
 use Doctrine\Common\Collections\ArrayCollection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
+use Symfony\Component\Validator\Constraints\Email;
 
 /**
  * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\BlogCommentRepository")
@@ -43,6 +44,7 @@ class BlogComment
 
     /**
      * @ORM\Column(type="string", length="255")
+     * @Assert\Email()
      */
     protected $author_email;
 
@@ -126,6 +128,24 @@ class BlogComment
     public function setPost($post)
     {
         $this->post = $post;
+    }
+
+    public function getAuthorLink()
+    {
+        $name = $this->author_name;
+        if(!$name){
+            $name = 'anonymous';
+        }
+        $name = htmlspecialchars($name);
+        if($this->author_email){
+            $name = '<a href="mailto:'.urlencode($this->author_email).'">'.$name.'</a>';
+        }
+        return $name;
+    }
+
+    public function getHash()
+    {
+        return md5(strtolower(trim($this->author_email)));
     }
 
 }

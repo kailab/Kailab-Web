@@ -25,4 +25,13 @@ class BlogPostRepository extends EntityRepository
         return $this->getQueryPagination($query,$limit);
     }
 
+    public function findForHomepage()
+    {
+        try{
+            return $this->createEntityQuery('WHERE e.active = true ORDER BY e.updated ASC')
+                ->setMaxResults(1)->getSingleResult();
+        }catch(\Exception $e){
+            return null;
+        }
+    }
 }

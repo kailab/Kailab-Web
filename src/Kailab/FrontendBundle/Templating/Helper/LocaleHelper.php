@@ -95,7 +95,7 @@ class LocaleHelper extends Helper
             $time = strtotime($time);
         }
         $time = intval($time);
-        return strftime($format, $time);
+        return utf8_encode(strftime($format, $time));
     }
 
 }

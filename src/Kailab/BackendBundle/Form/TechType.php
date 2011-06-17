@@ -4,25 +4,19 @@ namespace Kailab\BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Kailab\FrontendBundle\Entity\SlideTranslation;
 
-class AppType extends AbstractType
+class TechType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('id','hidden');
         $builder->add('url','url');
         $builder->add('translations', 'collection', array(
-           'type'       => new AppTranslationType(),
+           'type'       => new TechTranslationType(),
         ));
-
-        $builder->add('type', 'choice', array(
-            'choices'   => array(
-                'app'    => 'Application',
-                'game'   => 'Videogame',
-             )
+        $builder->add('image','file',array(
+            'required'  => false,
         ));
-
         $builder->add('screenshots','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
             'property'  => 'type',
@@ -34,13 +28,13 @@ class AppType extends AbstractType
     public function getDefaultOptions(array $options)
     {
         return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\App',
+            'data_class' => 'Kailab\FrontendBundle\Entity\Tech',
         );
     }
 
     public function getIdentifier()
     {
-        return 'app';
+        return 'tech';
     }
 }
 

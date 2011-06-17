@@ -17,10 +17,16 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 16px 0;
+    font-family: 'Arimo', Arial, sans-serif;
 }
 
 p {
     line-height: 1.5em;
+    margin: 0 0 0.3em 0;
+}
+
+.maincontent .section {
+    margin-bottom: 20px;
 }
 
 
@@ -153,11 +159,23 @@ p {
     background-image: none;
 }
 
-#main h1 {
+#main h1,
+#main h2 {
     padding: 0 120px 10px 120px;
     background-image: url(../images/sep_big.png);
     background-repeat: no-repeat;
     background-position: center bottom;
+    color: #bdca0e;
+}
+
+#main .maincontent .with_sidebar h1,
+#main .maincontent .with_sidebar h2 {
+    padding: 0 0 10px 0;
+    border: 0;
+    background-image: url(../images/sep_small.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    color: #bdca0e;
 }
 
 #sitemap_wrapper {
@@ -305,4 +323,18 @@ p {
 
 .pagination .pages li {
     display: inline;
+}
+
+#flash_error {
+    background-color: #FFBBBB;
+    color: #FF0000;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#flash_notice {
+    background-color: #BDCA0E;
+    color: #FFFFFF;
+    padding: 5px;
+    margin-bottom: 10px;
 }

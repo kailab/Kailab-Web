@@ -158,15 +158,6 @@ class BlogPost
     public function setImage($path)
     {
         $this->loadAssets();
-
-        // resize image
-        $imagine = new \Imagine\Gd\Imagine();
-        $image = $imagine->open($path);
-        $box = $image->getSize()->scale(150/$image->getSize()->getWidth());
-        $thumbnail = $image->thumbnail($box,\Imagine\ImageInterface::THUMBNAIL_OUTBOUND);
-        $path .= '.png';
-        $thumbnail->save($path);
-
         $this->image->loadPath($path);
         $this->updated = new \DateTime('now');
     }

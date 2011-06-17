@@ -69,6 +69,9 @@
         </div>
         <div class="main">
             <h2>{{ app.name }}</h2>
+            <div class="info">
+                <h3>{{ 'Related projects' | trans }}</h3>
+            </div>
             <div class="description">
                 {{ app.description | raw }}
             </div>
@@ -104,6 +107,7 @@ $(document).ready(function(){
                 prev:   prev, 
                 next:   next, 
             });
+            _typeface_js.replaceText(app.find('h3').show().get(0));
         });
     });
 });

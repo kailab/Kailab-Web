@@ -14,6 +14,8 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
  */
 class App
 {
+    const EXCERPT_SEPARATOR = '<!-- more -->';
+
     protected $locale;
 
     /**
@@ -27,6 +29,11 @@ class App
      * @ORM\Column(type="integer")
      */
     protected $position;
+
+    /**
+     * @ORM\Column(type="string", length="50")
+     */
+    protected $type;
 
     /**
      * @ORM\Column(type="string", length="255")
@@ -58,6 +65,24 @@ class App
 
      */
     protected $active;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tech")
+     * @ORM\JoinTable(name="app_techs",
+     *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tech_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $technologies;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App")
+     * @ORM\JoinTable(name="app_relations",
+     *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="related_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $related;
 
     function __construct()
     {
@@ -143,6 +168,12 @@ class App
         $this->app_screenshots = $screens;
     }
 
+    public function getScreenshot()
+    {
+        $screens = $this->getScreenshots();
+        return $screens->first();
+    }
+
     public function getScreenshots()
     {
         $screens = new ArrayCollection();
@@ -207,6 +238,49 @@ class App
         $this->updated = $time;
     }
 
-}
+    public function getExcerpt()
+    {
+        $content = $this->getDescription();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return reset($content);
+    }
 
+    public function hasExcerpt()
+    {
+        $content = $this->getDescription();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return count($content) > 0;
+    }
+
+    public function getTechnologies()
+    {
+        return $this->technologies;
+    }
+
+    public function setTechnologies($techs)
+    {
+        $this->technologies = $techs;
+    }
+
+    public function getRelated()
+    {
+        return $this->related;
+    }
+
+    public function setRelated($apps)
+    {
+        $this->related = $apps;
+    }
+
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+
+}
 

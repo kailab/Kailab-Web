@@ -5,15 +5,19 @@ namespace Kailab\FrontendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
 
 /**
- * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\GameRepository")
- * @ORM\Table(name="games")
+ * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\TechRepository")
+ * @ORM\Table(name="techs")
  */
-class Game
+class Tech
 {
+    const EXCERPT_SEPARATOR = '<!-- more -->';
+
     protected $locale;
+    protected $image;
 
     /**
      * @ORM\Id
@@ -33,12 +37,12 @@ class Game
     protected $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppScreenshot", mappedBy="app", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="TechScreenshot", mappedBy="tech", cascade={"persist", "remove"})
      */
-    protected $app_screenshots;
+    protected $tech_screenshots;
 
     /**
-     * @ORM\OneToMany(targetEntity="GameTranslation", mappedBy="game", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="TechTranslation", mappedBy="tech", cascade={"persist", "remove"})
      */
     protected $translations;
 
@@ -54,15 +58,46 @@ class Game
 
     /**
      * @ORM\Column(type="boolean")
-
      */
     protected $active;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App")
+     */
+    protected $apps;
+
     function __construct()
     {
+        $this->loadAssets();
         $this->translations = new ArrayCollection();
-        $this->game_screenshots = new ArrayCollection();
+        $this->tech_screenshots = new ArrayCollection();
         $this->active = true;
+    }
+
+    protected function loadAssets()
+    {
+        if(!$this->image instanceof EntityAsset){
+            $this->image = new EntityAsset($this, 'image');
+        }
+    }
+
+    public function getAssets()
+    {
+        $this->loadAssets();
+        return array($this->image);
+    }
+
+    public function getImage()
+    {
+        $this->loadAssets();
+        return $this->image;
+    }
+
+    public function setImage($path)
+    {
+       $this->loadAssets();
+       $this->image->loadPath($path);
+       $this->updated = new \DateTime('now');
     }
 
     public function getId()
@@ -132,14 +167,44 @@ class Game
         $this->url = $url;
     }
 
-    public function getGameScreenshots()
+    public function getTechScreenshots()
     {
-        return $this->game_screenshots;
+        return $this->tech_screenshots;
     }
 
-    public function setGameScreenshots($screens)
+    public function setTechScreenshots($screens)
     {
-        $this->game_screenshots = $screens;
+        $this->tech_screenshots = $screens;
+    }
+
+    public function getScreenshot()
+    {
+        $screens = $this->getScreenshots();
+        return $screens->first();
+    }
+
+    public function getScreenshots()
+    {
+        $screens = new ArrayCollection();
+        foreach($this->tech_screenshots as $tech_screen){
+            if($tech_screen instanceof TechScreenshot){
+                $screens[] = $tech_screen->getScreenshot();
+            }
+        }
+        return $screens;
+    }
+
+    public function setScreenshots(Collection $screens)
+    {
+        $this->tech_screenshots->clear();
+        $k = 0;
+        foreach($screens as $screen){
+            $tech_screen = new TechScreenshot();
+            $tech_screen->setScreenshot($screen);
+            $tech_screen->setTech($this);
+            $tech_screen->setPosition($k++);
+            $this->tech_screenshots[] = $tech_screen;
+        }
     }
 
     public function getTranslations()
@@ -182,6 +247,30 @@ class Game
         $this->updated = $time;
     }
 
-}
+    public function getExcerpt()
+    {
+        $content = $this->getDescription();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return reset($content);
+    }
 
+    public function hasExcerpt()
+    {
+        $content = $this->getDescription();
+        $content = explode(self::EXCERPT_SEPARATOR,$content);
+        return count($content) > 0;
+    }
+
+    public function getApps()
+    {
+        return $this->apps;
+    }
+
+    public function setApps($apps)
+    {
+        $this->apps = $apps;
+    }
+
+
+}
 

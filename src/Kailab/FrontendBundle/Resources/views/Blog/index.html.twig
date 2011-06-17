@@ -19,7 +19,7 @@
 </a></h1>
 <div class="maincontent">
     {% block blog %}
-    <div id="blog">
+    <div id="blog" class="with_sidebar">
         {% set time_format = '%A, %e of %B' | trans %}
         <div class="blog_posts">
             {% for post in posts %}
@@ -34,7 +34,7 @@
                 {% endif %}
                     <div class="head">
                         <h2 class="title">{{ post.title }}</h2>
-                        <span class="update">{{ locale_helper.format_time(time_format, post.updated) }}</span>
+                        <span class="create">{{ locale_helper.format_time(time_format, post.created) }}</span>
                         {% if post.category %}
                         <span class="category">{{ post.category.name }}</span>
                         {% endif %}

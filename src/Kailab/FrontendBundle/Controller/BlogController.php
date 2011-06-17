@@ -4,6 +4,12 @@ namespace Kailab\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Response;
+use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Form\BlogCommentType;
+use Imagine\ImageInterface;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
 
 class BlogController extends Controller
 {
@@ -34,19 +40,46 @@ class BlogController extends Controller
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabFrontendBundle:BlogPost');
 
+        // find post
         $post = $repo->findActive($id);
         if(!$post){
             throw new NotFoundHttpException('The post does not exist.');
         }
 
+        // categories
         $repo = $em->getRepository('KailabFrontendBundle:BlogCategory');
         $categories = $repo->findAllActiveOrdered();
+
+        // comment form
+        $type = new BlogCommentType();
+        $form = $this->createForm($type);
+        $request = $this->get('request');
+
+        if($request->getMethod() == 'POST'){
+            // try to save submitted comment
+            $session = $this->get('session');
+            $form->bindRequest($request);
+            if (!$form->isValid()) {
+                $session->setFlash('error','Comment is not valid.');
+            }else{
+                $comment = $form->getData();
+                $comment->setPost($post);
+                $em->persist($comment);
+                $em->flush();
+                $session->setFlash('notice','Comment saved correctly.');
+            }
+        }
+
+        // comments
+        $repo = $em->getRepository('KailabFrontendBundle:BlogComment');
+        $comments = $repo->findAllActiveOrderedForPost($post);
 
         return $this->render('KailabFrontendBundle:Blog:post.html.twig',array(
             'categories'    => $categories,
             'post'          => $post,
+            'comments'      => $comments,
+            'form'          => $form->createView()
         ));
-
     }
 
     public function CategoryAction($id, $page=1)
@@ -77,12 +110,53 @@ class BlogController extends Controller
         ));
     }
 
-    public function postImageAction($id)
+    protected function getPostAsset($id)
     {
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabFrontendBundle:BlogPost');
-        $slide = $repo->find($id);
-        $img = $slide->getImage();
-        return $img->getResponse();
+
+        $shot = $repo->find($id);
+        if(!$shot){
+            throw new NotFoundHttpException('The post does not exist.');
+        }
+        $asset = $shot->getImage()->getAsset();
+        if(!$asset instanceof AssetInterface){
+            throw new NotFoundHttpException('The post does not have a valid asset.');
+        }
+        return $asset;
+    }
+
+    protected function getImageResponse(ImageInterface $img)
+    {
+        $response = new Response();
+        $response->setContent($img->get('png'));
+        $response->headers->set('Content-Type','image/png');
+        return $response;
+    }
+
+    public function postImageAction($id)
+    {
+        $asset = $this->getPostAsset($id);
+
+        // resize image
+        $imagine = new Imagine();
+        $image = $imagine->load($asset->getContent());
+        $box = $image->getSize()->scale(150/$image->getSize()->getWidth());
+        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+
+        return $this->getImageResponse($thumb);
+    }
+
+    public function postImageSmallAction($id)
+    {
+        $asset = $this->getPostAsset($id);
+
+        // resize image
+        $imagine = new Imagine();
+        $image = $imagine->load($asset->getContent());
+        $box = $image->getSize()->scale(90/$image->getSize()->getWidth());
+        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+
+        return $this->getImageResponse($thumb);
     }
 }

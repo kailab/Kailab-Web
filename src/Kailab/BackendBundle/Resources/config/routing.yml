@@ -88,65 +88,35 @@ backend_app_down:
     pattern:  /app/down/{id}
     defaults: { _controller: KailabBackendBundle:App:down }
 
-# game
+# tech
 
-backend_game_list:
-    pattern:  /game
-    defaults: { _controller: KailabBackendBundle:Game:index }
+backend_tech_list:
+    pattern:  /tech
+    defaults: { _controller: KailabBackendBundle:Tech:index }
 
-backend_game_new:
-    pattern:  /game/new
-    defaults: { _controller: KailabBackendBundle:Game:new }
+backend_tech_new:
+    pattern:  /tech/new
+    defaults: { _controller: KailabBackendBundle:Tech:new }
 
-backend_game_edit:
-    pattern:  /game/edit/{id}
-    defaults: { _controller: KailabBackendBundle:Game:edit }
+backend_tech_edit:
+    pattern:  /tech/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Tech:edit }
 
-backend_game_save:
-    pattern:  /game/save
-    defaults: { _controller: KailabBackendBundle:Game:save }
+backend_tech_save:
+    pattern:  /tech/save
+    defaults: { _controller: KailabBackendBundle:Tech:save }
 
-backend_game_delete:
-    pattern:  /game/delete/{id}
-    defaults: { _controller: KailabBackendBundle:Game:delete }
+backend_tech_delete:
+    pattern:  /tech/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Tech:delete }
 
-backend_game_up:
-    pattern:  /game/up/{id}
-    defaults: { _controller: KailabBackendBundle:Game:up }
+backend_tech_up:
+    pattern:  /tech/up/{id}
+    defaults: { _controller: KailabBackendBundle:Tech:up }
 
-backend_game_down:
-    pattern:  /game/down/{id}
-    defaults: { _controller: KailabBackendBundle:Game:down }
-
-# tec
-
-backend_tec_list:
-    pattern:  /tec
-    defaults: { _controller: KailabBackendBundle:Tec:index }
-
-backend_tec_new:
-    pattern:  /tec/new
-    defaults: { _controller: KailabBackendBundle:Tec:new }
-
-backend_tec_edit:
-    pattern:  /tec/edit/{id}
-    defaults: { _controller: KailabBackendBundle:Tec:edit }
-
-backend_tec_save:
-    pattern:  /tec/save
-    defaults: { _controller: KailabBackendBundle:Tec:save }
-
-backend_tec_delete:
-    pattern:  /tec/delete/{id}
-    defaults: { _controller: KailabBackendBundle:Tec:delete }
-
-backend_tec_up:
-    pattern:  /tec/up/{id}
-    defaults: { _controller: KailabBackendBundle:Tec:up }
-
-backend_tec_down:
-    pattern:  /tec/down/{id}
-    defaults: { _controller: KailabBackendBundle:Tec:down }
+backend_tech_down:
+    pattern:  /tech/down/{id}
+    defaults: { _controller: KailabBackendBundle:Tech:down }
 
 # blog post
 
@@ -225,3 +195,7 @@ backend_blog_comment_save:
 backend_blog_comment_delete:
     pattern:  /blog/comment/delete/{id}
     defaults: { _controller: KailabBackendBundle:BlogComment:delete }
+
+backend_blog_comment_toggle:
+    pattern:  /blog/comment/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:BlogComment:toggle }

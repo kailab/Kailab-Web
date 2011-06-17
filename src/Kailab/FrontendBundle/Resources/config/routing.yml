@@ -39,8 +39,12 @@ frontend_blog_post:
         id:  \d+
 
 frontend_blog_post_image:
-    pattern:  /blog/post/{id}/image
+    pattern:  /blog/post/{id}/image.png
     defaults: { _controller: KailabFrontendBundle:Blog:postImage }
+
+frontend_blog_post_image_small:
+    pattern:  /blog/post/{id}/image_small.png
+    defaults: { _controller: KailabFrontendBundle:Blog:postImageSmall }
 
 frontend_blog_category:
     pattern:  /blog/category/{id}
@@ -48,9 +52,13 @@ frontend_blog_category:
     requirements:
         id:  \d+
 
-frontend_tecnology:
-    pattern:  /tec
-    defaults: { _controller: KailabFrontendBundle:Tecnology:index }
+frontend_technology:
+    pattern:  /tech
+    defaults: { _controller: KailabFrontendBundle:Technology:index }
+
+frontend_technology_image:
+    pattern:  /tech/image/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Technology:image }
 
 frontend_applications:
     pattern:  /apps

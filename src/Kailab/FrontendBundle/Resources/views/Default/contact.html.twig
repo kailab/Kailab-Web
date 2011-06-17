@@ -1,19 +1,84 @@
 {% extends "KailabFrontendBundle::layout.html.twig" %}
 
+{% block javascripts %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    {{ parent() }}
+{% endblock %}
+
 {% block title %}
     {{ parent() }} - {{ 'Contact' | trans }}
 {% endblock %}
 
 {% block content %}
-<h2>Quienes somos</h2>
 
-<p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
-(autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
-was turned on or changed/updated, and/or the value of 'formatoptions' 
-changed.</p>
+<h1>{{ 'Contact us' | trans }}</h1>
 
-<p>The standard way to avoid this is to set the 'paste' option before 
-pasting and reset it afterwards. You can make a key do this with the 
-'pastetoggle' option, too.</p>
+<div class="maincontent">
+
+<div id="sidebar">
+    <div class="section">
+        <h2>{{ 'Our team' | trans }}</h2>
+    </div>
+</div>
+
+<div class="with_sidebar">
+    <div class="section">
+        <h2>{{ 'Who are we?' | trans }}</h2>
+
+        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
+        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
+        was turned on or changed/updated, and/or the value of 'formatoptions' 
+        changed.</p>
+
+        <p>The standard way to avoid this is to set the 'paste' option before 
+        pasting and reset it afterwards. You can make a key do this with the 
+        'pastetoggle' option, too.</p>
+    </div>
+
+    <div class="section">
+        <h2>{{ 'What do we do?' | trans }}</h2>
+
+        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
+        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
+        was turned on or changed/updated, and/or the value of 'formatoptions' 
+        changed.</p>
+
+        <p>The standard way to avoid this is to set the 'paste' option before 
+        pasting and reset it afterwards. You can make a key do this with the 
+        'pastetoggle' option, too.</p>
+    </div>
+
+    <div class="section">
+        <h2>{{ 'Where are we?' | trans }}</h2>
+
+        <div id="map_canvas" style="width: 450px; height: 150px"></div>
+
+        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
+        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
+        was turned on or changed/updated, and/or the value of 'formatoptions' 
+        changed.</p>
+
+        <p>The standard way to avoid this is to set the 'paste' option before 
+        pasting and reset it afterwards. You can make a key do this with the 
+        'pastetoggle' option, too.</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var options = {
+        zoom: 14,
+        center: new google.maps.LatLng(41.391868, 2.168099),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map($('#map_canvas').get(0), options);
+
+    var marker = new google.maps.Marker({
+        position: options.center, 
+        map: map, 
+        title:"Hello World!"
+    });   
+});
+</script>
 
 {% endblock %}

@@ -4,7 +4,6 @@ namespace Kailab\BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
-use Kailab\FrontendBundle\Entity\SlideTranslation;
 
 class SlideType extends AbstractType
 {

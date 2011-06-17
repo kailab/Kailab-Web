@@ -4,16 +4,7 @@
 }
 
 #apps li {
-    list-style: none;
-    float: left;
-    background-repeat: no-repeat;
-    background-position: center center;
     cursor: pointer;
-    margin: 0 20px 0 0;
-    padding: 0;
-    background-position: center bottom;
-    width: 100px;
-    height: 200px;
 }
 
 #app {
@@ -39,6 +30,8 @@
 #app .nav a {
     padding: 11px;
     width: 0;
+    height: 0;
+    color: transparent;
     overflow: hidden;
     margin: 5px;
 	background:url(../images/slider_bullets.png) no-repeat;
@@ -54,9 +47,8 @@
 #app .previous {
 	width:30px;
 	height:30px;
-    top: 220px;
-    left: 20px;
     position: absolute;
+    bottom: 0;
     cursor: pointer;
     z-index: 500;
 	background:url(../images/slider_arrows.png) no-repeat;
@@ -65,8 +57,8 @@
 #app .next {
 	width:30px;
 	height:30px;
-    top: 220px;
-    right: 20px;
+    bottom: 0;
+    right: 0;
     position: absolute;
     cursor: pointer;
     z-index: 500;
@@ -84,9 +76,25 @@
     padding: 3px 60px 0 60px;
 }
 
+#app .description {
+    margin: 0 200px 0 0;
+    padding: 0 10px;
+}
+
+#app .info {
+    float: right;
+    width: 200px;
+}
+
+#app .info h3 {
+    color: #000000;
+    font-size: 14px;
+    border: 0;
+}
+
 #apps_scroll {
     position: relative;
-    height: 200px;
+    height: 170px;
 }
 
 #apps_scroll .hotspot_left

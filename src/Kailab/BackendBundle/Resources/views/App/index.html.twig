@@ -12,6 +12,7 @@
 <tr>
     <th>{{ 'Name' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Type' | trans }}</th>
     <th>{{ 'Position' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
@@ -26,9 +27,11 @@
         {{ app.updated.format('d/m/Y H:i:s') }}
     </td>
     <td>
+        {{ app.type }}
+    </td>
+    <td>
         {{ app.position }}
     </td>
-
     <td class="actions">
         <ul>
             <li><a href="{{ path('backend_app_edit',{'id':app.id}) }}">{{ 'Edit' | trans }}</a></li>

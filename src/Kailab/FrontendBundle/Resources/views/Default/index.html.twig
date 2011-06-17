@@ -6,16 +6,21 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {% javascripts 'bundles/kailabfrontend/js/jquery-nivo_slider.js' %}
+    {% javascripts
+        'bundles/kailabfrontend/js/jquery-nivo_slider.js'
+    %}
     <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
+    <script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='cssrewrite'
         'bundles/kailabfrontend/css/homepage.css'
-        'bundles/kailabfrontend/css/nivo_slider.css' %}
+        'bundles/kailabfrontend/css/screenshots.css'
+        'bundles/kailabfrontend/css/nivo_slider.css'
+    %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
     {% endstylesheets %}
 {% endblock %}
@@ -44,40 +49,179 @@
     {% endfor %}
     {% endif %}
 
-    <script type="text/javascript">
+    <div id="blocks">
+
+        <div class="block twitter">
+            <div id="twitter_widget">
+            </div>
+        </div>
+
+        {% if appli is defined and appli %}
+        <div class="block">
+            <h2><a href="{{ path('frontend_applications') }}" title="{{ 'Apps' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
+            </a></h2>
+            
+            {% if appli.screenshot %}
+            <div class="side">
+                <div class="screenshot_small {{ appli.screenshot.type}}_type">
+                    <div class="screen">
+                        <img src="{{ path('frontend_screenshot_small', {'id':appli.screenshot.id}) }}" alt="{{ appli.name }}" />
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="main">
+                <h3>{{ appli.name }}</h3>
+
+                <div class="excerpt">
+                {{ appli.excerpt | raw }}
+                </div>
+            </div>
+
+            <div class="foot">
+                <a href="{{ path('frontend_applications') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+        </div>
+        {% endif %}
+        {% if game is defined and game %}
+        <div class="block">
+            <h2><a href="{{ path('frontend_videogames') }}" title="{{ 'Games' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/games_small.png') }}" alt="{{ 'Games' | trans }}" />
+            </a></h2>
+
+            {% if game.screenshot %}
+            <div class="side">
+                <div class="screenshot_small {{ game.screenshot.type}}_type">
+                    <div class="screen">
+                        <img src="{{ path('frontend_screenshot_small', {'id':game.screenshot.id}) }}" alt="{{ game.name }}" />
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="main">
+                <h3>{{ game.name }}</h3>
+
+                <div class="excerpt">
+                {{ game.excerpt | raw }}
+                </div>
+            </div>
+
+            <div class="foot">
+                <a href="{{ path('frontend_videogames') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+        </div>
+        {% endif %}
+        {% if post is defined and post %}
+        <div class="block">
+            <h2><a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
+            </a></h2>
+
+            {% if post.image.state %}
+            <div class="side">
+                <img src="{{ path('frontend_blog_post_image_small', {'id':post.id}) }}" alt="{{ post.title }}" />
+            </div>
+            {% endif %}
+
+            <div class="main">
+                <h3>{{ post.title }}</h3>
+
+                <div class="excerpt">
+                {{ post.excerpt | raw }}
+                </div>
+
+            </div>
+
+            <div class="foot">
+                <a href="{{ path('frontend_blog') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if tech is defined and tech %}
+        <div class="block">
+            <h2><a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
+                {{ 'Technology' | trans }}
+            </a></h2>
+
+            <div class="main">
+            </div>
+            <div class="foot">
+                <a href="{{ path('frontend_blog') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="block">
+            <h2><a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
+                {{ 'About us' | trans }}
+            </a></h2>
+
+            <div class="main">
+                {{ 'We are a small game development studio set in Barcelona, Spain.' | trans }}
+            </div>
+            <div class="foot">
+                <a href="{{ path('frontend_about') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+        </div>
+
+        <div class="block">
+            <h2><a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
+                {{ 'Contact us' | trans }}
+            </a></h2>
+
+            <div class="main">
+            </div>
+            <div class="foot">
+                <a href="{{ path('frontend_contact') }}" class="button">{{ 'See +' | trans }}</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
     $(document).ready(function(){
         $('#slider').nivoSlider({
         });
     });
-    </script>
-    <div id="blocks">
-        <div class="block">
-            <a href="{{ path('frontend_applications') }}" title="{{ 'Apps' | trans }}">
-                <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
-            </a>
-            <h3>Título de prueba</h3>
 
-            <p>Lorem ipsum asdlñasdl asdkljaslkd jlawiej aklsdjqwimda asdklñqwje lasdlkwqe
-            asdklasklñdjk maweljqw asdklñ masdñk.</p>
+    new TWTR.Widget({
+      id: 'twitter_widget',
+      version: 2,
+      type: 'list',
+      rpp: 30,
+      interval: 6000,
+      width: 205,
+      height: 370,
+      theme: {
+        shell: {
+          background: '#b8c40c',
+          color: '#ffffff'
+        },
+        tweets: {
+          background: '#f8fae6',
+          color: '#444444',
+          links: '#a8b312'
+        }
+      },
+      features: {
+        scrollbar: true,
+        loop: false,
+        live: true,
+        hashtags: true,
+        timestamp: true,
+        avatars: false,
+        behavior: 'all'
+      }
+    }).render().setList('manny_rodriguez', 'kailab').start();
 
-            <a href="aaa" class="button">{{ 'Ver +' | trans }}</a>
-        </div>
-        <div class="block">
-            <a href="{{ path('frontend_videogames') }}" title="{{ 'Games' | trans }}">
-                <img src="{{ asset('bundles/kailabfrontend/images/games_small.png') }}" alt="{{ 'Games' | trans }}" />
-            </a>
-        </div>
-        <div class="block">
-            <a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
-                <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
-            </a>
-        </div>
-        <div class="block">
-            <a href="{{ path('frontend_tecnology') }}" title="{{ 'Tec' | trans }}">
-                Tecnology
-            </a>
+</script>
 
-        </div>
-    </div>
-</div>
+
 {% endblock %}

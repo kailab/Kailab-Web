@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="game_translations")
+ * @ORM\Table(name="tech_translations")
  */
-class GameTranslation
+class TechTranslation
 {
     /**
      * @ORM\Id
@@ -33,10 +33,10 @@ class GameTranslation
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Game", inversedBy="translations")
-     * @ORM\JoinColumn(name="game_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Tech", inversedBy="translations")
+     * @ORM\JoinColumn(name="tech_id", referencedColumnName="id")
      */
-    protected $game;
+    protected $tech;
 
     public function getId()
     {
@@ -78,13 +78,13 @@ class GameTranslation
         $this->description = $desc;
     }
 
-    public function setGame($game)
+    public function setTech($tech)
     {
-        $this->game = $game;
+        $this->tech = $tech;
     }
 
-    public function getGame()
+    public function getTech()
     {
-        return $this->game;
+        return $this->tech;
     }
 }
