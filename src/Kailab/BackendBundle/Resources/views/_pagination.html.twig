@@ -1,0 +1,19 @@
+{% if pager.last > 1 and route is defined %}
+<div class="pagination">
+    {% if pager.current > 1 %}
+        <a href="{{ path(route, {'page':pager.current-1}) }}" class="previous">{{ 'Previous' | trans }}</a>
+    {% endif %}
+    {% if pager.current < pager.last %}
+        <a href="{{ path(route, {'page':pager.current+1}) }}" class="next">{{ 'Next' | trans }}</a>
+    {% endif %}
+    <ul class="pages">
+    {% for page in pager.pages %}
+        {% if page == pager.current %}
+            <li class="current">{{ page }}</li>
+        {% else %}
+            <li><a href="{{ path(route, {'page':page}) }}">{{ page }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

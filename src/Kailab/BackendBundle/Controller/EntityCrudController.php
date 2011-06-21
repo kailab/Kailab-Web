@@ -11,6 +11,7 @@ abstract class EntityCrudController extends Controller
     protected $view_prefix = 'KailabBackendBundle:Default';
     protected $route_prefix = '';
     protected $entity_name = '';
+    protected $limit = 20;
 
     protected function getLocales()
     {
@@ -118,9 +119,15 @@ abstract class EntityCrudController extends Controller
     public function indexAction()
     {
         $repo = $this->getRepository();
-        $entities = $repo->findAll();
+        $request = $this->get('request');
+        $page = $request->query->get('page',1);
+        $entities = $repo->findAllInPage($page,$this->limit);
+        $pager = $repo->getPagination($this->limit);
+        $pager['current'] = $page;
         return $this->renderCrud('index',array(
-            'entities'  => $entities ));
+            'entities'  => $entities,
+            'pager'     => $pager,
+        ));
     }
 
     public function newAction()

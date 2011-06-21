@@ -1,0 +1,48 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/kailabfrontend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/kailabbackend/js/jquery-ui.js'
+        'bundles/kailabbackend/js/jquery-ajax_upload.js'
+        'bundles/kailabbackend/js/jquery-screenshots.js'
+    %}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Platform' | trans }}
+{% else %}
+{{ 'New Platform' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_rest(trans) }}
+{% endblock %}
+
+{% block form_rest %}
+<div class="form_row">
+  <label>{{ 'Screen' | trans }}</label>
+  <div class="form_row_content">
+  x{{ form_widget(form.screen_x, {'attr':{'size':3}}) }}
+  y{{ form_widget(form.screen_y, {'attr':{'size':3}}) }}
+  w{{ form_widget(form.screen_w, {'attr':{'size':3}}) }}
+  h{{ form_widget(form.screen_h, {'attr':{'size':3}}) }}
+  </div>
+</div>
+{{ parent() }}
+{% endblock %}

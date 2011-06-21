@@ -75,3 +75,11 @@ frontend_screenshot_big:
 frontend_screenshot_small:
     pattern:  /screenshot/small/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:small }
+
+frontend_platform_icon:
+    pattern:  /platform/icon/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Platform:icon }
+
+frontend_platform_background:
+    pattern:  /platform/background/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Platform:background }

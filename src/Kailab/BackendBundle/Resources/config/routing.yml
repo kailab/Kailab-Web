@@ -118,6 +118,28 @@ backend_tech_down:
     pattern:  /tech/down/{id}
     defaults: { _controller: KailabBackendBundle:Tech:down }
 
+# platform
+
+backend_platform_list:
+    pattern:  /platform
+    defaults: { _controller: KailabBackendBundle:Platform:index }
+
+backend_platform_new:
+    pattern:  /platform/new
+    defaults: { _controller: KailabBackendBundle:Platform:new }
+
+backend_platform_edit:
+    pattern:  /platform/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Platform:edit }
+
+backend_platform_save:
+    pattern:  /platform/save
+    defaults: { _controller: KailabBackendBundle:Platform:save }
+
+backend_platform_delete:
+    pattern:  /platform/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Platform:delete }
+
 # blog post
 
 backend_blog_post_list:

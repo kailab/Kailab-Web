@@ -10,6 +10,7 @@ framework:
     csrf_protection: true
     validation:      { enabled: true, enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    translator:      { fallback: en }
     session:
         default_locale: es 
         lifetime:       3600
@@ -72,6 +73,20 @@ frontend:
     locales: ['es', 'en']
     twitter:   kailab
     facebook:  kailab
+    screenshots:
+        small: 
+            width: 100
+            height: 180
+        big:
+            width: 250
+            height: 475
 
 backend:
     locales: ['es', 'en']
+    screenshots:
+        small: 
+            width: 100
+            height: 180
+        big:
+            width: 250
+            height: 475 

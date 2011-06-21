@@ -16,16 +16,16 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_screenshot_list', 'pager': pager} %}
+
 <div id="screenshot_list">
 {% for screenshot in entities %}
-<div class="screenshot_small {{ screenshot.type }}_type">
+<div class="screenshot_small">
 <a href="{{ path('backend_screenshot_delete',{'id':screenshot.id}) }}" class="delete">
 {{ 'delete' | trans }}
 </a>
 <a href="{{ path('backend_screenshot_edit',{'id':screenshot.id}) }}">
-<div class="screen">
-<img src="{{ path('frontend_screenshot_small', {'id':screenshot.id}) }}"/>
-</div>
+{{ screenshot_helper.html(screenshot) | raw }}
 </a>
 </div>
 {% endfor %}

@@ -313,16 +313,32 @@ p {
 
 .pagination {
     clear: both;
+    overflow: hidden;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
 .pagination .pages {
     margin: 0;
     padding: 0;
+    display: inline;
     text-align: center;
 }
 
 .pagination .pages li {
     display: inline;
+}
+
+.pagination .pages .current {
+    font-weight: bold;
+}
+
+.pagination .previous {
+    float: left;
+}
+
+.pagination .next {
+    float: right;
 }
 
 #flash_error {

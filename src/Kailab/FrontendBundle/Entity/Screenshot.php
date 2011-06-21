@@ -6,7 +6,7 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\ScreenshotRepository")
  * @ORM\Table(name="screenshots")
  */
 class Screenshot
@@ -24,6 +24,11 @@ class Screenshot
     protected $active;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $orientation;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     protected $updated;
@@ -34,9 +39,10 @@ class Screenshot
     protected $created;
 
     /**
-     * @ORM\Column(type="string", length="20", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Platform", inversedBy="screenshots")
+     * @ORM\JoinColumn(name="platform_id", referencedColumnName="id")
      */
-    protected $type;
+    protected $platform;
 
     /**
      * @ORM\OneToMany(targetEntity="AppScreenshot", mappedBy="app", cascade={"persist", "remove"})
@@ -63,14 +69,24 @@ class Screenshot
         $this->id = $id;
     }
 
-    public function getType()
+    public function getOrientation()
     {
-        return $this->type;
+        return $this->orientation;
     }
 
-    public function setType($type)
+    public function setOrientation($ori)
     {
-        $this->type = $type;
+        $this->orientation = $ori;
+    }
+
+    public function getPlatform()
+    {
+        return $this->platform;
+    }
+
+    public function setPlatform($platform)
+    {
+        $this->platform = $platform;
     }
 
     public function getPosition()

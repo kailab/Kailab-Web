@@ -11,6 +11,7 @@ class ScreenshotController extends EntityCrudController
     protected $entity_name = 'KailabFrontendBundle:Screenshot';
     protected $view_prefix = 'KailabBackendBundle:Screenshot';
     protected $route_prefix = 'backend_screenshot_';
+    protected $limit = 14;
 
     protected function getFormType()
     {

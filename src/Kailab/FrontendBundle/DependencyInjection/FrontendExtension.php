@@ -11,6 +11,15 @@ class FrontendExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $config = reset($configs);
+
+        $container
+            ->register('templating.helper.screenshot', 'Kailab\FrontendBundle\Templating\Helper\ScreenshotHelper')
+            ->setArguments(array(new Reference('service_container'),$config))->addTag('templating.helper');
+
+        $container
+            ->register('twig.extension.screenshot', 'Kailab\FrontendBundle\Templating\Twig\Extension\HelperExtension')
+            ->addArgument(new Reference('templating.helper.screenshot'))->addTag('twig.extension');
+
         $container
             ->register('templating.helper.locale', 'Kailab\FrontendBundle\Templating\Helper\LocaleHelper')
             ->setArguments(array(new Reference('service_container'),$config))->addTag('templating.helper');

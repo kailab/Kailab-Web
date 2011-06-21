@@ -1,0 +1,49 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Platforms' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for platform in entities %}
+<tr>
+    <td>
+        {{ platform.name }}
+    </td>
+    <td>
+        {{ platform.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_platform_edit',{'id':platform.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_platform_delete',{'id':platform.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No platforms found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_platform_new') }}">{{ 'Add new Platform' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}
