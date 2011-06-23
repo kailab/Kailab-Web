@@ -1,0 +1,34 @@
+<div class="info">
+    {% if application.related.count %}
+    <div class="section">
+    <h3>{{ 'Related projects' | trans }}</h3>
+    <ul>
+    {% for related in application.related %}
+        <li><a href="{{ path('frontend_applications') }}#app_{{ related.id }}">{{ related.name }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {% if application.platforms.count %}
+    <div class="section">
+    <h3>{{ 'Platforms' | trans }}</h3>
+    <ul>
+    {% for platform in application.platforms %}
+        <li><img src="{{ path('frontend_platform_icon', {'id':platform.id}) }}"/>{{ platform.name }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {% if application.technologies.count %}
+    <div class="section">
+    <h3>{{ 'Technologies' | trans }}</h3>
+    <ul>
+    {% for technology in application.technologies %}
+        <li><img src="{{ path('frontend_technology_icon', {'id':technology.id}) }}"/>{{ technology.name }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+</div>

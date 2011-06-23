@@ -1,0 +1,10 @@
+{% extends "KailabFrontendBundle:Applications:index.html.twig" %}
+
+{% block subtitle %}
+    {{ parent() }} - {{ 'Technology' | trans }}
+{% endblock %}
+
+{% block content %}
+{% set apps = techs %}
+{{ parent() }}
+{% endblock %}

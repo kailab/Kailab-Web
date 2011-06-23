@@ -6,14 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ApplicationsController extends Controller
 {
+    protected $app_type = 'app';
+    protected $view_dir = 'Applications';
+
     public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
 
         $repo = $em->getRepository('KailabFrontendBundle:App');
-        $apps = $repo->findAllActiveOrdered();
+        $apps = $repo->findAllActiveOrdered($this->app_type);
 
-        return $this->render('KailabFrontendBundle:Applications:index.html.twig',array(
+        $view = 'KailabFrontendBundle:'.$this->view_dir.':index.html.twig';
+        return $this->render($view,array(
             'apps'  => $apps
         ));
     }

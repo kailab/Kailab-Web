@@ -5,6 +5,15 @@
     {{ parent() }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/contact.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block title %}
     {{ parent() }} - {{ 'Contact' | trans }}
 {% endblock %}
@@ -38,20 +47,28 @@
     <div class="section">
         <h2>{{ 'What do we do?' | trans }}</h2>
 
-        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
-        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
-        was turned on or changed/updated, and/or the value of 'formatoptions' 
-        changed.</p>
+        <p>At Kailab we develop <em>casual games</em>, games oriented to marketing advertising and applications for mobile phones and small consoles.</p>
 
-        <p>The standard way to avoid this is to set the 'paste' option before 
-        pasting and reset it afterwards. You can make a key do this with the 
-        'pastetoggle' option, too.</p>
+        <p>For this, we have been 5 years experience developing and improving two software tools that let us port any game we do to several platforms in a very short time: Fast Track Machine for JAVA, and Arcadix for C++.</p>
+
+        <p>These tools are software libraries that programmers use when creating applications or games.</p>
+
+        <p>Every library is composed of modules that have specific functions. For instance, the "input module" manages keyboards, mouse, touchscreens, while the "sound module" loads and manages all sounds.</p>
+
+        <p>We are continuously improving and including new modules to our libraries. The more modules we include, the more things our applications can do, the easier to program they are.</p>
+
     </div>
 
     <div class="section">
         <h2>{{ 'Where are we?' | trans }}</h2>
 
-        <div id="map_canvas" style="width: 450px; height: 150px"></div>
+        <div class="subsection">
+            <div class="contact_info">
+                {% include 'KailabFrontendBundle:Default:_contact.html.twig' %}
+            </div>
+
+            <div id="map_canvas" style="width: 450px; height: 250px"></div>
+        </div>
 
         <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
         (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
@@ -63,6 +80,13 @@
         'pastetoggle' option, too.</p>
     </div>
 </div>
+
+<script type="text/html" id="map_info">
+<strong style="display: block;">{{ 'Kailab Office' | trans }}</strong>
+<a href="http://maps.google.com/maps?daddr=Carrer+de+Pau+Claris,+115,+08009+Barcelona,+Espa%C3%B1a&hl=es&ie=UTF8&sll=41.392053,2.167856&sspn=0.006295,0.006295&view=map&geocode=CWmQDIzzH71pFbWXdwIdMBQhAA&z=16" target="_new">
+{{ 'see in google maps' | trans }}
+</a>
+</script>
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -76,8 +100,15 @@ $(document).ready(function(){
     var marker = new google.maps.Marker({
         position: options.center, 
         map: map, 
-        title:"Hello World!"
-    });   
+        title:"Kailab"
+    });
+
+
+    var info = new google.maps.InfoWindow();
+    info.setContent($('#map_info').html());
+    info.setPosition(marker.position);
+    info.open(map);
+
 });
 </script>
 

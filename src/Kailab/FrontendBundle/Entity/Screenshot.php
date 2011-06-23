@@ -11,6 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Screenshot
 {
+    const ORIENTATION_VERTICAL = 'vertical';
+    const ORIENTATION_HORIZONTAL = 'horizontal';
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -24,7 +27,7 @@ class Screenshot
     protected $active;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=50)
      */
     protected $orientation;
 
@@ -57,6 +60,7 @@ class Screenshot
         $this->active = true;
         $this->updated = new \DateTime('now');
         $this->created = new \DateTime('now');
+        $this->orientation = self::ORIENTATION_VERTICAL;
     }
 
     public function getId()

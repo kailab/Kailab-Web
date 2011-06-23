@@ -25,10 +25,18 @@ p {
     margin: 0 0 0.3em 0;
 }
 
-.maincontent .section {
+.section {
     margin-bottom: 20px;
 }
 
+.subsection {
+    margin-bottom: 10px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 150%;
+}
 
 #header {
     width: 960px;
@@ -153,8 +161,8 @@ p {
 #main .maincontent h4,
 #main .maincontent h5,
 #main .maincontent h6 {
-    padding: 0 0 5px 0;
-    border-bottom: 1px dotted #cccccc;
+    padding: 0;
+    margin-bottom: 10px;
     color: #bdca0e;
     background-image: none;
 }
@@ -240,7 +248,9 @@ p {
     width: 200px;
 }
 
-#sidebar .section h2 {
+#sidebar .section h2,
+#sidebar .section h3
+{
     color: #000000;
     font-size: 14px;
     border: 0;

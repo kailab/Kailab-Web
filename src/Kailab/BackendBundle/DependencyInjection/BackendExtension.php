@@ -29,6 +29,6 @@ class BackendExtension extends Extension
 
     public function getNamespace()
     {
-        return 'http://www.kailab.com/symfony/schema/backend';
+        return 'kailab_backend';
     }
 }

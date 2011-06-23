@@ -4,6 +4,7 @@ namespace Kailab\BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Kailab\FrontendBundle\Entity\Screenshot;
 
 class ScreenshotType extends AbstractType
 {
@@ -12,8 +13,8 @@ class ScreenshotType extends AbstractType
         $builder->add('id','hidden');
         $builder->add('orientation', 'choice', array(
             'choices'   => array(
-                0   => 'Vertical',
-                1   => 'Horizontal'
+                Screenshot::ORIENTATION_VERTICAL    => 'Vertical',
+                Screenshot::ORIENTATION_HORIZONTAL  => 'Horizontal'
             )
         ));
         $builder->add('platform', 'entity', array(

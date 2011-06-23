@@ -1,116 +1,36 @@
-.screenshot_small {
-    height: 180px;
-    width: 100px;
-    padding: 0;
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-}
-
-.screenshot_big {
-    height: 475px;
-    width: 250px;
-    padding: 0;
-    position: relative;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-}
-
-.screenshot_small .screen {
-    margin: 27px 0 0 17px;
-    width: 65px;
-    height: 100px;
-    overflow:hidden;
-}
-
-.screenshot_big .screen {
-    margin: 88px 0 0 24px;
-    width: 205px;
-    height: 307;
-    overflow:hidden;
-}
-
-.screenshot_small.android_type {
-    background-image: url(../../kailabfrontend/images/bg_android_small.png);
-}
-
-.screenshot_small.iphone_type {
-    background-image: url(../../kailabfrontend/images/bg_iphone_small.png);
-}
-
-.screenshot_small.java_type {
-    background-image: url(../../kailabfrontend/images/bg_java_small.png);
-}
-
-.screenshot_small.bada_type {
-    background-image: url(../../kailabfrontend/images/bg_bada_small.png);
-}
-
-.screenshot_big.android_type {
-    background-image: url(../../kailabfrontend/images/bg_android_big.png);
-}
-
-.screenshot_big.iphone_type {
-    background-image: url(../../kailabfrontend/images/bg_iphone_big.png);
-}
-
-.screenshot_big.java_type {
-    background-image: url(../../kailabfrontend/images/bg_java_big.png);
-}
-
-.screenshot_big.bada_type {
-    background-image: url(../../kailabfrontend/images/bg_bada_big.png);
-}
-
-.screenshot_small.bada_type .screen {
-    padding-top: -5px;
-}
 
 ul.screenshots {
-    margin: 0;
+    overflow: hidden;
+    margin: 0 0 10px 0;
     padding: 0;
 }
 
-li.screenshot_small,
-li.screenshot_big {
-    list-style: none;
-    margin: 0 10px 10px 0;
+ul.screenshots li {
     float: left;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
 }
 
-.screenshot_small .delete {
+.screenshot_wrapper .delete {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #BDCA0E;
+    font-size: 0;
+    text-indent: -99999px;
     background-image: url(../images/delete.png);
     background-repeat: no-repeat;
     background-position: center center;
-    width: 15px;
-    height: 15px;
-    font-size: 0px;
-    right: 0;
-    top: 0;
-    padding: 5px;
-    border: 1px solid #BDCA0E;
-    background-color: #FFFFFF;
-    overflow: hidden;
-    position: absolute;
     cursor: pointer;
-}
-
-#screenshot_list {
-    overflow: hidden;
-    margin: 0 auto 10px auto;
-    width: 700px;
-}
-
-#screenshot_list .screenshot_small {
-    float: left;
 }
 
 ul.selected_screenshots {
     border: 1px solid #CCCCCC;
     padding: 10px;
-    overflow: hidden;
 }
 
-ul.available_screenshots .screenshot_small {
+.available_screenshots li {
     cursor: pointer;
 }

@@ -21,8 +21,12 @@ class PlatformType extends AbstractType
         $builder->add('screen_w','integer');
         $builder->add('screen_h','integer');
 
-        $builder->add('icon','file');
-        $builder->add('background','file');
+        $builder->add('icon','file',array(
+            'required'  => false
+        ));
+        $builder->add('background','file',array(
+            'required'  => false
+        ));
     }
 
     public function getDefaultOptions(array $options)

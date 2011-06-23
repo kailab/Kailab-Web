@@ -1,0 +1,26 @@
+{% extends "KailabBackendBundle::form.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/kailabfrontend/css/screenshots.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block form_title %}
+{% if entity.id %}
+{{ 'Editing Question' | trans }}
+{% else %}
+{{ 'New Question' | trans }}
+{% endif %}
+{% endblock %}
+
+{% block form_translation %}
+    {{ form_row(trans.title, {'attr':{'size':40}}) }}
+    {{ form_widget(trans.answer, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_rest(trans) }}
+{% endblock %}
+
+

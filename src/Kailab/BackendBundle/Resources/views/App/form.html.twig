@@ -35,8 +35,12 @@
 {% endblock %}
 
 {% block form_rest %}
-{{ form_row(form.url, {'widget':{'attr':{'size':40}}}) }}
+{{ form_row(form.url, {'attr':{'size':40}}) }}
+{{ form_row(form.slug, {'attr':{'size':40}}) }}
 {{ form_row(form.type) }}
+{{ form_row(form.related) }}
+{{ form_row(form.platforms) }}
+{{ form_row(form.technologies) }}
 
 {{ form_widget(form.screenshots) }}
 
@@ -61,10 +65,8 @@
 </script>
 
 <script type="text/html" id="screenshot_template">
-<li class="screenshot_small __type___type">
-    <div class="screen">
-        <img src="{{ path('frontend_screenshot_small',{'id':'__id__'}) }}" />
-    </div>
+<li class="screenshot_wrapper">
+    <img src="{{ path('frontend_screenshot_small',{'id':'__id__'}) }}" />
 </li>
 </script>
 

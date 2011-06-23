@@ -4,6 +4,47 @@
     {{ parent() }} - {{ 'Legal Information' | trans }}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/legal.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block content %}
-test
+<h1>{{ 'Legal Information' | trans }}</h1>
+
+<div class="maincontent legal">
+
+<div class="column">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consectetur tempus euismod. Nullam in neque ligula. Etiam in ante quis mauris cursus vehicula. Quisque commodo ante ac dui malesuada id tincidunt magna varius. Sed ante velit, tincidunt at ornare quis, placerat ut turpis. Mauris aliquet velit sit amet magna porttitor pretium. Donec eget erat non nibh consequat euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam purus felis, euismod vestibulum mattis dictum, tincidunt ut erat. Aliquam massa velit, tincidunt et aliquam id, ullamcorper in lacus. Duis accumsan pulvinar sagittis. Aliquam ornare, urna id tincidunt facilisis, ante risus elementum justo, eget lacinia magna diam sed nunc. Praesent porta ultricies velit, nec pulvinar est pharetra dapibus. Donec ornare augue a arcu faucibus volutpat. Duis vitae placerat purus. Quisque fermentum rhoncus tempor. Pellentesque fringilla nunc id tortor euismod quis congue mi malesuada.</p>
+
+<p>Sed tellus orci, eleifend eu aliquet et, dignissim vitae lorem. Pellentesque mauris orci, viverra in lobortis lacinia, luctus vel justo. Quisque vel sollicitudin mi. Phasellus malesuada, tortor vitae tincidunt consequat, mi ante pretium mauris, id luctus ligula odio ac libero. Suspendisse potenti. Nulla nec ligula sed felis faucibus rutrum. Nam nisl quam, interdum sit amet euismod eget, auctor sodales nisi. Curabitur posuere tempus ipsum. Proin pretium elementum varius. Suspendisse tristique, magna eget adipiscing placerat, ipsum est molestie justo, eget cursus ligula velit at nisl.</p>
+
+</div>
+
+<div class="column">
+
+<p>Sed felis tortor, facilisis eget euismod ac, placerat in odio. Fusce semper viverra ante vel dictum. Ut metus velit, vulputate id blandit nec, tristique sed augue. Suspendisse nibh eros, suscipit vitae tempor in, vulputate in mauris. Nulla facilisi. Donec elit turpis, porttitor eu vulputate et, sollicitudin a erat. Phasellus at neque felis. Ut metus ante, pretium ac interdum in, congue ac ligula. Donec aliquam volutpat orci non dictum. Nulla consequat ultrices lacus eget elementum. Nullam vehicula arcu a turpis ornare vel imperdiet massa lacinia. Aliquam sagittis massa ut magna convallis ut ultrices orci aliquam. Sed pharetra tristique purus in tincidunt. Cras metus tellus, mollis et pulvinar non, semper nec ligula. Quisque consectetur placerat diam non tempus.</p>
+
+<p>Suspendisse luctus egestas lectus, et varius odio laoreet non. Donec ac libero elit. Proin at lacus vel justo tincidunt pretium. Nam congue venenatis eros, id commodo lacus cursus et. Praesent auctor porta vestibulum. Aliquam erat volutpat. Donec nec sapien non libero volutpat gravida nec tincidunt massa. Phasellus magna nisl, congue et tempus imperdiet, egestas condimentum nulla. Cras faucibus ipsum at nulla aliquet semper. Etiam ligula augue, dapibus vitae fermentum eget, malesuada ut enim. Sed quis eros augue. Praesent faucibus diam in ligula iaculis sed ornare lectus porttitor.</p>
+
+<p>Pellentesque enim diam, sagittis a consequat eu, posuere non mi. Vivamus arcu lorem, interdum vel sodales vel, volutpat eget nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer at diam eget lorem pharetra lacinia. Sed tempus lacinia felis, non egestas eros rhoncus mattis. Integer sapien enim, euismod eget iaculis at, volutpat vitae metus. Phasellus pellentesque euismod turpis non facilisis. Etiam in nibh tristique velit commodo volutpat non vel nisl. Etiam commodo vulputate ante et luctus. Suspendisse urna nulla, pulvinar et mattis nec, laoreet vel nisi. Duis laoreet eros sed orci scelerisque eleifend. In feugiat, tellus vitae hendrerit vehicula, velit neque egestas lorem, sit amet ultrices dui ligula a eros. Morbi dignissim lacinia dolor, vitae mollis metus bibendum porta. Mauris non dui ligula. Duis blandit varius consequat. Maecenas diam dolor, tristique et accumsan eget, fermentum ac mauris. Morbi egestas fermentum lacus, vel dignissim risus luctus sed. Proin semper eros at tortor egestas condimentum.</p>
+
+</div>
+
+<div class="column">
+
+<p>Sed felis tortor, facilisis eget euismod ac, placerat in odio. Fusce semper viverra ante vel dictum. Ut metus velit, vulputate id blandit nec, tristique sed augue. Suspendisse nibh eros, suscipit vitae tempor in, vulputate in mauris. Nulla facilisi. Donec elit turpis, porttitor eu vulputate et, sollicitudin a erat. Phasellus at neque felis. Ut metus ante, pretium ac interdum in, congue ac ligula. Donec aliquam volutpat orci non dictum. Nulla consequat ultrices lacus eget elementum. Nullam vehicula arcu a turpis ornare vel imperdiet massa lacinia. Aliquam sagittis massa ut magna convallis ut ultrices orci aliquam. Sed pharetra tristique purus in tincidunt. Cras metus tellus, mollis et pulvinar non, semper nec ligula. Quisque consectetur placerat diam non tempus.</p>
+
+<p>Suspendisse luctus egestas lectus, et varius odio laoreet non. Donec ac libero elit. Proin at lacus vel justo tincidunt pretium. Nam congue venenatis eros, id commodo lacus cursus et. Praesent auctor porta vestibulum. Aliquam erat volutpat. Donec nec sapien non libero volutpat gravida nec tincidunt massa. Phasellus magna nisl, congue et tempus imperdiet, egestas condimentum nulla. Cras faucibus ipsum at nulla aliquet semper. Etiam ligula augue, dapibus vitae fermentum eget, malesuada ut enim. Sed quis eros augue. Praesent faucibus diam in ligula iaculis sed ornare lectus porttitor.</p>
+
+<p>Pellentesque enim diam, sagittis a consequat eu, posuere non mi. Vivamus arcu lorem, interdum vel sodales vel, volutpat eget nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer at diam eget lorem pharetra lacinia. Sed tempus lacinia felis, non egestas eros rhoncus mattis. Integer sapien enim, euismod eget iaculis at, volutpat vitae metus. Phasellus pellentesque euismod turpis non facilisis. Etiam in nibh tristique velit commodo volutpat non vel nisl. Etiam commodo vulputate ante et luctus. Suspendisse urna nulla, pulvinar et mattis nec, laoreet vel nisi. Duis laoreet eros sed orci scelerisque eleifend. In feugiat, tellus vitae hendrerit vehicula, velit neque egestas lorem, sit amet ultrices dui ligula a eros. Morbi dignissim lacinia dolor, vitae mollis metus bibendum porta. Mauris non dui ligula. Duis blandit varius consequat. Maecenas diam dolor, tristique et accumsan eget, fermentum ac mauris. Morbi egestas fermentum lacus, vel dignissim risus luctus sed. Proin semper eros at tortor egestas condimentum.</p>
+
+</div>
+
+
+</div>
 {% endblock %}

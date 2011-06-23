@@ -14,8 +14,6 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
  */
 class App
 {
-    const EXCERPT_SEPARATOR = '<!-- more -->';
-
     protected $locale;
 
     /**
@@ -24,6 +22,11 @@ class App
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="string", length="255", nullable=true)
+     */
+    protected $slug;
 
     /**
      * @ORM\Column(type="integer")
@@ -67,6 +70,15 @@ class App
     protected $active;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Platform")
+     * @ORM\JoinTable(name="app_platforms",
+     *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $platforms;
+
+    /**
      * @ORM\ManyToMany(targetEntity="Tech")
      * @ORM\JoinTable(name="app_techs",
      *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
@@ -99,6 +111,14 @@ class App
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function getOrientation()
+    {
+        $shot = $this->getScreenshot();
+        if($shot){
+            return $shot->getOrientation();
+        }
     }
 
     public function getActive()
@@ -240,9 +260,10 @@ class App
 
     public function getExcerpt()
     {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return reset($content);
+        $trans = $this->getTranslation();
+        if($trans){
+            return $trans->getDescription();
+        }
     }
 
     public function hasExcerpt()
@@ -280,6 +301,26 @@ class App
     public function setType($type)
     {
         $this->type = $type;
+    }
+
+    public function getPlatforms()
+    {
+        return $this->platforms;
+    }
+
+    public function setPlatforms($platforms)
+    {
+        $this->platforms = $platforms;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 
 }

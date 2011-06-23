@@ -63,12 +63,16 @@
             </a></h2>
             
             {% if appli.screenshot %}
+            {% if appli.screenshot.orientation == 'vertical' %}
             <div class="side">
-                <div class="screenshot_small {{ appli.screenshot.type}}_type">
-                    <div class="screen">
-                        <img src="{{ path('frontend_screenshot_small', {'id':appli.screenshot.id}) }}" alt="{{ appli.name }}" />
-                    </div>
-                </div>
+            {% elseif appli.screenshot.orientation == 'horizontal' %}
+            <div class="top">
+            {% else %}
+            <div>
+            {% endif %}
+                <a href="{{ path('frontend_applications') }}#app_{{ appli.id }}">
+                    <img src="{{ path('frontend_screenshot_small', {'id':appli.screenshot.id}) }}" alt="{{ appli.name }}" />
+                </a>
             </div>
             {% endif %}
 
@@ -92,12 +96,14 @@
             </a></h2>
 
             {% if game.screenshot %}
+            {% if game.screenshot.orientation == 'vertical' %}
             <div class="side">
-                <div class="screenshot_small {{ game.screenshot.type}}_type">
-                    <div class="screen">
-                        <img src="{{ path('frontend_screenshot_small', {'id':game.screenshot.id}) }}" alt="{{ game.name }}" />
-                    </div>
-                </div>
+            {% elseif game.screenshot.orientation == 'horizontal' %}
+            <div class="top">
+            {% else %}
+            <div>
+            {% endif %}
+                <img src="{{ path('frontend_screenshot_small', {'id':game.screenshot.id}) }}" alt="{{ game.name }}" />
             </div>
             {% endif %}
 
@@ -143,7 +149,7 @@
 
         {% if tech is defined and tech %}
         <div class="block">
-            <h2><a href="{{ path('frontend_technology') }}" title="{{ 'Tec' | trans }}">
+            <h2><a href="{{ path('frontend_technologies') }}" title="{{ 'Tec' | trans }}">
                 {{ 'Technology' | trans }}
             </a></h2>
 
@@ -156,12 +162,13 @@
         {% endif %}
 
         <div class="block">
-            <h2><a href="{{ path('frontend_technology') }}" title="{{ 'Tec' | trans }}">
+            <h2><a href="{{ path('frontend_about') }}" title="{{ 'Tec' | trans }}">
                 {{ 'About us' | trans }}
             </a></h2>
 
             <div class="main">
-                {{ 'We are a small game development studio set in Barcelona, Spain.' | trans }}
+                <img src="{{ asset('bundles/kailabfrontend/images/witch.png') }}" style="float: left;"/>
+                {{ 'We are a small game and mobile app development studio set in Barcelona, Spain.' | trans }}
             </div>
             <div class="foot">
                 <a href="{{ path('frontend_about') }}" class="button">{{ 'See +' | trans }}</a>
@@ -169,16 +176,20 @@
         </div>
 
         <div class="block">
-            <h2><a href="{{ path('frontend_technology') }}" title="{{ 'Tec' | trans }}">
+            <h2><a href="{{ path('frontend_contact') }}" title="{{ 'Tec' | trans }}">
                 {{ 'Contact us' | trans }}
             </a></h2>
 
             <div class="main">
+                {% include 'KailabFrontendBundle:Default:_contact.html.twig' %}
             </div>
             <div class="foot">
                 <a href="{{ path('frontend_contact') }}" class="button">{{ 'See +' | trans }}</a>
             </div>
 
+        </div>
+
+        <div class="block">
         </div>
 
 
@@ -187,8 +198,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#slider').nivoSlider({
-        });
+        $('#slider').nivoSlider();
     });
 
     new TWTR.Widget({

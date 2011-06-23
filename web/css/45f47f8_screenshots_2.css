@@ -1,0 +1,36 @@
+
+ul.screenshots {
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+ul.screenshots li {
+    float: left;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.screenshot_wrapper .delete {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #BDCA0E;
+    font-size: 0;
+    text-indent: -99999px;
+    background-image: url(../bundles/kailabfrontend/images/delete.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+ul.selected_screenshots {
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+}
+
+.available_screenshots li {
+    cursor: pointer;
+}

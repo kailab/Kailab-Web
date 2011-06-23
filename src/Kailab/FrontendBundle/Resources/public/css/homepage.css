@@ -1,8 +1,8 @@
 #slider {
-    width: 450px;
-    height: 450px;
+    width: 470px;
+    height: 440px;
     float: left;
-    margin: 0 30px 20px 0;
+    margin: 0 10px 10px 0;
 }
 
 .nivoSlider {
@@ -47,10 +47,15 @@
     line-height: 1.2em;
 }
 
+.maincontent .block .top {
+    text-align: center;
+}
+
 .maincontent .block .side {
     float: left;
     width: 90px;
     padding: 0 10px 10px 0;
+    text-align: center;
 }
 
 .maincontent .block .excerpt {

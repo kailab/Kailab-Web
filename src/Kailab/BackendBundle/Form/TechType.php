@@ -10,18 +10,27 @@ class TechType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('id','hidden');
-        $builder->add('url','url');
+        $builder->add('slug','text', array(
+            'required'  => false,
+        ));
+        $builder->add('url','url', array(
+            'required'  => false,
+        ));
         $builder->add('translations', 'collection', array(
            'type'       => new TechTranslationType(),
+        ));
+        $builder->add('icon','file',array(
+            'required'  => false,
         ));
         $builder->add('image','file',array(
             'required'  => false,
         ));
         $builder->add('screenshots','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
-            'property'  => 'type',
+            'property'  => 'id',
             'expanded'  => false,
-            'multiple'  => true
+            'multiple'  => true,
+            'required'  => false
         ));
     }
 

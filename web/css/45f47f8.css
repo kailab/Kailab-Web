@@ -1,0 +1,258 @@
+#slider {
+    width: 470px;
+    height: 440px;
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.nivoSlider {
+    background-color: #000000 !important;
+}
+
+#blocks {
+    width: 960px;
+}
+
+.maincontent .block {
+    width: 208px;
+    height: 208px;
+    border: 1px solid #eeeeee;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    float: left;
+    background-image: url(../bundles/kailabfrontend/images/bg_block.png);
+    position: relative;
+    overflow: hidden;
+}
+
+.maincontent .block.twitter {
+    height: 448px;
+    float: right;
+}
+
+#main .maincontent .block h2 {
+    border: 0;
+    margin: 0;
+}
+
+#main .maincontent .block h2 a {
+    text-decoration: none;
+}
+
+.maincontent .block .screenshot_small {
+    float: left;
+}
+
+.maincontent .block p {
+    line-height: 1.2em;
+}
+
+.maincontent .block .top {
+    text-align: center;
+}
+
+.maincontent .block .side {
+    float: left;
+    width: 90px;
+    padding: 0 10px 10px 0;
+    text-align: center;
+}
+
+.maincontent .block .excerpt {
+    font-size: x-small;
+}
+
+.maincontent .block .main {
+}
+
+#main .maincontent .block h3 {
+    border-bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.maincontent .block .foot {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.maincontent .block .button {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    float: right;
+    padding: 4px;
+    background-image: url(../bundles/kailabfrontend/images/bg_block_button.png);
+}
+
+
+ul.screenshots {
+    overflow: hidden;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+ul.screenshots li {
+    float: left;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.screenshot_wrapper .delete {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #BDCA0E;
+    font-size: 0;
+    text-indent: -99999px;
+    background-image: url(../bundles/kailabfrontend/images/delete.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+}
+
+ul.selected_screenshots {
+    border: 1px solid #CCCCCC;
+    padding: 10px;
+}
+
+.available_screenshots li {
+    cursor: pointer;
+}
+
+/*
+ * jQuery Nivo Slider v2.5.2
+ * http://nivo.dev7studios.com
+ *
+ * Copyright 2011, Gilbert Pellegrom
+ * Free to use and abuse under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ * 
+ * March 2010
+ */
+ 
+ 
+/* The Nivo Slider styles */
+.nivoSlider {
+	position:relative;
+}
+.nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+/* If an image is wrapped in a link */
+.nivoSlider a.nivo-imageLink {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	border:0;
+	padding:0;
+	margin:0;
+	z-index:6;
+	display:none;
+}
+/* The slices and boxes in the Slider */
+.nivo-slice {
+	display:block;
+	position:absolute;
+	z-index:5;
+	height:100%;
+}
+.nivo-box {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+/* Caption styles */
+.nivo-caption {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	background:#000;
+	color:#fff;
+	opacity:0.8; /* Overridden by captionOpacity setting */
+	width:100%;
+	z-index:8;
+}
+.nivo-caption p {
+	padding:5px;
+	margin:0;
+}
+.nivo-caption a {
+	display:inline !important;
+}
+.nivo-html-caption {
+    display:none;
+}
+/* Direction nav styles (e.g. Next & Prev) */
+.nivo-directionNav a {
+	position:absolute;
+    bottom: -30px;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-prevNav {
+	left:0px;
+}
+.nivo-nextNav {
+	right:0px;
+}
+/* Control nav styles (e.g. 1,2,3...) */
+.nivo-controlNav a {
+	position:relative;
+	z-index:9;
+	cursor:pointer;
+}
+.nivo-controlNav a.active {
+	font-weight:bold;
+}
+
+/* custom for kailab */
+
+.nivo-controlNav {
+	position:absolute;
+    text-align: center;
+    width: 100%;
+	top:: 205px;
+    line-height: 30px;
+    bottom: -30px;
+}
+.nivo-controlNav a {
+    padding: 15px;
+    height: 0;
+    width: 0;
+    font-size: 0;
+	background:url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+	border:0;
+    color: transparent;
+}
+.nivo-controlNav a.active {
+	background-position:0 -30px;
+}
+
+.nivo-directionNav a {
+	display:block;
+    position: absolute;
+    top: 205px;
+	width:30px;
+	height:30px;
+	background:url(../bundles/kailabfrontend/images/slider_arrows.png) no-repeat;
+	text-indent:-9999px;
+	border:0;
+}
+a.nivo-nextNav {
+	background-position:-30px 0;
+	right:15px;
+}
+a.nivo-prevNav {
+	left:15px;
+}

@@ -1,0 +1,368 @@
+body {
+    font-family: 'Arimo', Arial, sans-serif;
+    background-color: #FFFFFF;
+    font-size: 12px;
+    color: #9b9b9b;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #bdca0e;
+}
+
+img {
+    border: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 16px 0;
+    font-family: 'Arimo', Arial, sans-serif;
+    line-height: 1.5em;
+}
+
+p {
+    line-height: 1.5em;
+    margin: 0 0 0.3em 0;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.subsection {
+    margin-bottom: 10px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 150%;
+}
+
+
+#header {
+    width: 960px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#logo {
+    margin-top: 10px;
+    width: 240px;
+    float: left;
+}
+
+#languages {
+    list-style: none;
+    margin: 0;
+    height: 15px;
+    padding: 0;
+}
+
+#languages li {
+    display: inline;
+    padding: 0 5px;
+    border-left: 1px solid #aaaaaa;
+}
+
+#languages li.current a{
+    color: #bdca0e;
+}
+
+#languages li a {
+    color: #CCCCCC;
+    text-decoration: none;
+}
+
+#languages li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+#topmenu {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+#topmenu li {
+    display: inline;
+    padding: 0 7px;
+    border-left: 1px solid #bdca0e;
+}
+
+#topmenu li a {
+    text-decoration: none;
+}
+
+#topmenu li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+#mainmenu {
+    margin: 30px 0 0 0;
+    padding: 0;
+}
+
+#mainmenu li {
+    display: inline;
+    padding: 0 25px;
+    text-transform: uppercase;
+    border-left: 2px solid #aaaaaa;
+}
+
+#mainmenu li:first-child {
+    border-left: 0;
+    padding-left: 0;
+}
+
+#mainmenu li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+#mainmenu li a:hover {
+    color: #bdca0e;
+}
+
+#mainmenu li.current a {
+    font-weight: bold;
+}
+
+#main_gradient {
+    background-image: url(../bundles/kailabfrontend/images/gradient_down.png);
+    background-repeat: repeat-x;
+    background-position: top;
+    border-top: 1px solid #bfbfbf;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+#main_wrapper {
+    background-image: url(../bundles/kailabfrontend/images/bg.png);
+    background-color: #f5f7e1;
+    overflow: hidden;
+}
+
+#main {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0 10px 0;
+}
+
+.maincontent {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#main .maincontent h1,
+#main .maincontent h2,
+#main .maincontent h3,
+#main .maincontent h4,
+#main .maincontent h5,
+#main .maincontent h6 {
+    padding: 0;
+    margin-bottom: 10px;
+    color: #bdca0e;
+    background-image: none;
+}
+
+#main h1,
+#main h2 {
+    padding: 0 120px 10px 120px;
+    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    color: #bdca0e;
+}
+
+#main .maincontent .with_sidebar h1,
+#main .maincontent .with_sidebar h2 {
+    padding: 0 0 10px 0;
+    border: 0;
+    background-image: url(../bundles/kailabfrontend/images/sep_small.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    color: #bdca0e;
+}
+
+#sitemap_wrapper {
+    clear: both;
+    background-image: url(../bundles/kailabfrontend/images/bg_logo.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin: 0 auto;
+    width: 1200px;
+    padding: 10px 0 0 0;
+}
+
+#sitemap_separator {
+    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+
+#sitemap{
+    width: 960px;
+    margin: 0 auto;
+    padding: 25px 0;
+    overflow: hidden;
+}
+
+#sitemap li.section {
+    list-style: none;
+    float: left;
+    width: 175px;
+}
+
+
+#sitemap .section h3 {
+    font-size: 14px;
+    font-weight: bold;
+    list-style: none;
+    margin: 0 0 10px 0;
+}
+
+#sitemap .section ul {
+    margin: 0;
+    padding: 0;
+}
+
+#sitemap .section li {
+    margin: 0 0 10px 0;
+    padding: 0;
+    list-style: disc inside none;
+}
+
+#sitemap a {
+    color: #9b9b9b;
+    text-decoration: none;
+}
+
+#sitemap a:hover {
+    color: #bdca0e;
+}
+
+#sidebar {
+    float: right;
+    width: 200px;
+}
+
+#sidebar .section h2,
+#sidebar .section h3
+{
+    color: #000000;
+    font-size: 14px;
+    border: 0;
+    margin: 0 0 5px 0;
+}
+
+#sidebar .section ul {
+    margin: 0;
+    padding: 0;
+    list-style: square inside;
+}
+
+.with_sidebar {
+    float: left;
+    width: 750px;
+}
+
+#footer_wrapper {
+    background-color: #beca10;
+    color: #FFFFFF;
+    clear: both;
+}
+
+#footer {
+    background-image: url(../bundles/kailabfrontend/images/footer_logo.png);
+    background-repeat: no-repeat;
+    background-position: left center;
+    width: 860px;
+    height: 25px;
+    line-height: 25px;
+    margin: 0 auto;
+    padding: 4px 0 4px 100px;
+}
+
+#footer a {
+    color: #FFFFFF;
+}
+    
+
+#footer_social {
+    float: right;
+    height: 25px;
+    line-height: 23px;
+}
+
+#footer_social img {
+    vertical-align: middle;
+}
+
+#footer_social .prefix {
+    margin-right: 15px;
+}
+
+#bottommenu {
+    margin: 0;
+    padding: 0;
+}
+
+#bottommenu li {
+    list-style: none;
+    display: inline;
+    border-left: 1px solid #FFFFFF;
+    padding: 0 20px;
+}
+
+#bottommenu li:first-child {
+    border-left: 0;
+    padding-left: 0;
+}
+
+.pagination {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.pagination .pages {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    text-align: center;
+}
+
+.pagination .pages li {
+    display: inline;
+}
+
+.pagination .pages .current {
+    font-weight: bold;
+}
+
+.pagination .previous {
+    float: left;
+}
+
+.pagination .next {
+    float: right;
+}
+
+#flash_error {
+    background-color: #FFBBBB;
+    color: #FF0000;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#flash_notice {
+    background-color: #BDCA0E;
+    color: #FFFFFF;
+    padding: 5px;
+    margin-bottom: 10px;
+}

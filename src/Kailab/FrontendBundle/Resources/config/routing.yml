@@ -52,9 +52,13 @@ frontend_blog_category:
     requirements:
         id:  \d+
 
-frontend_technology:
+frontend_technologies:
     pattern:  /tech
     defaults: { _controller: KailabFrontendBundle:Technology:index }
+
+frontend_technology_icon:
+    pattern:  /tech/icon/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Technology:icon }
 
 frontend_technology_image:
     pattern:  /tech/image/{id}.png
@@ -68,6 +72,10 @@ frontend_videogames:
     pattern:  /games
     defaults: { _controller: KailabFrontendBundle:Videogames:index }
 
+frontend_screenshot_item:
+    pattern:  /screenshot/item/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Screenshot:item }
+
 frontend_screenshot_big:
     pattern:  /screenshot/big/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:big }
@@ -76,10 +84,10 @@ frontend_screenshot_small:
     pattern:  /screenshot/small/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:small }
 
+frontend_screenshot_full:
+    pattern:  /screenshot/{id}.png
+    defaults: { _controller: KailabFrontendBundle:Screenshot:full }
+
 frontend_platform_icon:
     pattern:  /platform/icon/{id}.png
     defaults: { _controller: KailabFrontendBundle:Platform:icon }
-
-frontend_platform_background:
-    pattern:  /platform/background/{id}.png
-    defaults: { _controller: KailabFrontendBundle:Platform:background }

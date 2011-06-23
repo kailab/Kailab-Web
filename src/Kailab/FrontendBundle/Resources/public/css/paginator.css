@@ -1,0 +1,47 @@
+.paginator .nav {
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+    overflow: hidden;
+    margin: 0 30px;
+    padding: 0;
+}
+
+.paginator a {
+    padding: 15px;
+    width: 0;
+    height: 0;
+    color: transparent;
+    overflow: hidden;
+    margin: 0;
+	background:url(../images/slider_bullets.png) no-repeat;
+    background-position: 0px 0px;
+    font-size: 0px;
+    text-indent: -99999px;
+}
+
+.paginator a.activeSlide,
+.paginator .selected {
+    background-position: 0px -30px;
+}
+
+.paginator .previous {
+	width:30px;
+	height:30px;
+    float: left;
+    cursor: pointer;
+    z-index: 600;
+	background:url(../images/slider_arrows_black.png) no-repeat;
+}
+
+.paginator .next {
+	width:30px;
+	height:30px;
+    float: right;
+    cursor: pointer;
+    z-index: 600;
+	background:url(../images/slider_arrows_black.png) no-repeat;
+    background-position: -30px 0;
+}
+
+

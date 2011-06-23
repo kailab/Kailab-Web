@@ -1,100 +1,133 @@
-#apps {
-    margin: 0;
+#app_icons {
     padding: 0;
+    margin: 0;
+    width: 760px;
 }
 
-#apps li {
+#app_icons li {
     cursor: pointer;
+    float: left;
+    margin: 0;
+    padding: 25px;
+    width: 150px;
+    height: 150px;
+    margin-left: -25px;
+    list-style: none;
 }
 
-#app {
+#app_icons li:first-child {
+    margin-left: 0;
+}
+
+#app_icons li.selected {
+    background-image: url(../images/bg_selected_screenshot.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#app_icons li .app_item_title {
+    font-size: 200%;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 50px;
+    display: block;
+}
+
+#app_icons li.selected .app_item_title {
+    color: #FFFFFF;
+}
+
+.app {
+    background-image: url(../images/sep_big.png);
+    background-position: top center;
+    background-repeat: no-repeat;
     clear: both;
+    overflow: hidden;
+    padding-top: 25px;
+    margin-bottom: 25px;
 }
 
-#app .side {
+.app_inner {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.app .side {
     float: left;
     width: 250px;
-    height: 500px;
     position: relative;
 }
 
-#app .nav {
-    width: 100%;
+.app.horizontal_orientation .side {
+    float: none;
     text-align: center;
-    position: absolute;
-    z-index: 500;
-    bottom: 0;
-    line-height: 22px;
+    width: 710px;
+    margin-bottom: 10px;
 }
 
-#app .nav a {
-    padding: 11px;
-    width: 0;
-    height: 0;
-    color: transparent;
-    overflow: hidden;
-    margin: 5px;
-	background:url(../images/slider_bullets.png) no-repeat;
-    background-position: 0px 0px;
-    font-size: 0px;
-    text-indent: -99999px;
+.app.horizontal_orientation .screenshots {
+    width: 500px;
+    margin: 0 auto;
 }
 
-#app .nav a.activeSlide {
-    background-position: 0px -22px;
+.app.horizontal_orientation .main {
+    margin-left: 0 !important;
+    margin-right: 250px;
 }
 
-#app .previous {
-	width:30px;
-	height:30px;
-    position: absolute;
-    bottom: 0;
-    cursor: pointer;
-    z-index: 500;
-	background:url(../images/slider_arrows.png) no-repeat;
+.app.horizontal_orientation .description {
+    margin: 0;
 }
 
-#app .next {
-	width:30px;
-	height:30px;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    cursor: pointer;
-    z-index: 500;
-	background:url(../images/slider_arrows.png) no-repeat;
-    background-position: -30px 0;
+.app .main {
 }
 
-#app .main {
+.app .main.with_side {
     margin-left: 250px;
 }
 
-#app .main h2 {
+#main .app .main h2 {
     background-image: url(../images/bg_title.png);
+    background-position: left center;
+    background-repeat: no-repeat;
     color: #000000;
     padding: 3px 60px 0 60px;
+    border: 0;
 }
 
-#app .description {
+.app .description {
     margin: 0 200px 0 0;
     padding: 0 10px;
 }
 
-#app .info {
+.app .info {
     float: right;
     width: 200px;
 }
 
-#app .info h3 {
+#main .app .info h3 {
     color: #000000;
     font-size: 14px;
     border: 0;
 }
 
+#main .app .info ul {
+    margin: 0;
+    padding: 0;
+}
+
+#main .app .info li {
+    vertical-align: middle;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 #apps_scroll {
     position: relative;
-    height: 170px;
+    height: 225px;
+    width: 960px;
+    margin: 0 auto;
 }
 
 #apps_scroll .hotspot_left

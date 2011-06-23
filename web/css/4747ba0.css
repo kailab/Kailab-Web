@@ -1,0 +1,114 @@
+#blog {
+    width: 750px;
+    float: left;
+}
+
+#blog h1 {
+    background-image: url("../bundles/kailabfrontend/images/sep_big.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.blog_post {
+    clear: both;
+    line-height: 1.4em;
+
+}
+
+#blog .blog_post {
+    padding-top: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+
+    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#blog .blog_post:first-child {
+    background-image: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.blog_post .image {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 150px;
+    overflow: hidden;
+}
+
+.blog_post .body_with_image {
+    margin-left: 160px;
+}
+
+.blog_post .title {
+    display: inline;
+    border: 0 !important;
+    margin: 0;
+    color: #000000 !important;
+    font-size: normal;
+    background-image: none !important;
+}
+
+.blog_post .create {
+    font-style: italic;
+    font-size: small;
+    color: #BDCA0E;
+}
+
+#blog_post {
+    width: 750px;
+    float: left;
+}
+
+.blog_post .comments {
+    clear: left;
+}
+
+.comment_form .form_row {
+    margin-bottom: 10px;
+}
+
+.comment_form .form_row_content {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+.comment_form .form_submit_row {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+.comment_form label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.comment_form .form_row_errors {
+    margin: 0 0 10px 30%;
+    padding-left: 10px;
+    color: #FF0000;
+}
+
+.comment_form .form_row_errors ul {
+    padding: 0;
+}
+
+.comment_form .form_row_errors li {
+    list-style: square inside;
+}
+
+.comment {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.comment .avatar {
+    float: right;
+    width: 80px;
+    margin: 0 0 10px 10px;
+}

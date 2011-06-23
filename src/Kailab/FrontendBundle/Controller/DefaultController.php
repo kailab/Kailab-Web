@@ -51,7 +51,7 @@ class DefaultController extends Controller
         // resize image
         $imagine = new Imagine();
         $image = $imagine->load($asset->getContent());
-        $box = new Box(450, 450);
+        $box = new Box(470, 440);
         $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
 
         // build response
@@ -78,7 +78,14 @@ class DefaultController extends Controller
 
     public function faqAction()
     {
-        return $this->render('KailabFrontendBundle:Default:faq.html.twig');
+        $em = $this->get('doctrine')->getEntityManager();
+
+        $repo = $em->getRepository('KailabFrontendBundle:Question');
+        $questions = $repo->findAllActiveOrdered();
+
+        return $this->render('KailabFrontendBundle:Default:faq.html.twig', array(
+            'questions' => $questions
+        ));
     }
 
 }

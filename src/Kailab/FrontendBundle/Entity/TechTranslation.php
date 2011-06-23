@@ -28,7 +28,12 @@ class TechTranslation
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length="40000")
+     * @ORM\Column(type="string", length="1000", nullable=true)
+     */
+    protected $excerpt;
+
+    /**
+     * @ORM\Column(type="string", length="40000", nullable=true)
      */
     protected $description;
 
@@ -76,6 +81,16 @@ class TechTranslation
     public function setDescription($desc)
     {
         $this->description = $desc;
+    }
+
+    public function getExcerpt()
+    {
+        return $this->excerpt;
+    }
+
+    public function setExcerpt($excerpt)
+    {
+        $this->excerpt = $excerpt;
     }
 
     public function setTech($tech)

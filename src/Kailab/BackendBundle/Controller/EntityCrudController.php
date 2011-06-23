@@ -3,6 +3,7 @@
 namespace Kailab\BackendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 abstract class EntityCrudController extends Controller
 {
@@ -151,6 +152,10 @@ abstract class EntityCrudController extends Controller
     {
         $request = $this->get('request');
         $entity = $this->findEntity($request->attributes->get('id'));
+
+        if(!$entity){
+            throw new NotFoundHttpException('The entity does not exist.');
+        }
         $form = $this->getForm($entity);
 
         if($request->getMethod() == 'POST'){

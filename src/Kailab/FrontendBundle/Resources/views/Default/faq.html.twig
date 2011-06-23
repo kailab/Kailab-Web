@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block content %}
-test
+<h1>{{ 'Frequently Asqued Questions' | trans }}</h1>
+
+<div class="maincontent">
+{% if questions %}
+    {% for question in questions %}
+    <div class="section question">
+        <h2>{{ question.title }}</h2>
+        <div class="answer">{{ question.answer | raw }}</div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>{{ 'There are no questions at this moment' | trans }}</p>
+{% endif %}
+
+</div>
 {% endblock %}

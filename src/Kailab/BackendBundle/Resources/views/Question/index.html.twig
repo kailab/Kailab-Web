@@ -1,0 +1,55 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Questions' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Title' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for question in entities %}
+<tr>
+    <td>
+        {{ question.title }}
+    </td>
+    <td>
+        {{ question.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {{ question.position }}
+    </td>
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_question_edit',{'id':question.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_question_delete',{'id':question.id}) }}">{{ 'Delete' | trans }}</a></li>
+            <li><a href="{{ path('backend_question_up',{'id':question.id}) }}">{{ 'Up' | trans }}</a></li>
+            <li><a href="{{ path('backend_question_down',{'id':question.id}) }}">{{ 'Down' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% else %}
+
+<p>{{ 'No questions found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_question_new') }}">{{ 'Add new Question' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

@@ -13,6 +13,14 @@ class FrontendExtension extends Extension
         $config = reset($configs);
 
         $container
+            ->register('templating.helper.frontend', 'Kailab\FrontendBundle\Templating\Helper\FrontendHelper')
+            ->setArguments(array(new Reference('service_container'),$config))->addTag('templating.helper');
+
+        $container
+            ->register('twig.extension.frontend', 'Kailab\FrontendBundle\Templating\Twig\Extension\HelperExtension')
+            ->addArgument(new Reference('templating.helper.frontend'))->addTag('twig.extension');
+
+        $container
             ->register('templating.helper.screenshot', 'Kailab\FrontendBundle\Templating\Helper\ScreenshotHelper')
             ->setArguments(array(new Reference('service_container'),$config))->addTag('templating.helper');
 
@@ -63,6 +71,6 @@ class FrontendExtension extends Extension
 
     public function getNamespace()
     {
-        return 'http://www.kailab.com/symfony/schema/frontend';
+        return 'kailab_frontend';
     }
 }

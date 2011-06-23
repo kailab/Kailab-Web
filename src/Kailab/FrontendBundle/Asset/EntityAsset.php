@@ -5,6 +5,7 @@ namespace Kailab\FrontendBundle\Asset;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\Container;
+use Doctrine\ORM\Proxy\Proxy;
 
 class EntityAsset extends File implements AssetInterface
 {
@@ -132,9 +133,16 @@ class EntityAsset extends File implements AssetInterface
 
     public function getNamespace()
     {
+        // fixme! better namespaces...
         // take only last part of class name
         $class =  explode('\\',get_class($this->entity));
-        return Container::underscore(end($class));
+        $ns = Container::underscore(end($class));
+
+        if($this->entity instanceof Proxy){
+            // hack
+            $ns = substr($ns,strpos($ns,'_entity_')+8,-6);
+        }
+        return $ns;
     }
 
     public function load(AssetStorageInterface $storage)

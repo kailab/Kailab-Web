@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Kailab{% endblock %}</title>
-        <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('@KailabFrontendBundle/Resources/public/favicon.ico') }}" />
         {% block javascripts %}
         {% javascripts
             'bundles/kailabfrontend/js/jquery.js'
@@ -47,7 +47,7 @@
                     </ul>
                     <ul id="mainmenu">
                         <li><a href="{{ path('frontend_homepage') }}" >{{ 'Home' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_technology') }}" >{{ 'Technology' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_technologies') }}" >{{ 'Technology' | trans }}</a></li>
                         <li><a href="{{ path('frontend_applications') }}" >{{ 'Applications' | trans }}</a></li>
                         <li><a href="{{ path('frontend_videogames') }}" >{{ 'Videogames' | trans }}</a></li>
                     </ul>
@@ -66,22 +66,25 @@
                             <li class="section">
                                 <h3>{{ 'Tecnology' | trans }}</h3>
                                 <ul>
-                                    <li>arcadix</li>
-                                    <li>cwe</li>
+                                    {% for tech in frontend_helper.sitemap_technologies %}
+                                    <li><a href="{{ path('frontend_technologies') }}#tech_{{ tech.id }}">{{ tech.name }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                             <li class="section">
                                 <h3>{{ 'Applications' | trans }}</h3>
                                 <ul>
-                                    <li>me911</li>
-                                    <li>lasexta</li>
+                                    {% for appli in frontend_helper.sitemap_applications %}
+                                    <li><a href="{{ path('frontend_applications') }}#app_{{ appli.id }}">{{ appli.name }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                             <li class="section">
                                 <h3>{{ 'Videogames' | trans }}</h3>
                                 <ul>
-                                    <li>triopsy</li>
-                                    <li>space golf</li>
+                                    {% for game in frontend_helper.sitemap_videogames %}
+                                    <li><a href="{{ path('frontend_videogames') }}#app_{{ game.id }}">{{ game.name }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                             <li class="section">
@@ -103,8 +106,12 @@
             <div id="footer">
                 <div id="footer_social">
                     <span class="prefix">Follow us on...</span>
-                    <img src="{{asset('bundles/kailabfrontend/images/footer_facebook.png')}}" alt="Facebook"/>
-                    <img src="{{asset('bundles/kailabfrontend/images/footer_twitter.png')}}" alt="Twitter"/>
+                    <a href="http://www.facebook.com/{{ frontend_helper.facebook }}" target="_new">
+                        <img src="{{asset('bundles/kailabfrontend/images/footer_facebook.png')}}" alt="Facebook"/>
+                    </a>
+                    <a href="http://www.twitter.com/#!/{{ frontend_helper.twitter }}" target="_new">
+                        <img src="{{asset('bundles/kailabfrontend/images/footer_twitter.png')}}" alt="Twitter"/>
+                    </a>
                 </div>
                 <ul id="bottommenu">
                     <li><a href="{{ path('frontend_about') }}">{{ 'About us' | trans }}</a></li>

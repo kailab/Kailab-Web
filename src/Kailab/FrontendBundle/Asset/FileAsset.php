@@ -3,8 +3,9 @@
 namespace Kailab\FrontendBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Response;
 
-class FileAsset implements AssetInterface
+class FileAsset extends AbstractAsset
 {
     protected $name;
     protected $path;

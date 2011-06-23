@@ -18,18 +18,18 @@
 
 {% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_screenshot_list', 'pager': pager} %}
 
-<div id="screenshot_list">
+<ul class="screenshots">
 {% for screenshot in entities %}
-<div class="screenshot_small">
+<li class="screenshot_wrapper">
 <a href="{{ path('backend_screenshot_delete',{'id':screenshot.id}) }}" class="delete">
 {{ 'delete' | trans }}
 </a>
 <a href="{{ path('backend_screenshot_edit',{'id':screenshot.id}) }}">
-{{ screenshot_helper.html(screenshot) | raw }}
+{{ screenshot_helper.html(screenshot,'item') | raw }}
 </a>
-</div>
+</li>
 {% endfor %}
-</div>
+</ul>
 
 {% else %}
 

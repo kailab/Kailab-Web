@@ -81,12 +81,8 @@ class Platform
      */
     protected $technologies;
 
-    /**
+     /**
      * @ORM\ManyToMany(targetEntity="App")
-     * @ORM\JoinTable(name="app_platforms",
-     *      joinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")}
-     *      )
      */
     protected $apps;
 
@@ -293,16 +289,10 @@ class Platform
 
     public function getExcerpt()
     {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return reset($content);
-    }
-
-    public function hasExcerpt()
-    {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return count($content) > 0;
+        $trans = $this->getTranslation();
+        if($trans){
+            return $trans->getExcerpt();
+        }
     }
 
     public function getTechnologies()

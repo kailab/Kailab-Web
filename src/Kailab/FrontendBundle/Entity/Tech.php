@@ -14,9 +14,8 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
  */
 class Tech
 {
-    const EXCERPT_SEPARATOR = '<!-- more -->';
-
     protected $locale;
+    protected $icon;
     protected $image;
 
     /**
@@ -32,7 +31,12 @@ class Tech
     protected $position;
 
     /**
-     * @ORM\Column(type="string", length="255")
+     * @ORM\Column(type="string", length="255", nullable=true)
+     */
+    protected $slug;
+
+    /**
+     * @ORM\Column(type="string", length="255", nullable=true)
      */
     protected $url;
 
@@ -76,6 +80,9 @@ class Tech
 
     protected function loadAssets()
     {
+        if(!$this->icon instanceof EntityAsset){
+            $this->icon = new EntityAsset($this, 'icon');
+        }
         if(!$this->image instanceof EntityAsset){
             $this->image = new EntityAsset($this, 'image');
         }
@@ -84,7 +91,28 @@ class Tech
     public function getAssets()
     {
         $this->loadAssets();
-        return array($this->image);
+        return array($this->icon, $this->image);
+    }
+
+    public function getOrientation()
+    {
+        $shot = $this->getScreenshot();
+        if($shot){
+            return $shot->getOrientation();
+        }
+    }
+
+    public function getIcon()
+    {
+        $this->loadAssets();
+        return $this->icon;
+    }
+
+    public function setIcon($path)
+    {
+       $this->loadAssets();
+       $this->icon->loadPath($path);
+       $this->updated = new \DateTime('now');
     }
 
     public function getImage()
@@ -249,16 +277,10 @@ class Tech
 
     public function getExcerpt()
     {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return reset($content);
-    }
-
-    public function hasExcerpt()
-    {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return count($content) > 0;
+        $trans = $this->getTranslation();
+        if($trans){
+            return $trans->getExcerpt();
+        }
     }
 
     public function getApps()
@@ -271,6 +293,15 @@ class Tech
         $this->apps = $apps;
     }
 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
 
 }
 

@@ -140,6 +140,14 @@ backend_platform_delete:
     pattern:  /platform/delete/{id}
     defaults: { _controller: KailabBackendBundle:Platform:delete }
 
+backend_platform_background:
+    pattern:  /platform/{id}/background.png
+    defaults: { _controller: KailabBackendBundle:Platform:background }
+
+backend_platform_icon:
+    pattern:  /platform/{id}/icon.png
+    defaults: { _controller: KailabBackendBundle:Platform:icon }
+
 # blog post
 
 backend_blog_post_list:
@@ -221,3 +229,39 @@ backend_blog_comment_delete:
 backend_blog_comment_toggle:
     pattern:  /blog/comment/toggle/{id}
     defaults: { _controller: KailabBackendBundle:BlogComment:toggle }
+
+# question
+
+backend_question_list:
+    pattern:  /question
+    defaults: { _controller: KailabBackendBundle:Question:index }
+
+backend_question_new:
+    pattern:  /question/new
+    defaults: { _controller: KailabBackendBundle:Question:new }
+
+backend_question_edit:
+    pattern:  /question/edit/{id}
+    defaults: { _controller: KailabBackendBundle:Question:edit }
+
+backend_question_save:
+    pattern:  /question/save
+    defaults: { _controller: KailabBackendBundle:Question:save }
+
+backend_question_delete:
+    pattern:  /question/delete/{id}
+    defaults: { _controller: KailabBackendBundle:Question:delete }
+
+backend_question_toggle:
+    pattern:  /question/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:Question:toggle }
+
+backend_question_up:
+    pattern:  /question/up/{id}
+    defaults: { _controller: KailabBackendBundle:Question:up }
+
+backend_question_down:
+    pattern:  /question/down/{id}
+    defaults: { _controller: KailabBackendBundle:Question:down }
+
+

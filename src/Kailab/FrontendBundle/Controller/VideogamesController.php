@@ -2,12 +2,8 @@
 
 namespace Kailab\FrontendBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-class VideogamesController extends Controller
+class VideogamesController extends ApplicationsController
 {
-    public function indexAction()
-    {
-        return $this->render('KailabFrontendBundle:Videogames:index.html.twig');
-    }
+    protected $app_type = 'game';
+    protected $view_dir = 'Videogames';
 }

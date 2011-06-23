@@ -28,6 +28,11 @@ class PlatformTranslation
     protected $name;
 
     /**
+     * @ORM\Column(type="string", length="1000", nullable=true)
+     */
+    protected $excerpt;
+
+    /**
      * @ORM\Column(type="string", length="40000", nullable=true)
      */
     protected $description;
@@ -66,6 +71,16 @@ class PlatformTranslation
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getExcerpt()
+    {
+        return $this->excerpt;
+    }
+
+    public function setExcerpt($excerpt)
+    {
+        $this->excerpt = $excerpt;
     }
 
     public function getDescription()

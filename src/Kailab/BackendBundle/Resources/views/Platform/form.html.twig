@@ -44,5 +44,25 @@
   h{{ form_widget(form.screen_h, {'attr':{'size':3}}) }}
   </div>
 </div>
+{{ form_row(form.url,{'attr':{'size':40}}) }}
+{{ form_row(form.slug,{'attr':{'size':40}}) }}
+<div class="form_row">
+    {{ form_label(form.icon) }}
+    <div class="form_row_content">
+        {{ form_widget(form.icon) }}
+    </div>
+    <div class="form_row_comment">
+        <img src="{{ path('backend_platform_icon',{'id':entity.id}) }}"/>
+    </div>
+</div>
+<div class="form_row">
+    {{ form_label(form.background) }}
+    <div class="form_row_content">
+        {{ form_widget(form.background) }}
+    </div>
+    <div class="form_row_comment">
+        <img src="{{ path('backend_platform_background',{'id':entity.id}) }}"/>
+    </div>
+</div>
 {{ parent() }}
 {% endblock %}

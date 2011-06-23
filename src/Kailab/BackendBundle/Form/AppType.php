@@ -11,9 +11,14 @@ class AppType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('id','hidden');
-        $builder->add('url','url');
+        $builder->add('url','url',array(
+            'required'  => false
+        ));
+        $builder->add('slug','text',array(
+            'required'  => false
+        ));
         $builder->add('translations', 'collection', array(
-           'type'       => new AppTranslationType(),
+            'type'       => new AppTranslationType(),
         ));
 
         $builder->add('type', 'choice', array(
@@ -23,9 +28,30 @@ class AppType extends AbstractType
              )
         ));
 
+        $builder->add('related','entity', array(
+            'class'     => 'Kailab\\FrontendBundle\\Entity\\App',
+            'property'  => 'name',
+            'expanded'  => true,
+            'multiple'  => true
+        ));
+
+        $builder->add('platforms','entity', array(
+            'class'     => 'Kailab\\FrontendBundle\\Entity\\Platform',
+            'property'  => 'name',
+            'expanded'  => true,
+            'multiple'  => true
+        ));
+
+        $builder->add('technologies','entity', array(
+            'class'     => 'Kailab\\FrontendBundle\\Entity\\Tech',
+            'property'  => 'name',
+            'expanded'  => true,
+            'multiple'  => true
+        ));
+
         $builder->add('screenshots','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
-            'property'  => 'type',
+            'property'  => 'id',
             'expanded'  => false,
             'multiple'  => true
         ));

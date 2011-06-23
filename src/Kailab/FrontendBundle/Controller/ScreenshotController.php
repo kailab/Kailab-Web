@@ -6,13 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Entity\Screenshot;
 use Imagine\ImageInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
 
 class ScreenshotController extends Controller
 {
-    protected function getAsset($id)
+    protected function getScreenshot($id)
     {
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabFrontendBundle:Screenshot');
@@ -21,45 +22,39 @@ class ScreenshotController extends Controller
         if(!$shot){
             throw new NotFoundHttpException('The screenshot does not exist.');
         }
-        $asset = $shot->getImage()->getAsset();
-        if(!$asset instanceof AssetInterface){
-            throw new NotFoundHttpException('The screenshot does not have a valid asset.');
-        }
-        return $asset;
-    }
-
-    protected function getImageResponse(ImageInterface $img)
-    {
-        $response = new Response();
-        $response->setContent($img->get('png'));
-        $response->headers->set('Content-Type','image/png');
-        return $response;
+        return $shot;
     }
 
     public function bigAction($id)
     {
-        $asset = $this->getAsset($id);
+        $shot = $this->getScreenshot($id);
+        $helper = $this->get('templating.helper.screenshot');
+        $asset = $helper->combineScreenshotAsset($shot,'big');
+        return $asset->getResponse();
+    }
 
-        // resize image
-        $imagine = new Imagine();
-        $image = $imagine->load($asset->getContent());
-        $box = new Box(200, 300);
-        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
-
-        return $this->getImageResponse($thumb);
+    public function itemAction($id)
+    {
+        $shot = $this->getScreenshot($id);
+        $helper = $this->get('templating.helper.screenshot');
+        $asset = $helper->combineScreenshotAsset($shot,'item');
+        return $asset->getResponse();
     }
 
     public function smallAction($id)
     {
-        $asset = $this->getAsset($id);
-
-        // resize image
-        $imagine = new Imagine();
-        $image = $imagine->load($asset->getContent());
-        $box = new Box(65, 100);
-        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
-
-        return $this->getImageResponse($thumb);
-
+        $shot = $this->getScreenshot($id);
+        $helper = $this->get('templating.helper.screenshot');
+        $asset = $helper->combineScreenshotAsset($shot,'small');
+        return $asset->getResponse();
     }
+
+    public function fullAction($id)
+    {
+        $shot = $this->getScreenshot($id);
+        $asset = $shot->getImage();
+        return $asset->getResponse();
+    }
+
+
 }

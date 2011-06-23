@@ -21,6 +21,7 @@
     {% block blog %}
     <div id="blog" class="with_sidebar">
         {% set time_format = '%A, %e of %B' | trans %}
+        {% if posts %}
         <div class="blog_posts">
             {% for post in posts %}
             <div class="blog_post">
@@ -51,6 +52,9 @@
             {% endfor %}
         </div>
         {% include 'KailabFrontendBundle::_pagination.html.twig' with {'pager': pager} %}
+        {% else %}
+        <p>{{ 'There are no blog posts at this moment.' | trans }}</p>
+        {% endif %}
     </div>
     {% endblock %}
     <div id="sidebar">
