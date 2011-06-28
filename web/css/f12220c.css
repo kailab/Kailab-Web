@@ -32,3 +32,20 @@
     margin-left: 30%;
     padding-left: 10px;
 }
+
+#flash_notice {
+    background-color: #FFFFFF;
+    color: #BDCA0E;
+    border: 1px solid #BDCA0E;
+    padding: 4px;
+    margin: 0 0 10px 0;
+}
+
+#flash_error {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0 0 10px 0;
+}
+
+
