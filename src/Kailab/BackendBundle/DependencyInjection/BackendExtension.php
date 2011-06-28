@@ -12,13 +12,13 @@ class BackendExtension extends Extension
     {
         $config = reset($configs);
         $container
-            ->register('templating.helper.locale', 'Kailab\FrontendBundle\Templating\Helper\LocaleHelper')
+            ->register('templating.helper.backend', 'Kailab\BackendBundle\Templating\Helper\BackendHelper')
             ->setArguments(array(new Reference('service_container'),$config))
             ->addTag('templating.helper');
 
         $container
-            ->register('twig.extension.locale', 'Kailab\FrontendBundle\Templating\Twig\Extension\HelperExtension')
-            ->addArgument(new Reference('templating.helper.locale'))
+            ->register('twig.extension.backend', 'Kailab\FrontendBundle\Templating\Twig\Extension\HelperExtension')
+            ->addArgument(new Reference('templating.helper.backend'))
             ->addTag('twig.extension');
     }
 

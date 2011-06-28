@@ -13,6 +13,9 @@ class AppTranslationType extends AbstractType
         $builder->add('name','text',array(
             'required'  => true,
         ));
+        $builder->add('excerpt','textarea', array(
+            'required'  => false,
+        ));
         $builder->add('description','textarea', array(
             'required'  => false,
         ));

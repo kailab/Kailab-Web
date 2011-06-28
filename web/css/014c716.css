@@ -108,7 +108,7 @@ ul.selected_screenshots {
 }
 
 .app.horizontal_orientation .main {
-    margin-left: 0;
+    margin-left: 0 !important;
     margin-right: 250px;
 }
 
@@ -119,7 +119,7 @@ ul.selected_screenshots {
 .app .main {
 }
 
-.app .main_with_side {
+.app .main.with_side {
     margin-left: 250px;
 }
 

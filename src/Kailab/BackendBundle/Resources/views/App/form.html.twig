@@ -12,7 +12,6 @@
 {% block javascripts %}
     {{ parent() }}
     {% javascripts
-        'bundles/kailabbackend/js/jquery-ui.js'
         'bundles/kailabbackend/js/jquery-ajax_upload.js'
         'bundles/kailabbackend/js/jquery-screenshots.js'
     %}
@@ -30,7 +29,8 @@
 
 {% block form_translation %}
     {{ form_row(trans.name, {'attr':{'size':40}}) }}
-    {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_row(trans.excerpt, {'attr':{'cols':40, 'rows':5}}) }}
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
     {{ form_rest(trans) }}
 {% endblock %}
 

@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Kailab\FrontendBundle\KailabFrontendBundle(),
             new Kailab\BackendBundle\KailabBackendBundle(),
         );

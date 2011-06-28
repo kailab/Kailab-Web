@@ -1,0 +1,50 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Administration' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/login.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ 'Administration login' | trans }}</h1>
+
+<div class="maincontent">
+
+    {% if error %}
+        <div id="flash_error">{{ error }}</div>
+    {% endif %}
+
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        <div class="form_row">
+            <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+
+        <div class="form_row">
+            <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+
+        <div class="form_reverse_row">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
+        </div>
+
+        <div class="form_submit_row">
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+    </form>
+
+
+</div>
+
+{% endblock content %}

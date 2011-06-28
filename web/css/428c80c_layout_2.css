@@ -20,7 +20,7 @@
     padding-left: 0;
 }
 
-textarea.wysiwyg,
+textarea.tinymce,
 .mceLayout {
     width: 100%;
 }

@@ -20,7 +20,7 @@
     padding-left: 0;
 }
 
-textarea.wysiwyg,
+textarea.tinymce,
 .mceLayout {
     width: 100%;
 }
@@ -149,4 +149,9 @@ form.entity .form_submit_row {
     list-style: none;
     margin: 0 10px 0 0;
     padding: 0;
+}
+
+#user {
+    margin-top: 50px;
+    float: right;
 }

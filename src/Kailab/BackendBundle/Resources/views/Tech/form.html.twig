@@ -30,6 +30,7 @@
 
 {% block form_translation %}
     {{ form_row(trans.name, {'attr':{'size':40}}) }}
+    {{ form_row(trans.excerpt, {'attr':{'cols':40, 'rows':5}}) }}
     {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
     {{ form_rest(trans) }}
 {% endblock %}

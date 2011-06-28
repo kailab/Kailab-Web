@@ -1,0 +1,11 @@
+<script type="text/javascript">
+    var tinymce_options = {{ tinymce_config_json|raw }};
+    $(document).ready(function(){
+        $('textarea.tinymce').each(function (){
+            var attr = jQuery.parseJSON($(this).attr('tinymce'));
+            var options =  (attr && attr.theme == 'simple') ? tinymce_options.theme.simple : tinymce_options.theme.advanced;
+            options.script_url = '{{ asset('bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js') }}';
+            $(this).tinymce(options);
+        });
+    });
+</script>

@@ -22,31 +22,9 @@ class BackendHelper extends Helper
         return 'backend';
     }
 
-    public function format_locale($code)
+    public function user()
     {
-        $all = Locale::getDisplayLocales(Locale::getDefault());
-    }
-
-    public function locale()
-    {
-        return Locale::getDefault();
-    }
-
-    public function languages()
-    {
-        $codes = array();
-        if(isset($this->config['languages'])){
-            $codes = $this->config['languages'];
-        }
-        if(!is_array($codes)){
-            $codes = array($codes);
-        }
-        $langs = array();
-        foreach($codes as $code){
-            $all = Locale::getDisplayLocales($code);
-            $langs[$code] = isset($all[$code]) ? $all[$code] : $code;
-        }
-        return $langs;
+        return $this->container->get('security.context')->getToken()->getUser();
     }
 
 }

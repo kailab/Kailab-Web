@@ -18,7 +18,6 @@ img {
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 16px 0;
     font-family: 'Arimo', Arial, sans-serif;
-    line-height: 1.5em;
 }
 
 p {
@@ -38,7 +37,6 @@ p {
     text-align: center;
     font-size: 150%;
 }
-
 
 #header {
     width: 960px;
@@ -132,7 +130,7 @@ p {
 }
 
 #main_gradient {
-    background-image: url(../bundles/kailabfrontend/images/gradient_down.png);
+    background-image: url(../../bundles/kailabfrontend/images/gradient_down.png);
     background-repeat: repeat-x;
     background-position: top;
     border-top: 1px solid #bfbfbf;
@@ -141,7 +139,7 @@ p {
 }
 
 #main_wrapper {
-    background-image: url(../bundles/kailabfrontend/images/bg.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg.png);
     background-color: #f5f7e1;
     overflow: hidden;
 }
@@ -172,7 +170,7 @@ p {
 #main h1,
 #main h2 {
     padding: 0 120px 10px 120px;
-    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-image: url(../../bundles/kailabfrontend/images/sep_big.png);
     background-repeat: no-repeat;
     background-position: center bottom;
     color: #bdca0e;
@@ -182,7 +180,7 @@ p {
 #main .maincontent .with_sidebar h2 {
     padding: 0 0 10px 0;
     border: 0;
-    background-image: url(../bundles/kailabfrontend/images/sep_small.png);
+    background-image: url(../../bundles/kailabfrontend/images/sep_small.png);
     background-repeat: no-repeat;
     background-position: center bottom;
     color: #bdca0e;
@@ -190,7 +188,7 @@ p {
 
 #sitemap_wrapper {
     clear: both;
-    background-image: url(../bundles/kailabfrontend/images/bg_logo.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_logo.png);
     background-repeat: no-repeat;
     background-position: center top;
     margin: 0 auto;
@@ -199,7 +197,7 @@ p {
 }
 
 #sitemap_separator {
-    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-image: url(../../bundles/kailabfrontend/images/sep_big.png);
     background-repeat: no-repeat;
     background-position: center top;
 }
@@ -277,7 +275,7 @@ p {
 }
 
 #footer {
-    background-image: url(../bundles/kailabfrontend/images/footer_logo.png);
+    background-image: url(../../bundles/kailabfrontend/images/footer_logo.png);
     background-repeat: no-repeat;
     background-position: left center;
     width: 860px;

@@ -20,7 +20,7 @@
 }
 
 #app_icons li.selected {
-    background-image: url(../bundles/kailabfrontend/images/bg_selected_screenshot.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_selected_screenshot.png);
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -38,7 +38,7 @@
 }
 
 .app {
-    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-image: url(../../bundles/kailabfrontend/images/sep_big.png);
     background-position: top center;
     background-repeat: no-repeat;
     clear: both;
@@ -71,7 +71,7 @@
 }
 
 .app.horizontal_orientation .main {
-    margin-left: 0;
+    margin-left: 0 !important;
     margin-right: 250px;
 }
 
@@ -82,12 +82,12 @@
 .app .main {
 }
 
-.app .main_with_side {
+.app .main.with_side {
     margin-left: 250px;
 }
 
 #main .app .main h2 {
-    background-image: url(../bundles/kailabfrontend/images/bg_title.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_title.png);
     background-position: left center;
     background-repeat: no-repeat;
     color: #000000;

@@ -7,10 +7,10 @@
         {% block javascripts %}
         {% javascripts 
             'bundles/kailabbackend/js/jquery.js'
+            'bundles/stfalcontinymce/vendor/tiny_mce/jquery.tinymce.js'
         %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
         {% endjavascripts %}
-        <script src="{{ asset('bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js') }}" type="text/javascript"></script>
         {% endblock %}
 
         {% block stylesheets %}
@@ -30,6 +30,12 @@
                      <a href="{{ path('backend_homepage') }}">
                         <img src="{{ asset('bundles/kailabfrontend/images/logo.png') }}" alt="Kailab" title="Kailab"/>
                     </a>
+                </div>
+                <div id="user">
+                    {% trans with {'%username%': backend_helper.user.username} %}
+                    Logged in as %username%.
+                    {% endtrans %}
+                    <a href="{{ path('fos_user_security_logout') }}">{{ 'logout' | trans }}</a>
                 </div>
             </div>
             <div id="main_wrapper">

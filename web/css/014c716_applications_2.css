@@ -71,7 +71,7 @@
 }
 
 .app.horizontal_orientation .main {
-    margin-left: 0;
+    margin-left: 0 !important;
     margin-right: 250px;
 }
 
@@ -82,7 +82,7 @@
 .app .main {
 }
 
-.app .main_with_side {
+.app .main.with_side {
     margin-left: 250px;
 }
 
