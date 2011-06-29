@@ -1,0 +1,60 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - {% block subtitle %}{{ 'Applications' | trans }} - {{ appli.name }}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    'bundles/kailabfrontend/js/jquery-cycle.js'
+    'bundles/kailabfrontend/js/jquery-lightbox.js'
+%}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/screenshots.css'
+        'bundles/kailabfrontend/css/applications.css'
+        'bundles/kailabfrontend/css/lightbox.css'
+        'bundles/kailabfrontend/css/paginator.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+{% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli} %}
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    var app = $('.app');
+    var nav = app.find('.nav');
+    var prev = app.find('.previous');
+    var next = app.find('.next');
+
+    app.find('.screenshots').cycle({
+        fx:     'fade',
+        pager:  nav, 
+        prev:   prev, 
+        next:   next, 
+    });
+
+    app.find('.screenshots a').lightBox({
+        imageLoading: {{ asset('bundles/kailabfrontend/images/loading.gif') | trans | json_encode | raw }},
+        imageBtnClose: {{ asset('bundles/kailabfrontend/images/delete.png') | trans | json_encode | raw }},
+        imageBtnPrev: {{ asset('bundles/kailabfrontend/images/lightbox_prev.png') | trans | json_encode | raw }},
+        imageBtnNext: {{ asset('bundles/kailabfrontend/images/lightbox_next.png') | trans | json_encode | raw }},
+        txtImage: {{ 'Image' | trans | json_encode | raw }},
+        txtOf:  {{ 'of' | trans | json_encode | raw }}
+    })
+
+});
+</script>
+
+{% endblock %}

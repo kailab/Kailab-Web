@@ -28,4 +28,14 @@ class AppRepository extends EntityRepository
         }
     }
 
+    public function findActiveBySlug($slug, $type='app')
+    {
+        try{
+            return $this->createEntityQuery('WHERE e.active = true AND e.slug = :slug AND e.type = :type')
+                ->setParameter('slug',$slug)->setParameter('type',$type)->setMaxResults(1)->getSingleResult();
+        }catch(\Exception $e){
+            return null;
+        }
+    }
+
 }

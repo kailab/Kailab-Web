@@ -36,7 +36,7 @@ class PositionListener
             $query = $builder->getQuery();
             try{
                 $last = $query->getSingleResult();
-                $position = $last->getPosition();
+                $position = $last->getPosition() + 1;
             }catch(\Exception $e){
                 $position = 0;
             }

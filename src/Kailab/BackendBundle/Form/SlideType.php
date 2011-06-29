@@ -13,7 +13,9 @@ class SlideType extends AbstractType
         $builder->add('image','file',array(
             'required'  => false,
         ));
-        $builder->add('url','url');
+        $builder->add('url','url', array(
+            'required'  => false,
+        ));
         $builder->add('translations', 'collection', array(
            'type'       => new SlideTranslationType(),
        ));

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Kailab{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
+        {% block javascripts %}
+        {% javascripts
+            'bundles/kailabfrontend/js/jquery.js'
+            'bundles/kailabfrontend/js/typeface.js'
+            'bundles/kailabfrontend/js/arimo_bold.typeface.js'
+        %}
+        <script src="{{ asset_url }}" type="text/javascript"></script>
+        {% endjavascripts %}
+        {% endblock %}
+        {% block stylesheets %}
+        {% stylesheets filter='cssrewrite'
+            'bundles/kailabfrontend/css/layout.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+        {% endstylesheets %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="body_wrapper">
+            <div id="header_wrapper">
+                <div id="header">
+                    <div id="logo">
+                        <a href="/">
+                        <img src="{{ asset('bundles/kailabfrontend/images/logo.png') }}" alt="Kailab" title="Kailab"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="main_wrapper">
+                <div id="main_gradient">
+                    <div id="main">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer_wrapper">
+            <div id="footer">
+            </div>
+        </div>
+    </body>
+</html>
+

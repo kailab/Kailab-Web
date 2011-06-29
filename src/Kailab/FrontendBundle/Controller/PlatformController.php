@@ -4,8 +4,8 @@ namespace Kailab\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\ParameterAsset;
 use Imagine\ImageInterface;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
@@ -25,6 +25,16 @@ class PlatformController extends Controller
         if(!$icon instanceof AssetInterface){
             throw new NotFoundHttpException('The platform does not have a valid icon.');
         }
+
+        $imagine = new Imagine();
+        $image = $imagine->load($icon->getContent());
+        $image = $image->resize(new Box(30,30), ImageInterface::THUMBNAIL_OUTBOUND);
+
+        $icon = new ParameterAsset(array(
+            'content'       => $image->get('png'),
+            'content_type'  => 'image/png'
+        ));
+
         return $icon->getResponse();
     }
 

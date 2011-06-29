@@ -262,15 +262,8 @@ class App
     {
         $trans = $this->getTranslation();
         if($trans){
-            return $trans->getDescription();
+            return $trans->getExcerpt();
         }
-    }
-
-    public function hasExcerpt()
-    {
-        $content = $this->getDescription();
-        $content = explode(self::EXCERPT_SEPARATOR,$content);
-        return count($content) > 0;
     }
 
     public function getTechnologies()

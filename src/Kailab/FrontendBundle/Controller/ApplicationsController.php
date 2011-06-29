@@ -21,4 +21,17 @@ class ApplicationsController extends Controller
             'apps'  => $apps
         ));
     }
+
+    public function showAction($slug)
+    {
+        $em = $this->get('doctrine')->getEntityManager();
+
+        $repo = $em->getRepository('KailabFrontendBundle:App');
+        $app = $repo->findActiveBySlug($slug,$this->app_type);
+
+        $view = 'KailabFrontendBundle:'.$this->view_dir.':show.html.twig';
+        return $this->render($view,array(
+            'appli'  => $app
+        ));
+    }
 }

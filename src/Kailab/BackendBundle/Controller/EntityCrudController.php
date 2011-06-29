@@ -12,7 +12,7 @@ abstract class EntityCrudController extends Controller
     protected $view_prefix = 'KailabBackendBundle:Default';
     protected $route_prefix = '';
     protected $entity_name = '';
-    protected $limit = 20;
+    protected $limit = 10;
 
     protected function getLocales()
     {

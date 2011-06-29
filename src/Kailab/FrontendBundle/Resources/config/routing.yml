@@ -1,50 +1,70 @@
 frontend_homepage:
     pattern:  /
     defaults: { _controller: KailabFrontendBundle:Default:index }
+    requirements:
+        _locale: ^..$ 
 
 frontend_slide:
     pattern:  /slide/{id}.png
     defaults: { _controller: KailabFrontendBundle:Default:slide }
+    requirements:
+        _locale: ^..$ 
 
 frontend_about:
     pattern:  /about
     defaults: { _controller: KailabFrontendBundle:Default:about }
+    requirements:
+        _locale: ^..$ 
 
 frontend_legal:
     pattern:  /legal
     defaults: { _controller: KailabFrontendBundle:Default:legal }
+    requirements:
+        _locale: ^..$ 
 
 frontend_faq:
     pattern:  /faq
     defaults: { _controller: KailabFrontendBundle:Default:faq }
+    requirements:
+        _locale: ^..$ 
 
 frontend_contact:
     pattern:  /contact
     defaults: { _controller: KailabFrontendBundle:Default:contact }
+    requirements:
+        _locale: ^..$ 
 
 frontend_blog:
     pattern:  /blog
     defaults: { _controller: KailabFrontendBundle:Blog:index }
+    requirements:
+        _locale: ^..$ 
 
 frontend_blog_page:
     pattern:  /blog/{page}
     defaults: { _controller: KailabFrontendBundle:Blog:index, page: 1 }
     requirements:
         page:  \d+
+        _locale: ^..$ 
 
 frontend_blog_post:
     pattern:  /blog/post/{id}
     defaults: { _controller: KailabFrontendBundle:Blog:post }
     requirements:
         id:  \d+
+        _locale: ^..$ 
 
 frontend_blog_post_image:
     pattern:  /blog/post/{id}/image.png
     defaults: { _controller: KailabFrontendBundle:Blog:postImage }
+    requirements:
+        _locale: ^..$ 
 
 frontend_blog_post_image_small:
     pattern:  /blog/post/{id}/image_small.png
     defaults: { _controller: KailabFrontendBundle:Blog:postImageSmall }
+    requirements:
+        _locale: ^..$ 
 
 frontend_blog_category:
     pattern:  /blog/category/{id}
@@ -55,39 +75,77 @@ frontend_blog_category:
 frontend_technologies:
     pattern:  /tech
     defaults: { _controller: KailabFrontendBundle:Technology:index }
+    requirements:
+        _locale: ^..$ 
+
+frontend_technology:
+    pattern:  /tech/{slug}
+    defaults: { _controller: KailabFrontendBundle:Technology:show }
+    requirements:
+        _locale: ^..$ 
 
 frontend_technology_icon:
     pattern:  /tech/icon/{id}.png
     defaults: { _controller: KailabFrontendBundle:Technology:icon }
+    requirements:
+        _locale: ^..$ 
 
 frontend_technology_image:
     pattern:  /tech/image/{id}.png
     defaults: { _controller: KailabFrontendBundle:Technology:image }
+    requirements:
+        _locale: ^..$ 
 
 frontend_applications:
     pattern:  /apps
     defaults: { _controller: KailabFrontendBundle:Applications:index }
+    requirements:
+        _locale: ^..$ 
+
+frontend_application:
+    pattern:  /apps/{slug}
+    defaults: { _controller: KailabFrontendBundle:Applications:show }
+    requirements:
+        _locale: ^..$ 
 
 frontend_videogames:
     pattern:  /games
     defaults: { _controller: KailabFrontendBundle:Videogames:index }
+    requirements:
+        _locale: ^..$ 
+
+frontend_videogame:
+    pattern:  /games/{slug}
+    defaults: { _controller: KailabFrontendBundle:Videogames:show }
+    requirements:
+        _locale: ^..$ 
 
 frontend_screenshot_item:
     pattern:  /screenshot/item/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:item }
+    requirements:
+        _locale: ^..$ 
 
 frontend_screenshot_big:
     pattern:  /screenshot/big/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:big }
+    requirements:
+        _locale: ^..$ 
 
 frontend_screenshot_small:
     pattern:  /screenshot/small/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:small }
+    requirements:
+        _locale: ^..$ 
 
 frontend_screenshot_full:
     pattern:  /screenshot/{id}.png
     defaults: { _controller: KailabFrontendBundle:Screenshot:full }
+    requirements:
+        _locale: ^..$ 
 
 frontend_platform_icon:
     pattern:  /platform/icon/{id}.png
     defaults: { _controller: KailabFrontendBundle:Platform:icon }
+    requirements:
+        _locale: ^..$ 

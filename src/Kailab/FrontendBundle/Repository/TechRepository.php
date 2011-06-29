@@ -24,4 +24,13 @@ class TechRepository extends EntityRepository
             ->setMaxResults(1)->getSingleResult();
     }
 
+    public function findActiveBySlug($slug)
+    {
+        try{
+            return $this->createEntityQuery('WHERE e.active = true AND e.slug = :slug')
+                ->setParameter('slug',$slug)->setMaxResults(1)->getSingleResult();
+        }catch(\Exception $e){
+            return null;
+        }
+    }
 }

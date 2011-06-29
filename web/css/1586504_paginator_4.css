@@ -14,7 +14,7 @@
     color: transparent;
     overflow: hidden;
     margin: 0;
-	background:url(../../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+	background:url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
     background-position: 0px 0px;
     font-size: 0px;
     text-indent: -99999px;
@@ -31,7 +31,7 @@
     float: left;
     cursor: pointer;
     z-index: 600;
-	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
 }
 
 .paginator .next {
@@ -40,7 +40,7 @@
     float: right;
     cursor: pointer;
     z-index: 600;
-	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
     background-position: -30px 0;
 }
 

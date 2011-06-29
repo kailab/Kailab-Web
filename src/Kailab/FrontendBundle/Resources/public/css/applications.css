@@ -38,11 +38,14 @@
 }
 
 .app {
+    clear: both;
+    overflow: hidden;
+}
+
+#apps .app {
     background-image: url(../images/sep_big.png);
     background-position: top center;
     background-repeat: no-repeat;
-    clear: both;
-    overflow: hidden;
     padding-top: 25px;
     margin-bottom: 25px;
 }
@@ -121,6 +124,11 @@
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+#main .app .info li img {
+    vertical-align: middle;
+    margin-right: 5px;
 }
 
 #apps_scroll {

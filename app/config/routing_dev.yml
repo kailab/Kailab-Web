@@ -16,3 +16,11 @@ _configurator:
 
 _main:
     resource: routing.yml
+
+error:
+    pattern:  /error
+    defaults: { _controller: KailabFrontendBundle:Exception:error }
+
+error404:
+    pattern:  /error404
+    defaults: { _controller: KailabFrontendBundle:Exception:error404 }

@@ -15,10 +15,18 @@ class ExceptionController extends Controller
         ));
     }
 
+    public function errorAction()
+    {
+        return $this->render('KailabFrontendBundle:Exception:error.html.twig', array(
+        ));
+    }
+
     public function exceptionAction(FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html', $embedded = false)
     {
         if($exception->getClass() == 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException'){
             return $this->error404Action();
+        }else{
+            return $this->errorAction();
         }
     }
 

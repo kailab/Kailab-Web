@@ -1,6 +1,6 @@
 {% extends "KailabFrontendBundle:Applications:index.html.twig" %}
 
-{% block subtitle %}
+{% block title %}
     {{ parent() }} - {{ 'Technology' | trans }}
 {% endblock %}
 
@@ -8,3 +8,12 @@
 {% set apps = techs %}
 {{ parent() }}
 {% endblock %}
+
+{% block app_icon %}
+    {% if app.image %}
+    <img src="{{ path('frontend_technology_image',{'id':app.id}) }}" alt="{{ app.name }}"/>
+    {% else %}
+    <span class="app_item_title">{{ app.name }}</span>
+    {% endif %}
+{% endblock %}
+ 

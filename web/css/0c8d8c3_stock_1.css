@@ -1,0 +1,59 @@
+.stock {
+    position: relative;
+    width: 600px;
+    height: 400px;
+    overflow: hidden;
+    margin: 0 auto;
+    background-image: url(../bundles/kailabfrontend/images/stock_bg.png);
+}
+
+.stock .clouds {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 1590px;
+    margin: 0;
+    padding: 0;
+}
+
+.stock .ground {
+    position: absolute;
+    left: -30px;
+    top: 300px;
+    z-index: 2;
+}
+
+
+.stock .phone {
+    position: absolute;
+    left: 400px;
+    top: 70px;
+    z-index: 3;
+}
+
+.stock h1 {
+    margin-bottom: 0 !important;
+}
+
+.stock .subtitle {
+    font-size: 120%;
+}
+
+.stock .title {
+    margin-bottom: 20px;
+}
+
+.stock .body {
+    font-size: large;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 50px 0 0 50px;
+    width: 320px;
+    z-index: 3;
+}
+
+.stock ul li {
+    list-style: square inside;
+}

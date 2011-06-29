@@ -67,7 +67,7 @@
                                 <h3>{{ 'Tecnology' | trans }}</h3>
                                 <ul>
                                     {% for tech in frontend_helper.sitemap_technologies %}
-                                    <li><a href="{{ path('frontend_technologies') }}#tech_{{ tech.id }}">{{ tech.name }}</a></li>
+                                    <li><a href="{{ path('frontend_technology', {'slug': tech.slug}) }}">{{ tech.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>
@@ -75,7 +75,7 @@
                                 <h3>{{ 'Applications' | trans }}</h3>
                                 <ul>
                                     {% for appli in frontend_helper.sitemap_applications %}
-                                    <li><a href="{{ path('frontend_applications') }}#app_{{ appli.id }}">{{ appli.name }}</a></li>
+                                    <li><a href="{{ path('frontend_application', {'slug': appli.slug}) }}">{{ appli.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>
@@ -83,7 +83,7 @@
                                 <h3>{{ 'Videogames' | trans }}</h3>
                                 <ul>
                                     {% for game in frontend_helper.sitemap_videogames %}
-                                    <li><a href="{{ path('frontend_videogames') }}#app_{{ game.id }}">{{ game.name }}</a></li>
+                                    <li><a href="{{ path('frontend_videogames', {'slug': game.slug}) }}">{{ game.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>

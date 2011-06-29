@@ -23,6 +23,6 @@
 
 {% block form_translation %}
     {{ form_row(trans.name) }}
-    {{ form_widget(trans.description, {'attr':{'class':'wysiwyg','rows':10,'cols':50}}) }}
+    {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
     {{ form_rest(trans) }}
 {% endblock %}

@@ -73,8 +73,9 @@ stfalcon_tinymce:
 
 frontend:
     locales: ['es', 'en']
-    twitter:   kailab
-    facebook:  kailab
+    twitter:    kailab
+    facebook:   kailab
+    email:      contact@kailab.com
     screenshots:
         small: 
             route: frontend_screenshot_small

@@ -33,6 +33,12 @@ class FrontendHelper extends Helper
         return 'frontend';
     }
 
+    public function mailto($email,$text=null)
+    {
+        $text = $text ? $text : $email;
+        return "<a href=\"mailto:".$email."\">".$text.'</a>';
+    }
+
     public function sitemap_technologies()
     {
         $repo = $this->getRepository('KailabFrontendBundle:Tech');

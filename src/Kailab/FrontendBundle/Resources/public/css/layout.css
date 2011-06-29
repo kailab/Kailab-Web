@@ -335,8 +335,18 @@ p {
     text-align: center;
 }
 
-.pagination .pages li {
+.pagination ul.pages {
+    line-height: 25px;
+}
+
+.pagination ul.pages li {
     display: inline;
+    padding: 3px 5px;
+    border: 1px solid #BDCA0E;
+    background-color: #FFFFFF;
+}
+
+.pagination ul.pages li a {
 }
 
 .pagination .pages .current {
@@ -345,10 +355,18 @@ p {
 
 .pagination .previous {
     float: left;
+    padding: 3px 5px;
+    border: 1px solid #BDCA0E;
+    background-color: #FFFFFF;
+
 }
 
 .pagination .next {
     float: right;
+    padding: 3px 5px;
+    border: 1px solid #BDCA0E;
+    background-color: #FFFFFF;
+
 }
 
 #flash_error {

@@ -79,7 +79,7 @@
 	line-height: 1.4em;
 	overflow: auto;
 	width: 100%;
-	padding: 0 10px 0;
+	padding: 0 10px 5px 10px;
 }
 #lightbox-container-image-data {
 	padding: 0; 

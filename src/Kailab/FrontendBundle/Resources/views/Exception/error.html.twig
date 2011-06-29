@@ -1,4 +1,4 @@
-{% extends "KailabFrontendBundle::layout.html.twig" %}
+{% extends "KailabFrontendBundle::simple_layout.html.twig" %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -22,19 +22,22 @@
             <img src="{{ asset('bundles/kailabfrontend/images/stock_clouds.png') }}"/>
         </div>
         <img class="ground" src="{{ asset('bundles/kailabfrontend/images/stock_ground.png') }}"/>
-        <img class="phone" src="{{ asset('bundles/kailabfrontend/images/stock_phone_error404.png') }}"/>
+        <img class="phone" src="{{ asset('bundles/kailabfrontend/images/stock_phone_error.png') }}"/>
         <div class="body">
+            {% block stock_body %}
             <div class="title">
-                <h1>{{ 'Page not found' | trans }}</h1>
+                <h1>{{ 'Unknown error' | trans }}</h1>
                 <div class="subtitle">
-                    The page you are looking for does not existst.
+                    The page produced an exception.
+                    Sorry for the inconvenience, we will get right to it.
                 </div>
             </div>
             <h2>What's next?</h2>
             <ul>
-                <li><a href="{{ path('frontend_homepage') }}">Go to the homepage</a></li>
+                <li><a href="/">Go to the homepage</a></li>
                 <li>{{ frontend_helper.mailto(frontend_helper.email, 'Send us an email' | trans) | raw}}</li>
             </ul>
+            {% endblock %}
         </div>
     </div>
 </div>
@@ -57,7 +60,5 @@ $(document).ready(function(){
 });
 
 </script>
-
-
 
 {% endblock %}

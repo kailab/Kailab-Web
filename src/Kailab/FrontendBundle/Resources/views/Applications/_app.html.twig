@@ -1,0 +1,44 @@
+<div class="app {{ appli.orientation }}_orientation" {% if hidden is defined %}style="display: none;"{% endif %}>
+    <a name="{{ appli.slug }}"></a>
+    <div class="app_inner">
+        {% if appli.orientation == 'horizontal' %}
+        {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
+        {% endif %}
+        {% if appli.screenshots.count %}
+        <div class="side">
+            <ul class="screenshots">
+                {% for screenshot in appli.screenshots %}
+                <li>
+                    <a href="{{ path('frontend_screenshot_full', {'id':screenshot.id}) }}">
+                        <img src="{{ path('frontend_screenshot_big', {'id':screenshot.id}) }}" alt="{{ appli.name }}"/>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if appli.screenshots.count > 1 %}
+            <div class="paginator">
+                <div class="previous">
+                </div>
+                <div class="next">
+                </div>
+                <div class="nav">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="main with_side">
+        {% else %}
+        <div class="main">
+        {% endif %}
+            <h2>{{ appli.name }}</h2>
+            {% if appli.orientation == 'vertical' %}
+            {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
+            {% endif %}
+            <div class="description">
+                {% block description %}
+                {{ appli.description | raw }}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

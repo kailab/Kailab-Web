@@ -1,4 +1,5 @@
 {% extends "KailabFrontendBundle::layout.html.twig" %}
+{% set blocks = 0 %}
 
 {% block title %}
     {{ parent() }} - {{ 'Homepage' | trans }}
@@ -57,6 +58,7 @@
         </div>
 
         {% if appli is defined and appli %}
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_applications') }}" title="{{ 'Apps' | trans }}">
                 <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
@@ -70,7 +72,7 @@
             {% else %}
             <div>
             {% endif %}
-                <a href="{{ path('frontend_applications') }}#app_{{ appli.id }}">
+                <a href="{{ path('frontend_applications') }}#{{ appli.slug }}">
                     <img src="{{ path('frontend_screenshot_small', {'id':appli.screenshot.id}) }}" alt="{{ appli.name }}" />
                 </a>
             </div>
@@ -90,6 +92,7 @@
         </div>
         {% endif %}
         {% if game is defined and game %}
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_videogames') }}" title="{{ 'Games' | trans }}">
                 <img src="{{ asset('bundles/kailabfrontend/images/games_small.png') }}" alt="{{ 'Games' | trans }}" />
@@ -121,6 +124,7 @@
         </div>
         {% endif %}
         {% if post is defined and post %}
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
                 <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
@@ -148,6 +152,7 @@
         {% endif %}
 
         {% if tech is defined and tech %}
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_technologies') }}" title="{{ 'Tec' | trans }}">
                 {{ 'Technology' | trans }}
@@ -161,6 +166,7 @@
         </div>
         {% endif %}
 
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_about') }}" title="{{ 'Tec' | trans }}">
                 {{ 'About us' | trans }}
@@ -175,6 +181,7 @@
             </div>
         </div>
 
+        {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_contact') }}" title="{{ 'Tec' | trans }}">
                 {{ 'Contact us' | trans }}
@@ -186,12 +193,12 @@
             <div class="foot">
                 <a href="{{ path('frontend_contact') }}" class="button">{{ 'See +' | trans }}</a>
             </div>
-
         </div>
 
+        {% for i in range(blocks, 5) %}
         <div class="block">
         </div>
-
+        {% endfor %}
 
     </div>
 </div>

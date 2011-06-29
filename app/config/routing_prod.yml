@@ -1,2 +1,8 @@
 _main:
     resource: routing.yml
+
+error404:
+    pattern:  /{uri}
+    defaults: { _controller: KailabFrontendBundle:Exception:error404 }
+    requirements:
+        uri: ".+"

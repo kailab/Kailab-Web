@@ -20,7 +20,7 @@
     margin: 0 10px 10px 0;
     padding: 10px;
     float: left;
-    background-image: url(../../bundles/kailabfrontend/images/bg_block.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_block.png);
     position: relative;
     overflow: hidden;
 }
@@ -87,5 +87,5 @@
     display: block;
     float: right;
     padding: 4px;
-    background-image: url(../../bundles/kailabfrontend/images/bg_block_button.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_block_button.png);
 }

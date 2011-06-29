@@ -46,11 +46,13 @@
                 {% for app in apps %}
                 <li title="{{ app.name }}" class="{{ app.orientation }}_orientation">
                     <a href="#{{ app.slug }}">
+                    {% block app_icon %}
                     {% if app.screenshot %}
                     <img src="{{ path('frontend_screenshot_item',{'id':app.screenshot.id}) }}" alt="{{ app.name }}"/>
                     {% else %}
                     <span class="app_item_title">{{ app.name }}</span>
                     {% endif %}
+                    {% endblock %}
                     </a>
                 </li>
                 {% endfor %}
@@ -64,47 +66,8 @@
     </div>
 
     <div id="apps">
-    {% for app in apps %}
-    <div class="app {{ app.orientation }}_orientation" style="display: none;">
-        <a name="{{ app.slug }}"></a>
-        <div class="app_inner">
-            {% if app.orientation == 'horizontal' %}
-            {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':app} %}
-            {% endif %}
-            {% if app.screenshots.count %}
-            <div class="side">
-                <ul class="screenshots">
-                    {% for screenshot in app.screenshots %}
-                    <li>
-                        <a href="{{ path('frontend_screenshot_full', {'id':screenshot.id}) }}">
-                            <img src="{{ path('frontend_screenshot_big', {'id':screenshot.id}) }}" alt="{{ app.name }}"/>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <div class="paginator">
-                    <div class="previous">
-                    </div>
-                    <div class="next">
-                    </div>
-                    <div class="nav">
-                    </div>
-                </div>
-            </div>
-            <div class="main with_side">
-            {% else %}
-            <div class="main">
-            {% endif %}
-                <h2>{{ app.name }}</h2>
-                {% if app.orientation == 'vertical' %}
-                {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':app} %}
-                {% endif %}
-                <div class="description">
-                    {{ app.description | raw }}
-                </div>
-            </div>
-        </div>
-    </div>
+    {% for appli in apps %}
+        {% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli, 'hidden': true} %}
     {% endfor %}
     </div>
 
