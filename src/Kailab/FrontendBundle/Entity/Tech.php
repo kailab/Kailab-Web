@@ -31,7 +31,7 @@ class Tech
     protected $position;
 
     /**
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="255", unique=true)
      */
     protected $slug;
 
@@ -66,15 +66,25 @@ class Tech
     protected $active;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App")
+     * @ORM\ManyToMany(targetEntity="App", mappedBy="technologies")
      */
     protected $apps;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Platform")
+     * @ORM\JoinTable(name="tech_platforms",
+     *      joinColumns={@ORM\JoinColumn(name="tech_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $platforms;
 
     function __construct()
     {
         $this->loadAssets();
         $this->translations = new ArrayCollection();
         $this->tech_screenshots = new ArrayCollection();
+        $this->platforms = new ArrayCollection();
         $this->active = true;
     }
 
@@ -96,10 +106,15 @@ class Tech
 
     public function getOrientation()
     {
-        $shot = $this->getScreenshot();
-        if($shot){
-            return $shot->getOrientation();
+        $shots = $this->getScreenshots();
+
+        $h = Screenshot::ORIENTATION_HORIZONTAL;
+        foreach($shots as $shot){
+            if($shot->getOrientation() == $h){
+                return $h;
+            }
         }
+        return Screenshot::ORIENTATION_VERTICAL;
     }
 
     public function getIcon()
@@ -283,9 +298,29 @@ class Tech
         }
     }
 
-    public function getApps()
+    public function getPlatforms()
     {
-        return $this->apps;
+        return $this->platforms;
+    }
+
+    public function setPlatforms($platforms)
+    {
+        $this->platforms = $platforms;
+    }
+
+    public function getApps($type=null)
+    {
+        if(!$type){
+            return $this->apps;
+        }else{
+            $apps = new ArrayCollection();
+            foreach($this->apps as $app){
+                if($app->getType() == $type){
+                    $apps[] = $app;
+                }
+            }
+            return $apps;
+        }
     }
 
     public function setApps($apps)

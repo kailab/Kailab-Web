@@ -1,0 +1,67 @@
+{% extends "KailabBackendBundle::index.html.twig" %}
+
+{% block content_title %}
+{{ 'Users' | trans }}
+{% endblock %}
+
+{% block content_body %}
+{% if entities %}
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_list', 'pager': pager} %}
+
+<table class="entity_list">
+<thead>
+<tr>
+    <th>{{ 'Name' | trans }}</th>
+    <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Last Login' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
+    <th>{{ 'Actions' | trans }}</th>
+</tr>
+</thead>
+<tbody>
+{% for user in entities %}
+<tr>
+    <td>
+        {{ user.username }}
+    </td>
+    <td>
+        {{ user.updated.format('d/m/Y H:i:s') }}
+    </td>
+    <td>
+        {% if user.last_login %}
+            {{ user.last_login.format('d/m/Y H:i:s') }}
+        {% else %}
+            {{ 'Never' | trans }}
+        {% endif %}
+    </td>
+    <td>
+        <a href="{{ path('backend_user_toggle',{'id':user.id}) }}">
+            {{ user.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+    <td class="actions">
+        <ul>
+            <li><a href="{{ path('backend_user_edit',{'id':user.id}) }}">{{ 'Edit' | trans }}</a></li>
+            <li><a href="{{ path('backend_user_delete',{'id':user.id}) }}">{{ 'Delete' | trans }}</a></li>
+        </ul>
+    </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_list', 'pager': pager} %}
+
+{% else %}
+
+<p>{{ 'No users found.' | trans }}</p>
+
+{% endif %}
+
+<ul id="entity_list_actions">
+    <li><a href="{{ path('backend_user_new') }}">{{ 'Add new User' | trans }}</a></li>
+</ul>
+
+
+{% endblock %}

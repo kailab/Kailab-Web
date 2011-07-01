@@ -3,3 +3,14 @@
 {% block subtitle %}
     {{ parent() }} - {{ 'Videogames' | trans }}
 {% endblock %}
+
+{% block app %}
+<a href="{{ path('frontend_videogame', {'slug':appli.slug}) }}">
+    {% if appli.screenshot %}
+    <img src="{{ path('frontend_screenshot_item',{'id':appli.screenshot.id}) }}" />
+    {{ appli.name }}
+    {% else %}
+    <span class="app_item_title">{{ appli.name }}</span>
+    {% endif %}
+</a>
+{% endblock %}

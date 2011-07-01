@@ -21,14 +21,12 @@
 
     <h2>{{ 'Project Managers' | trans }}</h2>
 
-    <h2>{{ 'Designers' | trans }}</h2>
-
     <div class="team_member_row">
         <div class="section team_member_right">
             <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_roman.png') }}" alt="Román Galera"/>
+                <img src="{{ asset('bundles/kailabfrontend/images/team_ftellez.png') }}" alt="Francisco Tellez"/>
             </div>
-            <h3><a href="mailto:rgalera@kailab.com">Román Galera</a></h3>
+            <h3>{{ frontend_helper.mailto('ftellez@kailab.com','Francisco Tellez') | raw }}</h3>
             <div class="bubble_tip">
             </div>
             <div class="bubble">
@@ -38,9 +36,39 @@
 
         <div class="section team_member_left">
             <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_david.png') }}" alt="Román Galera"/>
+                <img src="{{ asset('bundles/kailabfrontend/images/team_jflores.png') }}" alt="Javier Flores"/>
             </div>
-            <h3><a href="mailto:dserra@kailab.com">David Serra</a></h3>
+            <h3>{{ frontend_helper.mailto('jflores@kailab.com','Javier FLores') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. Sed placerat eleifend adipiscing. Morbi ut quam eros. In hac habitasse.
+            </div>
+        </div>
+    </div>
+
+
+
+    <h2>{{ 'Designers' | trans }}</h2>
+
+    <div class="team_member_row">
+        <div class="section team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('rgalera@kailab.com','Román Galera') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
+            </div>
+        </div>
+
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_dserra.png') }}" alt="Román Galera"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('dserra@kailab.com','David Serra') | raw }}</h3>
             <div class="bubble_tip">
             </div>
             <div class="bubble">
@@ -55,9 +83,9 @@
     <div class="team_member_row">
         <div class="team_member_left">
             <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_antoni.png') }}" alt="Antoni Castejón"/>
+                <img src="{{ asset('bundles/kailabfrontend/images/team_acastejon.png') }}" alt="Antoni Castejón"/>
             </div>
-            <h3><a href="mailto:acastejon@kailab.com">Antoni Castejón</a></h3>
+            <h3>{{ frontend_helper.mailto('acastejon@kailab.com','Antoni Castejón') | raw }}</h3>
             <div class="bubble_tip">
             </div>
             <div class="bubble">
@@ -71,9 +99,9 @@
 
         <div class="team_member_right">
             <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_chris.png') }}" alt="Christopher Rey"/>
+                <img src="{{ asset('bundles/kailabfrontend/images/team_crey.png') }}" alt="Christopher Rey"/>
             </div>
-            <h3><a href="mailto:crey@kailab.com">Christopher Rey</a></h3>
+            <h3>{{ frontend_helper.mailto('crey@kailab.com','Christpher Rey') | raw }}</h3>
             <div class="bubble_tip">
             </div>
             <div class="bubble">
@@ -82,18 +110,47 @@
         </div>
     </div>
 
-    <div class="section team_member_left">
-        <div class="side">
-            <img src="{{ asset('bundles/kailabfrontend/images/team_miguel2.png') }}" alt="Christopher Rey"/>
+    <div class="team_member_row">
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_mibero.png') }}" alt="Miguel Ibero"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('mibero@kailab.com','Miguel Ibero') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            I'm the web programmer and resident open source entusiast. I'm always excited about new frameworks and technologies. In my spare time y like to go to punk concerts and play Starcraft 2.
+            </div>
         </div>
-        <h3><a href="mailto:mibero@kailab.com">Miguel Ibero</a></h3>
-        <div class="bubble_tip">
-        </div>
-        <div class="bubble">
-        I'm the web programmer and resident open source entusiast. I'm always excited about new frameworks and technologies. In my spare time y like to go to punk concerts and play Starcraft 2.
+
+        <div class="team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_jmenossi.png') }}" alt="Javier Menossi"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('jmenossi@kailab.com','Javier Menossi') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
+            </div>
         </div>
     </div>
 
+{#
+    <div class="team_member_row">
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_mteixe.png') }}" alt="MTR"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('mteixe@kailab.com','MTR') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            iOS developer and avid MMO player.
+            </div>
+        </div>
+    </div>
+#}
 
 
 </div>

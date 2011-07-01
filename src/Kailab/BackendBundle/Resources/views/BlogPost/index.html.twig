@@ -7,12 +7,15 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_post_list', 'pager': pager} %}
+
 <table class="entity_list">
 <thead>
 <tr>
     <th>{{ 'Title' | trans }}</th>
     <th>{{ 'Category' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -32,6 +35,11 @@
     <td>
         {{ post.updated.format('d/m/Y H:i:s') }}
     </td>
+    <td>
+        <a href="{{ path('backend_blog_post_toggle',{'id':post.id}) }}">
+            {{ post.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
     <td class="actions">
         <ul>
             <li><a href="{{ path('backend_blog_post_edit',{'id':post.id}) }}">{{ 'Edit' | trans }}</a></li>
@@ -42,6 +50,8 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_post_list', 'pager': pager} %}
 
 {% else %}
 

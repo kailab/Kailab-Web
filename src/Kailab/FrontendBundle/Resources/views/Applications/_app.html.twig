@@ -8,7 +8,7 @@
         <div class="side">
             <ul class="screenshots">
                 {% for screenshot in appli.screenshots %}
-                <li>
+                <li style="display: none;">
                     <a href="{{ path('frontend_screenshot_full', {'id':screenshot.id}) }}">
                         <img src="{{ path('frontend_screenshot_big', {'id':screenshot.id}) }}" alt="{{ appli.name }}"/>
                     </a>
@@ -30,13 +30,17 @@
         {% else %}
         <div class="main">
         {% endif %}
-            <h2>{{ appli.name }}</h2>
+            <h2 class="title"><div class="left"><div class="right">
+            <div class="inner">{{ appli.name }}</div></div></div></h2>
             {% if appli.orientation == 'vertical' %}
             {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
             {% endif %}
             <div class="description">
                 {% block description %}
                 {{ appli.description | raw }}
+                {% if appli.url %}
+                <p><a href="{{ appli.url }}">{{ 'More information...' | trans }}</a></p>
+                {% endif %}
                 {% endblock %}
             </div>
         </div>

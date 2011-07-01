@@ -13,14 +13,14 @@ use Imagine\Image\Box;
 
 class TechnologyController extends Controller
 {
-    public function indexAction()
+    public function showcaseAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
 
         $repo = $em->getRepository('KailabFrontendBundle:Tech');
         $techs = $repo->findAllActiveOrdered();
 
-        $view = 'KailabFrontendBundle:Technology:index.html.twig';
+        $view = 'KailabFrontendBundle:Technology:showcase.html.twig';
         return $this->render($view,array(
             'techs'  => $techs
         ));
@@ -33,9 +33,11 @@ class TechnologyController extends Controller
         $repo = $em->getRepository('KailabFrontendBundle:Tech');
         $tech = $repo->findActiveBySlug($slug);
 
+
+
         $view = 'KailabFrontendBundle:Technology:show.html.twig';
         return $this->render($view,array(
-            'tech'  => $tech
+            'tech'  => $tech,
         ));
     }
 

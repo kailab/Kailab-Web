@@ -15,7 +15,7 @@ class AppType extends AbstractType
             'required'  => false
         ));
         $builder->add('slug','text',array(
-            'required'  => false
+            'required'  => true
         ));
         $builder->add('translations', 'collection', array(
             'type'       => new AppTranslationType(),
@@ -53,7 +53,8 @@ class AppType extends AbstractType
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
             'property'  => 'id',
             'expanded'  => false,
-            'multiple'  => true
+            'multiple'  => true,
+            'required'  => false
         ));
     }
 

@@ -17,6 +17,19 @@ class TechController extends EntityCrudController
         return new TechType();
     }
 
+    protected function saveEntity($entity)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        // remove old screenshots
+        foreach($entity->getTechScreenshots() as $shot){
+            if(!$shot->getTech()){
+                $em->remove($shot);
+            }
+        }
+        $em->flush();
+    }
+
     public function imageAction($id)
     {
         $entity = $this->findEntity($id);

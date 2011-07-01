@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block title %}
-{{ parent() }} - {{ 'Page not found' | trans }}
+{{ parent() }} - {{ 'Error' | trans }}
 {% endblock %}
 
 {% block content %}
@@ -28,13 +28,15 @@
             <div class="title">
                 <h1>{{ 'Unknown error' | trans }}</h1>
                 <div class="subtitle">
-                    The page produced an exception.
-                    Sorry for the inconvenience, we will get right to it.
+                    {{ 'The page produced an exception.' | trans }}
+                    {{ 'Sorry for the inconvenience, we will get right to it.' | trans }}
                 </div>
             </div>
-            <h2>What's next?</h2>
+            {% endblock %}
+            {% block stock_body_next %}
+            <h2>{{ "What's next?" | trans }}</h2>
             <ul>
-                <li><a href="/">Go to the homepage</a></li>
+                <li><a href="/">{{ "Go to the homepage" | trans }}</a></li>
                 <li>{{ frontend_helper.mailto(frontend_helper.email, 'Send us an email' | trans) | raw}}</li>
             </ul>
             {% endblock %}

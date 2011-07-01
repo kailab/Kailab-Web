@@ -5,6 +5,9 @@
             var attr = jQuery.parseJSON($(this).attr('tinymce'));
             var options =  (attr && attr.theme == 'simple') ? tinymce_options.theme.simple : tinymce_options.theme.advanced;
             options.script_url = '{{ asset('bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js') }}';
+            options.setup = function(){
+                tinyMCE.PluginManager.load('syntaxhl', '{{ asset('bundles/kailabbackend/tiny_mce/plugins/syntaxhl/editor_plugin.js') }}');
+            };
             $(this).tinymce(options);
         });
     });

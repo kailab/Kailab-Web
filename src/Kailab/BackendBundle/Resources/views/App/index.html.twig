@@ -16,6 +16,7 @@
     <th>{{ 'Updated' | trans }}</th>
     <th>{{ 'Type' | trans }}</th>
     <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -33,6 +34,11 @@
     </td>
     <td>
         {{ app.position }}
+    </td>
+    <td>
+        <a href="{{ path('backend_app_toggle',{'id':app.id}) }}">
+            {{ app.active ? 'Yes' : 'No' | trans }}
+        </a>
     </td>
     <td class="actions">
         <ul>

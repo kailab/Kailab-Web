@@ -1,0 +1,183 @@
+#blog {
+    width: 750px;
+    float: left;
+}
+
+#blog h1 {
+    background-image: url("../bundles/kailabfrontend/images/sep_big.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+#blog .paginator {
+    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.blog_post {
+    clear: both;
+    line-height: 1.4em;
+
+}
+
+#blog .blog_post {
+    padding-top: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+
+    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+#blog .blog_post:first-child {
+    background-image: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.blog_post .image {
+    float: left;
+    margin: 0 10px 10px 0;
+    width: 150px;
+    overflow: hidden;
+}
+
+.blog_post .body_with_image {
+    margin-left: 160px;
+}
+
+.blog_post .title {
+    display: inline;
+    border: 0 !important;
+    margin: 0;
+    color: #000000 !important;
+    font-size: normal;
+    background-image: none !important;
+}
+
+.blog_post .create {
+    font-style: italic;
+    font-size: small;
+    color: #BDCA0E;
+}
+
+#blog_post {
+    width: 750px;
+    float: left;
+}
+
+.blog_post .comments {
+    clear: left;
+    margin-top: 20px;
+}
+
+.comment_form .form_row {
+    margin-bottom: 10px;
+}
+
+.comment_form .form_row_content {
+    margin-left: 160px;
+}
+
+.comment_form .form_submit_row {
+    margin-left: 160px;
+}
+
+.comment_form label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.comment_form .form_row_errors {
+    margin: 0 0 10px 30%;
+    padding-left: 10px;
+    color: #FF0000;
+}
+
+.comment_form .form_row_errors ul {
+    padding: 0;
+}
+
+.comment_form .form_row_errors li {
+    list-style: square inside;
+}
+
+.comment {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.comment .avatar {
+    float: left;
+    width: 150px;
+    text-align: right;
+    margin: 0 10px 10px 0;
+}
+
+.comment .content {
+    margin-left: 160px;
+}
+
+input.tooltip {
+    color: #CCCCCC;
+}
+
+.paginator .nav {
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+    overflow: hidden;
+    margin: 0 30px;
+    padding: 0;
+}
+
+.paginator ul li {
+    display: inline;
+}
+
+.paginator a {
+    padding: 15px;
+    width: 0;
+    height: 0;
+    color: transparent;
+    overflow: hidden;
+    margin: 0;
+	background:url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+    background-position: 0px 0px;
+    font-size: 0px;
+    text-indent: -99999px;
+}
+
+.paginator a.activeSlide,
+.paginator .selected,
+.paginator .current a {
+    background-position: 0px -30px;
+}
+
+.paginator .previous {
+	width:30px;
+	height:30px;
+    float: left;
+    cursor: pointer;
+    z-index: 600;
+	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+    padding: 0;
+}
+
+.paginator .next {
+    padding: 0;
+	width:30px;
+	height:30px;
+    float: right;
+    cursor: pointer;
+    z-index: 600;
+	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+    background-position: -30px 0;
+}

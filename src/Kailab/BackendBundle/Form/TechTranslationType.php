@@ -11,7 +11,7 @@ class TechTranslationType extends AbstractType
     {
         $builder->add('locale','hidden');
         $builder->add('name','text',array(
-            'required'  => false,
+            'required'  => true,
         ));
         $builder->add('excerpt','textarea', array(
             'required'  => false,

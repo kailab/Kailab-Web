@@ -1,168 +1,34 @@
 {% extends "KailabFrontendBundle::layout.html.twig" %}
-{% block title %}
-    {{ parent() }} - {% block subtitle %}{{ 'Applications' | trans }}{% endblock %}
-{% endblock %}
-
-{% block javascripts %}
-{{ parent() }}
-{% javascripts
-    'bundles/kailabfrontend/js/jquery-ui.js'
-    'bundles/kailabfrontend/js/jquery-smooth_div_scroll.js'
-    'bundles/kailabfrontend/js/jquery-cycle.js'
-    'bundles/kailabfrontend/js/jquery-reflection.js'
-    'bundles/kailabfrontend/js/jquery-lightbox.js'
-%}
-    <script src="{{ asset_url }}" type="text/javascript"></script>
-{% endjavascripts %}
-{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='cssrewrite'
         'bundles/kailabfrontend/css/screenshots.css'
         'bundles/kailabfrontend/css/applications.css'
-        'bundles/kailabfrontend/css/lightbox.css'
         'bundles/kailabfrontend/css/paginator.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
     {% endstylesheets %}
 {% endblock %}
 
-{% block content %}
-
-{% if not apps %}
-
-    <div class="maincontent">
-        <p>{{ 'There are no applications at this moment.' | trans }}</p>
-    </div>
-
-{% else %}
-
-    <div id="apps_scroll" style="display: none">
-        <div class="hotspot_left"></div>
-        <div class="hotspot_right"></div>
-        <div class="wrapper">
-            <ul id="app_icons" class="scrollable">
-                {% for app in apps %}
-                <li title="{{ app.name }}" class="{{ app.orientation }}_orientation">
-                    <a href="#{{ app.slug }}">
-                    {% block app_icon %}
-                    {% if app.screenshot %}
-                    <img src="{{ path('frontend_screenshot_item',{'id':app.screenshot.id}) }}" alt="{{ app.name }}"/>
-                    {% else %}
-                    <span class="app_item_title">{{ app.name }}</span>
-                    {% endif %}
-                    {% endblock %}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-
-    <div class="loading loadingcontent">
-        <img src="{{ asset('bundles/kailabfrontend/images/loading.gif') }}" />
-        <p>{{ 'Loading the applications...' | trans }}</p>
-    </div>
-
-    <div id="apps">
-    {% for appli in apps %}
-        {% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli, 'hidden': true} %}
-    {% endfor %}
-    </div>
-
-<script type="text/javascript">
-
-var get_anchor = function(){
-    var url = location.href;
-    var p = url.indexOf('#');
-    return p < 0 ? null : url.substr(p+1);
-}
-
-var cycle_screenshots = function(){
-    var app = $(this);
-    if(app.data('cycle')){
-        return false;
-    }
-    var app = $(this);
-    var nav = app.find('.nav');
-    var prev = app.find('.previous');
-    var next = app.find('.next');
-    app.find('.screenshots').cycle({
-        fx:     'fade',
-        pager:  nav, 
-        prev:   prev, 
-        next:   next, 
-    });
-    app.data('cycle',true);
-    return true;
-};
-
-var show_app = function(id){
-    var app = $('a[name='+id+']').closest('.app');
-    var icon = $('#app_icons a[href=#'+id+']');
-    var icons = $('#app_icons a');
-    var show = function(){
-        app.find('.screenshots').show().cycle();
-        app.fadeIn(function(){
-            icons.closest('li').removeClass('selected');
-            icon.closest('li').addClass('selected');
-        })
-        cycle_screenshots.call(app);
-        app.find('.screenshots a').lightBox({
-            imageLoading: {{ asset('bundles/kailabfrontend/images/loading.gif') | trans | json_encode | raw }},
-            imageBtnClose: {{ asset('bundles/kailabfrontend/images/delete.png') | trans | json_encode | raw }},
-            imageBtnPrev: {{ asset('bundles/kailabfrontend/images/lightbox_prev.png') | trans | json_encode | raw }},
-            imageBtnNext: {{ asset('bundles/kailabfrontend/images/lightbox_next.png') | trans | json_encode | raw }},
-            txtImage: {{ 'Image' | trans | json_encode | raw }},
-            txtOf:  {{ 'of' | trans | json_encode | raw }}
-        })
-    };
-    if(!$('.app:visible').fadeOut(show).length){
-        show();
-    }
-}
-
-var load_scroll = function(){
-    $(this).smoothDivScroll({
-        scrollingHotSpotLeft:   ".hotspot_left",
-        scrollingHotSpotRight:  ".hotspot_right",
-        scrollWrapper:          ".wrapper",
-        scrollableArea:         ".scrollable",
-        autoScroll:             "onstart" , 
-        autoScrollDirection:    "backandforth", 
-        autoScrollStep:         1, 
-        autoScrollInterval:     15, 
-        visibleHotSpots:        "always"
-    });
-}
-
-$(document).ready(function(){
-    $('#app_icons a').click(function(){
-        var id = $(this).attr('href').substr(1);
-        show_app(id);
-    });
-
-    $('#apps_scroll img').reflect({
-        height: 0.2,
-        opacity: 0.3
-    });
-
-    var anchor = get_anchor();
-    $('.loading').fadeOut(function(){
-        $('#apps_scroll').fadeIn(function(){
-            load_scroll.call(this);
-            if(anchor){
-                show_app(anchor);
-            }
-        });
-    });
-
-});
-</script>
-
-    {% endif %}
-
+{% block title %}
+    {{ parent() }} - {% block subtitle %}{{ 'Applications' | trans }}{% endblock %}
 {% endblock %}
 
-
+{% block content %}
+<ul id="app_icons">
+{% for appli in apps %}
+<li>
+    {% block app %}
+    <a href="{{ path('frontend_application', {'slug':appli.slug}) }}">
+        {% if appli.screenshot %}
+        <img src="{{ path('frontend_screenshot_item',{'id':appli.screenshot.id}) }}" />
+        {{ appli.name }}
+        {% else %}
+        <span class="app_item_title">{{ appli.name }}</span>
+        {% endif %}
+    </a>
+    {% endblock %}
+</li>
+{% endfor %}
+{% endblock %}

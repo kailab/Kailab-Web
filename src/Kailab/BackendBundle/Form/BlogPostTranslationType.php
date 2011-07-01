@@ -11,7 +11,7 @@ class BlogPostTranslationType extends AbstractType
     {
         $builder->add('locale','hidden');
         $builder->add('title','text',array(
-            'required'  => false,
+            'required'  => true,
         ));
         $builder->add('content','textarea', array(
             'required'  => false,

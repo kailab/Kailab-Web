@@ -11,7 +11,7 @@ class TechType extends AbstractType
     {
         $builder->add('id','hidden');
         $builder->add('slug','text', array(
-            'required'  => false,
+            'required'  => true,
         ));
         $builder->add('url','url', array(
             'required'  => false,
@@ -24,6 +24,13 @@ class TechType extends AbstractType
         ));
         $builder->add('image','file',array(
             'required'  => false,
+        ));
+
+        $builder->add('platforms','entity', array(
+            'class'     => 'Kailab\\FrontendBundle\\Entity\\Platform',
+            'property'  => 'name',
+            'expanded'  => true,
+            'multiple'  => true
         ));
         $builder->add('screenshots','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',

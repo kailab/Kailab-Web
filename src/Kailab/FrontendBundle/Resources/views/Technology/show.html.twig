@@ -4,13 +4,8 @@
 {{ 'Technology' | trans }} - {{ tech.name }}
 {% endblock %}
 
-{% block description %}
-<img src="{{ path('frontend_technology_image',{'id':tech.id}) }}" /> 
-{% endblock %}
-
 {% block content %}
-{% set appli = tech %}
-{{ parent() }}
+{% include 'KailabFrontendBundle:Technology:_tech.html.twig' with {'tech': tech, 'show_image':true} %}
 {% endblock %}
 
 

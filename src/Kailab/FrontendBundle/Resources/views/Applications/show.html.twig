@@ -26,9 +26,11 @@
 {% endblock %}
 
 {% block content %}
-
 {% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli} %}
+{% endblock %}
 
+{% block footer %}
+{{ parent() }}
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -38,11 +40,13 @@ $(document).ready(function(){
     var prev = app.find('.previous');
     var next = app.find('.next');
 
-    app.find('.screenshots').cycle({
-        fx:     'fade',
-        pager:  nav, 
-        prev:   prev, 
-        next:   next, 
+    $(window).load(function(){
+        app.find('.screenshots').cycle({
+            fx:     'fade',
+            pager:  nav, 
+            prev:   prev, 
+            next:   next, 
+        });
     });
 
     app.find('.screenshots a').lightBox({

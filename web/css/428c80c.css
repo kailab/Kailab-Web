@@ -134,7 +134,7 @@ p {
     background-repeat: repeat-x;
     background-position: top;
     border-top: 1px solid #bfbfbf;
-    padding-top: 10px;
+    padding-top: 20px;
     overflow: hidden;
 }
 
@@ -460,6 +460,19 @@ form.entity .form_row_content label {
 form.entity .form_row_comment {
     margin-left: 30%;
     padding-left: 10px;
+}
+
+form.entity .form_row_errors {
+    background-color: #FFDDDD;
+    color: #FF0000;
+    margin: 0 0 5px 30%;
+    padding: 5px;
+}
+
+form.entity .form_row_errors li {
+    list-style: square inside;
+    margin: 0;
+    padding: 0;
 }
 
 form.entity .form_submit_row {

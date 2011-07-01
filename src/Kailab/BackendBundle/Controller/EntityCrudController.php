@@ -174,12 +174,35 @@ abstract class EntityCrudController extends Controller
     {
         $request = $this->get('request');
         $entity = $this->findEntity($request->attributes->get('id'));
+        if(!$entity){
+            throw new NotFoundHttpException('The entity does not exist.');
+        }
+
         $em = $this->getEntityManager();
         $em->remove($entity);
         $em->flush();
 
-        $url = $this->generateUrl($this->route_prefix.'list');
-        return $this->redirect($url);
+        return $this->redirectCrud('list');
+    }
+
+    public function toggleAction()
+    {
+        $request = $this->get('request');
+        $entity = $this->findEntity($request->attributes->get('id'));
+        if(!$entity){
+            throw new NotFoundHttpException('The entity does not exist.');
+        }
+
+        $entity->setActive($entity->getActive() ? false : true);
+
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        $em->flush();
+
+        $session = $this->get('session');
+        $session->setFlash('notice','Entity toggled correctly.', true);
+
+        return $this->redirectCrud('list');
     }
 
     protected function processForm($form)
@@ -191,13 +214,18 @@ abstract class EntityCrudController extends Controller
             $session->setFlash('error','Form is not valid.');
             return false;
         }
-        $em = $this->getEntityManager();
         $entity = $form->getData();
-        $em->persist($entity);
-        $em->flush();
+        $this->saveEntity($entity);
 
         $session->setFlash('notice','Entity saved correctly.', true);
         return true;
+    }
+
+    protected function saveEntity($entity)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        $em->flush();
     }
 
 }

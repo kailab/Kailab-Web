@@ -7,12 +7,15 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_tech_list', 'pager': pager} %}
+
 <table class="entity_list">
 <thead>
 <tr>
     <th>{{ 'Name' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
     <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -28,6 +31,11 @@
     <td>
         {{ tech.position }}
     </td>
+    <td>
+        <a href="{{ path('backend_tech_toggle',{'id':tech.id}) }}">
+            {{ tech.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
 
     <td class="actions">
         <ul>
@@ -41,6 +49,8 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_tech_list', 'pager': pager} %}
 
 {% else %}
 

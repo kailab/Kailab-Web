@@ -30,7 +30,25 @@
 {% block form_translation %}
     {{ form_row(trans.name, {'attr':{'size':40}}) }}
     {{ form_row(trans.excerpt, {'attr':{'cols':40, 'rows':5}}) }}
+    <div class="form_row">
     {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
+    </div>
+    <div class="form_row links">
+        <h3>{{ 'Links' | trans }}</h3>
+        {% for link in trans.links %}
+        {% if loop.last %}
+        <script type="text/html" class="prototype">
+        {% endif %}
+        <div class="link_row">
+            {{ form_errors(link) }}
+            {{ form_widget(link.title,{'attr':{'size':30}}) }}
+            {{ form_widget(link.url,{'attr':{'size':30}}) }}
+        </div>
+        {% if loop.last %}
+        </script>
+        {% endif %}
+        {% endfor %}
+    </div>
     {{ form_rest(trans) }}
 {% endblock %}
 
@@ -43,13 +61,6 @@
 {{ form_row(form.technologies) }}
 
 {{ form_widget(form.screenshots) }}
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#app_screenshots').screenshots({
-        });
-    });
-</script>
 
 <script type="text/html" id="screenshots_template">
 <div class="form_row">
@@ -71,4 +82,44 @@
 </script>
 
 {{ parent() }}
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    // screenshots
+    $('#app_screenshots').screenshots({
+    });
+
+    // links
+    $('.links').each(function(){
+        var links = $(this);
+        var prototype = links.find('.prototype').detach();
+        var append_row = function(){
+            var n = links.children().length;
+            var html = prototype.html().replace(/\$\$name\$\$/g,n);
+            links.append(html);
+        };
+        append_row();
+
+        links.delegate('input','change',function(){
+            var input = $(this);
+            var row = input.closest('.link_row');
+            var last = links.children().last();
+            if(row.get(0) == last.get(0)){
+                if(input.val()){
+                    append_row();
+                }
+            }else{
+                if(!input.val()){
+                    row.remove();
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

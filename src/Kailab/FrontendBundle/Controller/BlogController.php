@@ -13,10 +13,12 @@ use Imagine\Image\Box;
 
 class BlogController extends Controller
 {
-    public function indexAction($page=1)
+    public function indexAction()
     {
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabFrontendBundle:BlogPost');
+        $request = $this->get('request');
+        $page = $request->query->get('page', 1);
 
         $limit = 10;
         $pager = $repo->getActivePagination($limit);
@@ -56,17 +58,22 @@ class BlogController extends Controller
         $request = $this->get('request');
 
         if($request->getMethod() == 'POST'){
+            $t = $this->get('translator');
+
             // try to save submitted comment
             $session = $this->get('session');
             $form->bindRequest($request);
             if (!$form->isValid()) {
-                $session->setFlash('error','Comment is not valid.');
+                $msg = $t->trans('Your comment is not valid.');
+                $session->setFlash('error',$msg);
             }else{
                 $comment = $form->getData();
                 $comment->setPost($post);
+                $comment->setActive(false);
                 $em->persist($comment);
                 $em->flush();
-                $session->setFlash('notice','Comment saved correctly.');
+                $msg = $t->trans('Your comment was saved correctly. It will appear on this post after it has been activated.');
+                $session->setFlash('notice',$msg);
             }
         }
 

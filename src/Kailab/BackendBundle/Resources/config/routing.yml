@@ -32,6 +32,10 @@ backend_slide_down:
     pattern:  /slide/down/{id}
     defaults: { _controller: KailabBackendBundle:Slide:down }
 
+backend_slide_toggle:
+    pattern:  /slide/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:Slide:toggle }
+
 # screenshot
 
 backend_screenshot_list:
@@ -88,6 +92,10 @@ backend_app_down:
     pattern:  /app/down/{id}
     defaults: { _controller: KailabBackendBundle:App:down }
 
+backend_app_toggle:
+    pattern:  /app/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:App:toggle }
+
 # tech
 
 backend_tech_list:
@@ -117,6 +125,10 @@ backend_tech_up:
 backend_tech_down:
     pattern:  /tech/down/{id}
     defaults: { _controller: KailabBackendBundle:Tech:down }
+
+backend_tech_toggle:
+    pattern:  /tech/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:Tech:toggle }
 
 # platform
 
@@ -174,6 +186,10 @@ backend_blog_post_delete:
     pattern:  /blog/post/delete/{id}
     defaults: { _controller: KailabBackendBundle:BlogPost:delete }
 
+backend_blog_post_toggle:
+    pattern:  /blog/post/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:BlogPost:toggle }
+
 # blog category
 
 backend_blog_category_list:
@@ -203,6 +219,10 @@ backend_blog_category_up:
 backend_blog_category_down:
     pattern:  /blog/category/down/{id}
     defaults: { _controller: KailabBackendBundle:BlogCategory:down }
+
+backend_blog_category_toggle:
+    pattern:  /blog/category/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:BlogCategory:toggle }
 
 # blog comment
 
@@ -263,6 +283,32 @@ backend_question_up:
 backend_question_down:
     pattern:  /question/down/{id}
     defaults: { _controller: KailabBackendBundle:Question:down }
+
+# user
+
+backend_user_list:
+    pattern:  /user
+    defaults: { _controller: KailabBackendBundle:User:index }
+
+backend_user_new:
+    pattern:  /user/new
+    defaults: { _controller: KailabBackendBundle:User:new }
+
+backend_user_edit:
+    pattern:  /user/edit/{id}
+    defaults: { _controller: KailabBackendBundle:User:edit }
+
+backend_user_save:
+    pattern:  /user/save
+    defaults: { _controller: KailabBackendBundle:User:save }
+
+backend_user_delete:
+    pattern:  /user/delete/{id}
+    defaults: { _controller: KailabBackendBundle:User:delete }
+
+backend_user_toggle:
+    pattern:  /user/toggle/{id}
+    defaults: { _controller: KailabBackendBundle:User:toggle }
 
 # fos user bundle
 

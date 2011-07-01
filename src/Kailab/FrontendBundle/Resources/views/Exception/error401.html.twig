@@ -1,0 +1,14 @@
+{% extends "KailabFrontendBundle:Exception:error.html.twig" %}
+
+{% block title %}
+{{ parent() }} - {{ 'Unauthorized' | trans }}
+{% endblock %}
+
+{% block stock_body %}
+    <div class="title">
+        <h1>{{ 'Unauthorized' | trans }}</h1>
+        <div class="subtitle">
+            {{ 'You are not authorized to see this page.' | trans }}
+        </div>
+    </div>
+{% endblock %}

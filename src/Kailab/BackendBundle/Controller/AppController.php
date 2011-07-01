@@ -3,7 +3,6 @@
 namespace Kailab\BackendBundle\Controller;
 
 use Kailab\BackendBundle\Controller\EntityCrudController;
-use Kailab\FrontendBundle\Entity\Slide;
 use Kailab\BackendBundle\Form\AppType;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,6 +15,29 @@ class AppController extends EntityCrudController
     protected function getFormType()
     {
         return new AppType();
+    }
+
+    protected function saveEntity($entity)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($entity);
+        // remove empty links
+        foreach($entity->getTranslations() as $trans){
+            foreach($trans->getLinks() as $link){
+                if(!$link->getTitle() || !$link->getUrl()){
+                    $em->remove($link);
+                }else{
+                    $link->setTranslation($trans);
+                }
+            }
+        }
+        // remove old screenshots
+        foreach($entity->getAppScreenshots() as $shot){
+            if(!$shot->getApp()){
+                $em->remove($shot);
+            }
+        }
+        $em->flush();
     }
 
     public function upAction($id)

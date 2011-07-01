@@ -10,6 +10,7 @@ ul.screenshots li {
     list-style: none;
     margin: 0 10px 0 0;
     padding: 0;
+    text-align: center;
 }
 
 .screenshot_wrapper .delete {

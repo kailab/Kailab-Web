@@ -1,0 +1,35 @@
+{% extends "KailabFrontendBundle:Applications:showcase.html.twig" %}
+
+{% block subtitle %}
+    {{ 'Technology' | trans }}
+{% endblock %}
+
+{% block empty %}
+<p>{{ 'There are no technologies at this moment.' | trans }}</p>
+{% endblock %}
+
+{% block loading %}
+<p>{{ 'Loading technologies...' | trans }}</p>
+{% endblock %}
+
+{% block more %}
+{{ 'See all technologies' | trans }}
+{% endblock %}
+
+{% block content %}
+{% set apps = techs %}
+{{ parent() }}
+{% endblock %}
+
+{% block app_icon %}
+    {% if appli.image %}
+    <img src="{{ path('frontend_technology_image',{'id':appli.id}) }}" alt="{{ appli.name }}"/>
+    {% else %}
+    <span class="app_item_title">{{ appli.name }}</span>
+    {% endif %}
+{% endblock %}
+ 
+{% block app %}
+{% include 'KailabFrontendBundle:Technology:_tech.html.twig' with {'tech': appli, 'hidden': true} %}
+{% endblock %}
+

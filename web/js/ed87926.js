@@ -963,7 +963,7 @@ $.fn[plugin_name] = function(options){
         });
     });
 
-    available.delegate('li', 'click', function(){
+    available.delegate('li:not(.disabled)', 'click', function(){
         var li = $(this).clone(true);
         li.appendTo(selected);
         selected.trigger('sortupdate');
@@ -971,6 +971,7 @@ $.fn[plugin_name] = function(options){
 
     selected.bind('sortupdate', function(){
         select.empty();
+        available.children().removeClass('disabled');
         selected.children().each(function(){
             var li = $(this);
             if(li.find('.delete').length == 0){
@@ -978,14 +979,24 @@ $.fn[plugin_name] = function(options){
             }
             var id = li.attr('screenshot_id');
             var option = $('<option value="'+id+'" selected="selected">'+id+'</option>');
+            available.children().filter('[screenshot_id='+id+']').addClass('disabled');
             option.appendTo(select);
         });
-    });
 
-    available.children().draggable({
-        connectToSortable: selected,
-        revert: 'invalid',
-        helper: 'clone'
+        available.children().draggable({
+            connectToSortable: selected,
+            revert: 'invalid',
+            helper: 'clone'
+        });
+
+        available.children().each(function(){
+            var li = $(this);
+            if(li.hasClass('disabled')){
+                li.draggable('disable');
+            }else{
+                li.draggable('enable');
+            }
+        });
     });
 
     selected.trigger('sortupdate');

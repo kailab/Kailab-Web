@@ -53,7 +53,7 @@ class Platform
     protected $url;
 
     /**
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="255", unique=true)
      */
     protected $slug;
 
@@ -63,26 +63,17 @@ class Platform
     protected $active;
 
     /**
-     * @ORM\OneToMany(targetEntity="Screenshot", mappedBy="platform", cascade={"persist", "remove"})
-     */
-    protected $screenshots;
-
-    /**
      * @ORM\OneToMany(targetEntity="PlatformTranslation", mappedBy="platform", cascade={"persist", "remove"})
      */
     protected $translations;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tech")
-     * @ORM\JoinTable(name="platform_techs",
-     *      joinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tech_id", referencedColumnName="id")}
-     *      )
+     * @ORM\ManyToMany(targetEntity="Tech", mappedBy="platforms")
      */
     protected $technologies;
 
      /**
-     * @ORM\ManyToMany(targetEntity="App")
+     * @ORM\ManyToMany(targetEntity="App", mappedBy="platforms")
      */
     protected $apps;
 

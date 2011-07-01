@@ -36,7 +36,12 @@ class FrontendHelper extends Helper
     public function mailto($email,$text=null)
     {
         $text = $text ? $text : $email;
-        return "<a href=\"mailto:".$email."\">".$text.'</a>';
+        $text = str_replace('@',"'+'@'+'",$text);
+        $email = str_replace('@',"'+'@'+'",$email);
+        $html  = '<script type="text/javascript">';
+        $html .= 'document.write(\'<a href="mailto:'.$email.'">'.$text.'</a>\');';
+        $html .= '</script>';
+        return $html;
     }
 
     public function sitemap_technologies()

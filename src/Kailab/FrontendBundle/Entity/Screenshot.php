@@ -46,7 +46,6 @@ class Screenshot
      * @ORM\JoinColumn(name="platform_id", referencedColumnName="id")
      */
     protected $platform;
-
     /**
      * @ORM\OneToMany(targetEntity="AppScreenshot", mappedBy="app", cascade={"persist", "remove"})
      */
@@ -93,16 +92,6 @@ class Screenshot
         $this->platform = $platform;
     }
 
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    public function setPosition($pos)
-    {
-        $this->position = $pos;
-    }
-
     public function getActive()
     {
         return $this->active;
@@ -129,7 +118,6 @@ class Screenshot
             $this->image = new EntityAsset($this, 'image');
         }
     }
-
     public function getAssets()
     {
         $this->loadAssets();
@@ -170,3 +158,5 @@ class Screenshot
     }
 
 }
+
+

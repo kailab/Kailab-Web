@@ -7,6 +7,8 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_comment_list', 'pager': pager} %}
+
 <table class="entity_list">
 <thead>
 <tr>
@@ -27,7 +29,9 @@
         {{ comment.authorLink | raw }}
     </td>
     <td>
-        {% if comment.active %}{{ 'Yes' | trans }}{% else %}{{ 'No' | trans }}{% endif %}
+        <a href="{{ path('backend_blog_comment_toggle',{'id':comment.id}) }}">
+            {{ comment.active ? 'Yes' : 'No' | trans }}
+        </a>
     </td>
     <td>
         {{ comment.post.title }}
@@ -45,6 +49,8 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_comment_list', 'pager': pager} %}
 
 {% else %}
 

@@ -15,6 +15,7 @@
     <th>{{ 'Name' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
     <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -30,7 +31,11 @@
     <td>
         {{ slide.position }}
     </td>
-
+    <td>
+        <a href="{{ path('backend_slide_toggle',{'id':slide.id}) }}">
+            {{ slide.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
     <td class="actions">
         <ul>
             <li><a href="{{ path('backend_slide_edit',{'id':slide.id}) }}">{{ 'Edit' | trans }}</a></li>

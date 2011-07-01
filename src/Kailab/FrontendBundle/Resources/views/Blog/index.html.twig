@@ -4,10 +4,31 @@
     {{ parent() }} - {{ 'Blog' | trans }}
 {% endblock %}
 
+{% block javascripts %}
+{{ parent() }}
+
+{% javascripts
+    'bundles/kailabfrontend/js/jquery-beautyofcode.js'
+%}
+<script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+
+<script type="text/javascript">
+$.beautyOfCode.init({
+    brushes: ['Xml', 'JScript', 'CSharp', 'Plain', 'Php', 'Css'],
+    theme: 'Django'
+});
+$(document).ready(function(){
+    $.beautyOfCode.beautifyAll();
+});
+</script>
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {% stylesheets filter='cssrewrite'
         'bundles/kailabfrontend/css/blog.css'
+        'bundles/kailabfrontend/css/paginator.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
     {% endstylesheets %}
@@ -25,20 +46,20 @@
         <div class="blog_posts">
             {% for post in posts %}
             <div class="blog_post">
-                {% if post.image %}
+                {% if post.image.state %}
                 <div class="image">
                 <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
                 </div>
-                <div class="body_with_image">
-                {% else %}
-                <div class="body">
                 {% endif %}
+                <div class="body_with_image">
                     <div class="head">
-                        <h2 class="title">{{ post.title }}</h2>
+                        <div>
                         <span class="create">{{ locale_helper.format_time(time_format, post.created) }}</span>
                         {% if post.category %}
                         <span class="category">{{ post.category.name }}</span>
                         {% endif %}
+                        </div>
+                        <h2 class="title">{{ post.title }}</h2>
                     </div>
 
                     <div class="excerpt">
@@ -51,7 +72,7 @@
             </div>
             {% endfor %}
         </div>
-        {% include 'KailabFrontendBundle::_pagination.html.twig' with {'pager': pager} %}
+        {% include 'KailabFrontendBundle::_pagination.html.twig' with {'route': 'frontend_blog', 'pager': pager} %}
         {% else %}
         <p>{{ 'There are no blog posts at this moment.' | trans }}</p>
         {% endif %}

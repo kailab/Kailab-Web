@@ -1,0 +1,18 @@
+{% extends "KailabFrontendBundle:Applications:showcase.html.twig" %}
+
+{% block subtitle %}
+    {{ parent() }} - {{ 'Videogames' | trans }}
+{% endblock %}
+
+{% block empty %}
+<p>{{ 'There are no videogames at this moment.' | trans }}</p>
+{% endblock %}
+
+{% block loading %}
+<p>{{ 'Loading videogames...' | trans }}</p>
+{% endblock %}
+
+{% block more %}
+{{ 'See all videogames' | trans }}
+{% endblock %}
+

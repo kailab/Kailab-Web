@@ -7,20 +7,20 @@
 {% block blog %}
 <div id="blog_post" class="blog_post">
     {% set time_format = '%A, %e of %B' | trans %}
-    {% if post.image %}
+    {% if post.image.state %}
     <div class="image">
     <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
     </div>
-    <div class="body_with_image">
-    {% else %}
-    <div class="body">
     {% endif %}
+    <div class="body_with_image">
         <div class="head">
+            <div>
+                <span class="create">{{ locale_helper.format_time(time_format, post.created) }}</span>
+                {% if post.category %}
+                <span class="category">{{ post.category.name }}</span>
+                {% endif %}
+            </div>
             <h1 class="title">{{ post.title }}</h1>
-            <span class="create">{{ locale_helper.format_time(time_format, post.created) }}</span>
-            {% if post.category %}
-            <span class="category">{{ post.category.name }}</span>
-            {% endif %}
         </div>
 
         <div class="content">
@@ -34,7 +34,7 @@
         {% for comment in comments %}
         <div class="comment">
             <div class="avatar">
-                <img src="http://www.gravatar.com/avatar/{{ comment.hash }}?s=80&r=g" alt="{{ comment.authorName }}"/>
+                <img src="http://www.gravatar.com/avatar/{{ comment.hash }}?s=40&r=g" alt="{{ comment.authorName }}"/>
             </div>
             <div class="info">
                 {{ comment.authorLink | raw }}
@@ -63,7 +63,6 @@
 
         <form class="comment_form" method="POST" action="{{ path('frontend_blog_post',{'id':post.id}) }}">
             <div class="form_row">
-                {{ form_label(form.author_name) }}
                 <div class="form_row_content">
                     {{ form_widget(form.author_name) }}
                 </div>
@@ -72,7 +71,6 @@
                 </div>
             </div>
             <div class="form_row">
-                {{ form_label(form.author_email) }}
                 <div class="form_row_content">
                     {{ form_widget(form.author_email) }}
                 </div>
@@ -97,4 +95,34 @@
 
     </div>
 </div>
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    var input_tooltip = function(text){
+        var input = $(this).data('empty',true);
+        input.focus(function(){
+            if(input.data('empty')){
+                input.val('');
+                input.removeClass('tooltip');
+            }
+        }).blur(function(){
+            if(input.data('empty')){
+                input.val(text);
+                input.addClass('tooltip');
+            }
+        }).change(function(){
+            input.data('empty', input.val().length == 0);
+        }).blur();
+    };
+
+    input_tooltip.call($('#blogcomment_author_name'),'Your Name');
+    input_tooltip.call($('#blogcomment_author_email'),'Your Email Address');
+});
+</script>
+
 {% endblock %}

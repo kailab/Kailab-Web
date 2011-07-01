@@ -3,12 +3,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Kailab{% endblock %}</title>
-        <link rel="shortcut icon" href="{{ asset('bundles/kailabfrontend/favicon.ico') }}" />
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         {% block javascripts %}
         {% javascripts
             'bundles/kailabfrontend/js/jquery.js'
-            'bundles/kailabfrontend/js/typeface.js'
-            'bundles/kailabfrontend/js/arimo_bold.typeface.js'
         %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
         {% endjavascripts %}
@@ -18,6 +16,7 @@
             'bundles/kailabfrontend/css/layout.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Arimo:400,700&subset=latin&v2' rel='stylesheet' type='text/css'>
         {% endblock %}
     </head>
     <body>
@@ -47,9 +46,9 @@
                     </ul>
                     <ul id="mainmenu">
                         <li><a href="{{ path('frontend_homepage') }}" >{{ 'Home' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_technologies') }}" >{{ 'Technology' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_applications') }}" >{{ 'Applications' | trans }}</a></li>
-                        <li><a href="{{ path('frontend_videogames') }}" >{{ 'Videogames' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_technologies_showcase') }}" >{{ 'Technology' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_applications_showcase') }}" >{{ 'Applications' | trans }}</a></li>
+                        <li><a href="{{ path('frontend_videogames_showcase') }}" >{{ 'Videogames' | trans }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -83,7 +82,7 @@
                                 <h3>{{ 'Videogames' | trans }}</h3>
                                 <ul>
                                     {% for game in frontend_helper.sitemap_videogames %}
-                                    <li><a href="{{ path('frontend_videogames', {'slug': game.slug}) }}">{{ game.name }}</a></li>
+                                    <li><a href="{{ path('frontend_videogame', {'slug': game.slug}) }}">{{ game.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                             </li>
@@ -104,6 +103,7 @@
         </div>
         <div id="footer_wrapper">
             <div id="footer">
+                {% block footer %}
                 <div id="footer_social">
                     <span class="prefix">Follow us on...</span>
                     <a href="http://www.facebook.com/{{ frontend_helper.facebook }}" target="_new">
@@ -119,6 +119,7 @@
                     <li><a href="{{ path('frontend_legal') }}">{{ 'Legal' | trans }}</a></li>
                     <li><a href="{{ path('frontend_faq') }}">{{ "Faq's" | trans }}</a></li>
                 </ul>
+                {% endblock %}
             </div>
         </div>
     </body>

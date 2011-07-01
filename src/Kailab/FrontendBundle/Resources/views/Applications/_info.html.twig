@@ -4,7 +4,11 @@
     <h3>{{ 'Related projects' | trans }}</h3>
     <ul>
     {% for related in application.related %}
-        <li><a href="{{ path('frontend_applications') }}#app_{{ related.id }}">{{ related.name }}</a></li>
+        {% if related.type == 'app' %}
+        <li><a href="{{ path('frontend_application', {'slug':related.slug}) }}">{{ related.name }}</a></li>
+        {% elseif related.type == 'game' %}
+        <li><a href="{{ path('frontend_videogame', {'slug':related.slug}) }}">{{ related.name }}</a></li>
+        {% endif %}
     {% endfor %}
     </ul>
     </div>
@@ -26,9 +30,23 @@
     <h3>{{ 'Technologies' | trans }}</h3>
     <ul>
     {% for technology in application.technologies %}
-        <li><img src="{{ path('frontend_technology_icon', {'id':technology.id}) }}"/>{{ technology.name }}</li>
+        <li><a href="{{ path('frontend_technology', {'slug':technology.slug}) }}">
+            <img src="{{ path('frontend_technology_icon', {'id':technology.id}) }}"/>{{ technology.name }}
+        </a></li>
     {% endfor %}
     </ul>
     </div>
     {% endif %}
+
+    {% if application.links.count %}
+    <div class="section">
+    <h3>{{ 'Links' | trans }}</h3>
+    <ul>
+    {% for link in application.links %}
+        <li><a href="{{ link.url | url_encode }}">{{ link.title }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
 </div>

@@ -7,6 +7,8 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_list', 'pager': pager} %}
+
 <table class="entity_list">
 <thead>
 <tr>
@@ -34,6 +36,8 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_platform_list', 'pager': pager} %}
 
 {% else %}
 

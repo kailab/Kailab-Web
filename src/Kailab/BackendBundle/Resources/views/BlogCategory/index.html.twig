@@ -7,12 +7,15 @@
 {% block content_body %}
 {% if entities %}
 
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_category_list', 'pager': pager} %}
+
 <table class="entity_list">
 <thead>
 <tr>
     <th>{{ 'Name' | trans }}</th>
     <th>{{ 'Updated' | trans }}</th>
     <th>{{ 'Position' | trans }}</th>
+    <th>{{ 'Active' | trans }}</th>
     <th>{{ 'Actions' | trans }}</th>
 </tr>
 </thead>
@@ -29,6 +32,12 @@
         {{ category.position }}
     </td>
 
+    <td>
+        <a href="{{ path('backend_blog_category_toggle',{'id':category.id}) }}">
+            {{ category.active ? 'Yes' : 'No' | trans }}
+        </a>
+    </td>
+
     <td class="actions">
         <ul>
             <li><a href="{{ path('backend_blog_category_edit',{'id':category.id}) }}">{{ 'Edit' | trans }}</a></li>
@@ -39,6 +48,8 @@
 {% endfor %}
 </tbody>
 </table>
+
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_blog_category_list', 'pager': pager} %}
 
 {% else %}
 

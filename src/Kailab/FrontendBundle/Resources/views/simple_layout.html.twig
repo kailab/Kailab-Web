@@ -7,8 +7,6 @@
         {% block javascripts %}
         {% javascripts
             'bundles/kailabfrontend/js/jquery.js'
-            'bundles/kailabfrontend/js/typeface.js'
-            'bundles/kailabfrontend/js/arimo_bold.typeface.js'
         %}
         <script src="{{ asset_url }}" type="text/javascript"></script>
         {% endjavascripts %}
@@ -18,6 +16,7 @@
             'bundles/kailabfrontend/css/layout.css' %}
         <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
         {% endstylesheets %}
+        <link href='http://fonts.googleapis.com/css?family=Arimo:400,700&subset=latin&v2' rel='stylesheet' type='text/css'>
         {% endblock %}
     </head>
     <body>

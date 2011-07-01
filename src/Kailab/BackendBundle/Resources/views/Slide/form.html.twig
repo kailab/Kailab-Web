@@ -22,7 +22,7 @@
 {% endblock %}
 
 {% block form_translation %}
-    {{ form_row(trans.name) }}
+    {{ form_row(trans.name, {'attr':{'size':30}}) }}
     {{ form_widget(trans.description, {'attr':{'class':'tinymce','rows':10,'cols':50}}) }}
     {{ form_rest(trans) }}
 {% endblock %}

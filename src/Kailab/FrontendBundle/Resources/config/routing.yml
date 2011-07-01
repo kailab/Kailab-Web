@@ -78,6 +78,12 @@ frontend_technologies:
     requirements:
         _locale: ^..$ 
 
+frontend_technologies_showcase:
+    pattern:  /tech/showcase
+    defaults: { _controller: KailabFrontendBundle:Technology:showcase }
+    requirements:
+        _locale: ^..$ 
+
 frontend_technology:
     pattern:  /tech/{slug}
     defaults: { _controller: KailabFrontendBundle:Technology:show }
@@ -102,6 +108,12 @@ frontend_applications:
     requirements:
         _locale: ^..$ 
 
+frontend_applications_showcase:
+    pattern:  /apps/showcase
+    defaults: { _controller: KailabFrontendBundle:Applications:showcase }
+    requirements:
+        _locale: ^..$ 
+
 frontend_application:
     pattern:  /apps/{slug}
     defaults: { _controller: KailabFrontendBundle:Applications:show }
@@ -111,6 +123,12 @@ frontend_application:
 frontend_videogames:
     pattern:  /games
     defaults: { _controller: KailabFrontendBundle:Videogames:index }
+    requirements:
+        _locale: ^..$ 
+
+frontend_videogames_showcase:
+    pattern:  /games/showcase
+    defaults: { _controller: KailabFrontendBundle:Videogames:showcase }
     requirements:
         _locale: ^..$ 
 

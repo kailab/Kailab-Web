@@ -24,7 +24,7 @@ class App
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length="255", nullable=true)
+     * @ORM\Column(type="string", length="255", unique=true)
      */
     protected $slug;
 
@@ -70,7 +70,7 @@ class App
     protected $active;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Platform")
+     * @ORM\ManyToMany(targetEntity="Platform", inversedBy="apps")
      * @ORM\JoinTable(name="app_platforms",
      *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="platform_id", referencedColumnName="id")}
@@ -79,7 +79,7 @@ class App
     protected $platforms;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tech")
+     * @ORM\ManyToMany(targetEntity="Tech", inversedBy="apps")
      * @ORM\JoinTable(name="app_techs",
      *      joinColumns={@ORM\JoinColumn(name="app_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tech_id", referencedColumnName="id")}
@@ -100,6 +100,9 @@ class App
     {
         $this->translations = new ArrayCollection();
         $this->app_screenshots = new ArrayCollection();
+        $this->platforms = new ArrayCollection();
+        $this->technologies = new ArrayCollection();
+        $this->related = new ArrayCollection();
         $this->active = true;
     }
 
@@ -115,10 +118,15 @@ class App
 
     public function getOrientation()
     {
-        $shot = $this->getScreenshot();
-        if($shot){
-            return $shot->getOrientation();
+        $shots = $this->getScreenshots();
+
+        $h = Screenshot::ORIENTATION_HORIZONTAL;
+        foreach($shots as $shot){
+            if($shot->getOrientation() == $h){
+                return $h;
+            }
         }
+        return Screenshot::ORIENTATION_VERTICAL;
     }
 
     public function getActive()
@@ -207,7 +215,10 @@ class App
 
     public function setScreenshots(Collection $screens)
     {
-        $this->app_screenshots->clear();
+        // clear old screenshots
+        foreach($this->app_screenshots as $v){
+            $v->setApp(null);
+        }
         $k = 0;
         foreach($screens as $screen){
             $app_screen = new AppScreenshot();
@@ -256,6 +267,14 @@ class App
     public function setUpdated($time)
     {
         $this->updated = $time;
+    }
+
+    public function getLinks()
+    {
+        $trans = $this->getTranslation();
+        if($trans){
+            return $trans->getLinks();
+        }
     }
 
     public function getExcerpt()

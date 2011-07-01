@@ -6,10 +6,10 @@ class AppRepository extends EntityRepository
 {
     protected $entity_name = 'KailabFrontendBundle:App';
 
-    public function findAllActiveOrdered($type='app')
+    public function findAllActiveOrdered($type='app',$max=null)
     {
         return $this->createEntityQuery('WHERE e.active = true AND e.type = :type ORDER BY e.position DESC')
-            ->setParameter('type',$type)->getResult();
+            ->setParameter('type',$type)->setMaxResults($max)->getResult();
     }
 
     public function findForSitemap($type='app')

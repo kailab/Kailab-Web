@@ -19,6 +19,13 @@ class PositionListener
         if(!method_exists($entity,'setPosition')){
             return;
         }
+        if(!method_exists($entity,'getPosition')){
+            return;
+        }
+        $position = $entity->getPosition();
+        if($position !== null){
+            return;
+        }
         $em = $args->getEntityManager();
         $repo = $em->getRepository(get_class($entity));
 

@@ -3,6 +3,7 @@
 namespace Kailab\FrontendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
@@ -42,6 +43,16 @@ class AppTranslation
      * @ORM\JoinColumn(name="app_id", referencedColumnName="id")
      */
     protected $app;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppTranslationLink", mappedBy="translation", cascade={"persist", "remove"})
+     */
+    protected $links;
+
+    function __construct()
+    {
+        $this->links = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -101,5 +112,15 @@ class AppTranslation
     public function getApp()
     {
         return $this->app;
+    }
+
+    public function setLinks($links)
+    {
+        $this->links = $links;
+    }
+
+    public function getLinks()
+    {
+        return $this->links;
     }
 }

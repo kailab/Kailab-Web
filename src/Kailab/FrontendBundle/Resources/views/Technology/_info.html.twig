@@ -1,0 +1,39 @@
+<div class="info">
+    {% if show_image is defined and tech.image %}
+    <img src="{{ path('frontend_technology_image',{'id':tech.id}) }}" alt="{{ tech.name }}"/>
+    {% endif %}
+
+    {% if tech.getApps('app').count %}
+    <div class="section">
+    <h3>{{ 'Applications' | trans }}</h3>
+    <ul>
+    {% for appli in tech.getApps('app') %}
+        <li><a href="{{ path('frontend_application', {'slug':appli.slug}) }}">{{ appli.name }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {% if tech.getApps('game').count %}
+    <div class="section">
+    <h3>{{ 'Videogames' | trans }}</h3>
+    <ul>
+    {% for game in tech.getApps('game') %}
+        <li><a href="{{ path('frontend_videogame', {'slug':game.slug}) }}">{{ game.name }}</a></li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+    {% if tech.platforms.count %}
+    <div class="section">
+    <h3>{{ 'Platforms' | trans }}</h3>
+    <ul>
+    {% for platform in tech.platforms %}
+        <li><img src="{{ path('frontend_platform_icon', {'id':platform.id}) }}"/>{{ platform.name }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+
+</div>
