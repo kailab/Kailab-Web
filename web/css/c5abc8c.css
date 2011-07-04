@@ -21,7 +21,6 @@
 .blog_post {
     clear: both;
     line-height: 1.4em;
-
 }
 
 #blog .blog_post {
@@ -96,13 +95,14 @@
 }
 
 .comment_form .form_row_errors {
-    margin: 0 0 10px 30%;
+    margin: 0 0 10px 150px;
     padding-left: 10px;
     color: #FF0000;
 }
 
 .comment_form .form_row_errors ul {
     padding: 0;
+    margin: 0;
 }
 
 .comment_form .form_row_errors li {
