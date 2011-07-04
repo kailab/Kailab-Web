@@ -41,7 +41,7 @@ $(document).ready(function(){
 <div class="maincontent">
     {% block blog %}
     <div id="blog" class="with_sidebar">
-        {% set time_format = '%A, %e of %B' | trans %}
+        {% set time_format = '%A, %e%v of %B' | trans %}
         {% if posts %}
         <div class="blog_posts">
             {% for post in posts %}

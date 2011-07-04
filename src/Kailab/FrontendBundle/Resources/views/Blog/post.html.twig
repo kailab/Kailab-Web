@@ -6,7 +6,7 @@
 
 {% block blog %}
 <div id="blog_post" class="blog_post">
-    {% set time_format = '%A, %e of %B' | trans %}
+    {% set time_format = '%A, %e%v of %B' | trans %}
     {% if post.image.state %}
     <div class="image">
     <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
@@ -66,25 +66,25 @@
                 <div class="form_row_content">
                     {{ form_widget(form.author_name) }}
                 </div>
-                <div class="form_row_errors">
-                    {{ form_errors(form.author_name) }}
-                </div>
+            </div>
+            <div class="form_row_errors">
+                {{ form_errors(form.author_name) }}
             </div>
             <div class="form_row">
                 <div class="form_row_content">
                     {{ form_widget(form.author_email) }}
                 </div>
-                <div class="form_row_errors">
-                    {{ form_errors(form.author_email) }}
-                </div>
+            </div>
+            <div class="form_row_errors">
+                {{ form_errors(form.author_email) }}
             </div>
             <div class="form_row">
                 <div class="form_row_content">
                     {{ form_widget(form.content,{'attr':{'cols':50,'rows':10}}) }}
                 </div>
-                <div class="form_row_errors">
-                    {{ form_errors(form.content) }}
-                </div>
+            </div>
+            <div class="form_row_errors">
+                {{ form_errors(form.content) }}
             </div>
 
             {{ form_rest(form) }}
@@ -120,8 +120,8 @@ $(document).ready(function(){
         }).blur();
     };
 
-    input_tooltip.call($('#blogcomment_author_name'),'Your Name');
-    input_tooltip.call($('#blogcomment_author_email'),'Your Email Address');
+    input_tooltip.call($('#blogcomment_author_name'), {{ 'Your Name' | trans | json_encode | raw }});
+    input_tooltip.call($('#blogcomment_author_email'), {{ 'Your Email Address' | trans | json_encode | raw }});
 });
 </script>
 

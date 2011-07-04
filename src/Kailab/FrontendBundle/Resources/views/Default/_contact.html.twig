@@ -6,7 +6,7 @@
 
 <div class="subsection">
     <h3>{{ 'Email' | trans }}</h3>
-    <a href="mailto:contact@kailab.com">contact@kailab.com</a>
+    {{ frontend_helper.mailto(frontend_helper.email) | raw }}
 </div>
 
 <div class="subsection">

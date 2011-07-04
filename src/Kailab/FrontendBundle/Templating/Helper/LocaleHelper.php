@@ -87,7 +87,22 @@ class LocaleHelper extends Helper
 
     public function format_time($format, $time=null)
     {
-        setlocale(LC_TIME, $this->locale());
+        $locale = $this->locale();
+        $v = '';
+        if($locale == 'C' || !$locale || substr($locale,0,2) == 'en'){
+            switch(date('j')){
+                case 1:
+                    $v = 'st';
+                    break;
+                case 2:
+                    $v = 'nd';
+                default:
+                    $v = 'th';
+            };
+        }
+        $format = str_replace('%v',$v,$format);
+
+        setlocale(LC_TIME, $locale);
         if($time instanceof \DateTime){
             $time = $time->getTimestamp();
         }
