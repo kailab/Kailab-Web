@@ -16,4 +16,4 @@
 /                                   imagine                     http://github.com/avalanche123/Imagine.git
 /bundles/Stfalcon/Bundle            TinymceBundle               http://github.com/stfalcon/TinymceBundle.git
 /bundles/Symfony/Bundle             AsseticBundle               http://github.com/symfony/AsseticBundle.git
-/bundles/FOS                        UserBundle                  http://github.com/FriendsOfSymfony/UserBundle.git
+/bundles/FOS                        UserBundle                  http://github.com/FriendsOfSymfony/FOSUserBundle.git
