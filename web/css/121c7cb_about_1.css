@@ -12,7 +12,8 @@
     float: left;
 }
 
-.team_member_left .side {
+.team_member_left .side,
+.team_member .side {
     float: left;
     width: 150px;
     text-align: center;
@@ -24,7 +25,8 @@
     text-align: center;
 }
 
-.team_member_left h3 {
+.team_member_left h3,
+.team_member h3 {
     margin-left: 180px;
 }
 
@@ -35,7 +37,8 @@
     background-color: #FFFFFF;
 }
 
-.team_member_left .bubble {
+.team_member_left .bubble,
+.team_member .bubble {
     margin-left: 173px;
 }
 
@@ -43,9 +46,10 @@
     margin-right: 173px;
 }
 
-.team_member_left .bubble_tip {
+.team_member_left .bubble_tip,
+.team_member .bubble_tip {
     float: left;
-    background-image: url(../bundles/kailabfrontend/images/bubble_tip_left.png);
+    background-image: url(../../bundles/kailabfrontend/images/bubble_tip_left.png);
     background-repeat: no-repeat;
     z-index: 2;
     margin-top: 20px;
@@ -55,7 +59,7 @@
 
 .team_member_right .bubble_tip {
     float: right;
-    background-image: url(../bundles/kailabfrontend/images/bubble_tip_right.png);
+    background-image: url(../../bundles/kailabfrontend/images/bubble_tip_right.png);
     background-repeat: no-repeat;
     z-index: 2;
     margin-top: 20px;

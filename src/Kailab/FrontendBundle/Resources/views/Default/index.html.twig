@@ -129,7 +129,7 @@
         {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_blog') }}" title="{{ 'News' | trans }}">
-                <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="News" />
+                <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="{{ 'News' | trans }}" />
             </a></h2>
 
             {% if post.image.state %}
@@ -171,7 +171,7 @@
         {% set blocks = blocks + 1 %}
         <div class="block">
             <h2><a href="{{ path('frontend_about') }}" title="{{ 'About us' | trans }}">
-                {{ 'About us' | trans }}
+                <img src="{{ asset('bundles/kailabfrontend/images/about_small.png') }}" alt="{{ 'About us' | trans }}" />
             </a></h2>
 
             <div class="main">
@@ -185,8 +185,8 @@
 
         {% set blocks = blocks + 1 %}
         <div class="block">
-            <h2><a href="{{ path('frontend_contact') }}" title="{{ 'Tec' | trans }}">
-                {{ 'Contact us' | trans }}
+            <h2><a href="{{ path('frontend_contact') }}" title="{{ 'Contact us' | trans }}">
+                <img src="{{ asset('bundles/kailabfrontend/images/contact_small.png') }}" alt="{{ 'Contact us' | trans }}" />
             </a></h2>
 
             <div class="main">
@@ -197,11 +197,21 @@
             </div>
         </div>
 
+        {% set blocks = blocks + 1 %}
+        <div class="block">
+            <h2><img src="{{ asset('bundles/kailabfrontend/images/links_small.png') }}" alt="{{ 'Links' | trans }}" title="{{ 'Links' | trans }}" />
+            </h2>
+            <div class="main">
+                {% include 'KailabFrontendBundle:Default:_links.html.twig' %}
+            </div>
+        </div>
+
+        {% if blocks < 5 %}
         {% for i in range(blocks, 5) %}
         <div class="block">
         </div>
         {% endfor %}
-
+        {% endif %}
     </div>
 </div>
 

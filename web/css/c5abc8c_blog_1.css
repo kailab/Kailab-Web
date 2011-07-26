@@ -4,14 +4,14 @@
 }
 
 #blog h1 {
-    background-image: url("../bundles/kailabfrontend/images/sep_big.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_big.png");
     background-position: center bottom;
     background-repeat: no-repeat;
     border: none;
 }
 
 #blog .paginator {
-    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_small.png");
     background-position: center top;
     background-repeat: no-repeat;
     margin-top: 20px;
@@ -28,7 +28,7 @@
     margin-top: 20px;
     overflow: hidden;
 
-    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_small.png");
     background-position: center top;
     background-repeat: no-repeat;
 }

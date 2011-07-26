@@ -64,12 +64,12 @@
 
     <div id="apps">
     {% if more is defined and more %}
+        {% block more %}
         <a class="more_apps" href="{{ path('frontend_applications') }}">
             <img src="{{ asset('bundles/kailabfrontend/images/more.png') }}" />
-            {% block more %}
             {{ 'See all applications' | trans }}
-            {% endblock %}
         </a>
+        {% endblock %}
     {% endif %}
 
     {% for appli in apps %}

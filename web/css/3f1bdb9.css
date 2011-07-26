@@ -211,6 +211,7 @@ ul.selected_screenshots {
     display: block;
     line-height: 30px;
     text-align: right;
+    width: 960px;
 }
 
 .more_apps img {

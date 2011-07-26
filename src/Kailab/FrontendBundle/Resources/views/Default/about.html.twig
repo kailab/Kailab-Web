@@ -52,7 +52,7 @@
     <h2>{{ 'Designers' | trans }}</h2>
 
     <div class="team_member_row">
-        <div class="section team_member_right">
+        <div class="section team_member">
             <div class="side">
                 <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
             </div>
@@ -60,19 +60,12 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
-            </div>
-        </div>
-
-        <div class="section team_member_left">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_dserra.png') }}" alt="Román Galera"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('dserra@kailab.com','David Serra') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. Sed placerat eleifend adipiscing. Morbi ut quam eros. In hac habitasse.
+{% if locale_helper.code == 'en' %}
+            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
+{% endif %}
+{% if locale_helper.code == 'es' %}
+            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
+{% endif %}
             </div>
         </div>
     </div>
@@ -89,7 +82,13 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus.
+{% if locale_helper.code == 'en' %}
+            I'm one of the younguer programmers at Kailab, and work mainly on Android projects. I also collaborate on the porting of games to other platforms. I love Super Meat Boy and the music of Joaquin Sabina.
+{% endif %}
+
+{% if locale_helper.code == 'es' %}
+            Soy uno de los más jóvenes de Kailab, me encargo de realizar la mayoría de proyectos para el sistema operativo de móviles y otros dispositivos de Google, conocido como Android. También participo en el porting de nuestros juegos a esta plataforma. Me gusta el Super Meat Boy y la música de Sabina.
+{% endif %}
             </div>
             <div class="links">
                 <li><a href="http://twitter.com/#!/AiverPim">twitter</a></li>
@@ -119,7 +118,16 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            I'm the web programmer and resident open source entusiast. I'm always excited about new frameworks and technologies. In my spare time y like to go to punk concerts and play Starcraft 2.
+{% if locale_helper.code == 'es' %}
+            Soy el programador web y fanboy de software libre residente. Siempre estoy al día con nuevos frameworks y tecnologías. En mi tiempo libre me gusta ir a conciertos de punk
+            y jugar al Starcraft 2.
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            I'm the web programmer and resident open source entusiast. I'm always excited about new frameworks and technologies. In my spare time I like to go to punk concerts and play Starcraft 2.
+{% endif %}
+            </div>
+            <div class="links">
+                <li><a href="http://www.peix.org">{{ 'personal website' | trans }}</a></li>
             </div>
         </div>
 
@@ -151,6 +159,22 @@
         </div>
     </div>
 #}
+
+    <h2>{{ 'Management' | trans }}</h2>
+
+    <div class="team_member_row">
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_dserra.png') }}" alt="David Serra"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('dserra@kailab.com','David Serra') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. Sed placerat eleifend adipiscing. Morbi ut quam eros. In hac habitasse.
+            </div>
+        </div>
+    </div>
 
 
 </div>

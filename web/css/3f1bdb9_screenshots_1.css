@@ -21,7 +21,7 @@ ul.screenshots li {
     border: 1px solid #BDCA0E;
     font-size: 0;
     text-indent: -99999px;
-    background-image: url(../bundles/kailabfrontend/images/delete.png);
+    background-image: url(../../bundles/kailabfrontend/images/delete.png);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;

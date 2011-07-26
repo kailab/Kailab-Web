@@ -6,6 +6,14 @@ class BlogPostRepository extends EntityRepository
 {
     protected $entity_name = 'KailabFrontendBundle:BlogPost';
 
+    public function findAllActiveInPage($page, $limit = 10)
+    {
+        $offset = ($page >= 1 ? $page-1 : $page)*$limit;
+        $offset = $offset < 0 ? 0 : $offset;
+        return $this->createEntityQuery('WHERE e.active = true ORDER BY e.updated DESC')
+            ->setFirstResult($offset)->setMaxResults($limit)->getResult();
+    }
+
     public function findAllActiveOrdered()
     {
         return $this->createEntityQuery('WHERE e.active = true ORDER BY e.updated DESC')
@@ -28,7 +36,7 @@ class BlogPostRepository extends EntityRepository
     public function findForHomepage()
     {
         try{
-            return $this->createEntityQuery('WHERE e.active = true ORDER BY e.updated ASC')
+            return $this->createEntityQuery('WHERE e.active = true ORDER BY e.updated DESC')
                 ->setMaxResults(1)->getSingleResult();
         }catch(\Exception $e){
             return null;

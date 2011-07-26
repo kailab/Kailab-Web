@@ -13,6 +13,8 @@
 {% endblock %}
 
 {% block more %}
-{{ 'See all videogames' | trans }}
+<a class="more_apps" href="{{ path('frontend_applications') }}">
+    <img src="{{ asset('bundles/kailabfrontend/images/more.png') }}" />
+    {{ 'See all videogames' | trans }}
+</a>
 {% endblock %}
-

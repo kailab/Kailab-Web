@@ -32,7 +32,7 @@
 
 #main .maincontent .block h2 {
     border: 0;
-    margin: 0;
+    margin: 0 0 5px 0;
 }
 
 #main .maincontent .block h2 a {
@@ -78,6 +78,9 @@
     bottom: 0;
     width: 100%;
     padding: 10px;
+    background-image: url(../images/bg_block_footer.png);
+    background-repeat: repeat-x;
+    background-position: center bottom;
 }
 
 .maincontent .block .button {
@@ -88,4 +91,15 @@
     float: right;
     padding: 4px;
     background-image: url(../images/bg_block_button.png);
+}
+
+.maincontent .block ul {
+    margin: 0;
+    padding: 0;
+}
+
+.maincontent .block ul li {
+    list-style: square inside;
+    margin: 0;
+    padding: 0;
 }
