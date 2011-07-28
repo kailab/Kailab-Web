@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class TechType extends AbstractType
+class TechType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -39,18 +38,6 @@ class TechType extends AbstractType
             'multiple'  => true,
             'required'  => false
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\Tech',
-        );
-    }
-
-    public function getIdentifier()
-    {
-        return 'tech';
     }
 }
 

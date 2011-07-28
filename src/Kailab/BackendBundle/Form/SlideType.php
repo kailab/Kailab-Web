@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class SlideType extends AbstractType
+class SlideType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -19,13 +18,6 @@ class SlideType extends AbstractType
         $builder->add('translations', 'collection', array(
            'type'       => new SlideTranslationType(),
        ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\Slide',
-        );
     }
 
 }

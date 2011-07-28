@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class BlogCommentType extends AbstractType
+class BlogCommentType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -14,13 +13,5 @@ class BlogCommentType extends AbstractType
         $builder->add('author_email','text');
         $builder->add('content','textarea');
     }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\BlogComment',
-        );
-    }
-
 }
 

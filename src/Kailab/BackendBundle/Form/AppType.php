@@ -2,11 +2,10 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Kailab\FrontendBundle\Entity\SlideTranslation;
 
-class AppType extends AbstractType
+class AppType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -58,16 +57,5 @@ class AppType extends AbstractType
         ));
     }
 
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\App',
-        );
-    }
-
-    public function getIdentifier()
-    {
-        return 'app';
-    }
 }
 

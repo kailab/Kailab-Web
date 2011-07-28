@@ -2,11 +2,10 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Kailab\FrontendBundle\Entity\SlideTranslation;
 
-class UserType extends AbstractType
+class UserType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -19,18 +18,6 @@ class UserType extends AbstractType
             'required' => false
         ));
         $builder->add('email', 'email');
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\User',
-        );
-    }
-
-    public function getIdentifier()
-    {
-        return 'user';
     }
 }
 

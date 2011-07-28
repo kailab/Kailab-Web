@@ -2,11 +2,10 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Kailab\FrontendBundle\Entity\Screenshot;
 
-class ScreenshotType extends AbstractType
+class ScreenshotType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -26,13 +25,6 @@ class ScreenshotType extends AbstractType
         $builder->add('image','file',array(
             'required'  => false,
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\Screenshot',
-        );
     }
 
 }

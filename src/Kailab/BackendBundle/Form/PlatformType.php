@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class PlatformType extends AbstractType
+class PlatformType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -27,18 +26,6 @@ class PlatformType extends AbstractType
         $builder->add('background','file',array(
             'required'  => false
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\Platform',
-        );
-    }
-
-    public function getIdentifier()
-    {
-        return 'platform';
     }
 }
 

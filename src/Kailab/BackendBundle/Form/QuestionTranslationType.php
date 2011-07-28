@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class QuestionTranslationType extends AbstractType
+class QuestionTranslationType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -16,13 +15,6 @@ class QuestionTranslationType extends AbstractType
         $builder->add('answer','textarea', array(
             'required'  => false,
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\QuestionTranslation',
-        );
     }
 }
 

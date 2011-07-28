@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class BlogPostTranslationType extends AbstractType
+class BlogPostTranslationType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -16,13 +15,6 @@ class BlogPostTranslationType extends AbstractType
         $builder->add('content','textarea', array(
             'required'  => false,
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\BlogPostTranslation',
-        );
     }
 }
 

@@ -2,10 +2,9 @@
 
 namespace Kailab\BackendBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 
-class AppTranslationLinkType extends AbstractType
+class AppTranslationLinkType extends BaseType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
@@ -15,13 +14,6 @@ class AppTranslationLinkType extends AbstractType
         $builder->add('url','url', array(
             'required'  => false,
         ));
-    }
-
-    public function getDefaultOptions(array $options)
-    {
-        return array(
-            'data_class' => 'Kailab\FrontendBundle\Entity\AppTranslationLink',
-        );
     }
 }
 
