@@ -76,9 +76,15 @@ foreach ($deps as $name => $dep) {
     }
     $url = $dep['git'];
 
+    //if (!is_dir($installDir)) {
+        system(sprintf('git submodule add %s %s', escapeshellarg($url), escapeshellarg($installDir)));
+    // }
+
+    /*
     if (!is_dir($installDir)) {
         system(sprintf('git clone %s %s', escapeshellarg($url), escapeshellarg($installDir)));
     }
+    */
 
     system(sprintf('cd %s && git fetch origin && git reset --hard %s', escapeshellarg($installDir), escapeshellarg($rev)));
 
