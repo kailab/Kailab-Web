@@ -73,6 +73,7 @@ stfalcon_tinymce:
         theme_advanced_resizing: true
         extended_valid_elements : "textarea[cols|rows|disabled|name|readonly|class]" 
         remove_linebreaks: false
+        preformatted : true
         pagebreak_separator: "<!-- more -->"
         force_br_newlines: false
 

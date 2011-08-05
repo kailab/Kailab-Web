@@ -27,5 +27,10 @@ class BlogCommentType extends AbstractType
         );
     }
 
+    public function getName()
+    {
+        return 'comment';
+    }
+
 }
 
