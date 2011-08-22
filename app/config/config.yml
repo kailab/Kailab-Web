@@ -36,11 +36,12 @@ assetic:
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
+        driver:         %database_driver%
+        host:           %database_host%
+        dbname:         %database_name%
+        user:           %database_user%
+        password:       %database_password%
+        unix_socket:    %database_socket%
 
     orm:
         auto_generate_proxy_classes: %kernel.debug%
