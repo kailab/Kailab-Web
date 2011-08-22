@@ -1,6 +1,6 @@
 imports:
     - { resource: parameters.ini }
-    - { resource: local_parameters.ini }
+    - { resource: local_parameters.ini, ignore_errors: true }
     - { resource: security.yml }
 
 framework:
