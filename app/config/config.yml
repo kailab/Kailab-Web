@@ -3,6 +3,7 @@ imports:
     - { resource: local_parameters.ini, ignore_errors: true }
     - { resource: security.yml }
 
+
 framework:
     secret:          %secret%
     charset:         UTF-8
