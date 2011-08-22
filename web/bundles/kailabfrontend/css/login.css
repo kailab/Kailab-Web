@@ -1,0 +1,51 @@
+.form_row {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.form_row label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form_row_content label {
+    display: inline;
+    float: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.form_reverse_row {
+    margin-left: 30%;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.form_row_comment {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+.form_submit_row {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+#flash_notice {
+    background-color: #FFFFFF;
+    color: #BDCA0E;
+    border: 1px solid #BDCA0E;
+    padding: 4px;
+    margin: 0 0 10px 0;
+}
+
+#flash_error {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0 0 10px 0;
+}
+
+

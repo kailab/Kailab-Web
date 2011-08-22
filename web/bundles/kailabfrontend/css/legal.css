@@ -1,0 +1,14 @@
+.legal {
+    background-image: url(../images/bg_legal.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-size: x-small;
+    overflow: hidden;
+}
+
+.column {
+    width: 300px;
+    margin: 0 20px 10px 0;
+    float: left;
+    text-align: justify;
+}

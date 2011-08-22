@@ -1,0 +1,181 @@
+#app_icons {
+    padding: 0;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#app_icons li {
+    cursor: pointer;
+    float: left;
+    margin: 0;
+    padding: 25px;
+    width: 150px;
+    height: 150px;
+    list-style: none;
+    text-align: center;
+}
+
+#app_icons li a {
+    text-decoration: none;
+}
+
+#app_icons li.selected {
+    background-image: url(../images/bg_selected_screenshot.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#app_icons li .app_item_title {
+    font-size: 200%;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 50px;
+    display: block;
+}
+
+#app_icons li.selected .app_item_title {
+    color: #FFFFFF;
+}
+
+.app {
+    clear: both;
+    overflow: hidden;
+}
+
+#apps .app {
+    background-image: url(../images/sep_big.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: 25px;
+    margin-bottom: 25px;
+}
+
+.app_inner {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.app .side {
+    float: left;
+    width: 250px;
+    position: relative;
+}
+
+.app .side .nav {
+    width: 190px;
+}
+
+.app.horizontal_orientation .side {
+    float: none;
+    text-align: center;
+    width: 710px;
+    margin-bottom: 10px;
+}
+
+.app.horizontal_orientation .side .nav {
+    width: 650px !important;
+}
+
+.app.horizontal_orientation .screenshots {
+    width: 500px !important;
+    margin: 0 auto;
+}
+
+.app.horizontal_orientation .main {
+    margin-left: 0 !important;
+    margin-right: 250px;
+}
+
+.app.horizontal_orientation .description {
+    margin: 0;
+}
+
+.app .main {
+}
+
+.app .main.with_side {
+    margin-left: 250px;
+}
+
+#main .app .title {
+    color: #000000;
+    padding: 0;
+    margin: 0 0 10px 0;
+    background-image: none;
+}
+
+#main .app .title .left {
+    background-image: url(../images/bg_title_left.png);
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 60px;
+}
+
+#main .app .title .right {
+    background-image: url(../images/bg_title_right.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 60px;
+}
+
+#main .app .title .inner {
+    background-image: url(../images/bg_title.png);
+    background-repeat: repeat-x;
+    padding: 2px 5px;
+}
+
+.app .description {
+    margin: 0 200px 0 0;
+    padding: 0 10px;
+}
+
+.app .info {
+    float: right;
+    width: 200px;
+}
+
+#main .app .info h3 {
+    color: #000000;
+    font-size: 14px;
+    border: 0;
+}
+
+#main .app .info ul {
+    margin: 0;
+    padding: 0;
+}
+
+#main .app .info li {
+    vertical-align: middle;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#main .app .info li img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+#main .app .info li a {
+    text-decoration: none;
+    color: #9B9B9B;
+}
+
+#main .app .info li a:hover {
+    color: #8A8A8A;
+}
+
+.more_apps {
+    text-decoration: none;
+    font-size: 150%;
+    clear: both;
+    display: block;
+    line-height: 30px;
+    text-align: right;
+    width: 960px;
+}
+
+.more_apps img {
+    vertical-align: middle;
+}

@@ -1,0 +1,88 @@
+.team_member_row {
+    clear: both;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.team_member_left,
+.team_member_right {
+    overflow: hidden;
+    margin: 0 10px 10px 0;
+    width: 470px;
+    float: left;
+}
+
+.team_member_left .side,
+.team_member .side {
+    float: left;
+    width: 150px;
+    text-align: center;
+}
+
+.team_member_right .side {
+    float: right;
+    width: 150px;
+    text-align: center;
+}
+
+.team_member_left h3,
+.team_member h3 {
+    margin-left: 180px;
+}
+
+.bubble {
+    border: 2px solid #BDCA0E;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #FFFFFF;
+}
+
+.team_member_left .bubble,
+.team_member .bubble {
+    margin-left: 173px;
+}
+
+.team_member_right .bubble {
+    margin-right: 173px;
+}
+
+.team_member_left .bubble_tip,
+.team_member .bubble_tip {
+    float: left;
+    background-image: url(../images/bubble_tip_left.png);
+    background-repeat: no-repeat;
+    z-index: 2;
+    margin-top: 20px;
+    width: 25px;
+    height: 40px;
+}
+
+.team_member_right .bubble_tip {
+    float: right;
+    background-image: url(../images/bubble_tip_right.png);
+    background-repeat: no-repeat;
+    z-index: 2;
+    margin-top: 20px;
+    width: 25px;
+    height: 40px;
+}
+
+.team_member_left .links {
+    margin-left: 180px;
+}
+
+.links {
+    padding: 5px;
+}
+
+.links li {
+    display: inline;
+}
+
+.links li:before {
+    content: ' · '
+}
+
+.links li:first-child:before {
+    content: '';
+}

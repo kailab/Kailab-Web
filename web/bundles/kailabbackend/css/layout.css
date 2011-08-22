@@ -1,0 +1,170 @@
+
+#flash_notice {
+    background-color: #FFFFFF;
+    color: #BDCA0E;
+    border: 1px solid #BDCA0E;
+    padding: 4px;
+    margin: 0 0 10px 0;
+}
+
+#flash_error {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    padding: 5px;
+    margin: 0 0 10px 0;
+}
+
+#main_inner h1,
+#main_inner h2,
+#main_inner h3 {
+    padding-left: 0;
+}
+
+textarea.tinymce,
+.mceLayout {
+    width: 100%;
+}
+
+.entity_list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.entity_list th {
+    background-color: #BDCA0E;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    padding: 5px;
+}
+
+.entity_list td {
+    padding: 5px;
+    border: 1px solid #FFFFFF;
+}
+
+.entity_list td.actions ul {
+    margin: 0;
+    padding: 0;
+}
+
+.entity_list td.actions li {
+    display: inline;
+    list-style: none;
+    margin: 0 5px 0 0;
+}
+
+form.entity .form_row {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+form.entity .form_row label {
+    float: left;
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+form.entity .form_row_content label {
+    display: inline;
+    float: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+form.entity .form_row_comment {
+    margin-left: 30%;
+    padding-left: 10px;
+}
+
+form.entity .form_row_errors {
+    background-color: #FFDDDD;
+    color: #FF0000;
+    margin: 0 0 5px 30%;
+    padding: 5px;
+}
+
+form.entity .form_row_errors li {
+    list-style: square inside;
+    margin: 0;
+    padding: 0;
+}
+
+form.entity .form_submit_row {
+    clear: both;
+    background-color: #FFFFFF;
+    padding: 5px;
+    border-top: 1px solid #BDCA0E;
+}
+
+#entity_translation_tabs {
+    margin-bottom: 10px;
+}
+
+#main {
+    width: 760px;
+}
+
+#main_with_sidebar {
+    margin-right: 200px;
+}
+
+#main_gradient {
+}
+
+#main_inner {
+    float: left;
+    width: 760px;
+}
+
+#sidebar {
+    float: right;
+    width: 200px;
+    float: right;
+    background-color: #FFFFFF;
+}
+
+#sidebar ul {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+#sidebar ul ul {
+    margin-bottom: 10px;
+}
+
+#sidebar .section_title {
+    background-color: #EEEEEE;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#sidebar li {
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+#sidebar li a {
+    padding: 5px;
+}
+
+#entity_list_actions {
+    background-color: #FFFFFF;
+    border-top: 1px solid #BDCA0E;
+    padding: 10px;
+    margin: 0 0 10px 0;
+}
+
+#entity_list_actions li {
+    display: inline;
+    list-style: none;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+#user {
+    margin-top: 50px;
+    float: right;
+}
