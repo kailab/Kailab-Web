@@ -153,11 +153,11 @@ backend_platform_delete:
     defaults: { _controller: KailabBackendBundle:Platform:delete }
 
 backend_platform_background:
-    pattern:  /platform/{id}/background.png
+    pattern:  /platform/{id}/background
     defaults: { _controller: KailabBackendBundle:Platform:background }
 
 backend_platform_icon:
-    pattern:  /platform/{id}/icon.png
+    pattern:  /platform/{id}/icon
     defaults: { _controller: KailabBackendBundle:Platform:icon }
 
 # blog post

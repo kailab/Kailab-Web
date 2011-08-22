@@ -5,7 +5,7 @@ frontend_homepage:
         _locale: ^..$ 
 
 frontend_slide:
-    pattern:  /slide/{id}.png
+    pattern:  /slide/{id}
     defaults: { _controller: KailabFrontendBundle:Default:slide }
     requirements:
         _locale: ^..$ 
@@ -55,13 +55,13 @@ frontend_blog_post:
         _locale: ^..$ 
 
 frontend_blog_post_image:
-    pattern:  /blog/post/{id}/image.png
+    pattern:  /blog/post/{id}/image
     defaults: { _controller: KailabFrontendBundle:Blog:postImage }
     requirements:
         _locale: ^..$ 
 
 frontend_blog_post_image_small:
-    pattern:  /blog/post/{id}/image_small.png
+    pattern:  /blog/post/{id}/image_small
     defaults: { _controller: KailabFrontendBundle:Blog:postImageSmall }
     requirements:
         _locale: ^..$ 
@@ -91,13 +91,13 @@ frontend_technology:
         _locale: ^..$ 
 
 frontend_technology_icon:
-    pattern:  /tech/icon/{id}.png
+    pattern:  /tech/icon/{id}
     defaults: { _controller: KailabFrontendBundle:Technology:icon }
     requirements:
         _locale: ^..$ 
 
 frontend_technology_image:
-    pattern:  /tech/image/{id}.png
+    pattern:  /tech/image/{id}
     defaults: { _controller: KailabFrontendBundle:Technology:image }
     requirements:
         _locale: ^..$ 
@@ -139,31 +139,31 @@ frontend_videogame:
         _locale: ^..$ 
 
 frontend_screenshot_item:
-    pattern:  /screenshot/item/{id}.png
+    pattern:  /screenshot/item/{id}
     defaults: { _controller: KailabFrontendBundle:Screenshot:item }
     requirements:
         _locale: ^..$ 
 
 frontend_screenshot_big:
-    pattern:  /screenshot/big/{id}.png
+    pattern:  /screenshot/big/{id}
     defaults: { _controller: KailabFrontendBundle:Screenshot:big }
     requirements:
         _locale: ^..$ 
 
 frontend_screenshot_small:
-    pattern:  /screenshot/small/{id}.png
+    pattern:  /screenshot/small/{id}
     defaults: { _controller: KailabFrontendBundle:Screenshot:small }
     requirements:
         _locale: ^..$ 
 
 frontend_screenshot_full:
-    pattern:  /screenshot/{id}.png
+    pattern:  /screenshot/{id}
     defaults: { _controller: KailabFrontendBundle:Screenshot:full }
     requirements:
         _locale: ^..$ 
 
 frontend_platform_icon:
-    pattern:  /platform/icon/{id}.png
+    pattern:  /platform/icon/{id}
     defaults: { _controller: KailabFrontendBundle:Platform:icon }
     requirements:
         _locale: ^..$ 
