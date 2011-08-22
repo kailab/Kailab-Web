@@ -1,0 +1,80 @@
+[submodule "symfony"]
+    path = vendor/symfony
+    url = http://github.com/symfony/symfony.git
+
+[submodule "twig"]
+    path=vendor/twig
+    url=http://github.com/fabpot/Twig.git
+
+[submodule "monolog"]
+    path=vendor/monolog
+    url=http://github.com/Seldaek/monolog.git
+
+[submodule "doctrine-common"]
+    path=vendor/doctrine-common
+    url=http://github.com/doctrine/common.git
+
+[submodule "doctrine-dbal"]
+    path=vendor/doctrine-dbal
+    url=http://github.com/doctrine/dbal.git
+
+[submodule "doctrine"]
+    path=vendor/doctrine
+    url=http://github.com/doctrine/doctrine2.git
+
+[submodule "swiftmailer"]
+    path=vendor/swiftmailer
+    url=http://github.com/swiftmailer/swiftmailer.git
+    version=origin/4.1
+
+[submodule "assetic"]
+    path=vendor/assetic
+    url=http://github.com/kriswallsmith/assetic.git
+
+[submodule "twig-extensions"]
+    path=vendor/twig-extensions
+    url=http://github.com/fabpot/Twig-extensions.git
+
+[submodule "metadata"]
+    path=vendor/metadata
+    url=http://github.com/schmittjoh/metadata.git
+
+[submodule "SensioFrameworkExtraBundle"]
+    url=http://github.com/sensio/SensioFrameworkExtraBundle.git
+    path=vendor/bundles/Sensio/Bundle/FrameworkExtraBundle
+
+[submodule "JMSSecurityExtraBundle"]
+    url=https://github.com/schmittjoh/JMSSecurityExtraBundle.git
+    path=vendor/bundles/JMS/SecurityExtraBundle
+
+[submodule "SensioDistributionBundle"]
+    url=http://github.com/sensio/SensioDistributionBundle.git
+    path=vendor/bundles/Sensio/Bundle/DistributionBundle
+
+[submodule "SensioGeneratorBundle"]
+    url=http://github.com/sensio/SensioGeneratorBundle.git
+    path=vendor/bundles/Sensio/Bundle/GeneratorBundle
+
+[submodule "AsseticBundle"]
+    url=http://github.com/symfony/AsseticBundle.git
+    path=vendor/bundles/Symfony/Bundle/AsseticBundle
+
+[submodule "gedmo-doctrine-extensions"]
+    url=http://github.com/l3pp4rd/DoctrineExtensions.git
+    path=vendor/gedmo-doctrine-extensions
+
+[submodule "imagine"]
+    url=http://github.com/avalanche123/Imagine.git
+    path=vendor/imagine
+
+[submodule "StfalconTinymceBundle"]
+    url=http://github.com/stfalcon/TinymceBundle.git
+    path=vendor/bundles/Stfalcon/Bundle/TinymceBundle
+
+[submodule "FOSUserBundle"]
+    url=http://github.com/FriendsOfSymfony/FOSUserBundle.git
+    path=vendor/bundles/FOS/UserBundle
+
+[submodule "StofDoctrineExtensionsBundle"]
+    url=http://github.com/stof/StofDoctrineExtensionsBundle.git
+    path=vendor/bundles/Stof/DoctrineExtensionsBundle
