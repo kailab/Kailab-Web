@@ -150,11 +150,11 @@ RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/delete/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:deleteAction]
 
 # backend_platform_background
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/background\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/background$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_background,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:backgroundAction]
 
 # backend_platform_icon
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/icon\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/icon$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_icon,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:iconAction]
 
 # backend_blog_post_list
@@ -401,7 +401,7 @@ RewriteCond %{REQUEST_URI} ^/kailab/(..)/$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
 
 # frontend_slide
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/slide/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/slide/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_slide,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:slideAction]
 
 # frontend_about
@@ -433,11 +433,11 @@ RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/(\d+)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:postAction]
 
 # frontend_blog_post_image
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/([^/]+?)/image\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/([^/]+?)/image$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post_image,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:postImageAction]
 
 # frontend_blog_post_image_small
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/([^/]+?)/image_small\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/([^/]+?)/image_small$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post_image_small,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:postImageSmallAction]
 
 # frontend_blog_category
@@ -457,11 +457,11 @@ RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:showAction]
 
 # frontend_technology_icon
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/icon/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/icon/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology_icon,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:iconAction]
 
 # frontend_technology_image
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/image/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/image/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology_image,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:imageAction]
 
 # frontend_applications
@@ -489,23 +489,23 @@ RewriteCond %{REQUEST_URI} ^/kailab/(..)/games/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogame,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\VideogamesController\:\:showAction]
 
 # frontend_screenshot_item
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/item/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/item/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_screenshot_item,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ScreenshotController\:\:itemAction]
 
 # frontend_screenshot_big
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/big/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/big/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_screenshot_big,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ScreenshotController\:\:bigAction]
 
 # frontend_screenshot_small
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/small/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/small/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_screenshot_small,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ScreenshotController\:\:smallAction]
 
 # frontend_screenshot_full
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/screenshot/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_screenshot_full,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ScreenshotController\:\:fullAction]
 
 # frontend_platform_icon
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/platform/icon/([^/\.]+?)\.png$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/platform/icon/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_platform_icon,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\PlatformController\:\:iconAction]
 
 # error404
