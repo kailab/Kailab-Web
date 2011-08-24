@@ -45,7 +45,6 @@ class FileAsset extends AbstractAsset
         // use x-sendfile
         $response = new Response();
         $response->headers->set('Content-Type',$this->getContentType());
-        $response->headers->set('Content-Length',filesize($this->getPath()));
         $response->headers->set('X-Sendfile',$this->getPath());
         return $response;
     }
