@@ -30,6 +30,15 @@ class ScreenshotHelper extends Helper
         return 'screenshot';
     }
 
+    protected function getScreenshotSizes()
+    {
+        if(isset($this->config['screenshots']) && is_array($this->config['screenshots'])){
+            return array_keys($this->config['screenshots']);
+        }else{
+            return array();
+        }
+    }
+
     protected function getScreenshotSize($size)
     {
         $info = array('width'=>null,'height'=>null,'route'=>null,

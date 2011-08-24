@@ -3,6 +3,7 @@
 namespace Kailab\FrontendBundle\Entity;
 
 use Kailab\FrontendBundle\Asset\EntityAsset;
+use Kailab\FrontendBundle\Asset\AssetInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,7 +52,7 @@ class Screenshot
      */
     protected $app_screenshots;
 
-    protected $image;
+    protected $images = array();
 
     public function __construct()
     {
@@ -114,26 +115,42 @@ class Screenshot
 
     protected function loadAssets()
     {
-        if(!$this->image instanceof EntityAsset){
-            $this->image = new EntityAsset($this, 'image');
+        $types = array('', 'big','small','item');
+        foreach($types as $type){
+            if(!isset($this->images[$type])){
+                $name = $type ? 'image_'.$type : 'image';
+                $this->images[$type] = new EntityAsset($this, $name);
+            }
         }
     }
     public function getAssets()
     {
         $this->loadAssets();
-        return array($this->image);
+        return $this->images;
     }
 
-    public function getImage()
+    public function getImage($name='')
     {
         $this->loadAssets();
-        return $this->image;
+        if(isset($this->images[$name])){
+            return $this->images[$name];
+        }else{
+            return null;
+        }
     }
 
-    public function setImage($path)
+    public function setImage($path, $name='')
     {
         $this->loadAssets();
-        $this->image->loadPath($path);
+        $img = $this->getImage($name);
+        if($img == null){
+            return;
+        }
+        if($path instanceof AssetInterface){
+            $img->setAsset($path);
+        }else if(is_string($path)){
+            $img->loadPath($path);
+        }
         $this->updated = new \DateTime('now');
     }
 

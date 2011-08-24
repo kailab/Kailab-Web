@@ -25,35 +25,48 @@ class ScreenshotController extends Controller
         return $shot;
     }
 
-    public function bigAction($id)
+    protected function getScreenshotCombinedImageResponse($id, $name)
     {
         $shot = $this->getScreenshot($id);
-        $helper = $this->get('templating.helper.screenshot');
-        $asset = $helper->combineScreenshotAsset($shot,'big');
-        return $asset->getResponse();
+        try{
+            $asset = $shot->getImage($name);
+            return $asset->getResponse();
+        }catch(\Exception $e){
+            $helper = $this->get('templating.helper.screenshot');
+            $asset = $helper->combineScreenshotAsset($shot, $name);
+            $shot->setImage($asset, $name);
+            $em = $this->get('doctrine')->getEntityManager();
+            $em->persist($shot);
+            $em->flush();
+            $asset = $shot->getImage($name);
+            return $asset->getResponse();
+        }
+    }
+
+    public function bigAction($id)
+    {
+        return $this->getScreenshotCombinedImageResponse($id,'big');
     }
 
     public function itemAction($id)
     {
-        $shot = $this->getScreenshot($id);
-        $helper = $this->get('templating.helper.screenshot');
-        $asset = $helper->combineScreenshotAsset($shot,'item');
-        return $asset->getResponse();
+        return $this->getScreenshotCombinedImageResponse($id,'item');
     }
 
     public function smallAction($id)
     {
-        $shot = $this->getScreenshot($id);
-        $helper = $this->get('templating.helper.screenshot');
-        $asset = $helper->combineScreenshotAsset($shot,'small');
-        return $asset->getResponse();
+        return $this->getScreenshotCombinedImageResponse($id,'small');
     }
 
     public function fullAction($id)
     {
         $shot = $this->getScreenshot($id);
         $asset = $shot->getImage();
-        return $asset->getResponse();
+        try{
+            return $asset->getResponse();
+        }catch(\Exception $e){
+            throw new NotFoundHttpException('The screenshot does not exist.');
+        }
     }
 
 

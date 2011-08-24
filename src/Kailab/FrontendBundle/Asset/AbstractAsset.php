@@ -12,6 +12,5 @@ abstract class AbstractAsset implements AssetInterface
         $response->headers->set('Content-Type',$this->getContentType());
         return $response;
     }
-
 }
 

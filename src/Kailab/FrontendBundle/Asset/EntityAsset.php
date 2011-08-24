@@ -38,10 +38,7 @@ class EntityAsset extends File implements AssetInterface
 
     public function getResponse()
     {
-        $response = new Response();
-        $response->setContent($this->getContent());
-        $response->headers->set('Content-Type',$this->getContentType());
-        return $response;
+        return $this->getAsset()->getResponse();
     }
 
     public function getPath()
@@ -88,12 +85,24 @@ class EntityAsset extends File implements AssetInterface
 
     public function getAsset()
     {
-        if($this->asset instanceof AssetInterface){
+        if($this->state == self::STATE_ASSET && $this->asset instanceof AssetInterface){
             return $this->asset;
         }else if($this->state == self::STATE_PATH){
             return $this->getPathAsset();
+        }else{
+            throw new \RuntimeException('No path or asset loaded');
         }
         return null;
+    }
+
+    public function setAsset(AssetInterface $asset)
+    {
+        $this->asset = new ParameterAsset(array(
+            'name'          => $this->getName(),
+            'content'       => $asset->getContent(),
+            'content_type'  => $asset->getContentType(),
+        ));
+        $this->state = self::STATE_ASSET;
     }
 
     public function getPathAsset()
@@ -106,24 +115,12 @@ class EntityAsset extends File implements AssetInterface
 
     public function getContentType()
     {
-        if($this->state == self::STATE_PATH){
-            return $this->getPathAsset()->getContentType();
-        }else if($this->state == self::STATE_ASSET){
-            return $this->getAsset()->getContentType();
-        }else{
-            throw new \RuntimeException('No path or asset loaded');
-        }
+        return $this->getAsset()->getContentType();
     }
 
     public function getContent()
     {
-        if($this->state == self::STATE_PATH){
-            return $this->getPathAsset()->getContent();
-        }else if($this->state == self::STATE_ASSET){
-            return $this->getAsset()->getContent();
-        }else{
-            throw new \RuntimeException('No path or asset loaded');
-        }
+        return $this->getAsset()->getContent();
     }
 
     public function getName()
@@ -158,12 +155,9 @@ class EntityAsset extends File implements AssetInterface
 
     public function save(AssetStorageInterface $storage)
     {
-        if($this->state != self::STATE_PATH){
-            return false;
-        }
+        $asset = $this->getAsset();
         $ns = $this->getNamespace();
-        $asset = $this->getPathAsset();
-        if($storage->writeAsset($asset,$ns)){
+        if(!$storage->writeAsset($asset,$ns)){
             return false;
         }
         return true;

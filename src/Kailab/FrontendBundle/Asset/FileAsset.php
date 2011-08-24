@@ -40,5 +40,15 @@ class FileAsset extends AbstractAsset
         return $file->getMimeType();
     }
 
+    public function getResponse()
+    {
+        // use x-sendfile
+        $response = new Response();
+        $response->headers->set('Content-Type',$this->getContentType());
+        $response->headers->set('Content-Length',filesize($this->getPath()));
+        $response->headers->set('X-Sendfile',$this->getPath());
+        return $response;
+    }
+
 }
 
