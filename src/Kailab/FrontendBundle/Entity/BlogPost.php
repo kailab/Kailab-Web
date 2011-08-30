@@ -140,7 +140,7 @@ class BlogPost
 
     protected function loadAssets()
     {
-        $types = array('', 'big');
+        $types = array('', 'big', 'small');
         foreach($types as $type){
             if(!isset($this->images[$type])){
                 $name = $type ? 'image_'.$type : 'image';

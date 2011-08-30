@@ -122,7 +122,7 @@ class Slide
 
     protected function loadAssets()
     {
-        $types = array('', 'big','small');
+        $types = array('', 'big');
         foreach($types as $type){
             if(!isset($this->images[$type])){
                 $name = $type ? 'image_'.$type : 'image';
