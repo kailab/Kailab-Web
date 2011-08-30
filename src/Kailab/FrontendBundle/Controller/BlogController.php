@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\ParameterAsset;
 use Kailab\FrontendBundle\Form\BlogCommentType;
 use Imagine\ImageInterface;
 use Imagine\Gd\Imagine;
@@ -117,53 +118,49 @@ class BlogController extends Controller
         ));
     }
 
-    protected function getPostAsset($id)
+    protected function getResizedPostImageResponse($id, $name, $width)
     {
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabFrontendBundle:BlogPost');
 
-        $shot = $repo->find($id);
-        if(!$shot){
+        $post = $repo->find($id);
+        if(!$post){
             throw new NotFoundHttpException('The post does not exist.');
         }
-        $asset = $shot->getImage()->getAsset();
+
+        try{
+            $asset = $post->getImage($name)->getAsset();
+        }catch(\RuntimeException $e){
+            $asset = $post->getImage()->getAsset();
+            // resize image
+            $imagine = new Imagine();
+            if($asset instanceof AssetInterface){
+                $image = $imagine->load($asset->getContent());
+                $box = $image->getSize()->scale($width/$image->getSize()->getWidth());
+                $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+                $asset = new ParameterAsset(array(
+                    'content'       => $thumb->get('png'),
+                    'content_type'  => 'image/png'
+                ));
+                $post->setImage($asset, $name);
+                $em->persist($post);
+                $em->flush();
+            }
+        }
         if(!$asset instanceof AssetInterface){
             throw new NotFoundHttpException('The post does not have a valid asset.');
         }
-        return $asset;
-    }
 
-    protected function getImageResponse(ImageInterface $img)
-    {
-        $response = new Response();
-        $response->setContent($img->get('png'));
-        $response->headers->set('Content-Type','image/png');
-        return $response;
+        return $asset->getResponse();
     }
 
     public function postImageAction($id)
     {
-        $asset = $this->getPostAsset($id);
-
-        // resize image
-        $imagine = new Imagine();
-        $image = $imagine->load($asset->getContent());
-        $box = $image->getSize()->scale(150/$image->getSize()->getWidth());
-        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
-
-        return $this->getImageResponse($thumb);
+        return $this->getResizedPostImageResponse($id, 'big', 150);
     }
 
     public function postImageSmallAction($id)
     {
-        $asset = $this->getPostAsset($id);
-
-        // resize image
-        $imagine = new Imagine();
-        $image = $imagine->load($asset->getContent());
-        $box = $image->getSize()->scale(90/$image->getSize()->getWidth());
-        $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
-
-        return $this->getImageResponse($thumb);
+        return $this->getResizedPostImageResponse($id, 'small', 90);
     }
 }
