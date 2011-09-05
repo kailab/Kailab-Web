@@ -3,7 +3,7 @@
 namespace Kailab\FrontendBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\HttpFoundation\Response;
+use Kailab\FrontendBundle\HttpFoundation\FileResponse;
 
 class FileAsset extends AbstractAsset
 {
@@ -42,16 +42,8 @@ class FileAsset extends AbstractAsset
 
     public function getResponse()
     {
-        $response = new Response();
+        $response = new FileResponse($this->getPath());
         $response->headers->set('Content-Type',$this->getContentType());
-
-        if(function_exists('apache_get_modules') && in_array('mod_xsendfile', apache_get_modules())) { 
-            // use x-sendfile
-            $response->headers->set('X-Sendfile',$this->getPath());
-        }else{
-            $response->headers->set('Content-Length',filesize($this->getPath()));
-            $response->setContent($this->getContent());
-        }
         return $response;
     }
 
