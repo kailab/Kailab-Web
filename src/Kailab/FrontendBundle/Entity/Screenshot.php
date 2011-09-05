@@ -47,6 +47,7 @@ class Screenshot
      * @ORM\JoinColumn(name="platform_id", referencedColumnName="id")
      */
     protected $platform;
+
     /**
      * @ORM\OneToMany(targetEntity="AppScreenshot", mappedBy="app", cascade={"persist", "remove"})
      */

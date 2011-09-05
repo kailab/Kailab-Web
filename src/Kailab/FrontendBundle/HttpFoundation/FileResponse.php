@@ -21,20 +21,21 @@ class FileResponse extends Response
             $this->headers->set('Content-Length',filesize($this->path));
         }
 
-        if($this->hasSendFile()) { 
+        if($this->hasXSendFile()) { 
             // use x-sendfile
             $this->headers->set('X-Sendfile',$this->path);
         }
     }
 
-    protected function hasSendFile()
+    protected function hasXSendFile()
     {
+        return false;
         return function_exists('apache_get_modules') && in_array('mod_xsendfile', apache_get_modules());
     }
 
     public function sendContent()
     {
-        if(!$this->hasSendFile() && $this->path && is_readable($this->path)){
+        if(!$this->hasXSendFile() && $this->path && is_readable($this->path)){
             readfile($this->path);
         }else{
             return parent::sendContent();

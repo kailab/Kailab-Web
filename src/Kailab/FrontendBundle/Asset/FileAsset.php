@@ -3,12 +3,15 @@
 namespace Kailab\FrontendBundle\Asset;
 
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\HttpFoundation\FileResponse;
 
 class FileAsset extends AbstractAsset
 {
-    protected $name;
-    protected $path;
+    protected $name = null;
+    protected $path = null;
+    protected $uri = null;
+    protected $content = null;
 
     public function __construct($path,$name=null)
     {
@@ -17,6 +20,44 @@ class FileAsset extends AbstractAsset
         }
         $this->name = $name;
         $this->path = $path;
+    }
+
+    public function setUri($uri)
+    {
+        $this->uri = $uri;
+    }
+
+    public function serialize() {
+        $data = array(
+            'name'      => $this->getName(),
+            'path'      => $this->getPath(),
+            'uri'       => $this->getUri(),
+            'content'   => $this->getContent(),
+        );
+        return serialize($data);
+    }
+
+    public function unserialize($data) {
+        if(!is_array($data)){
+            return;
+        }
+        if(isset($data['name'])){
+            $this->name = $data['name'];
+        }
+        if(isset($data['uri'])){
+            $this->uri = $data['uri'];
+        }
+        if(isset($data['path'])){
+            $this->path = $data['path'];
+        }
+        if(isset($data['content'])){
+            $this->content = $data['content'];
+        }
+    }
+
+    public function getUri()
+    {
+        return $this->uri;
     }
 
     public function getPath()
@@ -31,7 +72,10 @@ class FileAsset extends AbstractAsset
 
     public function getContent()
     {
-        return file_get_contents($this->path);
+        if($this->content == null && $this->path && is_readable($this->path)){
+            $this->content = file_get_contents($this->path);
+        }
+        return $this->content;
     }
 
     public function getContentType()
@@ -42,8 +86,13 @@ class FileAsset extends AbstractAsset
 
     public function getResponse()
     {
-        $response = new FileResponse($this->getPath());
-        $response->headers->set('Content-Type',$this->getContentType());
+        if($this->getUri()){
+            $response = new Response();
+            $response->headers->set('Location', $this->getUri());
+        }else{
+            $response = new FileResponse($this->getPath());
+            $response->headers->set('Content-Type',$this->getContentType());
+        }
         return $response;
     }
 

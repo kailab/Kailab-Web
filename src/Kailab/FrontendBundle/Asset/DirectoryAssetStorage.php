@@ -21,6 +21,13 @@ class DirectoryAssetStorage implements AssetStorageInterface
         return $dir;
     }
 
+    protected function getUri($ns, $name='')
+    {
+        $path = 'upload/'.str_replace(' ','_',$ns).'/'.$name;
+        $helper = $this->container->get('templating.helper.assets');
+        return $helper->getUrl($path);
+    }
+
     public function hasAsset($name, $namespace)
     {
         if($name instanceof AssetInterface){
@@ -68,6 +75,10 @@ class DirectoryAssetStorage implements AssetStorageInterface
         if (!is_file($path) || !is_readable($path)) {
             throw new \RuntimeException('Unable to read file '.$path);
         }
-        return new FileAsset($path);
+
+        $asset = new FileAsset($path);
+        $uri = $this->getUri($namespace, $name);
+        $asset->setUri($uri);
+        return $asset;
     }
 }

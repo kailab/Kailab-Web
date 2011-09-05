@@ -36,9 +36,9 @@
 
         <div class="section team_member_left">
             <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_jflores.png') }}" alt="Javier Flores"/>
+                <img src="{{ asset('bundles/kailabfrontend/images/team_tgarcia.png') }}" alt="Toni García"/>
             </div>
-            <h3>{{ frontend_helper.mailto('jflores@kailab.com','Javier FLores') | raw }}</h3>
+            <h3>{{ frontend_helper.mailto('tgarcia@kailab.com','Toni García') | raw }}</h3>
             <div class="bubble_tip">
             </div>
             <div class="bubble">
@@ -104,7 +104,12 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
+{% if locale_helper.code == 'es' %}
+            Graduado en Multimedia por la UPC, soy el responsable de los videojuegos de Kailab. Programador en apariencia y Game Designer en la intimidad, pues disfruto contando historias que algún inocente se llega a creer. También, con mi guitarra, un buen libro, el cine y las series de HBO.
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            Multimedia graduate at the UPC, I'm working on Kailab's videogames. I may look like a programmer but I'm a secret game designer, as I enjoy telling stories that some people actually end up believing. Also using my guitar, a good book, movies and HBO television series,
+{% endif %}
             </div>
         </div>
     </div>
@@ -159,23 +164,6 @@
         </div>
     </div>
 #}
-
-    <h2>{{ 'Management' | trans }}</h2>
-
-    <div class="team_member_row">
-        <div class="section team_member_left">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_dserra.png') }}" alt="David Serra"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('dserra@kailab.com','David Serra') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. Sed placerat eleifend adipiscing. Morbi ut quam eros. In hac habitasse.
-            </div>
-        </div>
-    </div>
-
 
 </div>
 {% endblock %}

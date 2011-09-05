@@ -31,6 +31,33 @@ class EntityAsset extends File implements AssetInterface
         return (string) $this->getId();
     }
 
+    public function serialize() {
+        return serialize(array(
+            'state'     => $this->state,
+            'entity'    => $this->entity,
+            'path'      => $this->path,
+            'state'     => $this->state,
+        ));
+    }
+
+    public function unserialize($data) {
+        if(!is_array($data)){
+            return;
+        }
+        if(isset($data['state'])){
+            $this->state = $data['state'];
+        }
+        if(isset($data['entity'])){
+            $this->entity = $data['entity'];
+        }
+        if(isset($data['path'])){
+            $this->path = $data['path'];
+        }
+        if(isset($data['state'])){
+            $this->state = $data['state'];
+        }
+    }
+
     public function getId()
     {
         return $this->getNamespace().'/'.$this->getName();
