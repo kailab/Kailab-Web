@@ -31,7 +31,10 @@
     <ul>
     {% for technology in application.technologies %}
         <li><a href="{{ path('frontend_technology', {'slug':technology.slug}) }}">
-            <img src="{{ path('frontend_technology_icon', {'id':technology.id}) }}"/>{{ technology.name }}
+            {% if technology.icon.uri %}
+            <img src="{{ technology.icon.uri }}"/>
+            {% endif %}
+            {{ technology.name }}
         </a></li>
     {% endfor %}
     </ul>
