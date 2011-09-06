@@ -170,9 +170,22 @@ form.entity .form_submit_row {
 }
 
 .links > .form_row > label {
-    display: none;
+    display: none !important;
 }
 
 .links label {
-    float: left;
+    display: inline !important;
+}
+
+.links input {
+    width: 20em;
+}
+
+.links .form_row_content {
+    display: inline;
+}
+
+.links .form_row .form_row {
+    display: inline;
+    padding-right: 10px;
 }

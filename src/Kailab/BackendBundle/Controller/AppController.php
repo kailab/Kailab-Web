@@ -36,7 +36,7 @@ class AppController extends EntityCrudController
         }
         // remove old screenshots
         if($id = $entity->getId()){
-            $em->createQuery('delete from KailabFrontendBundle:AppScreenshot s where s.tech = :id')
+            $em->createQuery('delete from KailabFrontendBundle:AppScreenshot s where s.app = :id')
                 ->setParameter('id',$id)->execute();
         }
         return parent::saveEntity($entity);
