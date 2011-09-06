@@ -180,7 +180,11 @@ class ScreenshotHelper extends Helper
 
         $background = $platform->getBackground();
         if($background->getState()){
-            $image = $imagine->load($background->getContent());
+            try{
+                $image = $imagine->load($background->getContent());
+            }catch(\Exception $e){
+                return null;
+            }
             if($shot->getOrientation() == Screenshot::ORIENTATION_HORIZONTAL){
                 $image->rotate(90);
             }

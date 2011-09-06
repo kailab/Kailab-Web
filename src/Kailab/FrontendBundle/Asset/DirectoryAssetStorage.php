@@ -3,6 +3,7 @@
 namespace Kailab\FrontendBundle\Asset;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Finder\Finder;
 
 class DirectoryAssetStorage implements AssetStorageInterface
 {
@@ -31,15 +32,24 @@ class DirectoryAssetStorage implements AssetStorageInterface
     public function hasAsset($name, $namespace)
     {
         if($name instanceof AssetInterface){
-            $name = $name->getName();
+            $name = $this->getAssetFileName($name);
         }
         return is_file($path);
+    }
+
+    public function getAssetFileName(AssetInterface $asset)
+    {
+        $file = new FakeFile($asset->getContentType());
+        $ext = $file->guessExtension();
+        $name = $asset->getName();
+        $name .= $ext ? '.'.$ext : $name;
+        return $name;
     }
 
     public function writeAsset(AssetInterface $asset, $namespace)
     {
         $dir = $this->getDirectory($namespace);
-        $path = $dir.'/'.$asset->getName();
+        $path = $dir.'/'.$this->getAssetFileName($asset);
 
         $content = $asset->getContent();
 
@@ -54,7 +64,7 @@ class DirectoryAssetStorage implements AssetStorageInterface
     public function deleteAsset($name, $namespace)
     {
         if($name instanceof AssetInterface){
-            $name = $name->getName();
+            $name = $this->getAssetFileName($name);
         }
 
         $dir = $this->getDirectory($namespace);
@@ -67,17 +77,29 @@ class DirectoryAssetStorage implements AssetStorageInterface
         return @unlink($path);
     }
 
+    protected function findFileInDirectory($dir, $pattern)
+    {
+        $finder = new Finder();
+        $finder->files()->in($dir)->name($pattern);
+        foreach($finder as $file){
+            return $file;
+        }
+    }
+
     public function readAsset($name, $namespace)
     {
         $dir = $this->getDirectory($namespace);
-        $path = $dir.'/'.$name;
 
-        if (!is_file($path) || !is_readable($path)) {
-            throw new \RuntimeException('Unable to read file '.$path);
+        $file = $this->findFileInDirectory($dir,$name.'.*');
+        if ($file === null) {
+            $file = $this->findFileInDirectory($dir,$name);
+        }
+        if ($file === null) {
+            throw new \RuntimeException('Unable to read file for asset '.$name);
         }
 
-        $asset = new FileAsset($path);
-        $uri = $this->getUri($namespace, $name);
+        $asset = new FileAsset($file->getRealPath());
+        $uri = $this->getUri($namespace, $file->getFileName());
         $asset->setUri($uri);
         return $asset;
     }
