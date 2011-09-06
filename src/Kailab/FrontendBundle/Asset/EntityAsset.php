@@ -112,6 +112,7 @@ class EntityAsset extends File implements PublicAssetInterface
 
     public function loadPath($path)
     {
+        $path = strval($path);
         if($this->path != $path){
             $this->state = self::STATE_PATH;
             $this->path = $path;
