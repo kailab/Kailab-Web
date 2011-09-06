@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\HttpFoundation\FileResponse;
 
-class FileAsset extends AbstractAsset
+class FileAsset extends AbstractAsset implements PublicAssetInterface
 {
     protected $name = null;
     protected $path = null;

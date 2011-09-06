@@ -7,6 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Kailab\FrontendBundle\Asset\EntityAsset;
+use Kailab\FrontendBundle\Asset\AssetInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Kailab\FrontendBundle\Repository\PlatformRepository")
@@ -18,7 +19,7 @@ class Platform
 
     protected $locale;
     protected $icon;
-    protected $background;
+    protected $backgrounds = array();
 
     /**
      * @ORM\Id
@@ -91,18 +92,23 @@ class Platform
 
     protected function loadAssets()
     {
-        if(!$this->icon instanceof EntityAsset){
+        if(!$this->icon instanceof AssetInterface){
             $this->icon = new EntityAsset($this, 'icon');
         }
-        if(!$this->background instanceof EntityAsset){
-            $this->background = new EntityAsset($this, 'background');
+        $types = array('','blue');
+        foreach($types as $type){
+            if(!isset($this->backgrounds[$type])){
+                $name = $type ? 'background_'.$type : 'background';
+                $this->backgrounds[$type] = new EntityAsset($this, $name);
+            }
         }
     }
 
     public function getAssets()
     {
         $this->loadAssets();
-        return array($this->icon,$this->background);
+
+        return array_merge(array($this->icon),$this->backgrounds);
     }
 
     public function getIcon()
@@ -118,17 +124,22 @@ class Platform
         $this->updated = new \DateTime('now');
     }
 
-    public function getBackground()
+    public function getBackground($name='')
     {
         $this->loadAssets();
-        return $this->background;
+        if(isset($this->backgrounds[$name])){
+            return $this->backgrounds[$name];
+        }
     }
 
-    public function setBackground($path)
+    public function setBackground($path, $name='')
     {
         $this->loadAssets();
-        $this->background->loadPath($path);
-        $this->updated = new \DateTime('now');
+        $bg = $this->getBackground($name);
+        if($bg instanceof AssetInterface){
+            $bg->setAsset($path);
+            $this->updated = new \DateTime('now');
+        }
     }
 
     public function getId()

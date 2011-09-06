@@ -23,7 +23,7 @@
 
 {% block app_icon %}
     {% if appli.image %}
-    <img src="{{ path('frontend_technology_image',{'id':appli.id}) }}" alt="{{ appli.name }}"/>
+    <img src="{{ appli.image.uri }}" alt="{{ appli.name }}"/>
     {% else %}
     <span class="app_item_title">{{ appli.name }}</span>
     {% endif %}

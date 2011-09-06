@@ -33,7 +33,7 @@ class TechType extends BaseType
         ));
         $builder->add('screenshots','entity', array(
             'class'     => 'Kailab\\FrontendBundle\\Entity\\Screenshot',
-            'property'  => 'id',
+            'property'  => 'small_uri',
             'expanded'  => false,
             'multiple'  => true,
             'required'  => false

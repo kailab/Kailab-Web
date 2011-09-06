@@ -157,9 +157,9 @@ $.fn[plugin_name] = function(options){
     select.find('option').each(function(){
         var option = $(this);
         var id = option.attr('value');
-        var type = option.text();
+        var url = option.text();
         var li = tmpl.replace(options.idTemplate,id);
-        li = $(li.replace(options.typeTemplate,type));
+        li = $(li.replace(options.urlTemplate,url));
         li.attr('screenshot_id',id);
 
         li.appendTo(available);
@@ -222,7 +222,7 @@ $.fn[plugin_name] = function(options){
  
 $.fn[plugin_name].defaults = {
     idTemplate:         '__id__',
-    typeTemplate:       '__type__',
+    urlTemplate:        '__url__',
     listTemplate:       '#screenshots_template',
     elementTemplate:    '#screenshot_template'
 };

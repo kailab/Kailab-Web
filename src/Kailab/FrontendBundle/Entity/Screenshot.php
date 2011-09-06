@@ -4,6 +4,7 @@ namespace Kailab\FrontendBundle\Entity;
 
 use Kailab\FrontendBundle\Asset\EntityAsset;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\PublicAssetInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -74,6 +75,14 @@ class Screenshot
         $this->id = $id;
     }
 
+    public function getSmallUri()
+    {
+        $asset = $this->getImage('small');
+        if($asset instanceof PublicAssetInterface){
+            return $asset->getUri();
+        }
+    }
+
     public function getOrientation()
     {
         return $this->orientation;
@@ -135,8 +144,6 @@ class Screenshot
         $this->loadAssets();
         if(isset($this->images[$name])){
             return $this->images[$name];
-        }else{
-            return null;
         }
     }
 
@@ -147,11 +154,7 @@ class Screenshot
         if($img == null){
             return;
         }
-        if($path instanceof AssetInterface){
-            $img->setAsset($path);
-        }else if(is_string($path)){
-            $img->loadPath($path);
-        }
+        $img->setAsset($path);
         $this->updated = new \DateTime('now');
     }
 

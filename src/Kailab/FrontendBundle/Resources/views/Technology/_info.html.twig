@@ -30,7 +30,7 @@
     <h3>{{ 'Platforms' | trans }}</h3>
     <ul>
     {% for platform in tech.platforms %}
-        <li><img src="{{ path('frontend_platform_icon', {'id':platform.id}) }}"/>{{ platform.name }}</li>
+        <li><img src="{{ platform.icon.uri }}"/>{{ platform.name }}</li>
     {% endfor %}
     </ul>
     </div>

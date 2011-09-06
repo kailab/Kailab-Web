@@ -159,8 +159,6 @@ class BlogPost
         $this->loadAssets();
         if(isset($this->images[$name])){
             return $this->images[$name];
-        }else{
-            return null;
         }
     }
 
@@ -171,11 +169,7 @@ class BlogPost
         if($img == null){
             return;
         }
-        if($path instanceof AssetInterface){
-            $img->setAsset($path);
-        }else if(is_string($path)){
-            $img->loadPath($path);
-        }
+        $img->setAsset($path);
         $this->updated = new \DateTime('now');
     }
 

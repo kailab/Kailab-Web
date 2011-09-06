@@ -35,19 +35,7 @@
     </div>
     <div class="form_row links">
         <h3>{{ 'Links' | trans }}</h3>
-        {% for link in trans.links %}
-        {% if loop.last %}
-        <script type="text/html" class="prototype">
-        {% endif %}
-        <div class="link_row">
-            {{ form_errors(link) }}
-            {{ form_widget(link.title,{'attr':{'size':30}}) }}
-            {{ form_widget(link.url,{'attr':{'size':30}}) }}
-        </div>
-        {% if loop.last %}
-        </script>
-        {% endif %}
-        {% endfor %}
+        {{ form_widget(trans.links, {'attr':{'class':'links'}}) }}
     </div>
     {{ form_rest(trans) }}
 {% endblock %}
@@ -77,7 +65,7 @@
 
 <script type="text/html" id="screenshot_template">
 <li class="screenshot_wrapper">
-    <img src="{{ path('frontend_screenshot_item',{'id':'__id__'}) }}" />
+    <img src="__url__" />
 </li>
 </script>
 
@@ -97,29 +85,35 @@ $(document).ready(function(){
     // links
     $('.links').each(function(){
         var links = $(this);
-        var prototype = links.find('.prototype').detach();
+        var prototype = links.attr('data-prototype');
+        if(prototype === undefined){
+            return;
+        }
         var append_row = function(){
             var n = links.children().length;
-            var html = prototype.html().replace(/\$\$name\$\$/g,n);
+            var html = $(prototype.replace(/\$\$name\$\$/g,n));
+            html.addClass('link_row');
             links.append(html);
         };
         append_row();
 
         links.delegate('input','change',function(){
             var input = $(this);
-            var row = input.closest('.link_row');
             var last = links.children().last();
-            if(row.get(0) == last.get(0)){
-                if(input.val()){
+            var row = input.closest('.link_row');
+            var inputs = row.find('input');
+            if(last.has(input).length > 0){
+                if(inputs.val()){
                     append_row();
                 }
             }else{
-                if(!input.val()){
+                if(!inputs.val()){
                     row.remove();
                 }
             }
         });
     });
+
 });
 </script>
 {% endblock %}

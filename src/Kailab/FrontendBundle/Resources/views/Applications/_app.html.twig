@@ -9,8 +9,8 @@
             <ul class="screenshots">
                 {% for screenshot in appli.screenshots %}
                 <li style="display: none;">
-                    <a href="{{ path('frontend_screenshot_full', {'id':screenshot.id}) }}">
-                        <img src="{{ path('frontend_screenshot_big', {'id':screenshot.id}) }}" alt="{{ appli.name }}"/>
+                    <a href="{{ screenshot.image.uri }}">
+                        <img src="{{ screenshot.image('big').uri }}" alt="{{ appli.name }}"/>
                     </a>
                 </li>
                 {% endfor %}

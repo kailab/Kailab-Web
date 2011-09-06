@@ -13,11 +13,11 @@
     <div class="form_row">
         {{ form_label(form.image) }}
         {{ form_widget(form.image) }}
+        {% if entity.image('big').uri %}
         <div class="form_row_comment">
-            {% if entity.id %}
-            <img src="{{ path('frontend_screenshot_big', {'id':entity.id}) }}"/>
-            {% endif %}
+            <img src="{{ entity.image('big').uri }}"/>
         </div>
+        {% endif %}
         {{ form_errors(form.image) }}
     </div>
     {{ parent() }}

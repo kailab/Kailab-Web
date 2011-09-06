@@ -68,6 +68,7 @@ class AssetListener
             try{
                 switch($action){
                     case 'save':
+                        $entity->getId();
                         $asset->save($storage);
                         break;
                     case 'delete':

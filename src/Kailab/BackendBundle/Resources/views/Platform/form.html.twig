@@ -52,18 +52,22 @@
     <div class="form_row_content">
         {{ form_widget(form.icon) }}
     </div>
+    {% if entity.icon.uri %}
     <div class="form_row_comment">
-        <img src="{{ path('backend_platform_icon',{'id':entity.id}) }}"/>
+        <img src="{{ entity.icon.uri }}"/>
     </div>
+    {% endif %}
 </div>
 <div class="form_row">
     {{ form_label(form.background) }}
     <div class="form_row_content">
         {{ form_widget(form.background) }}
     </div>
+    {% if entity.background('blue').uri %}
     <div class="form_row_comment">
-        <img src="{{ path('backend_platform_background',{'id':entity.id}) }}"/>
+        <img src="{{ entity.background('blue').uri }}"/>
     </div>
+    {% endif %}
 </div>
 {{ parent() }}
 {% endblock %}

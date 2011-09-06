@@ -30,7 +30,16 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
+{% if locale_helper.code == 'es' %}
+            Socio fundador de Kailab con 10 años de experiencia liderando proyectos,
+            creador de más de 50 aplicaciones y juegos móviles, y varios motores como
+            Arcadix o Fast Track Machine. 
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            Founding member of Kailab with 10 years of experience managing projects,
+            creator of more than 50 applications and games for cellphones and several
+            engines like Arcadix or Fast Track Machine.
+{% endif %}
             </div>
         </div>
 
@@ -42,32 +51,22 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. Sed placerat eleifend adipiscing. Morbi ut quam eros. In hac habitasse.
+{% if locale_helper.code == 'es' %}
+<p>Estudié informática en la FIB y después un master en dirección de marketing en EADA, y siempre he estado en proyectos donde el uso de la tecnología es crucial para el desarrollo del negocio: audiovisuales, internet, móviles,… Además me gustan los cómics, el cine, las miniaturas, la música en general (y más si es con guitarras y a poder ser distorsionadas) y leer, sobre todo ciencia ficción y fantasía.</p>
+<p>Siempre que a mi hijo, como nos suele pasar a los padres, le parezca oportuno y conveniente que pueda disfrutar de mis hobbies.</p>
+{% endif %}
+{% if locale_helper.code == 'en' %}
+<p>I studied computer science at the FIB and did a master in marketing direction at EADA. I have always been linked to projects that use technología as a central part of business: audiovisuals, internet, mobile, ... I also like comics, movies, miniatures, music in general (better with distorted guitars) and reading, mostly science fiction and fantasy.</p>
+<p>As it always happens to parents, I enjoy my hobbies only if my child thinks it's convenient.</p>
+{% endif %}
+
             </div>
         </div>
     </div>
 
 
 
-    <h2>{{ 'Designers' | trans }}</h2>
-
     <div class="team_member_row">
-        <div class="section team_member">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('rgalera@kailab.com','Román Galera') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-{% if locale_helper.code == 'en' %}
-            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
-{% endif %}
-{% if locale_helper.code == 'es' %}
-            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
-{% endif %}
-            </div>
-        </div>
     </div>
 
 
@@ -89,10 +88,6 @@
 {% if locale_helper.code == 'es' %}
             Soy uno de los más jóvenes de Kailab, me encargo de realizar la mayoría de proyectos para el sistema operativo de móviles y otros dispositivos de Google, conocido como Android. También participo en el porting de nuestros juegos a esta plataforma. Me gusta el Super Meat Boy y la música de Sabina.
 {% endif %}
-            </div>
-            <div class="links">
-                <li><a href="http://twitter.com/#!/AiverPim">twitter</a></li>
-                <li><a href="http://twitter.com/#!/AiverPim">web personal</a></li>
             </div>
         </div>
 
@@ -144,12 +139,11 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut molestie bibendum orci vitae suscipit. Nulla facilisi. Aliquam nibh libero, ornare quis luctus non, dignissim nec arcu. Vestibulum et urna lacus. Vivamus id turpis eu augue mollis sollicitudin. Aenean eget lacus purus, in iaculis sapien. 
+            Trabajo mayoritariamente en el desarrollo de librerías para los juegos móbiles y también en las aplicaciones Android
             </div>
         </div>
     </div>
 
-{#
     <div class="team_member_row">
         <div class="section team_member_left">
             <div class="side">
@@ -159,11 +153,34 @@
             <div class="bubble_tip">
             </div>
             <div class="bubble">
-            iOS developer and avid MMO player.
+{% if locale_helper.code == 'es' %}
+            Soy el secreto mejor guardado de Kailab. Soy el desarollador de iOs, experto en videojuegos y en mi tiempo libre juego a un montón
+            de MMOs (menos al WOW).
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            I'm Kailab's best guarded secret. I'm the iOS developer, videogame expert and in my spare time I'm an avid MMO player (everything but WOW).
+{% endif %}
             </div>
         </div>
+
+        <div class="section team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('rgalera@kailab.com','Román Galera') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'en' %}
+            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
+{% endif %}
+{% if locale_helper.code == 'es' %}
+            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
+{% endif %}
+            </div>
+        </div>
+
     </div>
-#}
 
 </div>
 {% endblock %}

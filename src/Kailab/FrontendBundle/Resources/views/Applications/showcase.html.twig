@@ -44,8 +44,8 @@
         <li title="{{ appli.name }}" class="{{ appli.orientation }}_orientation">
             <a href="#{{ appli.slug }}">
             {% block app_icon %}
-            {% if appli.screenshot %}
-            <img src="{{ path('frontend_screenshot_item',{'id':appli.screenshot.id}) }}" alt="{{ appli.name }}"/>
+            {% if appli.screenshot.image('item').uri %}
+            <img src="{{ appli.screenshot.image('item').uri }}" alt="{{ appli.name }}"/>
             {% else %}
             <span class="app_item_title">{{ appli.name }}</span>
             {% endif %}

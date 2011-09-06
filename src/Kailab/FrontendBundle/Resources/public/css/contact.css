@@ -8,3 +8,11 @@
     padding: 0;
     margin: 0 0 2px 0;
 }
+
+.offer {
+    border: 1px solid #BDCA0E;
+    background: #FFFFFF;
+    padding: 1em;
+    font-style: italic;
+    margin-top: 1em;
+}

@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\DependencyInjection\Container;
 use Doctrine\ORM\Proxy\Proxy;
 
-class EntityAsset extends File implements AssetInterface
+class EntityAsset extends File implements PublicAssetInterface
 {
     const STATE_NONE = 0;
     const STATE_ASSET = 1;
@@ -102,6 +102,14 @@ class EntityAsset extends File implements AssetInterface
         return $this->state;
     }
 
+    public function getUri()
+    {
+        $asset = $this->getAsset();
+        if($asset instanceof PublicAssetInterface){
+            return $asset->getUri();
+        }
+    }
+
     public function loadPath($path)
     {
         if($this->path != $path){
@@ -116,20 +124,22 @@ class EntityAsset extends File implements AssetInterface
             return $this->asset;
         }else if($this->state == self::STATE_PATH){
             return $this->getPathAsset();
-        }else{
-            throw new \RuntimeException('No path or asset loaded');
         }
         return null;
     }
 
-    public function setAsset(AssetInterface $asset)
+    public function setAsset($asset)
     {
-        $this->asset = new ParameterAsset(array(
-            'name'          => $this->getName(),
-            'content'       => $asset->getContent(),
-            'content_type'  => $asset->getContentType(),
-        ));
-        $this->state = self::STATE_ASSET;
+        if(is_string($asset) || $asset instanceof File){
+            $this->loadPath($asset);
+        }else if($asset instanceof AssetInterface){
+            $this->asset = new ParameterAsset(array(
+                'name'          => $asset->getName(),
+                'content'       => $asset->getContent(),
+                'content_type'  => $asset->getContentType(),
+            ));
+            $this->state = self::STATE_ASSET;
+        }
     }
 
     public function getPathAsset()
@@ -142,12 +152,18 @@ class EntityAsset extends File implements AssetInterface
 
     public function getContentType()
     {
-        return $this->getAsset()->getContentType();
+        $asset =  $this->getAsset();
+        if($asset instanceof AssetInterface){
+            return $asset->getContentType();
+        }
     }
 
     public function getContent()
     {
-        return $this->getAsset()->getContent();
+        $asset =  $this->getAsset();
+        if($asset instanceof AssetInterface){
+            return $asset->getContent();
+        }
     }
 
     public function getName()
@@ -183,6 +199,14 @@ class EntityAsset extends File implements AssetInterface
     public function save(AssetStorageInterface $storage)
     {
         $asset = $this->getAsset();
+        if(!$asset instanceof AssetInterface){
+            return false;
+        }
+        $asset = new ParameterAsset(array(
+            'name'          => $this->getName(),
+            'content'       => $asset->getContent(),
+            'content_type'  => $asset->getContentType(),
+        ));
         $ns = $this->getNamespace();
         if(!$storage->writeAsset($asset,$ns)){
             return false;

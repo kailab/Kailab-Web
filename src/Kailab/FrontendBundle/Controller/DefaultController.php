@@ -35,41 +35,6 @@ class DefaultController extends Controller
         ));
     }
 
-    public function slideAction($id)
-    {
-        // find slide
-        $em = $this->get('doctrine')->getEntityManager();
-        $repo = $em->getRepository('KailabFrontendBundle:Slide');
-        $slide = $repo->find($id);
-        if(!$slide){
-            throw new NotFoundHttpException('The slide does not exist.');
-        }
-        try{
-            $asset = $slide->getImage('big')->getAsset();
-        }catch(\RuntimeException $e){
-            $asset = $slide->getImage()->getAsset();
-            if($asset instanceof AssetInterface){
-                // resize image
-                $imagine = new Imagine();
-                $image = $imagine->load($asset->getContent());
-                $box = new Box(470, 440);
-                $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
-                $asset = new ParameterAsset(array(
-                    'content'       => $thumb->get('png'),
-                    'content_type'  => 'image/png'
-                ));
-                $slide->setImage($asset,'big');
-                $em->persist($slide);
-                $em->flush();
-            }
-        }
-
-        if(!$asset instanceof AssetInterface){
-            throw new NotFoundHttpException('The slide does not have a valid asset.');
-        }
-        return $asset->getResponse();
-    }
-
     public function aboutAction()
     {
         return $this->render('KailabFrontendBundle:Default:about.html.twig');

@@ -9,7 +9,7 @@
     {% set time_format = '%A, %e%v of %B' | trans %}
     {% if post.image.state %}
     <div class="image">
-    <img src="{{ path('frontend_blog_post_image', {'id':post.id}) }}" alt="{{ 'Blog post image' | trans }}"/>
+    <img src="{{ post.image('big').uri }}" alt="{{ 'Blog post image' | trans }}"/>
     </div>
     {% endif %}
     <div class="body_with_image">

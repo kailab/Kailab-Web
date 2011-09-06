@@ -34,8 +34,10 @@
             {% if slide.url %}
             <a href="{{ slide.url }}">
             {% endif %}
-            <img src="{{ path('frontend_slide', {'id': slide.id })}}" alt="{{ slide.name }}"
+            {% if slide.image.uri %}
+            <img src="{{ slide.image.uri }}" alt="{{ slide.name }}"
             {% if slide.description %}title="#slidedescription_{{ slide.id }}" {% endif %} style="display: none"/>
+            {% endif %}
             {% if slide.url %}
             </a>
             {% endif %}
@@ -64,7 +66,7 @@
                 <img src="{{ asset('bundles/kailabfrontend/images/apps_small.png') }}" alt="{{ 'Apps' | trans }}" />
             </a></h2>
             
-            {% if appli.screenshot %}
+            {% if appli.screenshot and appli.screenshot.image('small').uri %}
             {% if appli.screenshot.orientation == 'vertical' %}
             <div class="side">
             {% elseif appli.screenshot.orientation == 'horizontal' %}
@@ -73,7 +75,7 @@
             <div>
             {% endif %}
                 <a href="{{ path('frontend_application', {'slug':appli.slug}) }}">
-                    <img src="{{ path('frontend_screenshot_small', {'id':appli.screenshot.id}) }}" alt="{{ appli.name }}" />
+                    <img src="{{ appli.screenshot.image('small').uri }}" alt="{{ appli.name }}" />
                 </a>
             </div>
             {% endif %}
@@ -107,7 +109,7 @@
             <div>
             {% endif %}
                 <a href="{{ path('frontend_videogame', {'slug': game.slug }) }}" title="{{ game.name }}">
-                    <img src="{{ path('frontend_screenshot_small', {'id':game.screenshot.id}) }}" alt="{{ game.name }}" />
+                    <img src="{{ game.screenshot.image('small').uri }}" alt="{{ game.name }}" />
                 </a>
             </div>
             {% endif %}
@@ -132,9 +134,9 @@
                 <img src="{{ asset('bundles/kailabfrontend/images/news_small.png') }}" alt="{{ 'News' | trans }}" />
             </a></h2>
 
-            {% if post.image.state %}
+            {% if post.image('small').uri %}
             <div class="side">
-                <img src="{{ path('frontend_blog_post_image_small', {'id':post.id}) }}" alt="{{ post.title }}" />
+                <img src="{{ post.image('small').uri }}" alt="{{ post.title }}" />
             </div>
             {% endif %}
 

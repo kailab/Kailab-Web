@@ -4,12 +4,6 @@ frontend_homepage:
     requirements:
         _locale: ^..$ 
 
-frontend_slide:
-    pattern:  /slide/{id}
-    defaults: { _controller: KailabFrontendBundle:Default:slide }
-    requirements:
-        _locale: ^..$ 
-
 frontend_about:
     pattern:  /about
     defaults: { _controller: KailabFrontendBundle:Default:about }
@@ -54,18 +48,6 @@ frontend_blog_post:
         id:  \d+
         _locale: ^..$ 
 
-frontend_blog_post_image:
-    pattern:  /blog/post/{id}/image
-    defaults: { _controller: KailabFrontendBundle:Blog:postImage }
-    requirements:
-        _locale: ^..$ 
-
-frontend_blog_post_image_small:
-    pattern:  /blog/post/{id}/image_small
-    defaults: { _controller: KailabFrontendBundle:Blog:postImageSmall }
-    requirements:
-        _locale: ^..$ 
-
 frontend_blog_category:
     pattern:  /blog/category/{id}
     defaults: { _controller: KailabFrontendBundle:Blog:category }
@@ -87,18 +69,6 @@ frontend_technologies_showcase:
 frontend_technology:
     pattern:  /tech/{slug}
     defaults: { _controller: KailabFrontendBundle:Technology:show }
-    requirements:
-        _locale: ^..$ 
-
-frontend_technology_icon:
-    pattern:  /tech/icon/{id}
-    defaults: { _controller: KailabFrontendBundle:Technology:icon }
-    requirements:
-        _locale: ^..$ 
-
-frontend_technology_image:
-    pattern:  /tech/image/{id}
-    defaults: { _controller: KailabFrontendBundle:Technology:image }
     requirements:
         _locale: ^..$ 
 
@@ -135,35 +105,5 @@ frontend_videogames_showcase:
 frontend_videogame:
     pattern:  /games/{slug}
     defaults: { _controller: KailabFrontendBundle:Videogames:show }
-    requirements:
-        _locale: ^..$ 
-
-frontend_screenshot_item:
-    pattern:  /screenshot/item/{id}
-    defaults: { _controller: KailabFrontendBundle:Screenshot:item }
-    requirements:
-        _locale: ^..$ 
-
-frontend_screenshot_big:
-    pattern:  /screenshot/big/{id}
-    defaults: { _controller: KailabFrontendBundle:Screenshot:big }
-    requirements:
-        _locale: ^..$ 
-
-frontend_screenshot_small:
-    pattern:  /screenshot/small/{id}
-    defaults: { _controller: KailabFrontendBundle:Screenshot:small }
-    requirements:
-        _locale: ^..$ 
-
-frontend_screenshot_full:
-    pattern:  /screenshot/{id}
-    defaults: { _controller: KailabFrontendBundle:Screenshot:full }
-    requirements:
-        _locale: ^..$ 
-
-frontend_platform_icon:
-    pattern:  /platform/icon/{id}
-    defaults: { _controller: KailabFrontendBundle:Platform:icon }
     requirements:
         _locale: ^..$ 

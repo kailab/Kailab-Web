@@ -87,19 +87,16 @@ frontend:
     email:      contact@kailab.com
     screenshots:
         small: 
-            route: frontend_screenshot_small
             height: 150
             width: 150
             type: inside
         item: 
-            route: frontend_screenshot_item
             height: 150
             width: 150
             valign: bottom
             halign: center
             resize: inside
         big:
-            route: frontend_screenshot_big
             width: 250
             height: 475
             resize: inside

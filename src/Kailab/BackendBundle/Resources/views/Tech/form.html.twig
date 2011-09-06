@@ -43,18 +43,23 @@
 <div class="form_row">
     {{ form_label(form.icon) }}
     {{ form_widget(form.icon) }}
+    {% if entity.icon.uri %}
     <div class="form_row_comment">
-        <img src="{{ path('frontend_technology_icon', {'id':entity.id}) }}" />
+        <img src="{{ entity.icon.uri }}" />
     </div>
+    {% endif %}
     {{ form_errors(form.icon) }}
 </div>
 
 <div class="form_row">
     {{ form_label(form.image) }}
     {{ form_widget(form.image) }}
+    {% if entity.image.uri %}
     <div class="form_row_comment">
-        <img src="{{ path('frontend_technology_image', {'id':entity.id}) }}" />
+        <img src="{{ entity.image.uri }}" />
     </div>
+    {% endif %}
+
     {{ form_errors(form.image) }}
 </div>
 
@@ -82,7 +87,7 @@
 
 <script type="text/html" id="screenshot_template">
 <li class="screenshot_wrapper">
-    <img src="{{ path('frontend_screenshot_item',{'id':'__id__'}) }}" />
+    <img src="__url__" />
 </li>
 </script>
 

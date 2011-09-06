@@ -6,6 +6,7 @@ use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Kailab\FrontendBundle\Entity\Screenshot;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\PublicAssetInterface;
 use Kailab\FrontendBundle\Asset\ParameterAsset;
 use Kailab\FrontendBundle\Asset\EmptyAsset;
 use Imagine\ImageInterface;
@@ -30,7 +31,7 @@ class ScreenshotHelper extends Helper
         return 'screenshot';
     }
 
-    protected function getScreenshotSizes()
+    protected function getSizes()
     {
         if(isset($this->config['screenshots']) && is_array($this->config['screenshots'])){
             return array_keys($this->config['screenshots']);
@@ -39,7 +40,7 @@ class ScreenshotHelper extends Helper
         }
     }
 
-    protected function getScreenshotSize($size)
+    protected function getSize($size)
     {
         $info = array('width'=>null,'height'=>null,'route'=>null,
             'resize'=>null,'valign'=>null, 'halign'=>null);
@@ -56,7 +57,7 @@ class ScreenshotHelper extends Helper
     protected function alignImage(ImageInterface $img, $size='small')
     {
         if(is_string($size)){
-            $size = $this->getScreenshotSize($size);
+            $size = $this->getSize($size);
         }
         if(!is_array($size)){
             return $img;
@@ -97,7 +98,7 @@ class ScreenshotHelper extends Helper
     protected function resizeImage(ImageInterface $img, $size='small', $orientation=null)
     {
         if(is_string($size)){
-            $size = $this->getScreenshotSize($size);
+            $size = $this->getSize($size);
         }
         if(!is_array($size)){
             return $img;
@@ -145,7 +146,16 @@ class ScreenshotHelper extends Helper
         return $into->paste($from,$point);
     }
 
-    public function combineScreenshotAsset(Screenshot $shot, $size='small')
+    public function combineImages(Screenshot $shot)
+    {
+        $sizes = $this->getSizes();
+        foreach($sizes as $size){
+            $asset = $this->combineImage($shot, $size);
+            $shot->setImage($asset, $size);
+        }
+    }
+
+    public function combineImage(Screenshot $shot, $size='small')
     {
         $platform = $shot->getPlatform();
         $asset = $shot->getImage();
@@ -198,15 +208,14 @@ class ScreenshotHelper extends Helper
     public function html(Screenshot $shot, $size='small')
     {
         $html = '';
-        $config = $this->getScreenshotSize($size);
-        if(!$config['route']){
+        $asset = $shot->getImage($size);
+        if(!$asset instanceof PublicAssetInterface){
             return $html;
         }
         $platform = $shot->getPlatform();
         $slug = $platform->getSlug();
         $ori = $shot->getOrientation();
-        $router = $this->container->get('router');
-        $url = $router->generate($config['route'],array('id'=>$shot->getId()));
+        $url = $asset->getUri();
         $html .= '<img class="screenshot '.$size.'_size '.$slug.'_platform '.$ori.'_orientation" src="'.$url.'"/>';
         return $html;
     }

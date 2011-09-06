@@ -20,24 +20,26 @@ class AppController extends EntityCrudController
     protected function saveEntity($entity)
     {
         $em = $this->getEntityManager();
-        $em->persist($entity);
+
         // remove empty links
         foreach($entity->getTranslations() as $trans){
-            foreach($trans->getLinks() as $link){
+            $links = $trans->getLinks();
+            foreach($links as $k=>$link){
                 if(!$link->getTitle() || !$link->getUrl()){
                     $em->remove($link);
+                    unset($links[$k]);
                 }else{
                     $link->setTranslation($trans);
                 }
             }
+            $trans->setLinks($links);
         }
         // remove old screenshots
-        foreach($entity->getAppScreenshots() as $shot){
-            if(!$shot->getApp()){
-                $em->remove($shot);
-            }
+        if($id = $entity->getId()){
+            $em->createQuery('delete from KailabFrontendBundle:AppScreenshot s where s.tech = :id')
+                ->setParameter('id',$id)->execute();
         }
-        $em->flush();
+        return parent::saveEntity($entity);
     }
 
     public function upAction($id)

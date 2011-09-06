@@ -7,6 +7,13 @@ use Kailab\FrontendBundle\Entity\Screenshot;
 use Kailab\BackendBundle\Form\PlatformType;
 use Symfony\Component\HttpFoundation\Response;
 use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\ParameterAsset;
+use Imagine\ImageInterface;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
+
+
+
 
 class PlatformController extends EntityCrudController
 {
@@ -19,34 +26,27 @@ class PlatformController extends EntityCrudController
         return new PlatformType();
     }
 
-    public function iconAction($id)
+    protected function saveEntity($entity)
     {
-        $repo = $this->getRepository();
-        $platform = $repo->find($id);
-        if(!$platform){
-            throw new NotFoundHttpException('The platform does not exist.');
-        }
-        $icon = $platform->getIcon();
-        return $icon->getResponse();
-    }
-
-    public function backgroundAction($id)
-    {
-        $repo = $this->getRepository();
-        $platform = $repo->find($id);
-        if(!$platform){
-            throw new NotFoundHttpException('The platform does not exist.');
-        }
-        $icon = $platform->getBackground();
-
-        $shot = new Screenshot();
-        $shot->setPlatform($platform);
         $helper = $this->get('templating.helper.screenshot');
-        $asset = $helper->combineScreenshotAsset($shot,null);
-        if(!$asset instanceof AssetInterface){
-            throw new NotFoundHttpException('The platform does not exist.');
-        }
-        return $asset->getResponse();
-    }
 
+        // update blue background
+        $shot = new Screenshot();
+        $shot->setPlatform($entity);
+        $asset = $helper->combineImage($shot,null);
+        $entity->setBackground($asset, 'blue');
+
+        // resize icon
+        $asset = $entity->getIcon()->getAsset();
+        $imagine = new Imagine();
+        $image = $imagine->load($asset->getContent());
+        $image = $image->resize(new Box(30,30), ImageInterface::THUMBNAIL_OUTBOUND);
+
+        $entity->setIcon(new ParameterAsset(array(
+            'content'       => $image->get('png'),
+            'content_type'  => 'image/png'
+        )));
+
+        return parent::saveEntity($entity);
+    }
 }

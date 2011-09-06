@@ -6,6 +6,11 @@ use Kailab\BackendBundle\Controller\EntityCrudController;
 use Kailab\FrontendBundle\Entity\Slide;
 use Kailab\BackendBundle\Form\BlogPostType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\ParameterAsset;
+use Imagine\ImageInterface;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
 
 class BlogPostController extends EntityCrudController
 {
@@ -18,14 +23,26 @@ class BlogPostController extends EntityCrudController
         return new BlogPostType();
     }
 
-    public function imageAction($id)
+    protected function saveEntity($entity)
     {
-        $entity = $this->findEntity($id);
-        if(!$entity){
-            throw new NotFoundHttpException('The post does not exist.');
+        $asset = $entity->getImage()->getAsset();
+
+        $sizes = array('big'=>150, 'small'=>90);
+        if($asset instanceof AssetInterface){
+            // resize image
+            $imagine = new Imagine();
+            $image = $imagine->load($asset->getContent());
+            foreach($sizes as $name=>$width){
+                $box = $image->getSize()->scale($width/$image->getSize()->getWidth());
+                $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+                $asset = new ParameterAsset(array(
+                    'content'       => $thumb->get('png'),
+                    'content_type'  => 'image/png'
+                ));
+                $entity->setImage($asset, $name);
+            }
         }
-        $img = $entity->getImage();
-        return $img->getResponse();
+        return parent::saveEntity($entity);
     }
 
 }

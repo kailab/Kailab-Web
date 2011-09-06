@@ -4,7 +4,7 @@
     height: 400px;
     overflow: hidden;
     margin: 0 auto;
-    background-image: url(../../bundles/kailabfrontend/images/stock_bg.png);
+    background-image: url(../bundles/kailabfrontend/images/stock_bg.png);
 }
 
 .stock .clouds {

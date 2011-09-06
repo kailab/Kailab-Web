@@ -26,7 +26,58 @@
 
 <div id="sidebar">
     <div class="section">
-        <h2>{{ 'Our friends' | trans }}</h2>
+        <h2>{{ 'Our clients' | trans }}</h2>
+        <ul>
+            <li>Anfibic</li>
+            <li>Antevenio</li>
+            <li>Gobierno del Principado de Asturias</li>
+            <li>Axesor</li>
+            <li>Axis</li>
+            <li>Bacardi</li>
+            <li>Callejero.com</li>
+            <li>Carlsberg</li>
+            <li>Carrefour</li>
+            <li>Catalan Films</li>
+            <li>CWE</li>
+            <li>DKV</li>
+            <li>EADA</li>
+            <li>Ecovidrio</li>
+            <li>Grupo Edebé</li>
+            <li>El Corte Inglés</li>
+            <li>Filmax</li>
+            <li>Flash 2 Flash</li>
+            <li>Franprix</li>
+            <li>Golden Gekko</li>
+            <li>Groupama</li>
+            <li>Guinness</li>
+            <li>Haiku Media</li>
+            <li>Hot Zips</li>
+            <li>Interviú</li>
+            <li>Iradier</li>
+            <li>Johnnie Walker</li>
+            <li>Lechill</li>
+            <li>Livedoor</li>
+            <li>Lynx</li>
+            <li>Malibú</li>
+            <li>ME911</li>
+            <li>Montena</li>
+            <li>O2O</li>
+            <li>Fundación Orange</li>
+            <li>Perfetti Van Melle</li>
+            <li>Private</li>
+            <li>Quiz</li>
+            <li>Random House Mondadori</li>
+            <li>Red Bull</li>
+            <li>Samsung</li>
+            <li>La Sexta</li>
+            <li>Unilever</li>
+            <li>Unkasoft</li>
+            <li>Vigorsol</li>
+            <li>Vodafone</li>
+            <li>Wöwbile</li>
+            <li>Xbox</li>
+            <li>Xperience Consulting</li>
+        </ul>
     </div>
 </div>
 
@@ -34,28 +85,39 @@
     <div class="section">
         <h2>{{ 'Who are we?' | trans }}</h2>
 
-        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
-        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
-        was turned on or changed/updated, and/or the value of 'formatoptions' 
-        changed.</p>
+{% if locale_helper.code == 'es' %}
+        <p>Kailab es una empresa creada el año 2005 con sede en Barcelona. Colaboramos con agencias de medios,
+        web y multimedia de toda Europa. Desarrollamos para más de 1600 modelos diferentes de móviles java y para
+        las principales tecnologías de smartphone (iphone, ipad, bada, android, moblin, windows mobile)</p>
 
-        <p>The standard way to avoid this is to set the 'paste' option before 
-        pasting and reset it afterwards. You can make a key do this with the 
-        'pastetoggle' option, too.</p>
+        <p>Fundada y dirigida por un equipo  de managers con más de 8 años de experiencia trabajando con las operadoras móvil en todo el mundo.</p>
+{% endif %}
+
+{% if locale_helper.code == 'en' %}
+        <p>Kailab is a company created in 2005 with headquarters in Barcelona. We work with media, web and multimedia agencies
+        all over Europe. We develop for more than 1600 models of java cellphones and for the main smartphone platforms
+        (iPhone, iPad, Bada, Android, Moblin, Windows Mobile).</p>
+
+        <p>Founded and managed by a team with more than 8 years of experience and working with main mobile carriers all over the world.</p>
+{% endif %}
+
     </div>
 
     <div class="section">
         <h2>{{ 'What do we do?' | trans }}</h2>
 
-        <p>At Kailab we develop <em>casual games</em>, games oriented to marketing advertising and applications for mobile phones and small consoles.</p>
+{% if locale_helper.code == 'es' %}
+        <p>Aplicamos conceptos del Marketing Móvil basados en aplicaciones descargables,  parecidas a los juegos o flash para los ordenadores personales, fáciles para utilizar , siempre disponibles, rápidas y con un aspecto nuevo,  fresco y bueno, orientado nuestras soluciones a resultados… incluso las acciones de comunicación.</p>
 
-        <p>For this, we have been 5 years experience developing and improving two software tools that let us port any game we do to several platforms in a very short time: Fast Track Machine for JAVA, and Arcadix for C++.</p>
+        <p class="offer">Ofrecemos a las empresas herramientas innovadoras, comprobadas e eficaces para crear vínculos con sus clientes e incrementar las ventas a través de soluciones basadas en las necesidades reales del usuario, útiles o divertidas, de superior calidad y a precio muy competitivo.</p>
+{% endif %}
 
-        <p>These tools are software libraries that programmers use when creating applications or games.</p>
+{% if locale_helper.code == 'en' %}
+        <p>We apply mobile marketing concepts to downloadable mobile aps, similar to games or flash apps for personal computers. Mobile apps are easy to use, always available, fast and with a new look,
+        fresh and oriented torwards obtaining results on communication actions.</p>
 
-        <p>Every library is composed of modules that have specific functions. For instance, the "input module" manages keyboards, mouse, touchscreens, while the "sound module" loads and manages all sounds.</p>
-
-        <p>We are continuously improving and including new modules to our libraries. The more modules we include, the more things our applications can do, the easier to program they are.</p>
+        <p class="offer">We offer the possibility of establishing new links with your clientes and increase sales through solutions based in the real needs of your users, useful and fun, high quality and competitive pricing.</p>
+{% endif %}
 
     </div>
 
@@ -69,15 +131,6 @@
 
             <div id="map_canvas" style="width: 450px; height: 250px"></div>
         </div>
-
-        <p>Probando lalal If it changed, it's probably because some auto-indenting setting changed 
-        (autoindent, smartindent, cindent, indentexpr), and/or a filetype plugin 
-        was turned on or changed/updated, and/or the value of 'formatoptions' 
-        changed.</p>
-
-        <p>The standard way to avoid this is to set the 'paste' option before 
-        pasting and reset it afterwards. You can make a key do this with the 
-        'pastetoggle' option, too.</p>
     </div>
 </div>
 

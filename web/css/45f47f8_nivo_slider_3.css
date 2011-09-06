@@ -103,7 +103,7 @@
     height: 0;
     width: 0;
     font-size: 0;
-	background:url(../../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+	background:url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
 	border:0;
     color: transparent;
 }
@@ -117,7 +117,7 @@
     top: 205px;
 	width:30px;
 	height:30px;
-	background:url(../../bundles/kailabfrontend/images/slider_arrows.png) no-repeat;
+	background:url(../bundles/kailabfrontend/images/slider_arrows.png) no-repeat;
 	text-indent:-9999px;
 	border:0;
 }

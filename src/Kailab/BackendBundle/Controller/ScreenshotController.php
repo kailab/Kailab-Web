@@ -18,10 +18,10 @@ class ScreenshotController extends EntityCrudController
         return new ScreenshotType();
     }
 
-    public function imageAction($id)
+    protected function saveEntity($entity)
     {
-        $entity = $this->findEntity($id);
-        $img = $entity->getImage();
-        return $img->getResponse();
+        $helper = $this->get('templating.helper.screenshot');
+        $helper->combineImages($entity);
+        return parent::saveEntity($entity);
     }
 }

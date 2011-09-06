@@ -20,7 +20,7 @@
 }
 
 #app_icons li.selected {
-    background-image: url(../../bundles/kailabfrontend/images/bg_selected_screenshot.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_selected_screenshot.png);
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -43,7 +43,7 @@
 }
 
 #apps .app {
-    background-image: url(../../bundles/kailabfrontend/images/sep_big.png);
+    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
     background-position: top center;
     background-repeat: no-repeat;
     padding-top: 25px;
@@ -105,21 +105,21 @@
 }
 
 #main .app .title .left {
-    background-image: url(../../bundles/kailabfrontend/images/bg_title_left.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_title_left.png);
     background-position: left center;
     background-repeat: no-repeat;
     padding-left: 60px;
 }
 
 #main .app .title .right {
-    background-image: url(../../bundles/kailabfrontend/images/bg_title_right.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_title_right.png);
     background-position: right center;
     background-repeat: no-repeat;
     padding-right: 60px;
 }
 
 #main .app .title .inner {
-    background-image: url(../../bundles/kailabfrontend/images/bg_title.png);
+    background-image: url(../bundles/kailabfrontend/images/bg_title.png);
     background-repeat: repeat-x;
     padding: 2px 5px;
 }

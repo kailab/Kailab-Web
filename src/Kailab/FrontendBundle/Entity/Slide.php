@@ -16,7 +16,7 @@ use Kailab\FrontendBundle\Asset\AssetInterface;
 class Slide
 {
     protected $locale;
-    protected $images = array();
+    protected $image;
 
     /**
      * @ORM\Id
@@ -122,42 +122,27 @@ class Slide
 
     protected function loadAssets()
     {
-        $types = array('', 'big');
-        foreach($types as $type){
-            if(!isset($this->images[$type])){
-                $name = $type ? 'image_'.$type : 'image';
-                $this->images[$type] = new EntityAsset($this, $name);
-            }
+        if(!$this->image instanceof AssetInterface){
+            $this->image = new EntityAsset($this, 'image');
         }
     }
+
     public function getAssets()
     {
         $this->loadAssets();
-        return $this->images;
+        return array($this->image);
     }
 
-    public function getImage($name='')
+    public function getImage()
     {
         $this->loadAssets();
-        if(isset($this->images[$name])){
-            return $this->images[$name];
-        }else{
-            return null;
-        }
+        return $this->image;
     }
 
-    public function setImage($path, $name='')
+    public function setImage($path)
     {
         $this->loadAssets();
-        $img = $this->getImage($name);
-        if($img == null){
-            return;
-        }
-        if($path instanceof AssetInterface){
-            $img->setAsset($path);
-        }else if(is_string($path)){
-            $img->loadPath($path);
-        }
+        $this->image->setAsset($path);
         $this->updated = new \DateTime('now');
     }
 

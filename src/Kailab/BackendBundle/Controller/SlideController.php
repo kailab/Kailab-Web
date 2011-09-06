@@ -5,6 +5,11 @@ namespace Kailab\BackendBundle\Controller;
 use Kailab\BackendBundle\Controller\EntityCrudController;
 use Kailab\FrontendBundle\Entity\Slide;
 use Kailab\BackendBundle\Form\SlideType;
+use Kailab\FrontendBundle\Asset\AssetInterface;
+use Kailab\FrontendBundle\Asset\ParameterAsset;
+use Imagine\ImageInterface;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
 
 class SlideController extends EntityCrudController
 {
@@ -15,13 +20,6 @@ class SlideController extends EntityCrudController
     protected function getFormType()
     {
         return new SlideType();
-    }
-
-    public function imageAction($id)
-    {
-        $entity = $this->findEntity($id);
-        $img = $entity->getImage();
-        return $img->getResponse();
     }
 
     public function upAction($id)
@@ -49,5 +47,25 @@ class SlideController extends EntityCrudController
         $session->setFlash('notice','Slide was moved down.');
         return $this->redirectCrud('list');
     }
+
+    protected function saveEntity($entity)
+    {
+        $asset = $entity->getImage()->getAsset();
+        if($asset instanceof AssetInterface){
+            // resize image
+            $imagine = new Imagine();
+            $image = $imagine->load($asset->getContent());
+            $box = new Box(470, 440);
+            $thumb = $image->thumbnail($box,ImageInterface::THUMBNAIL_OUTBOUND);
+            $asset = new ParameterAsset(array(
+                'content'       => $thumb->get('png'),
+                'content_type'  => 'image/png'
+            ));
+            $entity->setImage($asset);
+        }
+        return parent::saveEntity($entity);
+    }
+
+
 
 }

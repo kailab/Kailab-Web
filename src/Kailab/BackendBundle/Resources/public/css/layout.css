@@ -168,3 +168,11 @@ form.entity .form_submit_row {
     margin-top: 50px;
     float: right;
 }
+
+.links > .form_row > label {
+    display: none;
+}
+
+.links label {
+    float: left;
+}

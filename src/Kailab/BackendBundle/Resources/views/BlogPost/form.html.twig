@@ -18,9 +18,11 @@
     <div class="form_row">
         {{ form_label(form.image) }}
         {{ form_widget(form.image) }}
-        <div class="form_row_comment">
-            <img src="{{ path('backend_blog_post_image', {'id':entity.id}) }}" />
-        </div>
+        {% if entity.image('big').uri %}
+            <div class="form_row_comment">
+                <img src="{{ entity.image('big').uri }}" />
+            </div>
+        {% endif %}
         {{ form_errors(form.image) }}
     </div>
     {{ parent() }}
