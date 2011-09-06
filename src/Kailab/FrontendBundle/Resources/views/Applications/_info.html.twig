@@ -19,7 +19,11 @@
     <h3>{{ 'Platforms' | trans }}</h3>
     <ul>
     {% for platform in application.platforms %}
-        <li><img src="{{ path('frontend_platform_icon', {'id':platform.id}) }}"/>{{ platform.name }}</li>
+        <li>
+        {% if platform.icon.uri %}
+        <img src="{{ platform.icon.uri }}"/>
+        {% endif %}
+        {{ platform.name }}</li>
     {% endfor %}
     </ul>
     </div>
