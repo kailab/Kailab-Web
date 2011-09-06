@@ -131,15 +131,15 @@ class EntityAsset extends File implements PublicAssetInterface
 
     public function setAsset($asset)
     {
-        if(is_string($asset) || $asset instanceof File){
-            $this->loadPath($asset);
-        }else if($asset instanceof AssetInterface){
+        if($asset instanceof AssetInterface){
             $this->asset = new ParameterAsset(array(
                 'name'          => $asset->getName(),
                 'content'       => $asset->getContent(),
                 'content_type'  => $asset->getContentType(),
             ));
             $this->state = self::STATE_ASSET;
+        }else if(is_string($asset) || $asset instanceof File){
+            $this->loadPath($asset);
         }
     }
 

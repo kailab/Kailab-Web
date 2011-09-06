@@ -120,7 +120,7 @@ class Platform
     public function setIcon($path)
     {
         $this->loadAssets();
-        $this->icon->loadPath($path);
+        $this->icon->setAsset($path);
         $this->updated = new \DateTime('now');
     }
 
