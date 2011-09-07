@@ -112,6 +112,72 @@
     <div class="team_member_row">
         <div class="section team_member_left">
             <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('rgalera@kailab.com','Román Galera') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'en' %}
+            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
+{% endif %}
+{% if locale_helper.code == 'es' %}
+            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
+{% endif %}
+            </div>
+        </div>
+
+
+
+        <div class="team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_jmenossi.png') }}" alt="Javier Menossi"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('jmenossi@kailab.com','Javier Menossi') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Como programador, colaboro en varias de las plataformas
+            que abarcan los proyectos de Kailab: desde plataformas móviles,
+            como Android, iPhone o bada, hasta aplicaciones para PC.
+            También he colaborado en el apartado musical y sonoro de varios
+            proyectos, que van desde juegos para móviles hasta PC o consolas. 
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            As a programmer I work on the various platforms: from mobile
+            ones like Android, iPhone or Bada, to PC applications.
+            I also have worked on the musical and sound parts of various
+            projects, from games for cellphones to PC or consoles.
+{% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="team_member_row">
+        <div class="section team_member_left">
+{#
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_mteixe.png') }}" alt="MTR"/>
+            </div>
+            <h3>{{ frontend_helper.mailto('mteixe@kailab.com','MTR') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Soy el secreto mejor guardado de Kailab. Soy el desarollador de iOs, experto en videojuegos y en mi tiempo libre juego a un montón
+            de MMOs (menos al WOW).
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            I'm Kailab's best guarded secret. I'm the iOS developer, videogame expert and in my spare time I'm an avid MMO player (everything but WOW).
+{% endif %}
+            </div>
+#}
+        </div>
+
+        <div class="section team_member_right">
+            <div class="side">
                 <img src="{{ asset('bundles/kailabfrontend/images/team_mibero.png') }}" alt="Miguel Ibero"/>
             </div>
             <h3>{{ frontend_helper.mailto('mibero@kailab.com','Miguel Ibero') | raw }}</h3>
@@ -131,56 +197,7 @@
             </div>
         </div>
 
-        <div class="team_member_right">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_jmenossi.png') }}" alt="Javier Menossi"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('jmenossi@kailab.com','Javier Menossi') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-            Trabajo mayoritariamente en el desarrollo de librerías para los juegos móbiles y también en las aplicaciones Android
-            </div>
-        </div>
-    </div>
 
-    <div class="team_member_row">
-{#
-        <div class="section team_member_left">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_mteixe.png') }}" alt="MTR"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('mteixe@kailab.com','MTR') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-{% if locale_helper.code == 'es' %}
-            Soy el secreto mejor guardado de Kailab. Soy el desarollador de iOs, experto en videojuegos y en mi tiempo libre juego a un montón
-            de MMOs (menos al WOW).
-{% endif %}
-{% if locale_helper.code == 'en' %}
-            I'm Kailab's best guarded secret. I'm the iOS developer, videogame expert and in my spare time I'm an avid MMO player (everything but WOW).
-{% endif %}
-            </div>
-        </div>
-#}
-
-        <div class="section team_member_right">
-            <div class="side">
-                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
-            </div>
-            <h3>{{ frontend_helper.mailto('rgalera@kailab.com','Román Galera') | raw }}</h3>
-            <div class="bubble_tip">
-            </div>
-            <div class="bubble">
-{% if locale_helper.code == 'en' %}
-            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
-{% endif %}
-{% if locale_helper.code == 'es' %}
-            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
-{% endif %}
-            </div>
-        </div>
 
     </div>
 
