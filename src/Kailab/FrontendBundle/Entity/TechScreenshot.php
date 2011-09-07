@@ -22,13 +22,13 @@ class TechScreenshot
 
     /**
      * @ORM\ManyToOne(targetEntity="Tech", inversedBy="tech_screenshots")
-     * @ORM\JoinColumn(name="tech_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="tech_id", referencedColumnName="id", onDelete="CASCADE", onUpdate="CASCADE")
      */
     protected $tech;
 
     /**
      * @ORM\ManyToOne(targetEntity="Screenshot", inversedBy="tech_screenshots")
-     * @ORM\JoinColumn(name="screenshot_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="screenshot_id", referencedColumnName="id", onDelete="CASCADE", onUpdate="CASCADE")
      */
     protected $screenshot;
 

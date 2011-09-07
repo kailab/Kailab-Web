@@ -9,7 +9,9 @@ class PlatformType extends BaseType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('id','hidden');
-        $builder->add('url','url');
+        $builder->add('url','url', array(
+            'required'  => false
+        ));
         $builder->add('slug','text');
         $builder->add('translations', 'collection', array(
            'type'       => new PlatformTranslationType(),

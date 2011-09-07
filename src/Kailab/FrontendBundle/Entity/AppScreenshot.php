@@ -22,13 +22,13 @@ class AppScreenshot
 
     /**
      * @ORM\ManyToOne(targetEntity="App", inversedBy="app_screenshots")
-     * @ORM\JoinColumn(name="app_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="app_id", referencedColumnName="id", onDelete="CASCADE", onUpdate="CASCADE")
      */
     protected $app;
 
     /**
      * @ORM\ManyToOne(targetEntity="Screenshot", inversedBy="app_screenshots")
-     * @ORM\JoinColumn(name="screenshot_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="screenshot_id", referencedColumnName="id", onDelete="CASCADE", onUpdate="CASCADE")
      */
     protected $screenshot;
 

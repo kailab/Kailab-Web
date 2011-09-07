@@ -227,14 +227,14 @@
     new TWTR.Widget({
       id: 'twitter_widget',
       version: 2,
-      type: 'list',
+      type: 'profile',
       rpp: 30,
       interval: 6000,
       width: 205,
-      height: 370,
+      height: 340,
       theme: {
         shell: {
-          background: '#b8c40c',
+          background: '#bdca10',
           color: '#ffffff'
         },
         tweets: {
@@ -252,7 +252,7 @@
         avatars: false,
         behavior: 'all'
       }
-    }).render().setList('kailabestudio', 'kailab').start();
+    }).render().setUser('{{ frontend_helper.twitter }}').start();
 
 </script>
 
