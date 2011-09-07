@@ -7,6 +7,7 @@
             options.script_url = '{{ asset('bundles/stfalcontinymce/vendor/tiny_mce/tiny_mce.js') }}';
             options.setup = function(){
                 tinyMCE.PluginManager.load('syntaxhl', '{{ asset('bundles/kailabbackend/tiny_mce/plugins/syntaxhl/editor_plugin.js') }}');
+                tinyMCE.PluginManager.load('preelementfix', '{{ asset('bundles/kailabbackend/tiny_mce/plugins/preelementfix/editor_plugin.js') }}');
             };
             $(this).tinymce(options);
         });

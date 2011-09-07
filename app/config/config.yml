@@ -71,14 +71,16 @@ stfalcon_tinymce:
         theme_advanced_toolbar_location: "top"
         theme_advanced_toolbar_align: "left"
         theme_advanced_statusbar_location: "bottom"
-        plugins: "fullscreen, autoresize, pagebreak, -syntaxhl"
+        plugins: "fullscreen, pagebreak, -syntaxhl, -preelementfix"
         theme_advanced_buttons1_add: "syntaxhl,pagebreak,fullscreen,code"
         theme_advanced_resizing: true
-        extended_valid_elements : "textarea[cols|rows|disabled|name|readonly|class]" 
+        extended_valid_elements : "textarea[cols|rows|disabled|name|readonly|class],pre[name]" 
         remove_linebreaks: false
         preformatted : true
         pagebreak_separator: "<!-- more -->"
         force_br_newlines: false
+        apply_source_formatting: true
+        verify_html: false
 
 frontend:
     locales: ['es', 'en']
