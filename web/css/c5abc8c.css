@@ -23,6 +23,12 @@
     line-height: 1.4em;
 }
 
+.blog_post .content pre {
+    background-color: #FFFFFF;
+    padding: 1em;
+    overflow: auto;
+}
+
 #blog .blog_post {
     padding-top: 20px;
     margin-top: 20px;
@@ -51,9 +57,8 @@
 }
 
 .blog_post .title {
-    display: inline;
     border: 0 !important;
-    margin: 0;
+    margin-top: 10px;
     color: #000000 !important;
     font-size: normal;
     background-image: none !important;
