@@ -120,8 +120,8 @@ $(document).ready(function(){
         }).blur();
     };
 
-    input_tooltip.call($('#blogcomment_author_name'), {{ 'Your Name' | trans | json_encode | raw }});
-    input_tooltip.call($('#blogcomment_author_email'), {{ 'Your Email Address' | trans | json_encode | raw }});
+    input_tooltip.call($('#comment_author_name'), {{ 'Your Name' | trans | json_encode | raw }});
+    input_tooltip.call($('#comment_author_email'), {{ 'Your Email Address' | trans | json_encode | raw }});
 });
 </script>
 
