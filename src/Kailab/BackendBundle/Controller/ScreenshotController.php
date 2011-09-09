@@ -24,4 +24,23 @@ class ScreenshotController extends EntityCrudController
         $helper->combineImages($entity);
         return parent::saveEntity($entity);
     }
+    
+    public function reloadAction()
+    {
+        $repo = $this->getRepository();
+        $em = $this->getEntityManager();
+        $entities = $repo->findAll();
+        $helper = $this->get('templating.helper.screenshot');
+        
+        foreach($entities as $entity){
+            $helper->combineImages($entity);
+            $em->persist($entity);
+        }
+        
+        $em->flush();
+        $session = $this->get('session');
+        $session->setFlash('notice','Screenshots reloaded correctly.', true);
+        
+        return $this->redirectCrud('list');
+    }
 }

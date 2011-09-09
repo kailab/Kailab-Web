@@ -14,6 +14,11 @@ use Kailab\FrontendBundle\Asset\EntityAsset;
  */
 class App
 {
+
+    const ORIENTATION_VERTICAL = 'vertical';
+    const ORIENTATION_HORIZONTAL = 'horizontal';
+    const ORIENTATION_BOTH = 'both';
+
     protected $locale;
 
     /**
@@ -120,13 +125,14 @@ class App
     {
         $shots = $this->getScreenshots();
 
-        $h = Screenshot::ORIENTATION_HORIZONTAL;
+        $h = null;
         foreach($shots as $shot){
-            if($shot->getOrientation() == $h){
-                return $h;
+            if($shot->getOrientation() != $h && $h != null){
+                return App::ORIENTATION_BOTH;
             }
+            $h = $shot->getOrientation();
         }
-        return Screenshot::ORIENTATION_VERTICAL;
+        return $h;
     }
 
     public function getActive()

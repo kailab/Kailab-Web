@@ -1,7 +1,7 @@
 <div class="app {{ appli.orientation }}_orientation" {% if hidden is defined %}style="display: none;"{% endif %}>
     <a name="{{ appli.slug }}"></a>
     <div class="app_inner">
-        {% if appli.orientation == 'horizontal' %}
+        {% if appli.orientation != 'vertical' %}
         {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
         {% endif %}
         {% if appli.screenshots.count %}
@@ -10,7 +10,11 @@
                 {% for screenshot in appli.screenshots %}
                 <li style="display: none;">
                     <a href="{{ screenshot.image.uri }}">
+                        {% if appli.orientation == 'horizontal' %}
                         <img src="{{ screenshot.image('big').uri }}" alt="{{ appli.name }}"/>
+                        {% else %}
+                        <img src="{{ screenshot.image('bigh').uri }}" alt="{{ appli.name }}"/>
+                        {% endif %}
                     </a>
                 </li>
                 {% endfor %}

@@ -125,7 +125,7 @@ class Screenshot
 
     protected function loadAssets()
     {
-        $types = array('', 'big','small','item');
+        $types = array('','big','bigh','small','item');
         foreach($types as $type){
             if(!isset($this->images[$type])){
                 $name = $type ? 'image_'.$type : 'image';

@@ -23,12 +23,12 @@ class QuestionTranslation
     protected $locale;
 
     /**
-     * @ORM\Column(type="string", length="40000")
+     * @ORM\Column(type="string", length="1000")
      */
     protected $title;
 
     /**
-     * @ORM\Column(type="string", length="40000", nullable=true)
+     * @ORM\Column(type="text",  nullable=true)
      */
     protected $answer;
 

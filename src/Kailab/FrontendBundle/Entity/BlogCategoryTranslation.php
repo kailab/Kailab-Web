@@ -28,7 +28,7 @@ class BlogCategoryTranslation
     protected $name;
 
     /**
-     * @ORM\Column(type="string", length="40000", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
 

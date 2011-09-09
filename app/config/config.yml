@@ -102,5 +102,11 @@ frontend:
             width: 250
             height: 475
             resize: inside
+        bigh:
+            width: 475
+            height: 475
+            resize: inside
+            valign: center
+            halign: center
 
 backend:

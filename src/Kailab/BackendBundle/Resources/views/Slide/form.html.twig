@@ -20,6 +20,7 @@
         {% endif %}
         {{ form_errors(form.image) }}
     </div>
+    {{ form_row(form.url, {'attr':{'size':40}}) }}
     {{ parent() }}
 {% endblock %}
 

@@ -61,6 +61,10 @@ backend_screenshot_delete:
 backend_screenshot_image:
     pattern:  /screenshot/image/{id}
     defaults: { _controller: KailabBackendBundle:Screenshot:image }
+    
+backend_screenshot_reload:
+    pattern:  /screenshot/reload
+    defaults: { _controller: KailabBackendBundle:Screenshot:reload }
 
 # app
 
