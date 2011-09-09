@@ -65,27 +65,37 @@
     width: 190px;
 }
 
-.app.horizontal_orientation .side {
+.app.horizontal_orientation .side,
+.app.both_orientation .side {
     float: none;
     text-align: center;
     width: 710px;
     margin-bottom: 10px;
 }
 
-.app.horizontal_orientation .side .nav {
+.app.horizontal_orientation .side .nav,
+.app.both_orientation .side .nav {
     width: 650px !important;
 }
 
+.app.both_orientation .screenshots,
 .app.horizontal_orientation .screenshots {
     width: 500px !important;
     margin: 0 auto;
 }
 
+.app.both_orientation .screenshots li,
+.app.horizontal_orientation .screenshots li {
+    margin: 0 !important;
+}
+
+.app.both_orientation .main,
 .app.horizontal_orientation .main {
     margin-left: 0 !important;
     margin-right: 250px;
 }
 
+.app.both_orientation .description,
 .app.horizontal_orientation .description {
     margin: 0;
 }
