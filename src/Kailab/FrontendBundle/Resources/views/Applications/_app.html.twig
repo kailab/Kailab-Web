@@ -10,7 +10,7 @@
                 {% for screenshot in appli.screenshots %}
                 <li style="display: none;">
                     <a href="{{ screenshot.image.uri }}">
-                        {% if appli.orientation == 'horizontal' || appli.orientation == 'vertical' %}
+                        {% if appli.orientation == 'horizontal' or appli.orientation == 'vertical' %}
                         <img src="{{ screenshot.image('big').uri }}" alt="{{ appli.name }}"/>
                         {% else %}
                         <img src="{{ screenshot.image('bigh').uri }}" alt="{{ appli.name }}"/>
