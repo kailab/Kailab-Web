@@ -227,7 +227,7 @@
     new TWTR.Widget({
       id: 'twitter_widget',
       version: 2,
-      type: 'profile',
+      type: 'list',
       rpp: 30,
       interval: 6000,
       width: 205,
@@ -252,7 +252,7 @@
         avatars: false,
         behavior: 'all'
       }
-    }).render().setUser('{{ frontend_helper.twitter }}').start();
+    }).render().setList('{{ frontend_helper.twitter }}', 'kailab').start();
 
 </script>
 
