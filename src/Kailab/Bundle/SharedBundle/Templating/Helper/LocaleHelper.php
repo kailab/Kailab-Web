@@ -79,9 +79,14 @@ class LocaleHelper extends Helper
         if(!isset($params['_route'])){
             return null;
         }
-        $params['_locale'] = $locale;
+        
         $route = $params['_route'];
-        unset($params['_route']);
+        foreach($params as $k=>$v){
+        	if(substr($k,0,1) == '_'){
+        		unset($params[$k]);
+        	}
+        }
+        $params['_locale'] = $locale;
         
         try{
             $locale_route = 'localized_'.$route;

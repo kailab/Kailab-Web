@@ -49,7 +49,6 @@ class BlogPost extends TranslatedEntity
 
     /**
      * @ORM\Column(type="boolean")
-
      */
     protected $active;
 

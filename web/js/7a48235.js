@@ -864,17 +864,7 @@ easingOut:"swing",showCloseButton:true,showNavArrows:true,enableEscapeButton:tru
  
 	var plugin_version = '0.1';
 	var plugin_name = 'showcase';
-	var plugin_debug = true;
-	 
-	function debug(s) {
-		if (plugin_debug){ log(s); }
-	}
-	 
-	function log() {
-		if(window.console && window.console.log)
-			window.console.log('['+plugin_name+'] ' + Array.prototype.join.call(arguments,' '));
-	};
-	 
+	
 	$.fn[plugin_name] = function(options){
 		options = getOptions.call(this,options);
 		var obj = $(this);

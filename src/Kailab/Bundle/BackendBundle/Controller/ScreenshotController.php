@@ -60,8 +60,7 @@ class ScreenshotController extends EntityCrudController
     	$repo = $this->getRepository();
     	$router = $this->get('router');
     	$urls = array();
-    	foreach($repo->findAll() as $entity){
-    		$id = $entity->getId();
+    	foreach($repo->findAllIds() as $id){
     		$urls[$id] = $router->generate('backend_screenshot_reload', array('id' => $id));
     	}
     	return array(
@@ -79,6 +78,7 @@ class ScreenshotController extends EntityCrudController
     	$response = new Response();
     	try{    
 	    	$entity = $repo->find($id);
+	    	$entity->setUpdated(new \DateTime('now'));
 	    	$em->persist($entity);
 	    	$em->flush();
 	    	$response->setContent('true');

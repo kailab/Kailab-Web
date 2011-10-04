@@ -12,9 +12,11 @@
 var urls = {{ urls | json_encode | raw }};
 
 var messages = {
+	cancelled: {{ 'Reloading screenshots was cancelled.' | trans | json_encode | raw }},
 	start: {{ 'Reloading screenshot %s...' | trans | json_encode | raw }},
 	success: {{ 'Screenshot %s reloaded.' | trans | json_encode | raw }},
-	error: {{ 'Error reloading screenshot %s.' | trans | json_encode | raw }}
+	error: {{ 'Error reloading screenshot %s.' | trans | json_encode | raw }},
+	confirm: {{ 'Are you shure you want to reload %s screenshots?' | trans({ '%s': urls | length }) | json_encode | raw }}
 }
 
 var call_reload = function(){
@@ -45,7 +47,11 @@ var log = function(str){
 };
 
 $(document).ready(function(){
-	call_reload();
+	if(confirm(messages.confirm)){
+		call_reload();
+	}else{
+		log(messages.cancelled);
+	}
 });
 </script>
 
