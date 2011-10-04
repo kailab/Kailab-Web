@@ -103,38 +103,41 @@ ul.selected_screenshots {
     width: 190px;
 }
 
-.app.horizontal_orientation .side,
-.app.both_orientation .side {
+.app.horizontal .side,
+.app.both .side {
     float: none;
     text-align: center;
     width: 710px;
     margin-bottom: 10px;
 }
 
-.app.horizontal_orientation .side .nav,
-.app.both_orientation .side .nav {
+.app.horizontal .side .nav,
+.app.both .side .nav {
     width: 650px !important;
 }
 
-.app.both_orientation .screenshots,
-.app.horizontal_orientation .screenshots {
-    width: 500px !important;
+.app.both .screenshots,
+.app.horizontal .screenshots {
+    width: 710px !important;
+    text-align: center;
     margin: 0 auto;
+    padding: 0;
 }
 
-.app.both_orientation .screenshots li,
-.app.horizontal_orientation .screenshots li {
+.app.both .screenshots li,
+.app.horizontal .screenshots li {
     margin: 0 !important;
+    width: 710px !important;
 }
 
-.app.both_orientation .main,
-.app.horizontal_orientation .main {
+.app.both .main,
+.app.horizontal .main {
     margin-left: 0 !important;
     margin-right: 250px;
 }
 
-.app.both_orientation .description,
-.app.horizontal_orientation .description {
+.app.both .description,
+.app.horizontal .description {
     margin: 0;
 }
 
@@ -187,6 +190,7 @@ ul.selected_screenshots {
     color: #000000;
     font-size: 14px;
     border: 0;
+    margin-bottom: 10px;
 }
 
 #main .app .info ul {
@@ -229,6 +233,11 @@ ul.selected_screenshots {
     vertical-align: middle;
 }
 
+.paginator {
+	height: 30px;
+	overflow: hidden;	
+}
+
 .paginator .nav {
     text-align: center;
     line-height: 30px;
@@ -243,16 +252,19 @@ ul.selected_screenshots {
 }
 
 .paginator a {
-    padding: 15px;
     width: 0;
     height: 0;
+    padding:  15px;
     color: transparent;
     overflow: hidden;
     margin: 0;
-	background:url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+    vertical-align: middle;
+	background: url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
     background-position: 0px 0px;
     font-size: 0px;
-    text-indent: -99999px;
+    line-height: 30px;
+    text-indent: -30px;
+    cursor: pointer;
 }
 
 .paginator a.activeSlide,
@@ -273,8 +285,8 @@ ul.selected_screenshots {
 
 .paginator .next {
     padding: 0;
-	width:30px;
-	height:30px;
+	width: 30px;
+	height: 30px;
     float: right;
     cursor: pointer;
     z-index: 600;

@@ -15,7 +15,7 @@ framework:
     translator:      { fallback: en }
     trust_proxy_headers: true
     session:
-        default_locale: es 
+        default_locale: '%locale%' 
         lifetime:       3600
         auto_start:     true
 
@@ -82,31 +82,12 @@ stfalcon_tinymce:
         apply_source_formatting: true
         verify_html: false
 
-frontend:
+kailab_shared:
     locales: ['es', 'en']
+    
+kailab_frontend:
     twitter:    kailabestudio
-    facebook:   Kailab-Estudio-SL/181041305261840
+    facebook:   Kailab-Estudio-SL/236294543086077
     email:      contact@kailab.com
-    screenshots:
-        small: 
-            height: 150
-            width: 150
-            type: inside
-        item: 
-            height: 150
-            width: 150
-            valign: bottom
-            halign: center
-            resize: inside
-        big:
-            width: 250
-            height: 475
-            resize: inside
-        bigh:
-            width: 475
-            height: 475
-            resize: inside
-            valign: center
-            halign: center
 
-backend:
+kailab_backend:

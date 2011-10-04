@@ -31,7 +31,8 @@
     margin: 0 0 5px 0;
 }
 
-#main .maincontent .block h2 a {
+#main .maincontent .block h2 a,
+#main .maincontent .block h3 a {
     text-decoration: none;
 }
 

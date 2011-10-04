@@ -20,8 +20,10 @@ class AppKernel extends Kernel
 
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Kailab\FrontendBundle\KailabFrontendBundle(),
-            new Kailab\BackendBundle\KailabBackendBundle(),
+            new Kailab\Bundle\SharedBundle\KailabSharedBundle(),
+            new Kailab\Bundle\EntityBundle\KailabEntityBundle(),
+        	new Kailab\Bundle\FrontendBundle\KailabFrontendBundle(),
+        	new Kailab\Bundle\BackendBundle\KailabBackendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,204 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ 'About us' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/kailabfrontend/css/about.css' %}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+
+{% block content %}
+
+<h1>{{ 'Our team' | trans }}</h1>
+
+<div class="maincontent">
+
+    <h2>{{ 'Project Managers' | trans }}</h2>
+
+    <div class="team_member_row">
+        <div class="section team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_ftellez.png') }}" alt="Francisco Tellez"/>
+            </div>
+            <h3>{{ 'ftellez@kailab.com' | mailto('Francisco Tellez') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Socio fundador de Kailab con 10 años de experiencia liderando proyectos,
+            creador de más de 50 aplicaciones y juegos móviles, y varios motores como
+            Arcadix o Fast Track Machine. 
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            Founding member of Kailab with 10 years of experience managing projects,
+            creator of more than 50 applications and games for cellphones and several
+            engines like Arcadix or Fast Track Machine.
+{% endif %}
+            </div>
+        </div>
+
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_tgarcia.png') }}" alt="Toni García"/>
+            </div>
+            <h3>{{ 'tgarcia@kailab.com' | mailto('Toni García') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+<p>Estudié informática en la FIB y después un master en dirección de marketing en EADA, y siempre he estado en proyectos donde el uso de la tecnología es crucial para el desarrollo del negocio: audiovisuales, internet, móviles,… Además me gustan los cómics, el cine, las miniaturas, la música en general (y más si es con guitarras y a poder ser distorsionadas) y leer, sobre todo ciencia ficción y fantasía.</p>
+<p>Siempre que a mi hijo, como nos suele pasar a los padres, le parezca oportuno y conveniente que pueda disfrutar de mis hobbies.</p>
+{% endif %}
+{% if locale_helper.code == 'en' %}
+<p>I studied computer science at the FIB and did a master in marketing direction at EADA. I have always been linked to projects that use technología as a central part of business: audiovisuals, internet, mobile, ... I also like comics, movies, miniatures, music in general (better with distorted guitars) and reading, mostly science fiction and fantasy.</p>
+<p>As it always happens to parents, I enjoy my hobbies only if my child thinks it's convenient.</p>
+{% endif %}
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="team_member_row">
+    </div>
+
+
+    <h2>{{ 'Developers' | trans }}</h2>
+
+    <div class="team_member_row">
+        <div class="team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_acastejon.png') }}" alt="Antoni Castejón"/>
+            </div>
+            <h3>{{ 'acastejon@kailab.com' | mailto('Antoni Castejón') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'en' %}
+            I'm a multimedia graduate at the UPC, I work mainly with Android projects at Kailab. I also work on games, porting them to this platform and original ones. I also work on the design of some of our apps when needed.
+{% endif %}
+{% if locale_helper.code == 'es' %}
+            Graduado en Multimedia por la UPC, me encargo de realizar los proyectos de Android de Kailab. Además, realizo los portings de nuestros juegos a esta plataforma y desarrollo otros desde cero. También he participado en el diseño de algunas aplicaciones cuando ha hecho falta.
+{% endif %}
+            </div>
+        </div>
+
+        <div class="team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_crey.png') }}" alt="Christopher Rey"/>
+            </div>
+            <h3>{{ 'crey@kailab.com' | mailto('Christopher Rey') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Graduado en Multimedia por la UPC, soy el responsable de los videojuegos de Kailab. Programador en apariencia y Game Designer en la intimidad, pues disfruto contando historias que algún inocente se llega a creer. También, con mi guitarra, un buen libro, el cine y las series de HBO.
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            Multimedia graduate at the UPC, I'm working on Kailab's videogames. I may look like a programmer but I'm a secret game designer, as I enjoy telling stories that some people actually end up believing. Also using my guitar, a good book, movies and HBO television series,
+{% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="team_member_row">
+        <div class="section team_member_left">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_rgalera.png') }}" alt="Román Galera"/>
+            </div>
+            <h3>{{ 'rgalera@kailab.com' | mailto('Román Galera') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'en' %}
+            I studied Graphics Design at de Massana school in Barcelona. Besides working on multimedia projects, I specialize in corporate image design and projects for museums and publishers. On a personal note, I'm an <a href="http://www.thebottles.es">amateur misician</a> and until 2009 have been a regular guest on varios radios shows on Ràdio Sabadell and Com Ràdio.
+{% endif %}
+{% if locale_helper.code == 'es' %}
+            Estudié la especialidad de Diseño Gráfico en la Escola Massana de Barcelona. Además de trabajar en proyectos multimedia, estoy especiaizado en diseño de imagen corporativa, proyectos museísticos y editoriales. En cuestiones más personales soy <a href="http://www.thebottles.es">músico amateur</a> y he colaborado en distintos programas de radio de manera regular hasta el 2009 (Ràdio Sabadell y COM ràdio).
+{% endif %}
+            </div>
+        </div>
+
+
+
+        <div class="team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_jmenossi.png') }}" alt="Javier Menossi"/>
+            </div>
+            <h3>{{ 'jmenossi@kailab.com' | mailto('Javier Menossi') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Como programador, colaboro en varias de las plataformas
+            que abarcan los proyectos de Kailab: desde plataformas móviles,
+            como Android, iPhone o bada, hasta aplicaciones para PC.
+            También he colaborado en el apartado musical y sonoro de varios
+            proyectos, que van desde juegos para móviles hasta PC o consolas. 
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            As a programmer I work on the various platforms: from mobile
+            ones like Android, iPhone or Bada, to PC applications.
+            I also have worked on the musical and sound parts of various
+            projects, from games for cellphones to PC or consoles.
+{% endif %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="team_member_row">
+        <div class="section team_member_left">
+{#
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_mteixe.png') }}" alt="MTR"/>
+            </div>
+            <h3>{{ 'mteixe@kailab.com' | mailto('MTR') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Soy el secreto mejor guardado de Kailab. Soy el desarollador de iOs, experto en videojuegos y en mi tiempo libre juego a un montón
+            de MMOs (menos al WOW).
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            I'm Kailab's best guarded secret. I'm the iOS developer, videogame expert and in my spare time I'm an avid MMO player (everything but WOW).
+{% endif %}
+            </div>
+#}
+        </div>
+
+        <div class="section team_member_right">
+            <div class="side">
+                <img src="{{ asset('bundles/kailabfrontend/images/team_mibero.png') }}" alt="Miguel Ibero"/>
+            </div>
+            <h3>{{ 'mibero@kailab.com' | mailto('Miguel Ibero') | raw }}</h3>
+            <div class="bubble_tip">
+            </div>
+            <div class="bubble">
+{% if locale_helper.code == 'es' %}
+            Soy el programador web y fanboy de software libre residente. Siempre estoy al día con nuevos frameworks y tecnologías. En mi tiempo libre me gusta ir a conciertos de punk
+            y jugar al Starcraft 2.
+{% endif %}
+{% if locale_helper.code == 'en' %}
+            I'm the web programmer and resident open source entusiast. I'm always excited about new frameworks and technologies. In my spare time I like to go to punk concerts and play Starcraft 2.
+{% endif %}
+            </div>
+            <div class="links">
+                <li><a href="http://www.peix.org">{{ 'personal website' | trans }}</a></li>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+{% endblock %}

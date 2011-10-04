@@ -1,0 +1,167 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/contact.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Contact' | trans }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ 'Contact us' | trans }}</h1>
+
+<div class="maincontent">
+
+<div id="sidebar">
+    <div class="section">
+        <h2>{{ 'Our clients' | trans }}</h2>
+        <ul>
+            <li>Anfibic</li>
+            <li>Antevenio</li>
+            <li>Gobierno del Principado de Asturias</li>
+            <li>Axesor</li>
+            <li>Axis</li>
+            <li>Bacardi</li>
+            <li>Callejero.com</li>
+            <li>Carlsberg</li>
+            <li>Carrefour</li>
+            <li>Catalan Films</li>
+            <li>CWE</li>
+            <li>DKV</li>
+            <li>EADA</li>
+            <li>Ecovidrio</li>
+            <li>Grupo Edebé</li>
+            <li>El Corte Inglés</li>
+            <li>Filmax</li>
+            <li>Flash 2 Flash</li>
+            <li>Franprix</li>
+            <li>Golden Gekko</li>
+            <li>Groupama</li>
+            <li>Guinness</li>
+            <li>Haiku Media</li>
+            <li>Hot Zips</li>
+            <li>Interviú</li>
+            <li>Iradier</li>
+            <li>Johnnie Walker</li>
+            <li>Lechill</li>
+            <li>Livedoor</li>
+            <li>Lynx</li>
+            <li>Malibú</li>
+            <li>ME911</li>
+            <li>Montena</li>
+            <li>O2O</li>
+            <li>Fundación Orange</li>
+            <li>Perfetti Van Melle</li>
+            <li>Private</li>
+            <li>Quiz</li>
+            <li>Random House Mondadori</li>
+            <li>Red Bull</li>
+            <li>Samsung</li>
+            <li>La Sexta</li>
+            <li>Unilever</li>
+            <li>Unkasoft</li>
+            <li>Vigorsol</li>
+            <li>Vodafone</li>
+            <li>Wöwbile</li>
+            <li>Xbox</li>
+            <li>Xperience Consulting</li>
+        </ul>
+    </div>
+</div>
+
+<div class="with_sidebar">
+    <div class="section">
+        <h2>{{ 'Who are we?' | trans }}</h2>
+
+{% if locale_helper.code == 'es' %}
+        <p>Kailab es una empresa creada el año 2005 con sede en Barcelona. Colaboramos con agencias de medios,
+        web y multimedia de toda Europa. Desarrollamos para más de 1600 modelos diferentes de móviles java y para
+        las principales tecnologías de smartphone (iphone, ipad, bada, android, moblin, windows mobile)</p>
+
+        <p>Fundada y dirigida por un equipo  de managers con más de 8 años de experiencia trabajando con las operadoras móvil en todo el mundo.</p>
+{% endif %}
+
+{% if locale_helper.code == 'en' %}
+        <p>Kailab is a company created in 2005 with headquarters in Barcelona. We work with media, web and multimedia agencies
+        all over Europe. We develop for more than 1600 models of java cellphones and for the main smartphone platforms
+        (iPhone, iPad, Bada, Android, Moblin, Windows Mobile).</p>
+
+        <p>Founded and managed by a team with more than 8 years of experience and working with main mobile carriers all over the world.</p>
+{% endif %}
+
+    </div>
+
+    <div class="section">
+        <h2>{{ 'What do we do?' | trans }}</h2>
+
+{% if locale_helper.code == 'es' %}
+        <p>Aplicamos conceptos del Marketing Móvil basados en aplicaciones descargables,  parecidas a los juegos o flash para los ordenadores personales, fáciles para utilizar , siempre disponibles, rápidas y con un aspecto nuevo,  fresco y bueno, orientado nuestras soluciones a resultados… incluso las acciones de comunicación.</p>
+
+        <p class="offer">Ofrecemos a las empresas herramientas innovadoras, comprobadas e eficaces para crear vínculos con sus clientes e incrementar las ventas a través de soluciones basadas en las necesidades reales del usuario, útiles o divertidas, de superior calidad y a precio muy competitivo.</p>
+{% endif %}
+
+{% if locale_helper.code == 'en' %}
+        <p>We apply mobile marketing concepts to downloadable mobile aps, similar to games or flash apps for personal computers. Mobile apps are easy to use, always available, fast and with a new look,
+        fresh and oriented torwards obtaining results on communication actions.</p>
+
+        <p class="offer">We offer the possibility of establishing new links with your clientes and increase sales through solutions based in the real needs of your users, useful and fun, high quality and competitive pricing.</p>
+{% endif %}
+
+    </div>
+
+    <div class="section">
+        <h2>{{ 'Where are we?' | trans }}</h2>
+
+        <div class="subsection">
+            <div class="contact_info">
+                {% include 'KailabFrontendBundle:Default:_contact.html.twig' %}
+            </div>
+
+            <div id="map_canvas" style="width: 450px; height: 250px"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="map_info">
+<strong style="display: block;">{{ 'Kailab Office' | trans }}</strong>
+<a href="http://maps.google.com/maps?daddr=Carrer+de+Pau+Claris,+115,+08009+Barcelona,+Espa%C3%B1a&hl=es&ie=UTF8&sll=41.392053,2.167856&sspn=0.006295,0.006295&view=map&geocode=CWmQDIzzH71pFbWXdwIdMBQhAA&z=16" target="_new">
+{{ 'see in google maps' | trans }}
+</a>
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var options = {
+        zoom: 14,
+        center: new google.maps.LatLng(41.391868, 2.168099),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map($('#map_canvas').get(0), options);
+
+    var marker = new google.maps.Marker({
+        position: options.center, 
+        map: map, 
+        title:"Kailab"
+    });
+
+    var info = new google.maps.InfoWindow();
+    info.setContent($('#map_info').html());
+    info.setPosition(marker.position);
+    info.open(map);
+
+});
+</script>
+
+{% endblock %}

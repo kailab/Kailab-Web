@@ -1,0 +1,182 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }} - {{ 'Legal Information' | trans }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/legal.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+<h1>{{ 'Legal Information' | trans }}</h1>
+
+<div class="maincontent legal">
+
+<div class="column">
+
+<h2>Información general</h2>
+
+<h3>Términos de aceptacion</h3>
+
+<p>Kailab Estudio SL ("KAILAB") pone a disposición para su uso en este sitio web información, documentos, software y productos (colectivamente “Materiales”) y varios servicios operados por KAILAB (colectivamente “Servicios”), sujetos a los términos y condiciones establecidos anteriormente en este documento (los “Términos de Uso”). Al acceder o usar esta web, lo cual incluye su acceso o el uso de cualquiera de los Servicios, usted se muestra de acuerdo con los Términos de Uso. KAILAB se reserva el derecho de cambiar los Términos de Uso a su entera discreción. Su uso de la web estará sujeto a la versión más reciente de los Términos de Uso que esté expuesta en dicha web en el momento del uso. También, cuando se usen Servicios particulares o Materiales de esta web, deberá ceñirse a cualquier indicación o regla aplicable a los Servicios o Materiales involucrados que puedan contener términos y condiciones, además de los descritos en los Términos de Uso. Todas estas indicaciones y reglas son, por medio de la presente, incorporadas como referencia en los Términos de Uso. Si usted no respeta alguno de los Términos de Uso, su autorización para usar esta web termina automáticamente y debe destruir inmediatamente cualquier Material descargado o impreso obtenido en esta web.</p>
+
+<h3>Garantía y limitación de responsabilidad</h3>
+
+<p>Excepto bajo la expresa autorización por escrito de kailab, todos los materiales y servicios de esta web son proveídos “tal cual”, sin garantía de cualquier tipo, ya sea expresa o implícita, incluyendo, pero no limitándose a, las garantías de comercialización o idoneidad para un propósito particular, o la garantía de no infracción. sin limitar lo anteriormente dicho, kailab no ofrece garantía de que (i) los servicios y materiales cubrirán sus necesidades, (i.e.) los servicios y materiales serán ininterrumpidos, oportunos, seguros o libres de errores. (i.e.) los resultados que pueden ser obtenidos del uso de estos servicios o materiales serán efectivos, precisos o fiables, (i.e.) la calidad de los productos, servicios o la información comprada u obtenida por usted a través de la web estará coincidirá con sus expectativas y (v) cualquier error en el software obtenido del sitio será corregido. en algunos estados o jurisdicciones la duración de la garantía implícita puede variar. así pues, las limitaciones descritas pueden no ser aplicables a usted. en la medida de lo posible, cualquier garantía implícita está limitada a noventa (90) días. esta web podría incluir errores técnicos o de otro tipo, inexactitudes o errores tipográficos. kailab puede cambiar los materiales y servicios de esta web, incluyendo los precios y las descripciones de cualquiera de los productos listados en cualquier momento sin previo aviso. los materiales o servicios de este sitio pueden estar sin actualizar y kailab no se compromete a actualizarlos. en ningún caso podrán kailab o sus proveedores ser responsables ante cualquier incidente o daño especial, punitivo, indirecto o consecuente ni de tipo alguno, incluyendo sin limitación, aquellos resultantes de la pérdida del servicio, los datos o los beneficios, independientemente de que kailab haya sido avisada de la posibilidad de dichos daños y en cualquier hipótesis de responsabilidad emanante de o en conexión con el uso de esta web.</p>
+
+<p>KAILAB no asume responsabilidad alguna por errores en la información, los documentos, el software, los materiales y/o los servicios a los que se hace referencia desde o hacia esta web. Las referencias a otras corporaciones, sus servicios y productos se proveen “tal cual”, sin garantía de cualquier tipo, ya sea expresa o implícita.</p>
+
+<p>El uso de los servicios o la descarga de cualquier otra adquisición de cualquier material a través de la web, se realiza a su propia discreción y riesgo y bajo el acuerdo de que usted será el responsable único y final de cualquier daño o pérdida de datos en su computadora derivado/a de dichas actividades. Ningún consejo o información, ya sea oral o escrita, obtenida por usted de KAILAB o a través o desde la web, puede crear cualquier tipo de garantía no expresamente descrita en los Términos de Uso.</p>
+
+<p>Esta web contiene enlaces a las páginas web de terceras partes que no están bajo el control de KAILAB. KAILAB no actúa en representación de ninguna de estas páginas o partes. Así pues, cuando usted accede a un sitio web no perteneciente a KAILAB, usted lo hace bajo su propia responsabilidad y riesgo y KAILAB no es responsable de la exactitud o fiabilidad de cualquier información dato, opiniones, consejos o afirmaciones expuestas en dichos sitios web. KAILAB provee esos enlaces meramente para la comodidad del usuario y la inclusión de dichos enlaces no implica que KAILAB apoye o acepte responsabilidad alguna acerca del contenido o usos de las citadas webs.</p>
+
+<p>Se puede acceder a esta Web desde otros países a lo ancho del mundo y puede contener referencias a los productos de KAILAB, servicios y programas que no han sido anunciados en su país. Esas referencias no implican que KAILAB tenga intención de anunciar / comercializar dichos productos, servicios o programas en su país.</p>
+
+<h3>Indemnización</h3>
+
+<p>Usted acuerda indemnizar y liberar a KAILAB y a sus subsidiarios, afiliados , oficiales, agentes, colaboradores y otras partes, así como empleados de cualquier responsabilidad o reclamación, incluyendo los honorarios razonables de un notario, invertidos por cualquier tercera parte a causa del contenido que usted envíe o transmita a través de la web (incluyendo sin limitación cualquier Contenido del Usuario), su uso de la web, su conexión a la web, su violación de los Términos de Uso o su violación de cualquier derecho de otra persona o entidad.</p>
+
+<h2>Propiedad Intelectual</h2>
+
+<p>La información de Marca Registrada, las Marcas Registradas y las Marcas de Servicio (“Marks”) que se muestran en el sitio web son propiedad de KAILAB o de terceras partes. Se prohíbe el uso de dichas marcas sin el consentimiento previo y escrito de KAILAB o de las terceras partes implicadas a las que pertenezcan las marcas. KAILAB y el logo de KAILAB son Marcas Registradas de KAILABTeK Computer Incorporated.</p>
+
+<p>Los Materiales y los Servicios de esta web están protegidos por las leyes del Copyright y /o otras leyes de la propiedad intelectual y cualquier uso no autorizado de estos Materiales o Servicios puede violar dichas leyes. Excepto como se describe en este documento, KAILAB y sus proveedores no le conceden a usted ningún derecho implícito o explícito bajo cualquier patente, copyright, marca registrada o información secreta con respecto a los Materiales y Servicios.</p>
+
+<p>El uso de los servicios o la descarga de cualquier otra adquisición de cualquier material a través de la web, se realiza a su propia discreción y riesgo y bajo el acuerdo de que usted será el responsable único y final de cualquier daño o pérdida de datos en su computadora derivado/a de dichas actividades. Ningún consejo o información, ya sea oral o escrita, obtenida por usted de KAILAB o a través o desde la web, puede crear cualquier tipo de garantía no expresamente descrita en los Términos de Uso.</p>
+
+<p>Mediante envío por su parte de cualquier información, ideas, conceptos o técnicas (Feedback) a KAILAB, usted asume que: (i) Dicho feedback no contiene ningún material confidencial ni registrado; (ii) KAILAB no está obligado a tratar el feedback confidencialmente, expresa ni implícitamente; (iii) KAILAB se reserva la potestad de usar o desechar cualquier contenido feedback con cualquier propósito y en cualquier parte del mundo, así como localmente para su único beneficio; (iv) Su feedback pasará a ser propiedad de KAILAB sin que ello signifique ningún tipo de obligación por parte de KAILAB para con usted; y (v) usted no tendrá ningún derecho a ser compensado de ningún modo por ello.</p>
+
+</div>
+
+<div class="column">
+
+<h2>LOPD</h2>
+
+<p>Kailab Estudio, SL  (“NOSOTROS” o “KAILAB”) estamos comprometidos con la protección y el respeto de tu privacidad. Llevamos a cabo nuestro negocio de acuerdo con las leyes aplicables en relación a la privacidad y la seguridad de los datos personales. Lo siguiente es un resumen de nuestra política en relación al tratamiento de los datos personales que nosotros podemos recoger, cómo los usamos y los salvaguardamos, y con quién podemos compartirlos.</p>
+
+<p>Aquellos usuarios que remitáis datos personales a KAILAB aceptáis esta política de privacidad.</p>
+
+<h3>Información que recogemos y cómo la utilizamos</h3>
+
+<p>Nosotros de forma general no recogemos información personal cuando visitas nuestra página web a menos de que accedas y solicites la prestación de servicios de soporte o te registres con nosotros. Es completamente opcional para ti participar en estas actividades. Si decides participar en las mismas, KAILAB te puede solicitar datos personales. Por ejemplo:</p>
+
+<p class="example">Te solicitaremos tu nombre y apellidos, dirección (incluyendo C.P.), correo electrónico, número de teléfono y fax y otros datos personales de identificación.</p>
+
+<p class="example">Cuando registres un producto para obtener soporte, te solicitaremos detalles acerca del producto que has comprado, como el lugar y la fecha de compra, el modelo y el número de serie del producto.</p>
+
+<p>Podemos solicitarte que completes encuestas que usamos para el análisis de la satisfacción de nuestros clientes.</p>
+
+<p>Con el fin de adaptar nuestros servicios de soporte a tus necesidades personales podemos solicitarte información tal como el idioma que utilizas habitualmente o tus habilidades con la tecnología informática. Sin embargo dicha información no es obligatoria.</p>
+
+<p>Si contactas con nosotros vía telefónica, podemos grabar y conservar dicha conversación, a menos de que nos indiques, en cualquier momento a lo largo de la llamada, que no quieres que conservemos tal grabación.</p>
+
+<p>Cuando remites respuestas o preguntas vía e-mail, o contactas con nosotros para recibir información acerca de nuestra página web, te solicitaremos tu nombre y dirección de e-mail. Nosotros utilizaremos dicha información únicamente para dar respuesta a tus preguntas.</p>
+
+<p>KAILAB recoge y utiliza tus datos personales únicamente con el propósito de recoger tu participación en las actividades que tú mismo selecciones. Por ejemplo:</p>
+
+<p class="example">Si realizas un pedido con nosotros, utilizaremos tus datos personales para cumplir con nuestras obligaciones legales en relación a cualquier contrato de compra o venta, incluyendo la tramitación de cualquier pago o transporte de tu producto.</p>
+
+<p class="example">Si realizas un pedido de un producto que debe ser descargado electrónicamente, tus datos personales serán usados para registrar tu licencia y derechos sobre el producto a fin de obtener soporte técnico, actualizaciones, descuentos y otros beneficios que puedan encontrarse al alcance de los usuarios registrados.</p>
+
+<p class="example">Si suscribes una encuesta de satisfacción, esta información puede ser usada para mejorar nuestros productos y servicios.</p>
+
+<p class="example">Si te suscribes con el fin de recibir información regularmente sobre nuestros productos, servicios y otras ofertas especiales, los datos personales que nos facilites serán usados para remitiros la información solicitada. Puedes cancelar dicha suscripción en cualquier momento. La mencionada suscripción a este servicio es opcional y gratuita.</p>
+
+<p class="example">Si participas en un concurso, los datos personales recogidos lo son a efectos de tener constancia de tu participación y a fin de poder contactar contigo en relación a la entrega de premios si resultas ganador.</p>
+
+<p>Para tales propósitos una parte de tus datos personales pueden ser transferidos a agentes y/o contratistas que actúan en nuestro nombre y representación y dentro de nuestros propósitos.</p>
+
+<p>No utilizaremos o cederemos a terceros tus datos personales para cualquier otro propósito no relacionado con los anteriores, excepto y en el alcance que sea necesario, si nos es requerido por las autoridades administrativas o judiciales en cumplimiento de la regulación legal, si es necesario para establecer o preservar una reclamación legal, o si es necesario para prevenir el fraude u otras actividades ilegales.</p>
+
+<p>En definitiva, nosotros no venderemos tus datos personales a terceras personas.</p>
+
+<p>Dejaremos de utilizar tus datos personales que se encuentren en nuestra posesión una vez que KAILAB no los necesite para los fines para cuyo propósito fueron cedidos, o en el momento en que nos comuniques tu voluntad de que los mismos sean cancelados de acuerdo con lo previsto en la LOPD.</p>
+
+<h3>Transferencia de datos a diferentes lugares</h3>
+
+<p>Cuando remites datos personales a KAILAB a través de la web, significa que entiendes y muestras tu conformidad a que los mismos sean transferidos entre las delegaciones de KAILAB de todo el mundo, y a que puedan ser almacenados y procesados en cualquier país en el que KAILAB y sus filiales tengan oficinas. Toda transferencia, almacenamiento y uso de tus datos personales se encuentra sujeta a esta política de privacidad.</p>
+
+<p>Asimismo, aceptas que para aquellos servicios subcontratados por parte de KAILAB, como soporte online, servicios de recogida y entrega, nosotros podamos transferir a tales agentes y/o subcontratistas la parte de tus datos personales que sean necesarios para la realización de los servicios solicitados, y nos encargaremos de comprobar que dichos agentes y/o subcontratistas actúan estrictamente de acuerdo con esta Política de Privacidad.</p>
+
+
+
+</div>
+
+<div class="column">
+
+
+<h3>Cómo usamos las cookies y las web beacons</h3>
+
+<p>Nuestra página web puede usar cookies, que son archivos de texto colocados en tu ordenador, para permitirte firmar en nuestros servicios y ayudar a personalizar tu experiencia online.</p>
+
+<p>Empleamos las cookies para guardar tus preferencias y otra información en tu ordenador con el fin de ahorrarte tiempo eliminando la necesidad de introducir la misma información repetidamente, y para visualizar tus contenidos personalizados y las advertencias apropiadas en tus próximas visitas a nuestra web.</p>
+
+<p>Asimismo, empleamos las llamadas web beacons o tecnologías similares en algunos lugares de la web de KAILAB con el fin de adaptar dichos sitios a tus necesidades. Cuando un visitante accede a esas páginas, se genera un anuncio no identificable de dicha visita que puede ser procesado por nosotros o por nuestros agentes y/o contratistas. Con este propósito la información, que es anónima, pero que puede contener tu dirección IP, puede ser transferida a nuestros proveedores cuando accedas a nuestra web. Nuestros agentes y/o contratistas no asociarán las direcciones IP con ninguna otra información personal que ellos puedan tener. Estas web beacons normalmente trabajan conjuntamente con las cookies. Si no quieres que la información obtenida a través de las cookies sea asociada con tus visitas a estas páginas, puedes configurar tu navegador para rechazarlas. Si haces eso, las web beacons y tecnologías similares seguirán detectando tus visitas a esas páginas; sin embargo, las mismas no serán asociadas con la información almacenada en las cookies. También podemos incluir web beacons en mensajes de correo electrónico de marketing con el fin de tener conocimiento de si los mensajes han sido abiertos y los links que contienen han sido utilizados.</p>
+
+<p>Puedes rechazar el uso de cookies seleccionando la configuración apropiada en tu navegador, sin embargo si haces eso no tendrás la posibilidad de utilizar con total funcionalidad la web.</p>
+
+<p>Nosotros no permitimos a terceras personas que introduzcan sus propios cookies o web beacons en nuestra web o en nuestros mensajes de marketing a menos de que nos presten servicios y actúen en nuestra representación.</p>
+
+<h3>Seguridad</h3>
+
+<p>Tomamos las precauciones necesarias para proteger tus datos personales contra los accesos o alteraciones no autorizadas, la revelación o la destrucción de los mismos. Esto incluye revisiones internas de nuestras prácticas de recopilación, almacenamiento y procesamiento de datos y medidas de seguridad, así como medidas de seguridad físicas para evitar accesos no autorizados al sistema donde nosotros almacenamos tus datos personales.</p>
+
+<p>La transmisión de datos entre diferentes lugares donde KAILAB tiene compañías filiales se realiza a través de nuestro sistema de cifrado. Cuando envías datos personales a través de la web, tu información está protegida doblemente, on-line y off-line.</p>
+
+<p>De todas formas, KAILAB no puede garantizar una seguridad perfecta en Internet. Te recomendamos utilizar nombres de usuarios y contraseñas alfanuméricos y cambiar tus contraseñas de forma regular, así como mantener tu ordenador al día utilizando los programas de seguridad debidamente actualizados, tales como antivirus y antispyware.</p>
+
+<h3>Cómo llevamos a cabo las comunicaciones de marketing</h3>
+
+<p>Nosotros mantenemos un servicio de suscripción adaptable al usuario para esas personas que solicitan correos electrónicos promocionales. Puedes a tu total discreción suscribirte y darte de baja en cualquier momento.</p>
+
+<h3>Cómo puedes acceder a tu información</h3>
+
+<p>Queremos ayudarte a mantener tus datos personales al día, por ello puedes visionar y modificar tus datos personales accediendo y editando los mismos en nuestra página web. Para tu seguridad se te solicitará el acceso a través de un nombre de usuario y una contraseña.</p>
+
+<p>Para más información acerca de tus datos personales en los archivos de KAILAB, rogamos contactes con nosotros en {{ 'info@kailab.com' | mailto | raw}}.</p>
+
+<h3>Información adicional referente a la privacidad para menores</h3>
+
+<p>No recogemos de manera intencionada datos personales de menores sin que tengamos el consentimiento de sus padres o tutores. Animamos a los padres y tutores a tener un papel activo en las actividades e intereses on-line de los niños.</p>
+
+<p>Si eres menor de edad, por favor pide y obtén el consentimiento de tus padres o tutores. Solamente después de que nosotros verifiquemos el consentimiento de tus padres o tutores nos podrás proporcionar tus datos personales. Tus padres o tutores tienen la potestad de revocar cualquier consentimiento otorgado por ti en fechas anteriores.</p>
+
+<h4>Informacion personal confidencial</h4>
+
+<p>KAILAB nunca te solicitará información personal confidencial, como por ejemplo datos médicos o de salud, creencias religiosas o políticas, infracciones delictivas reales o presuntas, antecedentes penales, orientación sexual, vida sexual o información genética. Por favor, abstente de proporcionar tal información.</p>
+
+<h4>Enlaces a páginas webs de terceros</h4>
+
+<p>Esta web puede contener enlaces a otras páginas webs. Te informamos de que KAILAB no se hace responsable de las prácticas de seguridad o privacidad de dichas páginas webs. Asimismo, te animamos a estar alerta sobre el momento en el que abandones nuestra web, y a leer la política de privacidad de todas aquellas webs que recogen información personal.</p>
+
+<p>Esta Política de Privacidad se aplica única y exclusivamente en las páginas webs de KAILAB.</p>
+
+<h4>Datos anónimos</h4>
+
+<p>Podemos usar direcciones IP para analizar tendencias, administrar el sitio web, el movimiento de los usuarios y obtener información demográfica para un uso conjunto. No conectamos direcciones IP con datos personales.</p>
+
+<h4>Cambios en la política de privacidad</h4>
+
+<p>Podemos modificar esta política de privacidad en cualquier momento, por lo que te rogamos que la revises frecuentemente. Si realizamos cambios sustanciales en la misma, te lo notificaremos a través de una advertencia en nuestra página web.</p>
+
+<h3>Contacto</h3>
+
+<p>Si tienes dudas, preguntas, comentarios o quejas acerca de esta política de privacidad, o si consideras que KAILAB no cumple con ella, por favor ponte en contacto con:</p>
+
+<p>
+<strong>KAILAB ESTUDIO, SL</strong></br>
+Pau Claris, 115 entlo 2a</br>
+08009 Barcelona (Spain)</br>
+{{ 'info@kailab.com' | mailto | raw }}</br>
+</p>
+
+</div>
+
+</div>
+{% endblock %}

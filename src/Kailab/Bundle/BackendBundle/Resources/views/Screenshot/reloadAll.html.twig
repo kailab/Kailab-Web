@@ -1,0 +1,52 @@
+{% extends "KailabBackendBundle::layout.html.twig" %}
+
+{% block content %}
+<h2>{{ 'Reloading all screenshots' | trans }}</h2>
+
+<ul id="log">
+	<li>{{ 'Start reloading %s screenshots...' | trans({ '%s': urls | length }) }}</li>
+</ul>
+
+<script type="text/javascript">
+
+var urls = {{ urls | json_encode | raw }};
+
+var messages = {
+	start: {{ 'Reloading screenshot %s...' | trans | json_encode | raw }},
+	success: {{ 'Screenshot %s reloaded.' | trans | json_encode | raw }},
+	error: {{ 'Error reloading screenshot %s.' | trans | json_encode | raw }}
+}
+
+var call_reload = function(){
+	if(urls.length == 0){
+		return false;
+	}
+
+	$.each(urls, function(id, url){
+		delete urls[id];
+		log(messages.start.replace('%s',id));
+		$.ajax(url, {
+			success: function(data, textStatus, jqXHR){
+				log(messages.success.replace('%s',id));		
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				log(messages.error.replace('%s',id));
+			},
+			complete: function(jqXHR, textStatus){
+				call_reload();
+			}
+		});
+		return false;
+	});
+};
+
+var log = function(str){
+	$('#log').append($('<li>'+str+'</li>'));
+};
+
+$(document).ready(function(){
+	call_reload();
+});
+</script>
+
+{% endblock %}

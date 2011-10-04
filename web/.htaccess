@@ -1,305 +1,29 @@
+
+SetEnv SYMFONY__DATABASE__NAME kailab
+SetEnv SYMFONY__DATABASE__USER root
+SetEnv SYMFONY__DATABASE__PASSWORD 
+SetEnv SYMFONY__DATABASE__SOCKET /var/run/mysqld/mysqld.sock
+
 RewriteEngine On
 # skip "real" requests
 RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule .* - [QSA,L]
 
+# homepage
+RewriteCond %{REQUEST_URI} ^/kailab$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/kailab/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:homepage,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+
 # backend_homepage
 RewriteCond %{REQUEST_URI} ^/kailab/admin$
 RewriteRule .* $0/ [QSA,L,R=301]
 RewriteCond %{REQUEST_URI} ^/kailab/admin/$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_homepage,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\DefaultController\:\:indexAction]
-
-# backend_slide_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:indexAction]
-
-# backend_slide_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:newAction]
-
-# backend_slide_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:editAction]
-
-# backend_slide_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:saveAction]
-
-# backend_slide_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:deleteAction]
-
-# backend_slide_up
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/up/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:upAction]
-
-# backend_slide_down
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/down/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:downAction]
-
-# backend_slide_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\SlideController\:\:toggleAction]
-
-# backend_screenshot_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:indexAction]
-
-# backend_screenshot_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:newAction]
-
-# backend_screenshot_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:editAction]
-
-# backend_screenshot_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:saveAction]
-
-# backend_screenshot_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:deleteAction]
-
-# backend_screenshot_image
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/image/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_image,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:imageAction]
-
-# backend_screenshot_reload
-RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/reload$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_reload,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\ScreenshotController\:\:reloadAction]
-
-# backend_app_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:indexAction]
-
-# backend_app_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:newAction]
-
-# backend_app_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:editAction]
-
-# backend_app_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:saveAction]
-
-# backend_app_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:deleteAction]
-
-# backend_app_up
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/up/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:upAction]
-
-# backend_app_down
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/down/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:downAction]
-
-# backend_app_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/app/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\AppController\:\:toggleAction]
-
-# backend_tech_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:indexAction]
-
-# backend_tech_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:newAction]
-
-# backend_tech_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:editAction]
-
-# backend_tech_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:saveAction]
-
-# backend_tech_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:deleteAction]
-
-# backend_tech_up
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/up/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:upAction]
-
-# backend_tech_down
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/down/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:downAction]
-
-# backend_tech_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\TechController\:\:toggleAction]
-
-# backend_platform_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:indexAction]
-
-# backend_platform_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:newAction]
-
-# backend_platform_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:editAction]
-
-# backend_platform_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:saveAction]
-
-# backend_platform_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:deleteAction]
-
-# backend_platform_background
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/background$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_background,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:backgroundAction]
-
-# backend_platform_icon
-RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)/icon$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_icon,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\PlatformController\:\:iconAction]
-
-# backend_blog_post_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:indexAction]
-
-# backend_blog_post_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:newAction]
-
-# backend_blog_post_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:editAction]
-
-# backend_blog_post_image
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/([^/]+?)/image$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_image,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:imageAction]
-
-# backend_blog_post_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:saveAction]
-
-# backend_blog_post_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:deleteAction]
-
-# backend_blog_post_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogPostController\:\:toggleAction]
-
-# backend_blog_category_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:indexAction]
-
-# backend_blog_category_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:newAction]
-
-# backend_blog_category_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:editAction]
-
-# backend_blog_category_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:saveAction]
-
-# backend_blog_category_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:deleteAction]
-
-# backend_blog_category_up
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/up/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:upAction]
-
-# backend_blog_category_down
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/down/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:downAction]
-
-# backend_blog_category_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCategoryController\:\:toggleAction]
-
-# backend_blog_comment_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:indexAction]
-
-# backend_blog_comment_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:newAction]
-
-# backend_blog_comment_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:editAction]
-
-# backend_blog_comment_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:saveAction]
-
-# backend_blog_comment_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:deleteAction]
-
-# backend_blog_comment_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\BlogCommentController\:\:toggleAction]
-
-# backend_question_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:indexAction]
-
-# backend_question_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:newAction]
-
-# backend_question_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:editAction]
-
-# backend_question_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:saveAction]
-
-# backend_question_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:deleteAction]
-
-# backend_question_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:toggleAction]
-
-# backend_question_up
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/up/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:upAction]
-
-# backend_question_down
-RewriteCond %{REQUEST_URI} ^/kailab/admin/question/down/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\QuestionController\:\:downAction]
-
-# backend_user_list
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_list,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:indexAction]
-
-# backend_user_new
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user/new$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_new,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:newAction]
-
-# backend_user_edit
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user/edit/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:editAction]
-
-# backend_user_save
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user/save$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_save,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:saveAction]
-
-# backend_user_delete
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user/delete/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:deleteAction]
-
-# backend_user_toggle
-RewriteCond %{REQUEST_URI} ^/kailab/admin/user/toggle/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\BackendBundle\\Controller\\UserController\:\:toggleAction]
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_homepage,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# localized_homepage
+RewriteCond %{REQUEST_URI} ^/kailab/(..)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:localized_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
 
 # fos_user_security_login
 RewriteCond %{REQUEST_URI} ^/kailab/admin/login$
@@ -388,93 +112,327 @@ RewriteRule .* - [S=1,E=_ROUTING__allow_GET:1,E=_ROUTING__allow_POST:1,E=_ROUTIN
 RewriteCond %{REQUEST_URI} ^/kailab/admin/user/password/change\-password$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:fos_user_change_password,E=_ROUTING__controller:FOS\\UserBundle\\Controller\\ChangePasswordController\:\:changePasswordAction]
 
-# homepage
-RewriteCond %{REQUEST_URI} ^/kailab$
-RewriteRule .* $0/ [QSA,L,R=301]
-RewriteCond %{REQUEST_URI} ^/kailab/$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:homepage,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+# backend_app_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:indexAction]
 
-# localized_homepage
-RewriteCond %{REQUEST_URI} ^/kailab/(..)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:localized_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+# backend_app_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:newAction]
 
-# frontend_homepage
-RewriteCond %{REQUEST_URI} ^/kailab/(..)$
-RewriteRule .* $0/ [QSA,L,R=301]
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+# backend_app_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:editAction]
 
-# frontend_about
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/about$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_about,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:aboutAction]
+# backend_app_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:deleteAction]
 
-# frontend_legal
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/legal$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_legal,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:legalAction]
+# backend_app_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:toggleAction]
 
-# frontend_faq
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/faq$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_faq,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:faqAction]
+# backend_app_up
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:upAction]
 
-# frontend_contact
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/contact$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_contact,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\DefaultController\:\:contactAction]
+# backend_app_down
+RewriteCond %{REQUEST_URI} ^/kailab/admin/app/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_app_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\AppController\:\:downAction]
 
-# frontend_blog
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:indexAction]
+# backend_blog_category_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:indexAction]
 
-# frontend_blog_page
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog(?:/(\d+))?$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_page,E=_ROUTING__locale:%1,E=_ROUTING_page:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:indexAction,E=_ROUTING_page:1]
+# backend_blog_category_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:newAction]
 
-# frontend_blog_post
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/(\d+)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:postAction]
+# backend_blog_category_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:editAction]
 
-# frontend_blog_category
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/category/(\d+)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_category,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\BlogController\:\:categoryAction]
+# backend_blog_category_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/catergory/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:deleteAction]
 
-# frontend_technologies
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technologies,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:indexAction]
+# backend_blog_category_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/catergory/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:toggleAction]
 
-# frontend_technologies_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/showcase$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technologies_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:showcaseAction]
+# backend_blog_category_up
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:upAction]
 
-# frontend_technology
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\TechnologyController\:\:showAction]
+# backend_blog_category_down
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/category/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_category_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCategoryController\:\:downAction]
 
-# frontend_applications
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ApplicationsController\:\:indexAction]
+# backend_blog_comment_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCommentController\:\:indexAction]
+
+# backend_blog_comment_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCommentController\:\:newAction]
+
+# backend_blog_comment_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCommentController\:\:editAction]
+
+# backend_blog_comment_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCommentController\:\:deleteAction]
+
+# backend_blog_comment_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/comment/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_comment_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogCommentController\:\:toggleAction]
+
+# backend_blog_post_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogPostController\:\:indexAction]
+
+# backend_blog_post_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogPostController\:\:newAction]
+
+# backend_blog_post_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogPostController\:\:editAction]
+
+# backend_blog_post_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogPostController\:\:deleteAction]
+
+# backend_blog_post_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/blog/post/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_blog_post_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\BlogPostController\:\:toggleAction]
+
+# backend_platform_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:indexAction]
+
+# backend_platform_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:newAction]
+
+# backend_platform_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:editAction]
+
+# backend_platform_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/platform/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_platform_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\PlatformController\:\:deleteAction]
+
+# backend_question_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:indexAction]
+
+# backend_question_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:newAction]
+
+# backend_question_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:editAction]
+
+# backend_question_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:deleteAction]
+
+# backend_question_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:toggleAction]
+
+# backend_question_up
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:upAction]
+
+# backend_question_down
+RewriteCond %{REQUEST_URI} ^/kailab/admin/question/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_question_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\QuestionController\:\:downAction]
+
+# backend_screenshot_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:indexAction]
+
+# backend_screenshot_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:newAction]
+
+# backend_screenshot_reload_all
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/reload$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_reload_all,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:reloadAllAction]
+
+# backend_screenshot_reload
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/reload/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_reload,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:reloadAction]
+
+# backend_screenshot_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:editAction]
+
+# backend_screenshot_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/screenshot/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_screenshot_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\ScreenshotController\:\:deleteAction]
+
+# backend_slide_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:indexAction]
+
+# backend_slide_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:newAction]
+
+# backend_slide_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:editAction]
+
+# backend_slide_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:deleteAction]
+
+# backend_slide_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:toggleAction]
+
+# backend_slide_up
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:upAction]
+
+# backend_slide_down
+RewriteCond %{REQUEST_URI} ^/kailab/admin/slide/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_slide_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\SlideController\:\:downAction]
+
+# backend_tech_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:indexAction]
+
+# backend_tech_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:newAction]
+
+# backend_tech_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:editAction]
+
+# backend_tech_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:deleteAction]
+
+# backend_tech_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:toggleAction]
+
+# backend_tech_up
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/up/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_up,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:upAction]
+
+# backend_tech_down
+RewriteCond %{REQUEST_URI} ^/kailab/admin/tech/down/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_tech_down,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\TechController\:\:downAction]
+
+# backend_user_index
+RewriteCond %{REQUEST_URI} ^/kailab/admin/user$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_index,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:indexAction]
+
+# backend_user_new
+RewriteCond %{REQUEST_URI} ^/kailab/admin/user/new$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_new,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:newAction]
+
+# backend_user_edit
+RewriteCond %{REQUEST_URI} ^/kailab/admin/user/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_edit,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:editAction]
+
+# backend_user_delete
+RewriteCond %{REQUEST_URI} ^/kailab/admin/user/delete/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_delete,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:deleteAction]
+
+# backend_user_toggle
+RewriteCond %{REQUEST_URI} ^/kailab/admin/user/toggle/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:toggleAction]
 
 # frontend_applications_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps/showcase$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ApplicationsController\:\:showcaseAction]
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps/showcase$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:showcaseAction]
+
+# frontend_applications
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:indexAction]
 
 # frontend_application
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_application,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ApplicationsController\:\:showAction]
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_application,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:showAction]
 
-# frontend_videogames
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/games$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\VideogamesController\:\:indexAction]
+# frontend_blog
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:indexAction]
+
+# frontend_blog_page
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_page,E=_ROUTING__locale:%1,E=_ROUTING_page:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:indexAction]
+
+# frontend_blog_post
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/post/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:postAction]
+
+# frontend_blog_category
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/category/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_category,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:CategoryAction]
+
+# frontend_homepage
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
+
+# frontend_about
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/about$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_about,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:aboutAction]
+
+# frontend_contact
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/contact$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_contact,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:contactAction]
+
+# frontend_legal
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/legal$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_legal,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:legalAction]
+
+# frontend_faq
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/faq$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_faq,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:faqAction]
+
+# frontend_error401
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/error401$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error401,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
+
+# frontend_error
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/error$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:errorAction]
+
+# frontend_technologies_showcase
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/tech$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technologies_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\TechnologyController\:\:showcaseAction]
+
+# frontend_technology
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/tech/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\TechnologyController\:\:showAction]
 
 # frontend_videogames_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/games/showcase$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\VideogamesController\:\:showcaseAction]
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games/showcase$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:showcaseAction]
+
+# frontend_videogames
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:indexAction]
 
 # frontend_videogame
-RewriteCond %{REQUEST_URI} ^/kailab/(..)/games/([^/]+?)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogame,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\VideogamesController\:\:showAction]
+RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games/([^/]+?)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogame,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:showAction]
 
 # error404
 RewriteCond %{REQUEST_URI} ^/kailab/(.+)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:error404,E=_ROUTING_uri:%1,E=_ROUTING__controller:Kailab\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:error404,E=_ROUTING_uri:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
 
 # 405 Method Not Allowed
 RewriteCond %{_ROUTING__allow_GET} !-z [OR]

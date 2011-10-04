@@ -1,0 +1,52 @@
+<div class="app {{ appli.orientation }}" {% if hidden is defined %}style="display: none;"{% endif %}>
+    <a name="{{ appli.slug }}"></a>
+    <div class="app_inner">
+        {% if appli.orientation != 'vertical' %}
+        {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
+        {% endif %}
+        {% if appli.screenshots.count %}
+        <div class="side">
+            <ul class="screenshots">
+                {% for screenshot in appli.screenshots %}
+                <li style="display: {% if loop.first %}block{% else %}none{% endif %};">
+                    <a href="{{ screenshot.image.uri }}" rel="app-{{ appli.slug }}">
+                        {% if appli.orientation == 'both' %}
+                        <img src="{{ screenshot.image('bigcenter').uri }}" alt="{{ appli.name }}"/>
+                        {% else %}
+                        <img src="{{ screenshot.image('big').uri }}" alt="{{ appli.name }}"/>
+                        {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if appli.screenshots.count > 1 %}
+            <div class="paginator">
+                <div class="previous">
+                </div>
+                <div class="next">
+                </div>
+                <div class="nav">
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="main with_side">
+        {% else %}
+        <div class="main">
+        {% endif %}
+            <h2 class="title"><div class="left"><div class="right">
+            <div class="inner">{{ appli.name }}</div></div></div></h2>
+            {% if appli.orientation == 'vertical' %}
+            {% include 'KailabFrontendBundle:Applications:_info.html.twig' with {'application':appli} %}
+            {% endif %}
+            <div class="description">
+                {% block description %}
+                {{ appli.description | raw }}
+                {% if appli.url %}
+                <p><a href="{{ appli.url }}">{{ 'More information...' | trans }}</a></p>
+                {% endif %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+{% extends "KailabFrontendBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} - {% block subtitle %}{{ 'Applications' | trans }}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    'bundles/kailabfrontend/js/jquery-ui.js'
+    'bundles/kailabfrontend/js/jquery-cycle.js'
+    'bundles/kailabfrontend/js/jquery-reflection.js'
+    'bundles/kailabfrontend/js/jquery-fancybox.js'
+    'bundles/kailabfrontend/js/jquery-showcase.js'
+%}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite'
+        'bundles/kailabfrontend/css/screenshots.css'
+        'bundles/kailabfrontend/css/applications.css'
+        'bundles/kailabfrontend/css/fancybox_theme/fancybox.css'
+        'bundles/kailabfrontend/css/paginator.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block content %}
+
+{% if not apps %}
+
+    <div class="maincontent">
+        {% block empty %}
+        <p>{{ 'There are no applications at this moment.' | trans }}</p>
+        {% endblock %}
+    </div>
+
+{% else %}
+
+    <ul id="app_icons" style="display: none;">
+        {% for appli in apps %}
+        <li title="{{ appli.name }}" class="{{ appli.orientation }}_orientation">
+            <a href="#{{ appli.slug }}">
+            {% block app_icon %}
+            {% if appli.screenshot.image('item').uri %}
+            <img src="{{ appli.screenshot.image('item').uri }}" alt="{{ appli.name }}"/>
+            {% else %}
+            <span class="app_item_title">{{ appli.name }}</span>
+            {% endif %}
+            {% endblock %}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="loading loadingcontent">
+        <img src="{{ asset('bundles/kailabfrontend/images/loading.gif') }}" />
+        {% block loading %}
+        <p>{{ 'Loading applications...' | trans }}</p>
+        {% endblock %}
+    </div>
+
+    <div id="apps">
+    {% if more is defined and more %}
+        {% block more %}
+        <a class="more_apps" href="{{ path('frontend_applications') }}">
+            <img src="{{ asset('bundles/kailabfrontend/images/more.png') }}" />
+            {{ 'See all applications' | trans }}
+        </a>
+        {% endblock %}
+    {% endif %}
+
+    {% for appli in apps %}
+        {% block app %}
+        {% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli, 'hidden': true} %}
+        {% endblock %}
+    {% endfor %}
+    </div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+
+<script type="text/javascript">
+$(window).load(function(){
+	$('#app_icons').showcase({
+	});
+});
+</script>
+
+{% endblock %}
+
+

@@ -1,0 +1,5 @@
+parameters:
+    database_name:      'kailab'
+    database_user:      'root'
+    database_password:  '' 
+    database_socket:    null

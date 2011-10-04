@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="kailab_shared.mobile_version.bundle"></parameter>
+    </parameters>
+    
+	<services>
+		<service id="kernel.listener.mobile_version" class="Kailab\Bundle\SharedBundle\Listener\MobileVersion">
+			<argument>%kailab_shared.mobile_version.bundle%</argument>
+		    <tag name="kernel.event_listener" event="kernel.request" />
+		</service>
+		<service id="doctrine.listener.i18n" class="Kailab\Bundle\SharedBundle\Doctrine\I18nListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="postLoad"/>
+		</service>
+		<service id="doctrine.listener.position" class="Kailab\Bundle\SharedBundle\Doctrine\PositionListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="prePersist"/>
+		</service>
+		<service id="doctrine.listener.timestampable" class="Kailab\Bundle\SharedBundle\Doctrine\TimestampableListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="prePersist"/>
+		</service>
+		<service id="doctrine.listener.asset" class="Kailab\Bundle\SharedBundle\Doctrine\AssetListener">
+			<argument type="service" id="service_container"/>
+			<tag name="doctrine.event_listener" event="postPersist"/>
+			<tag name="doctrine.event_listener" event="postUpdate"/>
+			<tag name="doctrine.event_listener" event="postRemove"/>
+			<tag name="doctrine.event_listener" event="postLoad"/>
+		</service>
+		<service id="doctrine.asset.storage" class="Kailab\Bundle\SharedBundle\Asset\DirectoryAssetStorage">
+			<argument type="service" id="service_container"/>
+		</service>
+		<service id="twig.extension.kailab.html" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HtmlExtension">
+            <tag name="twig.extension"/>
+        </service>
+            <service id="helper.kailab.locale" class="Kailab\Bundle\SharedBundle\Templating\Helper\LocaleHelper" scope="request">
+            <tag name="templating.helper" />
+            <argument type="collection">
+                <argument>es</argument>
+                <argument>en</argument>
+            </argument>
+            <argument type="service" id="session" />
+            <argument type="service" id="router" />
+            <argument type="service" id="request" />
+        </service>
+                       
+        <service id="twig.extension.helper.locale" class="Kailab\Bundle\SharedBundle\Templating\Twig\Extension\HelperExtension">
+            <tag name="twig.extension"/>
+            <argument>helper.kailab.locale</argument>
+            <argument type="service" id="service_container" />
+        </service>
+	</services>
+</container>
