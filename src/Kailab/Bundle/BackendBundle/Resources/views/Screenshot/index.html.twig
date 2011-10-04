@@ -16,7 +16,7 @@
 {% block content_body %}
 {% if entities %}
 
-{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_screenshot_list', 'pager': pager} %}
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_screenshot_index', 'pager': pager} %}
 
 <ul class="screenshots">
 {% for screenshot in entities %}

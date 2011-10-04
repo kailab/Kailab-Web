@@ -7,7 +7,7 @@
 {% block content_body %}
 {% if entities %}
 
-{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_list', 'pager': pager} %}
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_index', 'pager': pager} %}
 
 <table class="entity_list">
 <thead>
@@ -51,7 +51,7 @@
 </tbody>
 </table>
 
-{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_list', 'pager': pager} %}
+{% include 'KailabBackendBundle::_pagination.html.twig' with {'route': 'backend_user_index', 'pager': pager} %}
 
 {% else %}
 
