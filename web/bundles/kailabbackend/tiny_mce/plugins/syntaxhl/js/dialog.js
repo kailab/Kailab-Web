@@ -14,31 +14,31 @@ var SyntaxHLDialog = {
     }
 
     if(f.syntaxhl_nogutter.checked) {
-      options += 'boc-nogutter ';
+      options += 'gutter: false; ';
     }
     if(f.syntaxhl_light.checked) {
-      options += 'boc-light ';
+      options += 'light: true; ';
     }
     if(f.syntaxhl_collapse.checked) {
-      options += 'boc-collapse ';
+      options += 'collapse: true; ';
     }
     if(f.syntaxhl_fontsize.value != '') {
       var fontsize=parseInt(f.syntaxhl_fontsize.value);
-      options += 'boc-fontsize[' + fontsize + '] ';
+      options += 'fontsize: ' + fontsize + '; ';
     }
 
     if(f.syntaxhl_firstline.value != '') {
       var linenumber = parseInt(f.syntaxhl_firstline.value);
-      options += 'boc-firstline[' + linenumber + '] ';
+      options += 'first-line: ' + linenumber + '; ';
     }
     if(f.syntaxhl_highlight.value != '') {
-      options += 'boc-highlight[' + f.syntaxhl_highlight.value + '] ';
+      options += 'highlight: [' + f.syntaxhl_highlight.value + ']; ';
     }
 
-    textarea_output = '<pre class="code"><code class="';
-    textarea_output += f.syntaxhl_language.value + ' ' + options + '">';
+    textarea_output = '<div><pre class="brush: ';
+    textarea_output += f.syntaxhl_language.value + ';' + options + '">';
     textarea_output +=  tinyMCEPopup.editor.dom.encode(f.syntaxhl_code.value);
-    textarea_output += '</code></pre> '; /* note space at the end, had a bug it was inserting twice? */
+    textarea_output += '</pre></div> '; /* note space at the end, had a bug it was inserting twice? */
     tinyMCEPopup.editor.execCommand('mceInsertContent', false, textarea_output);
     tinyMCEPopup.close();
   }

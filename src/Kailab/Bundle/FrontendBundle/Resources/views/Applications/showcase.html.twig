@@ -42,7 +42,7 @@
 
     <ul id="app_icons" style="display: none;">
         {% for appli in apps %}
-        <li title="{{ appli.name }}" class="{{ appli.orientation }}_orientation">
+        <li title="{{ appli.name }}" class="{{ appli.orientation }}">
             <a href="#{{ appli.slug }}">
             {% block app_icon %}
             {% if appli.screenshot.image('item').uri %}

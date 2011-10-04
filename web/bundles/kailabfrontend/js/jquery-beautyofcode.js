@@ -1,12 +1,14 @@
 /*
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.
+jQuery beautyOfCode Plugin $version$
 
-Copyright 2010 Lars Corneliussen,
+Copyright 2010 Lars Corneliussen
+
+Licensed under the Apache License, Version 2.0; you may not use this file except in compliance with the License.
+http://www.apache.org/licenses/LICENSE-2.0
+
 Site: http://startbigthinksmall.wordpress.com/2009/05/28/beautyofcode-jquery-plugin-for-syntax-highlighter-2-0-by-alex-gorbatchev/
 Source: https://bitbucket.org/larscorneliussen/beautyofcode/
-
-Version: 0.2
+Version: $version$
 */
 
 jQuery.beautyOfCode = {
@@ -17,7 +19,7 @@ jQuery.beautyOfCode = {
         autoLoad: true,
         // the base url to alex' hosted sources
         // http://alexgorbatchev.com/wiki/SyntaxHighlighter:Hosting
-        baseUrl: 'http://alexgorbatchev.com.s3.amazonaws.com/pub/sh/2.1.364/',
+        baseUrl: 'http://alexgorbatchev.com/pub/sh/3.0.83/',
         // the baseurl for the hosted scripts
         scripts: 'scripts/',
         // the baseurl for the hosted styles
@@ -206,7 +208,7 @@ jQuery.fn.beautifyCode = function(brush, params) {
 
         // for now, only supports <pre><code>...</code></pre>
         // support for only pre, or only code could be added
-        var $code = $item.is('code') ? $item : $item.children("code");
+        var $code = $item.is('code, pre')? $item : $item.children("code");
         var code = $code[0];
         var classItems = code.className.replace(/.+?(brush:|language-)/,'$1').replace('language-','').split(" ");
 
@@ -217,7 +219,7 @@ jQuery.fn.beautifyCode = function(brush, params) {
         SyntaxHighlighter.defaults, saveParams, elementParams);
 
         // Instantiate a brush
-        if (params['html-script'] == 'true')
+        if (params['html-script'] == true)
         {
             highlighter = new SyntaxHighlighter.HtmlScript(brush);
         }

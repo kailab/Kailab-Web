@@ -387,6 +387,14 @@ p {
     margin-bottom: 10px;
 }
 
+.syntaxhighlighter {
+	padding: 10px;
+}
+
+.syntaxhighlighter .command_help {
+	display: none;
+}
+
 
 #flash_notice {
     background-color: #FFFFFF;

@@ -386,3 +386,7 @@ p {
     padding: 5px;
     margin-bottom: 10px;
 }
+
+.syntaxhighlighter {
+	padding: 10px;
+}

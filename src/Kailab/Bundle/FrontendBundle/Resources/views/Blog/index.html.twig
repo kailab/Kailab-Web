@@ -4,34 +4,40 @@
     {{ parent() }} - {{ 'Blog' | trans }}
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+{% stylesheets filter='cssrewrite'
+    'bundles/kailabfrontend/css/blog.css'
+    'bundles/kailabfrontend/css/paginator.css'
+    'bundles/kailabfrontend/syntaxhighlighter/styles/shCoreMDUltra.css'
+    'bundles/kailabfrontend/syntaxhighlighter/styles/shThemeMDUltra.css'
+%}
+<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+{% endstylesheets %}
+{% endblock %}
+
+
 {% block javascripts %}
 {{ parent() }}
-
 {% javascripts
-    'bundles/kailabfrontend/js/jquery-beautyofcode.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shCore.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shAutoloader.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushJava.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushPhp.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushJScript.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushXml.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushCSharp.js'
+    'bundles/kailabfrontend/syntaxhighlighter/scripts/shBrushCpp.js'
 %}
 <script src="{{ asset_url }}" type="text/javascript"></script>
 {% endjavascripts %}
 
 <script type="text/javascript">
-$.beautyOfCode.init({
-    brushes: ['Xml', 'Java', 'JScript', 'CSharp', 'Plain', 'Php', 'Css'],
-    theme: 'Django'
-});
 $(document).ready(function(){
-    $.beautyOfCode.beautifyAll();
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
 });
 </script>
-{% endblock %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    {% stylesheets filter='cssrewrite'
-        'bundles/kailabfrontend/css/blog.css'
-        'bundles/kailabfrontend/css/paginator.css'
-    %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
-    {% endstylesheets %}
 {% endblock %}
 
 {% block content %}
@@ -90,7 +96,6 @@ $(document).ready(function(){
         </div>
         {% endif %}
     </div>
-
 </div>
 
 {% endblock %}

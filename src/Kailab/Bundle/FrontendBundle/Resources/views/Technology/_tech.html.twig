@@ -8,8 +8,8 @@
         <div class="side">
             <ul class="screenshots">
                 {% for screenshot in tech.screenshots %}
-                <li>
-                    <a href="{{ screenshot.image.uri }}">
+                <li style="display: {% if loop.first %}block{% else %}none{% endif %};">
+                    <a href="{{ screenshot.image.uri }}" rel="tech-{{ appli.slug }}">
                         {% if tech.orientation == 'both' %}
                         <img src="{{ screenshot.image('bigcenter').uri }}" alt="{{ tech.name }}"/>
                         {% else %}
