@@ -34,7 +34,7 @@
             <h2>{{ "What's next?" | trans }}</h2>
             <ul>
                 <li><a href="{{ path('frontend_homepage') }}">{{ 'Go to the homepage' | trans }}</a></li>
-                <li>{{ frontend_helper.mailto(frontend_helper.email, 'Send us an email' | trans) | raw}}</li>
+                <li>{{ frontend_helper.configuration.email | trans | mailto('Send us an email') | raw }}</li>
             </ul>
             {% endblock %}
         </div>

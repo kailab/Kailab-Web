@@ -11,6 +11,9 @@ framework:
 
 twig:
     exception_controller: "KailabFrontendBundle:Exception:exception"
+    
+parameters:
+    exception_listener.controller: "KailabFrontendBundle:Exception:exception"
 
 monolog:
     handlers:

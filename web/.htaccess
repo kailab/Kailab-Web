@@ -17,13 +17,7 @@ RewriteRule .* app.php [QSA,L,E=_ROUTING__route:homepage,E=_ROUTING__controller:
 
 # backend_homepage
 RewriteCond %{REQUEST_URI} ^/kailab/admin$
-RewriteRule .* $0/ [QSA,L,R=301]
-RewriteCond %{REQUEST_URI} ^/kailab/admin/$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_homepage,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\DefaultController\:\:indexAction]
-
-# localized_homepage
-RewriteCond %{REQUEST_URI} ^/kailab/(..)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:localized_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
 
 # fos_user_security_login
 RewriteCond %{REQUEST_URI} ^/kailab/admin/login$
@@ -353,86 +347,88 @@ RewriteCond %{REQUEST_URI} ^/kailab/admin/user/toggle/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:backend_user_toggle,E=_ROUTING_id:%1,E=_ROUTING__controller:Kailab\\Bundle\\BackendBundle\\Controller\\UserController\:\:toggleAction]
 
 # frontend_applications_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps/showcase$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps/showcase$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:showcaseAction]
 
 # frontend_applications
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_applications,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:indexAction]
 
 # frontend_application
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/apps/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/apps/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_application,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ApplicationsController\:\:showAction]
 
 # frontend_blog
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:indexAction]
 
 # frontend_blog_page
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_page,E=_ROUTING__locale:%1,E=_ROUTING_page:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:indexAction]
 
 # frontend_blog_post
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/post/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/post/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_post,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:postAction]
 
 # frontend_blog_category
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/blog/category/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/blog/category/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_blog_category,E=_ROUTING__locale:%1,E=_ROUTING_id:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\BlogController\:\:CategoryAction]
 
 # frontend_homepage
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)$
-RewriteRule .* $0/ [QSA,L,R=301]
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_homepage,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:indexAction]
 
 # frontend_about
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/about$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/about$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_about,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:aboutAction]
 
 # frontend_contact
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/contact$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/contact$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_contact,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:contactAction]
 
 # frontend_legal
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/legal$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/legal$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_legal,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:legalAction]
 
 # frontend_faq
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/faq$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/faq$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_faq,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\DefaultController\:\:faqAction]
 
+# frontend_fail
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/fail$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_fail,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:failAction]
+
 # frontend_error401
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/error401$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error401,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/error401$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error401,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error401Action]
+
+# frontend_error404
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/error404$
+RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error404,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
 
 # frontend_error
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/error$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/error$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_error,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:errorAction]
 
 # frontend_technologies_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/tech$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technologies_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\TechnologyController\:\:showcaseAction]
 
 # frontend_technology
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/tech/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/tech/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_technology,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\TechnologyController\:\:showAction]
 
 # frontend_videogames_showcase
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games/showcase$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/games/showcase$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames_showcase,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:showcaseAction]
 
 # frontend_videogames
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/games$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogames,E=_ROUTING__locale:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:indexAction]
 
 # frontend_videogame
-RewriteCond %{REQUEST_URI} ^/kailab/([^/]+?)/games/([^/]+?)$
+RewriteCond %{REQUEST_URI} ^/kailab/(..)/games/([^/]+?)$
 RewriteRule .* app.php [QSA,L,E=_ROUTING__route:frontend_videogame,E=_ROUTING__locale:%1,E=_ROUTING_slug:%2,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\VideogamesController\:\:showAction]
-
-# error404
-RewriteCond %{REQUEST_URI} ^/kailab/(.+)$
-RewriteRule .* app.php [QSA,L,E=_ROUTING__route:error404,E=_ROUTING_uri:%1,E=_ROUTING__controller:Kailab\\Bundle\\FrontendBundle\\Controller\\ExceptionController\:\:error404Action]
 
 # 405 Method Not Allowed
 RewriteCond %{_ROUTING__allow_GET} !-z [OR]
