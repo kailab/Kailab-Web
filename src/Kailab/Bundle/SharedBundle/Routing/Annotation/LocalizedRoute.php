@@ -17,10 +17,10 @@ class LocalizedRoute extends Route
 		$p = substr($p,-1) == '/' ? substr($p,0,-1) : $p;
 		$this->setPattern('/{_locale}'.$p);
 		$reqs = $this->getRequirements();
-		$reqs['_locale'] = '^(..|)$';
+		$reqs['_locale'] = '^(..|c)$';
 		$this->setRequirements($reqs);
 		$defaults = $this->getDefaults();
-		$defaults['_locale'] = '';
+		$defaults['_locale'] = 'c';
 		$this->setDefaults($defaults);
 	}
 }
