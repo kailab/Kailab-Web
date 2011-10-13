@@ -13,6 +13,9 @@
                 <argument key="twitter">kailabestudio</argument>
                 <argument key="facebook">Kailab-Estudio-SL/236294543086077</argument>
                 <argument key="email">contact@kailab.com</argument>
+                <argument type="collection" key="analytics">
+                	<argument key="kailab.com">UA-15788819-3</argument>
+                </argument>
                 <argument type="collection" key="main_menu">
                 	<argument key="frontend_homepage">home</argument>
                 	<argument key="frontend_who">who we are</argument>

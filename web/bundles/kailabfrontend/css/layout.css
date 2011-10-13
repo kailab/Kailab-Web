@@ -390,7 +390,3 @@ p {
 .syntaxhighlighter {
 	padding: 10px;
 }
-
-.syntaxhighlighter .command_help {
-	display: none;
-}
