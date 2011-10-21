@@ -1,4 +1,5 @@
 parameters:
+    database_host:      'localhost' 
     database_name:      'kailab'
     database_user:      'root'
     database_password:  '' 
