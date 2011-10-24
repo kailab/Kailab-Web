@@ -27,7 +27,7 @@
             {% block stock_body %}
             <div class="title">
                 <h1>{{ 'Unknown error' | trans }}</h1>
-                <div class="subtitle">
+                <div class="subtitle" title="{{ title }}: {{ text}}">
                     {{ 'The page produced an exception.' | trans }}
                     {{ 'Sorry for the inconvenience, we will get right to it.' | trans }}
                 </div>
