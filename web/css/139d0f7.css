@@ -21,7 +21,7 @@ ul.screenshots li {
     border: 1px solid #BDCA0E;
     font-size: 0;
     text-indent: -99999px;
-    background-image: url(../bundles/kailabfrontend/images/delete.png);
+    background-image: url(../../bundles/kailabfrontend/images/delete.png);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
@@ -58,7 +58,7 @@ ul.selected_screenshots {
 }
 
 #app_icons li.selected {
-    background-image: url(../bundles/kailabfrontend/images/bg_selected_screenshot.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_selected_screenshot.png);
     background-position: center center;
     background-repeat: no-repeat;
 }
@@ -81,11 +81,10 @@ ul.selected_screenshots {
 }
 
 #apps .app {
-    background-image: url(../bundles/kailabfrontend/images/sep_big.png);
+    background-image: url(../../bundles/kailabfrontend/images/sep_big.png);
     background-position: top center;
     background-repeat: no-repeat;
     padding-top: 25px;
-    margin-bottom: 25px;
 }
 
 .app_inner {
@@ -157,21 +156,21 @@ ul.selected_screenshots {
 }
 
 #main .app .title .left {
-    background-image: url(../bundles/kailabfrontend/images/bg_title_left.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_title_left.png);
     background-position: left center;
     background-repeat: no-repeat;
     padding-left: 60px;
 }
 
 #main .app .title .right {
-    background-image: url(../bundles/kailabfrontend/images/bg_title_right.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_title_right.png);
     background-position: right center;
     background-repeat: no-repeat;
     padding-right: 60px;
 }
 
 #main .app .title .inner {
-    background-image: url(../bundles/kailabfrontend/images/bg_title.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_title.png);
     background-repeat: repeat-x;
     padding: 2px 5px;
 }
@@ -270,7 +269,7 @@ ul.selected_screenshots {
 	left: 0;
 	width: 40px;
 	height: 480px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 }
 
 #fancybox-overlay {
@@ -334,7 +333,7 @@ ul.selected_screenshots {
 	right: -15px;
 	width: 30px;
 	height: 30px;
-	background: transparent url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -40px 0px;
+	background: transparent url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -40px 0px;
 	cursor: pointer;
 	z-index: 1103;
 	display: none;
@@ -372,7 +371,7 @@ ul.selected_screenshots {
 	width: 35%;
 	cursor: pointer;
 	outline: none;
-	background: transparent url('../bundles/kailabfrontend/css/fancybox_theme/blank.gif');
+	background: transparent url('../../bundles/kailabfrontend/css/fancybox_theme/blank.gif');
 	z-index: 1102;
 	display: none;
 }
@@ -398,12 +397,12 @@ ul.selected_screenshots {
 }
 
 #fancybox-left-ico {
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -30px;
 }
 
 #fancybox-right-ico {
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -60px;
 }
 
@@ -434,13 +433,13 @@ ul.selected_screenshots {
 	top: -20px;
 	left: 0;
 	width: 100%;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png');
 }
 
 #fancybox-bg-ne {
 	top: -20px;
 	right: -20px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -162px;
 }
 
@@ -448,14 +447,14 @@ ul.selected_screenshots {
 	top: 0;
 	right: -20px;
 	height: 100%;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox-y.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox-y.png');
 	background-position: -20px 0px;
 }
 
 #fancybox-bg-se {
 	bottom: -20px;
 	right: -20px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -182px; 
 }
 
@@ -463,14 +462,14 @@ ul.selected_screenshots {
 	bottom: -20px;
 	left: 0;
 	width: 100%;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png');
 	background-position: 0px -20px;
 }
 
 #fancybox-bg-sw {
 	bottom: -20px;
 	left: -20px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -142px;
 }
 
@@ -478,13 +477,13 @@ ul.selected_screenshots {
 	top: 0;
 	left: -20px;
 	height: 100%;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox-y.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox-y.png');
 }
 
 #fancybox-bg-nw {
 	top: -20px;
 	left: -20px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png');
 	background-position: -40px -122px;
 }
 
@@ -517,7 +516,7 @@ ul.selected_screenshots {
 
 #fancybox-title-over {
 	padding: 10px;
-	background-image: url('../bundles/kailabfrontend/css/fancybox_theme/fancy_title_over.png');
+	background-image: url('../../bundles/kailabfrontend/css/fancybox_theme/fancy_title_over.png');
 	display: block;
 }
 
@@ -541,7 +540,7 @@ ul.selected_screenshots {
 
 #fancybox-title-float-left {
 	padding: 0 0 0 15px;
-	background: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -40px -90px no-repeat;
+	background: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -40px -90px no-repeat;
 }
 
 #fancybox-title-float-main {
@@ -549,12 +548,12 @@ ul.selected_screenshots {
 	line-height: 29px;
 	font-weight: bold;
 	padding: 0 0 3px 0;
-	background: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png') 0px -40px;
+	background: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox-x.png') 0px -40px;
 }
 
 #fancybox-title-float-right {
 	padding: 0 0 0 15px;
-	background: url('../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -55px -90px no-repeat;
+	background: url('../../bundles/kailabfrontend/css/fancybox_theme/fancybox.png') -55px -90px no-repeat;
 }
 
 /* IE6 */
@@ -618,7 +617,7 @@ ul.selected_screenshots {
     overflow: hidden;
     margin: 0;
     vertical-align: middle;
-	background: url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+	background: url(../../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
     background-position: 0px 0px;
     font-size: 0px;
     line-height: 30px;
@@ -638,7 +637,7 @@ ul.selected_screenshots {
     float: left;
     cursor: pointer;
     z-index: 600;
-	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
     padding: 0;
 }
 
@@ -649,6 +648,6 @@ ul.selected_screenshots {
     float: right;
     cursor: pointer;
     z-index: 600;
-	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
     background-position: -30px 0;
 }

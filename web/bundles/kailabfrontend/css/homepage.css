@@ -21,6 +21,19 @@
     overflow: hidden;
 }
 
+.maincontent .block.about {
+	overflow: visible !important;
+}
+
+.maincontent .block.about .fb-like {
+	margin-bottom: 1em;
+}
+
+.maincontent .block.about .main img {
+	float: left;
+	margin-right: 5px;
+}
+
 .maincontent .block.twitter {
     height: 448px;
     float: right;

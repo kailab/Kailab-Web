@@ -26,6 +26,18 @@
     {% endstylesheets %}
 {% endblock %}
 
+{% block body %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) {return;}
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1&appId=104877512898284";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{{ parent() }}
+{% endblock %}
+
 {% block content %}
 <div class="maincontent">
     {% if slides %}
@@ -171,13 +183,15 @@
         {% endif %}
 
         {% set blocks = blocks + 1 %}
-        <div class="block">
+        <div class="block about">
             <h2><a href="{{ path('frontend_about') }}" title="{{ 'About us' | trans }}">
                 <img src="{{ asset('bundles/kailabfrontend/images/about_small.png') }}" alt="{{ 'About us' | trans }}" />
             </a></h2>
 
             <div class="main">
-                <img src="{{ asset('bundles/kailabfrontend/images/witch.png') }}" alt="{{ 'A Witch character from a game we made.' | trans }}" style="float: left;"/>
+				<div class="fb-like" data-href="http://www.facebook.com/{{ frontend_helper.configuration.facebook }}"
+					data-send="true" data-layout="button_count" data-width="200" data-show-faces="true"></div>
+                <img src="{{ asset('bundles/kailabfrontend/images/witch.png') }}" alt="{{ 'A Witch character from a game we made.' | trans }}" />
                 {{ 'We are a small game and mobile app development studio set in Barcelona, Spain.' | trans }}
             </div>
             <div class="foot">
@@ -200,7 +214,7 @@
         </div>
 
         {% set blocks = blocks + 1 %}
-        <div class="block">
+        <div class="block links">
             <h2><img src="{{ asset('bundles/kailabfrontend/images/links_small.png') }}" alt="{{ 'Links' | trans }}" title="{{ 'Links' | trans }}" />
             </h2>
             <div class="main">

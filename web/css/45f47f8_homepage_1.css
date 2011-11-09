@@ -16,9 +16,22 @@
     margin: 0 10px 10px 0;
     padding: 10px;
     float: left;
-    background-image: url(../bundles/kailabfrontend/images/bg_block.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_block.png);
     position: relative;
     overflow: hidden;
+}
+
+.maincontent .block.about {
+	overflow: visible !important;
+}
+
+.maincontent .block.about .fb-like {
+	margin-bottom: 1em;
+}
+
+.maincontent .block.about .main img {
+	float: left;
+	margin-right: 5px;
 }
 
 .maincontent .block.twitter {
@@ -31,7 +44,8 @@
     margin: 0 0 5px 0;
 }
 
-#main .maincontent .block h2 a {
+#main .maincontent .block h2 a,
+#main .maincontent .block h3 a {
     text-decoration: none;
 }
 
@@ -74,7 +88,7 @@
     bottom: 0;
     width: 100%;
     padding: 10px;
-    background-image: url(../bundles/kailabfrontend/images/bg_block_footer.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_block_footer.png);
     background-repeat: repeat-x;
     background-position: center bottom;
 }
@@ -86,7 +100,7 @@
     display: block;
     float: right;
     padding: 4px;
-    background-image: url(../bundles/kailabfrontend/images/bg_block_button.png);
+    background-image: url(../../bundles/kailabfrontend/images/bg_block_button.png);
 }
 
 .maincontent .block ul {

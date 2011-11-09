@@ -4,14 +4,14 @@
 }
 
 #blog h1 {
-    background-image: url("../bundles/kailabfrontend/images/sep_big.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_big.png");
     background-position: center bottom;
     background-repeat: no-repeat;
     border: none;
 }
 
 #blog .paginator {
-    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_small.png");
     background-position: center top;
     background-repeat: no-repeat;
     margin-top: 20px;
@@ -34,7 +34,7 @@
     margin-top: 20px;
     overflow: hidden;
 
-    background-image: url("../bundles/kailabfrontend/images/sep_small.png");
+    background-image: url("../../bundles/kailabfrontend/images/sep_small.png");
     background-position: center top;
     background-repeat: no-repeat;
 }
@@ -160,7 +160,7 @@ input.tooltip {
     overflow: hidden;
     margin: 0;
     vertical-align: middle;
-	background: url(../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
+	background: url(../../bundles/kailabfrontend/images/slider_bullets.png) no-repeat;
     background-position: 0px 0px;
     font-size: 0px;
     line-height: 30px;
@@ -180,7 +180,7 @@ input.tooltip {
     float: left;
     cursor: pointer;
     z-index: 600;
-	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
     padding: 0;
 }
 
@@ -191,7 +191,7 @@ input.tooltip {
     float: right;
     cursor: pointer;
     z-index: 600;
-	background:url(../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
+	background:url(../../bundles/kailabfrontend/images/slider_arrows_black.png) no-repeat;
     background-position: -30px 0;
 }
 
