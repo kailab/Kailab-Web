@@ -6,3 +6,4 @@ app/logs/*
 app/upload/*
 build/
 app/config/local_parameters.yml
+screenshots/
