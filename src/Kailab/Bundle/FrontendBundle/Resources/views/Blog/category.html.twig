@@ -3,3 +3,8 @@
 {% block title %}
     {{ parent() }} - {{ 'Category ' | trans }} {{ category.name }}
 {% endblock %}
+
+{% block blog %}
+<h1>{{ category.name }}</h1>
+{{ parent() }}
+{% endblock %}

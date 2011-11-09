@@ -98,7 +98,7 @@ class BlogController extends Controller
     * @Route("/blog/category/{id}", name="frontend_blog_category")
     * @Template()
     */
-    public function CategoryAction($id, $page=1)
+    public function categoryAction($id, $page=1)
     {
         $em = $this->get('doctrine')->getEntityManager();
         $repo = $em->getRepository('KailabEntityBundle:BlogCategory');

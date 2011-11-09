@@ -85,6 +85,7 @@ $(document).ready(function(){
     </div>
     {% endblock %}
     <div id="sidebar">
+		{% block sidebar %}
         {% if categories %}
         <div class="section">
             <h2>{{ 'Categories' | trans }}</h2>
@@ -95,6 +96,7 @@ $(document).ready(function(){
             </ul>
         </div>
         {% endif %}
+		{% endblock %}
     </div>
 </div>
 
