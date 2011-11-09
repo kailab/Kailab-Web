@@ -136,7 +136,7 @@
 
 <script type="text/html" id="map_info">
 <strong style="display: block;">{{ 'Kailab Office' | trans }}</strong>
-<a href="http://maps.google.com/maps?daddr=Carrer+de+Pau+Claris,+115,+08009+Barcelona,+Espa%C3%B1a&hl=es&ie=UTF8&sll=41.392053,2.167856&sspn=0.006295,0.006295&view=map&geocode=CWmQDIzzH71pFbWXdwIdMBQhAA&z=16" target="_new">
+<a href="http://maps.google.com/maps?q=Carrer+de+Sant+Antoni+Maria+Clare,+08041+Barcelona,+Espa%C3%B1a&hl=es&ie=UTF8&ll=41.41536,2.179542&spn=0.010878,0.022724&sll=37.0625,-95.677068&sspn=49.176833,93.076172&vpsrc=0&hnear=Carrer+de+Sant+Antoni+Maria+Clare,+08041+Barcelona,+Catalu%C3%B1a,+Espa%C3%B1a&t=m&z=16" target="_new">
 {{ 'see in google maps' | trans }}
 </a>
 </script>
@@ -145,7 +145,7 @@
 $(document).ready(function(){
     var options = {
         zoom: 14,
-        center: new google.maps.LatLng(41.391868, 2.168099),
+        center: new google.maps.LatLng(41.414712, 2.179065),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map($('#map_canvas').get(0), options);
