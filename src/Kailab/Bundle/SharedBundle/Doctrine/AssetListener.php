@@ -10,9 +10,13 @@ use Kailab\Bundle\SharedBundle\Asset\AssetReader;
 
 class AssetListener
 {
+	protected $container = null;
+	protected $storage = null;
+
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+        $this->storage = $this->container->get('doctrine.asset.storage');
     }
 
     public function postLoad(LifecycleEventArgs $args)
@@ -59,7 +63,6 @@ class AssetListener
     protected function updateEntityAssets($entity,$em,$action='save')
     {
         $assets = $this->getEntityAssets($entity);
-        $storage = $this->container->get('doctrine.asset.storage');
 
         $method = 'updateAssets';
         if($action == 'save' && method_exists($entity, $method)){
@@ -73,13 +76,13 @@ class AssetListener
             try{
                 switch($action){
                     case 'save':
-                        $asset->save($storage);
+                        $asset->save($this->storage);
                         break;
                     case 'delete':
-                        $asset->delete($storage);
+                        $asset->delete($this->storage);
                         break;
                     case 'load':
-                        $asset->load($storage);
+                        $asset->load($this->storage);
                         break;
                 }
             }catch(\Exception $e){

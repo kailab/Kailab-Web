@@ -8,6 +8,7 @@ use Symfony\Component\Finder\Finder;
 class DirectoryAssetStorage implements AssetStorageInterface
 {
     protected $container;
+	protected $files = array();
 
     public function __construct(ContainerInterface $container)
     {
@@ -91,29 +92,38 @@ class DirectoryAssetStorage implements AssetStorageInterface
         return @unlink($path);
     }
 
-    protected function findFileInDirectory($dir, $pattern)
+    protected function findFileInDirectory($dir, $prefix)
     {
-        $finder = new Finder();
-        $finder->files()->in($dir)->name($pattern);
-        foreach($finder as $file){
-            return $file;
-        }
+		if(!isset($this->files[$dir])){
+			$this->files[$dir] = array();
+			$finder = new Finder();
+			$finder->files()->in($dir);
+			foreach($finder as $file){
+				$this->files[$dir][$file->getFilename()] = $file->getRealPath();
+			}
+		}
+		foreach($this->files[$dir] as $name=>$path){
+			if(mb_substr($name,0, mb_strlen($prefix)) === $prefix){
+				return $path;
+			}
+		}
+		return null;
     }
 
     public function readAsset($name, $namespace)
     {
         $dir = $this->getDirectory($namespace);
 
-        $file = $this->findFileInDirectory($dir,$name.'.*');
-        if ($file === null) {
-            $file = $this->findFileInDirectory($dir,$name);
+        $path = $this->findFileInDirectory($dir,$name.'.');
+        if ($path === null) {
+            $path = $this->findFileInDirectory($dir,$name);
         }
-        if ($file === null) {
+        if ($path === null) {
             throw new \RuntimeException('Unable to read file for asset '.$name);
         }
 
-        $asset = new FileAsset($file->getRealPath());
-        $uri = $this->getUri($namespace, $file->getFileName());
+        $asset = new FileAsset($path);
+        $uri = $this->getUri($namespace, basename($path));
         $asset->setUri($uri);
         return $asset;
     }
