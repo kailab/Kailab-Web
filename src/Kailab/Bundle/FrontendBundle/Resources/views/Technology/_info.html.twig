@@ -1,6 +1,6 @@
 <div class="info">
-    {% if show_image is defined and tech.image %}
-    <img src="{{ path('frontend_technology_image',{'id':tech.id}) }}" alt="{{ tech.name }}"/>
+    {% if show_image is defined and tech.image.uri %}
+    <img src="{{ tech.image.uri }}" alt="{{ tech.name }}"/>
     {% endif %}
 
     {% if tech.getApps('app').count %}

@@ -27,19 +27,16 @@
 {% endblock %}
 
 {% block content %}
-{% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli} %}
+{% include 'KailabFrontendBundle:Applications:_app.html.twig' with {'appli': appli, 'loading': true } %}
 {% endblock %}
 
 {% block footer %}
 {{ parent() }}
 <script type="text/javascript">
-
-$(document).ready(function(){
-
+$(window).load(function(){
 	$('.app').showcase({
 		single: true
 	});
-
 });
 </script>
 
