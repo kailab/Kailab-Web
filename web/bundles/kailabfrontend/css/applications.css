@@ -153,6 +153,13 @@
     padding: 0 10px;
 }
 
+.app .description h3,
+.app .description h4,
+.app .description h5,
+.app .description h6 {
+	margin-top: 1em;
+}
+
 .app .info {
     float: right;
     width: 200px;

@@ -35,4 +35,16 @@ class TechRepository extends EntityRepository
             return null;
         }
     }
+
+    public function deleteScreenshots(Tech $tech)
+    {
+    	$id = $tech->getId();
+    	if(!$id){
+    		return false;
+    	}
+    	$em = $this->getEntityManager();
+    	$q = 'DELETE FROM KailabEntityBundle:TechScreenshot s WHERE s.tech = :id';
+    	return $em->createQuery($q)->setParameter('id',$id)->execute();
+    }
+ 
 }

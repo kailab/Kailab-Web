@@ -29,6 +29,14 @@ class TechController extends EntityCrudController
     	return new TechType();
     }
 
+	protected function saveEntity($entity)
+	{
+		$repo = $this->getRepository();
+		// remove old screenshots
+		$repo->deleteScreenshots($entity);
+		return parent::saveEntity($entity);
+	}
+
    /**
     * @Route("/tech", name="backend_tech_index")
     * @Template()
