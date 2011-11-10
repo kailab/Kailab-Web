@@ -3,6 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>{% block title %}Kailab{% endblock %}</title>
+		<link href="https://plus.google.com/{{ frontend_helper.configuration.googleplus }}" rel="publisher" />
         <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
         {% block javascripts %}
         {% javascripts
@@ -109,11 +110,12 @@
                 {% block footer %}
                 <div id="footer_social">
                     <span class="prefix">{{ 'Follow us on...' | trans }}</span>
-                    <a href="http://www.facebook.com/{{ frontend_helper.configuration.facebook }}" target="_new">
-                        <img src="{{asset('bundles/kailabfrontend/images/footer_facebook.png')}}" alt="Facebook"/>
-                    </a>
-                    <a href="http://www.twitter.com/#!/{{ frontend_helper.configuration.twitter }}" target="_new">
-                        <img src="{{asset('bundles/kailabfrontend/images/footer_twitter.png')}}" alt="Twitter"/>
+                    <a href="http://www.facebook.com/{{ frontend_helper.configuration.facebook }}" target="_new"
+					><img src="{{asset('bundles/kailabfrontend/images/footer_facebook.png')}}" alt="Facebook"/></a>
+					<a href="http://plus.google.com/{{ frontend_helper.configuration.googleplus }}" target="_new"
+					><img src="{{asset('bundles/kailabfrontend/images/footer_gplus.png')}}" alt="Google Plus"/></a>
+                    <a href="http://www.twitter.com/#!/{{ frontend_helper.configuration.twitter }}" target="_new"
+					><img src="{{asset('bundles/kailabfrontend/images/footer_twitter.png')}}" alt="Twitter"/>
                     </a>
                 </div>
                 <ul id="bottommenu">

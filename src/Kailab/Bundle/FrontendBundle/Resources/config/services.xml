@@ -12,6 +12,7 @@
                 <argument key="site_name">Kailab</argument>
                 <argument key="twitter">kailabestudio</argument>
                 <argument key="facebook">kailabestudio</argument>
+                <argument key="googleplus">106148275018055991925 </argument>
                 <argument key="email">contact@kailab.com</argument>
                 <argument type="collection" key="analytics">
                 	<argument key="kailab.com">UA-15788819-3</argument>
