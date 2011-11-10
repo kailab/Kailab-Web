@@ -6,29 +6,36 @@
         {% endif %}
         {% if tech.screenshots.count %}
         <div class="side">
-            <ul class="screenshots">
-                {% for screenshot in tech.screenshots %}
-                <li style="display: {% if loop.first %}block{% else %}none{% endif %};">
-                    <a href="{{ screenshot.image.uri }}" rel="tech-{{ tech.slug }}">
-                        {% if tech.orientation == 'both' %}
-                        <img src="{{ screenshot.image('bigcenter').uri }}" alt="{{ tech.name }}"/>
-                        {% else %}
-                        <img src="{{ screenshot.image('big').uri }}" alt="{{ tech.name }}"/>
-                        {% endif %}
-                    </a>
-                </li>
-                {% endfor %}
-            </ul>
-            {% if tech.screenshots.count > 1 %}
-            <div class="paginator">
-                <div class="previous">
-                </div>
-                <div class="next">
-                </div>
-                <div class="nav">
-                </div>
-            </div>
-            {% endif %}
+			{% if loading is defined %}
+			<div class="loading loadingside">
+				<img src="{{ asset('bundles/kailabfrontend/images/loading.gif') }}" />
+			</div>
+			{% endif %}
+			<div class="loaded" {% if loading is defined %}style="display: none;"{% endif %}/>
+				<ul class="screenshots">
+					{% for screenshot in tech.screenshots %}
+					<li style="display: {% if loop.first %}block{% else %}none{% endif %};">
+						<a href="{{ screenshot.image.uri }}" rel="tech-{{ tech.slug }}">
+							{% if tech.orientation == 'both' %}
+							<img src="{{ screenshot.image('bigcenter').uri }}" alt="{{ tech.name }}"/>
+							{% else %}
+							<img src="{{ screenshot.image('big').uri }}" alt="{{ tech.name }}"/>
+							{% endif %}
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+				{% if tech.screenshots.count > 1 %}
+				<div class="paginator">
+					<div class="previous">
+					</div>
+					<div class="next">
+					</div>
+					<div class="nav">
+					</div>
+				</div>
+				{% endif %}
+			</div>
         </div>
         <div class="main with_side">
         {% else %}

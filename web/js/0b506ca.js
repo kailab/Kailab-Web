@@ -73,24 +73,28 @@ easingOut:"swing",showCloseButton:true,showNavArrows:true,enableEscapeButton:tru
 	$.fn[plugin_name] = function(options){
 		options = getOptions.call(this,options);
 		var obj = $(this);
+	
+		if(!options.single){
+			obj.find(options.linkSelector).click(function(){
+				var id = $(this).attr('href').substr(1);
+				show_app.call(obj, id);
+				return false;
+			});
 		
-		if(options.single){
-	        setup_screenshots.call(obj, obj);
-	        return;
+			var imgs = obj.find(options.imageSelector)
+			imgs.reflect(options.reflectOptions);
 		}
-	  
-	    obj.find(options.linkSelector).click(function(){
-	        var id = $(this).attr('href').substr(1);
-	        show_app.call(obj, id);
-	        return false;
-	    });
 	
-	    obj.find(options.imageSelector).reflect(options.reflectOptions);
-	
-	    var anchor = get_anchor();
+		var loaded = obj.find(options.loadedSelector);
+		if(loaded.length === 0){
+			loaded = obj;
+		}
+		var anchor = get_anchor();
 	    $(options.loadingSelector).fadeOut(function(){
-	        obj.fadeIn(function(){
-	            if(anchor){
+	        loaded.fadeIn(function(){
+				if(options.single){
+					setup_screenshots.call(obj, obj);
+				}else if(anchor){
 	                show_app.call(obj, anchor);
 	            }
 	        });
@@ -108,6 +112,7 @@ easingOut:"swing",showCloseButton:true,showNavArrows:true,enableEscapeButton:tru
 	    imageSelector: 'img',
 	    iconSelector: 'li',
 	    loadingSelector: '.loading',
+	    loadedSelector: '.loaded',
 	    itemSelector: '.app',
 	    screenshotsSelector: '.screenshots',
 	    selectedClass: 'selected',
@@ -145,6 +150,7 @@ easingOut:"swing",showCloseButton:true,showNavArrows:true,enableEscapeButton:tru
 	    var prev = app.find(options.previousSelector);
 	    var next = app.find(options.nextSelector);
 	    var shots = app.find(options.screenshotsSelector);
+		nav.closest(':hidden').slideDown();
 	    
 	    shots.cycle({
 	        fx:     'fade',

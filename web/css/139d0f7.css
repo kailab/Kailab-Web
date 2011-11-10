@@ -110,6 +110,17 @@ ul.selected_screenshots {
     margin-bottom: 10px;
 }
 
+.app.horizontal .side .loading,
+.app.both .side .loading {
+	padding: 40px 0;
+    width: 710px;
+}
+
+.app.vertical .side .loading {
+	padding: 100px 0;
+    width: 250px;
+}
+
 .app.horizontal .side .nav,
 .app.both .side .nav {
     width: 650px !important;
