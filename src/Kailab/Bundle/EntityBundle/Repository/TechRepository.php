@@ -4,6 +4,8 @@ namespace Kailab\Bundle\EntityBundle\Repository;
 
 use Kailab\Bundle\SharedBundle\Repository\EntityRepository;
 
+use Kailab\Bundle\EntityBundle\Entity\Tech;
+
 class TechRepository extends EntityRepository
 {
     protected $entity_name = 'KailabEntityBundle:Tech';
