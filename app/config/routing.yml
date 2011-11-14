@@ -2,10 +2,6 @@ homepage:
     pattern:  /
     defaults: { _controller: KailabFrontendBundle:Default:index }
     
-backend_homepage:
-    pattern:  /admin
-    defaults: { _controller: KailabBackendBundle:Default:index }
-
 backend:
     prefix:   /admin
     resource: "@KailabBackendBundle/Resources/config/routing.yml"

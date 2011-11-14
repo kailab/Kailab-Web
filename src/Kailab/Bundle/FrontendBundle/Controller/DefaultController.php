@@ -10,7 +10,8 @@ use Kailab\Bundle\SharedBundle\Routing\Annotation\LocalizedRoute as Route;
 class DefaultController extends Controller
 {
 	/**
-	* @Route("/", name="frontend_homepage")
+	* @Route("", name="frontend_homepage")
+	* @Route("/", name="frontend_homepage_slash")
 	* @Template()
 	*/
     public function indexAction()
